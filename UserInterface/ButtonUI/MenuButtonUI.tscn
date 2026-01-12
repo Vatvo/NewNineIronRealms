@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmkmtc1ukd7qg"]
+
+[ext_resource type="Texture2D" uid="uid://ldolpant4vof" path="res://UserInterface/UIAssets/UIArrowTemp.png" id="1_43wuu"]
+
+[node name="HBoxContainer" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_43wuu")
+expand_mode = 3
+
+[node name="MenuButtonUi" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+text = "Guh"

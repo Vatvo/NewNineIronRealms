@@ -32,7 +32,9 @@ enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
 
 folder_colors={
 "res://Maps/": "blue",
-"res://Materials/": "pink"
+"res://Materials/": "pink",
+"res://UserInterface/": "green",
+"res://UserInterface/UIAssets/": "red"
 }
 
 [input]
