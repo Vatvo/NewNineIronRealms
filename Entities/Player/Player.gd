@@ -17,6 +17,10 @@ static var canShoot: bool = true
 var isShooting: bool = false
 var currentShotPower: float = 0.0
 
+var maxPullLength: float
+var pullLength: float
+var aimDirection: Vector3
+
 func _ready() -> void:
 	var newCameraRotation: Vector3 = cameraHost.get_third_person_rotation()
 	newCameraRotation.x = clamp(newCameraRotation.x, -PI/2 + 0.1, -0.5)
@@ -25,28 +29,10 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_released("Shoot") && isShooting:
-		shoot(0, 0)
+		shoot()
 		
 	if Input.is_action_pressed("Shoot") && canShoot:
-		isShooting = true
-		shotUI.visible = true
-		aimMarker.visible = true
-		
-		var screenSize: Vector2 = get_viewport().size
-		var maxPullLength = screenSize.y / 3
-		
-		var mousePos: Vector2 = get_viewport().get_mouse_position()
-		var centerScreen: Vector2 = get_viewport().size / 2
-		
-		var centeredMousePos: Vector2 = mousePos - centerScreen
-		var direction: float = atan2(centeredMousePos.y, centeredMousePos.x)
-		
-		var length: float = mousePos.distance_to(centerScreen)
-		length = clamp(length, 0, maxPullLength)
-		
-		var pullLineEnd: Vector2 = update_pull_line(direction, length)
-		var aimDirection = get_aim_direction(pullLineEnd, screenSize)
-		aimMarker.draw_aim(aimDirection, lerp(1, 5, length / maxPullLength))
+		handle_shot()
 	else:
 		isShooting = false
 		shotUI.visible = false
@@ -64,8 +50,32 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 		cameraHost.spring_length = cameraDistanceCurve.sample(newCameraRotation.x)
 
-func shoot(direction: float, length: float) -> void:
-	print("Shoot")
+func handle_shot() -> void:
+	isShooting = true
+	shotUI.visible = true
+	aimMarker.visible = true
+		
+	var screenSize: Vector2 = get_viewport().size
+	maxPullLength = screenSize.y / 3
+		
+	var mousePos: Vector2 = get_viewport().get_mouse_position()
+	var centerScreen: Vector2 = get_viewport().size / 2
+		
+	var centeredMousePos: Vector2 = mousePos - centerScreen
+	var direction: float = atan2(centeredMousePos.y, centeredMousePos.x)
+		
+	pullLength = mousePos.distance_to(centerScreen)
+	pullLength = clamp(pullLength, 0, maxPullLength)
+		
+	var pullLineEnd: Vector2 = update_pull_line(direction, pullLength)
+	aimDirection = get_aim_direction(pullLineEnd, screenSize)
+	aimMarker.draw_aim(aimDirection, lerp(0, 5, pullLength / maxPullLength))
+		
+func shoot() -> void:
+	if floor(lerp(0, 5, pullLength / maxPullLength)) > 0:
+		print("Shoot")
+	else:
+		print("Cancelled")
 
 func raycast_mouse_to_xz_plane(mousePos: Vector2) -> Dictionary:
 	var plane = Plane(Vector3.UP, global_position.y)
