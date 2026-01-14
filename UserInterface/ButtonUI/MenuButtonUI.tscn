@@ -1,18 +1,67 @@
-[gd_scene load_steps=2 format=3 uid="uid://cmkmtc1ukd7qg"]
+[gd_scene load_steps=6 format=3 uid="uid://cmkmtc1ukd7qg"]
 
 [ext_resource type="Texture2D" uid="uid://ldolpant4vof" path="res://UserInterface/UIAssets/UIArrowTemp.png" id="1_43wuu"]
+[ext_resource type="Theme" uid="uid://qxvpm2dwr80a" path="res://UserInterface/MenuTheme.tres" id="2_el4c1"]
 
-[node name="HBoxContainer" type="HBoxContainer"]
-offset_right = 40.0
-offset_bottom = 40.0
+[sub_resource type="Animation" id="Animation_lv5mv"]
+resource_name = "ArrowFade"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 2
-texture = ExtResource("1_43wuu")
-expand_mode = 3
+[sub_resource type="Animation" id="Animation_448g2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
-[node name="MenuButtonUi" type="Button" parent="."]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_054v2"]
+_data = {
+&"ArrowFade": SubResource("Animation_lv5mv"),
+&"RESET": SubResource("Animation_448g2")
+}
+
+[node name="MenuButtonUI" type="HBoxContainer"]
+offset_right = 252.0
+offset_bottom = 78.0
+
+[node name="ArrowImg" type="TextureRect" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
-text = "Guh"
+mouse_filter = 2
+texture = ExtResource("1_43wuu")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme = ExtResource("2_el4c1")
+text = "Button"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../ArrowImg")
+libraries = {
+&"": SubResource("AnimationLibrary_054v2")
+}
