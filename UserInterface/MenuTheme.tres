@@ -1,0 +1,20 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://qxvpm2dwr80a"]
+
+[ext_resource type="FontFile" uid="uid://c4k1qjp7dmlnh" path="res://UserInterface/UIAssets/Fonts/Norsebold.otf" id="1_axiho"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wla7c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l85ts"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7h66x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4ujlf"]
+
+[resource]
+Button/font_sizes/font_size = 70
+Button/fonts/font = ExtResource("1_axiho")
+Button/styles/disabled = null
+Button/styles/focus = SubResource("StyleBoxEmpty_wla7c")
+Button/styles/hover = SubResource("StyleBoxEmpty_l85ts")
+Button/styles/normal = SubResource("StyleBoxEmpty_7h66x")
+Button/styles/pressed = SubResource("StyleBoxEmpty_4ujlf")
