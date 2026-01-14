@@ -33,6 +33,8 @@ func _process(delta: float) -> void:
 		aimMarker.visible = true
 		
 		var screenSize: Vector2 = get_viewport().size
+		var maxPullLength = screenSize.y / 3
+		
 		var mousePos: Vector2 = get_viewport().get_mouse_position()
 		var centerScreen: Vector2 = get_viewport().size / 2
 		
@@ -40,11 +42,11 @@ func _process(delta: float) -> void:
 		var direction: float = atan2(centeredMousePos.y, centeredMousePos.x)
 		
 		var length: float = mousePos.distance_to(centerScreen)
-		length = clamp(length, 0, screenSize.y / 3)
+		length = clamp(length, 0, maxPullLength)
 		
 		var pullLineEnd: Vector2 = update_pull_line(direction, length)
 		var aimDirection = get_aim_direction(pullLineEnd, screenSize)
-		aimMarker.draw_aim(aimDirection, 3)
+		aimMarker.draw_aim(aimDirection, lerp(1, 5, length / maxPullLength))
 	else:
 		isShooting = false
 		shotUI.visible = false

@@ -27,7 +27,7 @@ func draw_aim(shotForce: Vector3, aimLength) -> void:
 		velocity *= clampf(1.0 - linearDamp * timeStep, 0, 1)
 		
 		var point = MeshInstance3D.new()
-		var size = 0.5
+		var size = lerp(0.25, 0.8, 1 - i / aimLength)
 		point.scale = Vector3(size, size, size)
 		point.mesh = SphereMesh.new()
 		point.position = markerEnd
