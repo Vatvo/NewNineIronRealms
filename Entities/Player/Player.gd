@@ -11,11 +11,14 @@ static var canShoot: bool = true
 @onready var aimMarker: AimMarker = $AimMarker
 @onready var mainCamera: Camera3D = get_tree().get_nodes_in_group("MainCamera")[0]
 @onready var cameraFollowPoint: Node3D = $CameraFollowPoint
+@onready var groundRayCast: RayCast3D = $GroundRayCast
+
 
 @export_category("Control Parameters")
 @export var cameraSensitivity: Vector2 = Vector2(1,1)
 @export var cameraDistanceCurve: Curve
 @export var shotPower: float
+@export var spinPower: float
 
 var isShooting: bool = false
 var currentShotPower: float = 0.0
@@ -23,6 +26,10 @@ var currentShotPower: float = 0.0
 var maxPullLength: float
 var pullLength: float
 var aimDirection: Vector3
+
+var grounded: float
+
+var unmoddedDamp: float
 
 func _ready() -> void:
 	var newCameraRotation: Vector3 = cameraHost.get_third_person_rotation()
@@ -32,7 +39,31 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	cameraFollowPoint.global_position = global_position + (linear_velocity * delta)
-
+	groundRayCast.position = global_position
+	
+	if groundRayCast.collide_with_bodies:
+		grounded = true
+		
+	if linear_velocity.length() < 0.75:
+		linear_velocity = Vector3.ZERO
+		angular_velocity = Vector3.ZERO
+		canShoot = true
+	else:
+		canShoot = false
+		
+	if grounded && linear_velocity.length() > 0.1:
+		unmoddedDamp = clamp(0.1 / linear_velocity.length(), 0.5, 100)
+	else:
+		unmoddedDamp = 0
+		
+	if Input.is_action_pressed("Brake"):
+		angular_damp = unmoddedDamp * 2
+		linear_damp = unmoddedDamp * 2
+	else:
+		angular_damp = unmoddedDamp
+		linear_damp = unmoddedDamp
+	
+	
 func _process(delta: float) -> void:
 	if Input.is_action_just_released("Shoot") && isShooting:
 		shoot()
@@ -79,7 +110,11 @@ func handle_shot() -> void:
 		
 func shoot() -> void:
 	if floor(lerp(0, 5, pullLength / maxPullLength)) > 0:
-		apply_central_impulse(aimDirection * shotPower * pullLength / maxPullLength)
+		var impulse: Vector3 = aimDirection * shotPower * pullLength / maxPullLength
+		apply_central_impulse(impulse)
+		
+		var spin: Vector3 = impulse * spinPower
+		apply_torque_impulse(spin.rotated(Vector3.UP, PI/2))
 	else:
 		print("Cancelled")
 

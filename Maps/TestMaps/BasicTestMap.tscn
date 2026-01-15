@@ -26,6 +26,6 @@ metadata/_custom_type_script = "uid://bd046eokvcnu2"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.134274, 9.592773, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.134274, 8.916435, 0)
 use_collision = true
 size = Vector3(36.61853, 20.185547, 15.647461)

@@ -10,6 +10,7 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hj1c0"]
 rough = true
+bounce = 0.6
 
 [sub_resource type="Curve" id="Curve_an6q6"]
 _limits = [0.0, 40.0, -1.57, 0.0]
@@ -39,7 +40,8 @@ angular_damp = 0.2
 script = ExtResource("1_vweq0")
 cameraSensitivity = Vector2(0.01, 0.01)
 cameraDistanceCurve = SubResource("Curve_an6q6")
-shotPower = 50.0
+shotPower = 90.0
+spinPower = 0.1
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1_ww0jn")
@@ -80,4 +82,8 @@ top_level = true
 script = ExtResource("6_t38ms")
 
 [node name="CameraFollowPoint" type="Node3D" parent="."]
+top_level = true
+
+[node name="GroundRayCast" type="RayCast3D" parent="."]
+process_physics_priority = 100
 top_level = true
