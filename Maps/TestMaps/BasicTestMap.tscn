@@ -13,11 +13,12 @@ material = ExtResource("1_c31it")
 
 [node name="Camera3D" type="Camera3D" parent="." groups=["MainCamera"]]
 physics_interpolation_mode = 1
-transform = Transform3D(1, 0, 0, 0, 0.90630776, 0.42261827, 0, -0.42261827, 0.90630776, 0, 9.452366, 18.126156)
+transform = Transform3D(1, 0, 0, 0, 0.90630776, 0.42261827, 0, -0.42261827, 0.90630776, 0, 8.452366, 18.126156)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 process_priority = 300
 process_physics_priority = 300
+physics_interpolation_mode = 1
 script = ExtResource("4_f3wry")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
 

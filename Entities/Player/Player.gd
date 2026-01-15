@@ -10,9 +10,12 @@ static var canShoot: bool = true
 @onready var shotUI: CanvasLayer = $ShotUI
 @onready var aimMarker: AimMarker = $AimMarker
 @onready var mainCamera: Camera3D = get_tree().get_nodes_in_group("MainCamera")[0]
+@onready var cameraFollowPoint: Node3D = $CameraFollowPoint
+
 @export_category("Control Parameters")
 @export var cameraSensitivity: Vector2 = Vector2(1,1)
 @export var cameraDistanceCurve: Curve
+@export var shotPower: float
 
 var isShooting: bool = false
 var currentShotPower: float = 0.0
@@ -26,6 +29,9 @@ func _ready() -> void:
 	newCameraRotation.x = clamp(newCameraRotation.x, -PI/2 + 0.1, -0.5)
 	cameraHost.set_third_person_rotation(newCameraRotation)
 	cameraHost.spring_length = cameraDistanceCurve.sample(cameraHost.get_third_person_rotation().x)
+
+func _physics_process(delta: float) -> void:
+	cameraFollowPoint.global_position = global_position + (linear_velocity * delta)
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_released("Shoot") && isShooting:
@@ -73,7 +79,7 @@ func handle_shot() -> void:
 		
 func shoot() -> void:
 	if floor(lerp(0, 5, pullLength / maxPullLength)) > 0:
-		print("Shoot")
+		apply_central_impulse(aimDirection * shotPower * pullLength / maxPullLength)
 	else:
 		print("Cancelled")
 

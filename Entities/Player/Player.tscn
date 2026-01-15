@@ -1,11 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://b1uo6orqicguq"]
+[gd_scene load_steps=15 format=3 uid="uid://b1uo6orqicguq"]
 
 [ext_resource type="Script" uid="uid://hug26nyoc3wp" path="res://Entities/Player/Player.gd" id="1_vweq0"]
 [ext_resource type="ArrayMesh" uid="uid://befwqt1qhvy5t" path="res://Entities/Player/GolfBall.obj" id="1_ww0jn"]
 [ext_resource type="Material" uid="uid://bgc7uahcu23x3" path="res://Materials/TestMaterials/TestGridRed.tres" id="2_vweq0"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="4_an6q6"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_t38ms"]
+[ext_resource type="Script" uid="uid://b8hhnqsugykly" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="6_hj1c0"]
 [ext_resource type="Script" uid="uid://cirhtt2m1sp5m" path="res://Entities/Player/AimMarker.gd" id="6_t38ms"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hj1c0"]
+rough = true
 
 [sub_resource type="Curve" id="Curve_an6q6"]
 _limits = [0.0, 40.0, -1.57, 0.0]
@@ -17,6 +21,10 @@ point_count = 2
 [sub_resource type="Resource" id="Resource_an6q6"]
 script = ExtResource("5_t38ms")
 
+[sub_resource type="Resource" id="Resource_x44r4"]
+script = ExtResource("6_hj1c0")
+metadata/_custom_type_script = "uid://b8hhnqsugykly"
+
 [sub_resource type="Curve" id="Curve_t38ms"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -25,9 +33,13 @@ point_count = 2
 colors = PackedColorArray(0.8369676, 0.5692811, 0, 1, 0.74998635, 2.6712567e-06, 6.738305e-07, 1)
 
 [node name="Player" type="RigidBody3D" groups=["Player"]]
+physics_interpolation_mode = 1
+physics_material_override = SubResource("PhysicsMaterial_hj1c0")
+angular_damp = 0.2
 script = ExtResource("1_vweq0")
 cameraSensitivity = Vector2(0.01, 0.01)
 cameraDistanceCurve = SubResource("Curve_an6q6")
+shotPower = 50.0
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1_ww0jn")
@@ -37,11 +49,14 @@ surface_material_override/0 = ExtResource("2_vweq0")
 shape = SubResource("SphereShape3D_1des2")
 
 [node name="CameraHost" type="Node3D" parent="." node_paths=PackedStringArray("follow_target")]
+physics_interpolation_mode = 1
 transform = Transform3D(1, 0, 0, 0, 0.90630776, 0.42261827, 0, -0.42261827, 0.90630776, 0, 8.452366, 18.126156)
 script = ExtResource("4_an6q6")
 follow_mode = 6
-follow_target = NodePath("..")
+follow_target = NodePath("../CameraFollowPoint")
 tween_resource = SubResource("Resource_an6q6")
+tween_on_load = false
+camera_3d_resource = SubResource("Resource_x44r4")
 follow_distance = 20.0
 vertical_rotation_offset = 0.4363323129985824
 spring_length = 20.0
@@ -61,5 +76,8 @@ texture_mode = 2
 end_cap_mode = 2
 
 [node name="AimMarker" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+top_level = true
 script = ExtResource("6_t38ms")
+
+[node name="CameraFollowPoint" type="Node3D" parent="."]
+top_level = true
