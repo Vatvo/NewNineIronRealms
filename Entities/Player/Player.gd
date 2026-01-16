@@ -21,6 +21,7 @@ static var canSteer: bool = true
 @export var shotPower: float
 @export var spinPower: float
 @export var steerSensitivity: float 
+@export var hopPower: float
 
 var isShooting: bool = false
 var currentShotPower: float = 0.0
@@ -65,7 +66,7 @@ func _physics_process(delta: float) -> void:
 			deactivate_brake()
 		
 	if isGrounded:
-		unmoddedDamp = 5 / linear_velocity.length()
+		unmoddedDamp = 2 / linear_velocity.length()
 	if !isGrounded || !isMoving:
 		unmoddedDamp = 0
 		
@@ -99,6 +100,9 @@ func _physics_process(delta: float) -> void:
 		var newCameraRotation := currentCameraRotation
 		newCameraRotation.y -= steerSensitivity
 		cameraHost.set_third_person_rotation(newCameraRotation)
+	
+	if Input.is_action_just_pressed("Hop") && isMoving && isGrounded:
+		apply_central_impulse(Vector3.UP * hopPower)
 		
 	cameraFollowPoint.global_rotation = Vector3.ZERO
 		

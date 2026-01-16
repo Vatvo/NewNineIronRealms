@@ -40,9 +40,10 @@ angular_damp = 0.2
 script = ExtResource("1_vweq0")
 cameraSensitivity = Vector2(0.01, 0.01)
 cameraDistanceCurve = SubResource("Curve_an6q6")
-shotPower = 75.0
+shotPower = 40.0
 spinPower = 0.05
 steerSensitivity = 0.003
+hopPower = 20.0
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1_ww0jn")
