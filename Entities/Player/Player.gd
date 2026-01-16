@@ -27,43 +27,53 @@ var maxPullLength: float
 var pullLength: float
 var aimDirection: Vector3
 
-var grounded: float
+var isGrounded: float = false
+var isMoving: bool = false
+var isBraking: bool = false
 
 var unmoddedDamp: float
 
+signal ballStopped
+
 func _ready() -> void:
+	ballStopped.connect(on_ball_stop)
 	var newCameraRotation: Vector3 = cameraHost.get_third_person_rotation()
 	newCameraRotation.x = clamp(newCameraRotation.x, -PI/2 + 0.1, -0.5)
 	cameraHost.set_third_person_rotation(newCameraRotation)
 	cameraHost.spring_length = cameraDistanceCurve.sample(cameraHost.get_third_person_rotation().x)
 
 func _physics_process(delta: float) -> void:
-	cameraFollowPoint.global_position = global_position + (linear_velocity * delta)
 	groundRayCast.position = global_position
 	
-	if groundRayCast.collide_with_bodies:
-		grounded = true
+	if check_is_grounded():
+		isGrounded = true
+	else:
+		isGrounded = false
+	
+	if linear_velocity.length() > 0.5:
+		canShoot = false
+		isMoving = true
+	elif isMoving:
+		ballStopped.emit()
+		canShoot = true
+		isMoving = false
 		
-	if linear_velocity.length() < 0.75:
 		linear_velocity = Vector3.ZERO
 		angular_velocity = Vector3.ZERO
-		canShoot = true
-	else:
-		canShoot = false
 		
-	if grounded && linear_velocity.length() > 0.1:
+	if isGrounded && linear_velocity.length() > 0.1:
 		unmoddedDamp = clamp(0.1 / linear_velocity.length(), 0.5, 100)
 	else:
 		unmoddedDamp = 0
 		
-	if Input.is_action_pressed("Brake"):
-		angular_damp = unmoddedDamp * 2
-		linear_damp = unmoddedDamp * 2
-	else:
-		angular_damp = unmoddedDamp
-		linear_damp = unmoddedDamp
+	if Input.is_action_just_pressed("Brake") && isMoving:
+		activate_brake()
 	
+	if Input.is_action_just_released("Brake") && isBraking:
+		deactivate_brake()
 	
+	cameraFollowPoint.global_rotation = Vector3.ZERO
+		
 func _process(delta: float) -> void:
 	if Input.is_action_just_released("Shoot") && isShooting:
 		shoot()
@@ -87,6 +97,19 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 		cameraHost.spring_length = cameraDistanceCurve.sample(newCameraRotation.x)
 
+func check_is_grounded() -> bool:
+	var space := get_viewport().get_world_3d().direct_space_state
+	var ray_query := PhysicsRayQueryParameters3D.new()
+	ray_query.from = Vector3(position.x, position.y, position.z)
+	ray_query.to = Vector3(position.x, position.y - 0.8, position.z)
+	ray_query.set_collision_mask(1)
+	var raycast_result := space.intersect_ray(ray_query)
+
+	if !raycast_result.is_empty():
+		return true
+	else:
+		return false
+		
 func handle_shot() -> void:
 	isShooting = true
 	shotUI.visible = true
@@ -153,3 +176,26 @@ func get_aim_direction(pullLineEnd: Vector2, screenSize: Vector2):
 		screenDirection = screenDirection.rotated(mainCamera.rotation.y)
 		
 		return Vector3(screenDirection.x, 0, -screenDirection.y)
+
+func on_ball_stop() -> void:
+	
+	if isBraking:
+		deactivate_brake()
+	
+func activate_brake() -> void:
+	isBraking = true
+	
+	linear_velocity.x /= 2
+	angular_velocity /= 2
+		
+	angular_damp = unmoddedDamp * 2
+	linear_damp = unmoddedDamp * 2
+
+func deactivate_brake() -> void:
+	isBraking = false
+	
+	linear_velocity *= 1.5
+	angular_velocity *= 1.5
+		
+	angular_damp = unmoddedDamp
+	linear_damp = unmoddedDamp
