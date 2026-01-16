@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://cmkmtc1ukd7qg"]
+[gd_scene load_steps=7 format=3 uid="uid://cmkmtc1ukd7qg"]
 
 [ext_resource type="Texture2D" uid="uid://ldolpant4vof" path="res://UserInterface/UIAssets/UIArrowTemp.png" id="1_43wuu"]
+[ext_resource type="Script" uid="uid://dy2f2t4l6qbc6" path="res://UserInterface/ButtonUI/menu_button_ui.gd" id="1_lv5mv"]
 [ext_resource type="Theme" uid="uid://qxvpm2dwr80a" path="res://UserInterface/MenuTheme.tres" id="2_el4c1"]
 
 [sub_resource type="Animation" id="Animation_lv5mv"]
 resource_name = "ArrowFade"
+length = 0.75
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -13,7 +15,7 @@ tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.6, 1),
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -40,11 +42,19 @@ _data = {
 &"RESET": SubResource("Animation_448g2")
 }
 
-[node name="MenuButtonUI" type="HBoxContainer"]
-offset_right = 252.0
+[node name="MenuButtonUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 355.0
 offset_bottom = 78.0
 
-[node name="ArrowImg" type="TextureRect" parent="."]
+[node name="HBox" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 252.0
+offset_bottom = 78.0
+script = ExtResource("1_lv5mv")
+
+[node name="ArrowImg" type="TextureRect" parent="HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
@@ -53,7 +63,7 @@ texture = ExtResource("1_43wuu")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
@@ -61,7 +71,7 @@ theme = ExtResource("2_el4c1")
 text = "Button"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../ArrowImg")
+root_node = NodePath("../HBox/ArrowImg")
 libraries = {
 &"": SubResource("AnimationLibrary_054v2")
 }

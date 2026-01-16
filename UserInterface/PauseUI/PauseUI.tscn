@@ -1,4 +1,8 @@
-[gd_scene format=3 uid="uid://cmuyeado10gju"]
+[gd_scene load_steps=4 format=3 uid="uid://cmuyeado10gju"]
+
+[ext_resource type="PackedScene" uid="uid://cmkmtc1ukd7qg" path="res://UserInterface/ButtonUI/MenuButtonUI.tscn" id="1_cxvex"]
+[ext_resource type="Script" uid="uid://pkp1epxfcmxg" path="res://UserInterface/ButtonUI/ButtonScripts/QuitBS.gd" id="2_ie44m"]
+[ext_resource type="Theme" uid="uid://qxvpm2dwr80a" path="res://UserInterface/MenuTheme.tres" id="3_aw0bk"]
 
 [node name="PauseUi" type="CanvasLayer"]
 
@@ -9,3 +13,60 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -364.0
+offset_top = -299.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer2"]
+layout_mode = 2
+
+[node name="ResumeBTN" parent="Control/MarginContainer2/VBoxContainer" instance=ExtResource("1_cxvex")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" parent="Control/MarginContainer2/VBoxContainer/ResumeBTN/HBox" index="1"]
+text = "Resume"
+
+[node name="OptionsBTN" parent="Control/MarginContainer2/VBoxContainer" instance=ExtResource("1_cxvex")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" parent="Control/MarginContainer2/VBoxContainer/OptionsBTN/HBox" index="1"]
+text = "Options"
+
+[node name="QuitBTN" parent="Control/MarginContainer2/VBoxContainer" instance=ExtResource("1_cxvex")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBox" parent="Control/MarginContainer2/VBoxContainer/QuitBTN" index="0"]
+script = ExtResource("2_ie44m")
+
+[node name="Button" parent="Control/MarginContainer2/VBoxContainer/QuitBTN/HBox" index="1"]
+text = "Quit"
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 10
+
+[node name="Label" type="Label" parent="Control/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("3_aw0bk")
+text = "Paused"
+
+[editable path="Control/MarginContainer2/VBoxContainer/ResumeBTN"]
+[editable path="Control/MarginContainer2/VBoxContainer/OptionsBTN"]
+[editable path="Control/MarginContainer2/VBoxContainer/QuitBTN"]
