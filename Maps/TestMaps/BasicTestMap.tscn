@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfvi1jcxpao3q"]
+[gd_scene load_steps=5 format=3 uid="uid://bfvi1jcxpao3q"]
 
 [ext_resource type="Material" uid="uid://bccll1bk162xa" path="res://Materials/TestMaterials/TestGridDark.tres" id="1_c31it"]
 [ext_resource type="PackedScene" uid="uid://b1uo6orqicguq" path="res://Entities/Player/Player.tscn" id="3_c31it"]
+[ext_resource type="PackedScene" uid="uid://c6bqadyyg5ffd" path="res://Models/Asgard/AS_1_0.1.glb" id="4_agw8h"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_f3wry"]
 
 [node name="BasicTestMap" type="Node3D"]
@@ -23,9 +24,20 @@ script = ExtResource("4_f3wry")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
 [node name="Player" parent="." instance=ExtResource("3_c31it")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.054964, 2.4740257, -15.343891)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.134274, 8.916435, 0)
 use_collision = true
 size = Vector3(36.61853, 20.185547, 15.647461)
+
+[node name="AS_1_0_1" parent="." instance=ExtResource("4_agw8h")]
+transform = Transform3D(-0.020890072, 0, -0.9997818, 0, 1, 0, 0.9997818, 0, -0.020890072, 35.492348, 1.7532, -49.65296)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(0.008569241, -0.25069857, 0.968027, -0.009861863, 0.96799463, 0.25077757, -0.99991477, -0.011695482, 0.0058228374, 53.74847, 1.6657436, -52.81478)
+size = Vector3(5.254883, 1.3638306, 6.2719727)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(0.5927866, 0, 0.80535954, 0, 1, 0, -0.80535954, 0, 0.5927866, 4.5453005, 4.153305, -44.94242)
+size = Vector3(13.7109375, 5.3172607, 3.9991455)
