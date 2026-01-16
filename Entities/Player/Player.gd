@@ -4,6 +4,7 @@ class_name Player
 
 static var canMoveCamera: bool = true
 static var canShoot: bool = true
+static var canSteer: bool = true
 
 @onready var cameraHost: PhantomCamera3D = $CameraHost
 @onready var shotPullLine: Line2D = $ShotUI/ShotPullLine
@@ -33,16 +34,14 @@ var isBraking: bool = false
 
 var unmoddedDamp: float
 
-signal ballStopped
-
 func _ready() -> void:
-	ballStopped.connect(on_ball_stop)
 	var newCameraRotation: Vector3 = cameraHost.get_third_person_rotation()
 	newCameraRotation.x = clamp(newCameraRotation.x, -PI/2 + 0.1, -0.5)
 	cameraHost.set_third_person_rotation(newCameraRotation)
 	cameraHost.spring_length = cameraDistanceCurve.sample(cameraHost.get_third_person_rotation().x)
 
 func _physics_process(delta: float) -> void:
+	print(unmoddedDamp)
 	groundRayCast.position = global_position
 	
 	if check_is_grounded():
@@ -52,19 +51,30 @@ func _physics_process(delta: float) -> void:
 	
 	if linear_velocity.length() > 0.5:
 		canShoot = false
+		canSteer = true
 		isMoving = true
 	elif isMoving:
-		ballStopped.emit()
 		canShoot = true
+		canSteer = false
 		isMoving = false
 		
 		linear_velocity = Vector3.ZERO
 		angular_velocity = Vector3.ZERO
 		
-	if isGrounded && linear_velocity.length() > 0.1:
-		unmoddedDamp = clamp(0.1 / linear_velocity.length(), 0.5, 100)
-	else:
+		if isBraking:
+			deactivate_brake()
+		
+	if isGrounded:
+		unmoddedDamp = 5 / linear_velocity.length()
+	if !isGrounded || !isMoving:
 		unmoddedDamp = 0
+		
+	if isBraking:
+		angular_damp = unmoddedDamp * 2
+		linear_damp = unmoddedDamp * 2
+	else:
+		angular_damp = unmoddedDamp
+		linear_damp = unmoddedDamp
 		
 	if Input.is_action_just_pressed("Brake") && isMoving:
 		activate_brake()
@@ -176,26 +186,15 @@ func get_aim_direction(pullLineEnd: Vector2, screenSize: Vector2):
 		screenDirection = screenDirection.rotated(mainCamera.rotation.y)
 		
 		return Vector3(screenDirection.x, 0, -screenDirection.y)
-
-func on_ball_stop() -> void:
-	
-	if isBraking:
-		deactivate_brake()
 	
 func activate_brake() -> void:
 	isBraking = true
 	
-	linear_velocity.x /= 2
+	linear_velocity /= 2
 	angular_velocity /= 2
-		
-	angular_damp = unmoddedDamp * 2
-	linear_damp = unmoddedDamp * 2
 
 func deactivate_brake() -> void:
 	isBraking = false
 	
-	linear_velocity *= 1.5
-	angular_velocity *= 1.5
-		
-	angular_damp = unmoddedDamp
-	linear_damp = unmoddedDamp
+	linear_velocity *= 2
+	angular_velocity *= 2
