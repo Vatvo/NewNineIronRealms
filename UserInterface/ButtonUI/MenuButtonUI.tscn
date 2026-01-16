@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://cmkmtc1ukd7qg"]
 
-[ext_resource type="Texture2D" uid="uid://ldolpant4vof" path="res://UserInterface/UIAssets/UIArrowTemp.png" id="1_43wuu"]
 [ext_resource type="Script" uid="uid://dy2f2t4l6qbc6" path="res://UserInterface/ButtonUI/menu_button_ui.gd" id="1_lv5mv"]
 [ext_resource type="Theme" uid="uid://qxvpm2dwr80a" path="res://UserInterface/MenuTheme.tres" id="2_el4c1"]
+[ext_resource type="Texture2D" uid="uid://dj0f6triha51f" path="res://UserInterface/UIAssets/UIArrowSmall.png" id="2_lv5mv"]
 
 [sub_resource type="Animation" id="Animation_lv5mv"]
 resource_name = "ArrowFade"
@@ -59,7 +59,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 mouse_filter = 2
-texture = ExtResource("1_43wuu")
+texture = ExtResource("2_lv5mv")
 expand_mode = 3
 stretch_mode = 5
 
