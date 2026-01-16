@@ -20,6 +20,7 @@ static var canSteer: bool = true
 @export var cameraDistanceCurve: Curve
 @export var shotPower: float
 @export var spinPower: float
+@export var steerSensitivity: float 
 
 var isShooting: bool = false
 var currentShotPower: float = 0.0
@@ -41,7 +42,6 @@ func _ready() -> void:
 	cameraHost.spring_length = cameraDistanceCurve.sample(cameraHost.get_third_person_rotation().x)
 
 func _physics_process(delta: float) -> void:
-	print(unmoddedDamp)
 	groundRayCast.position = global_position
 	
 	if check_is_grounded():
@@ -82,6 +82,24 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_released("Brake") && isBraking:
 		deactivate_brake()
 	
+	if Input.is_action_pressed("SteerLeft") && canSteer:
+		linear_velocity = linear_velocity.rotated(Vector3.UP, steerSensitivity)
+		angular_velocity = angular_velocity.rotated(Vector3.UP, steerSensitivity)
+		
+		var currentCameraRotation := cameraHost.get_third_person_rotation()
+		var newCameraRotation := currentCameraRotation
+		newCameraRotation.y += steerSensitivity
+		cameraHost.set_third_person_rotation(newCameraRotation)
+	
+	if Input.is_action_pressed("SteerRight") && canSteer:
+		linear_velocity = linear_velocity.rotated(Vector3.UP, -steerSensitivity)
+		angular_velocity = angular_velocity.rotated(Vector3.UP, -steerSensitivity)
+		
+		var currentCameraRotation := cameraHost.get_third_person_rotation()
+		var newCameraRotation := currentCameraRotation
+		newCameraRotation.y -= steerSensitivity
+		cameraHost.set_third_person_rotation(newCameraRotation)
+		
 	cameraFollowPoint.global_rotation = Vector3.ZERO
 		
 func _process(delta: float) -> void:
@@ -173,11 +191,9 @@ func update_pull_line(direction: float, length: float) -> Vector2:
 
 func get_aim_direction(pullLineEnd: Vector2, screenSize: Vector2):
 	var planeIntersect = raycast_mouse_to_xz_plane(pullLineEnd)
-	#var oppositePlaneIntersect = raycast_mouse_to_xz_plane(screenSize - pullLineEnd)
 
-	if planeIntersect["success"]: #&& oppositePlaneIntersect["success"]:
+	if planeIntersect["success"]:
 		var intersectPoint: Vector3 = planeIntersect["value"]
-		#var oppositePoint: Vector3 = oppositePlaneIntersect["value"]
 		
 		return intersectPoint.direction_to(self.position)#intersectPoint.direction_to(oppositePoint)
 	else:
@@ -190,11 +206,21 @@ func get_aim_direction(pullLineEnd: Vector2, screenSize: Vector2):
 func activate_brake() -> void:
 	isBraking = true
 	
-	linear_velocity /= 2
-	angular_velocity /= 2
+	linear_velocity /= 1.75
+	angular_velocity /= 1.75
+	
+	var cameraFOVTween: Tween = get_tree().create_tween()
+	cameraFOVTween.tween_property(cameraHost, "fov", 70, 0.3)
+	await cameraFOVTween.finished
+	cameraFOVTween.kill()
 
 func deactivate_brake() -> void:
 	isBraking = false
 	
-	linear_velocity *= 2
-	angular_velocity *= 2
+	linear_velocity *= 1.75
+	angular_velocity *= 1.75
+	
+	var cameraFOVTween: Tween = get_tree().create_tween()
+	cameraFOVTween.tween_property(cameraHost, "fov", 75, 0.1)
+	await cameraFOVTween.finished
+	cameraFOVTween.kill()
