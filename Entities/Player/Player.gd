@@ -66,7 +66,7 @@ func _physics_process(delta: float) -> void:
 			deactivate_brake()
 		
 	if isGrounded:
-		unmoddedDamp = 2 / linear_velocity.length()
+		unmoddedDamp = 1 / linear_velocity.length()
 	if !isGrounded || !isMoving:
 		unmoddedDamp = 0
 		
@@ -102,6 +102,7 @@ func _physics_process(delta: float) -> void:
 		cameraHost.set_third_person_rotation(newCameraRotation)
 	
 	if Input.is_action_just_pressed("Hop") && isMoving && isGrounded:
+		linear_velocity.y = 0
 		apply_central_impulse(Vector3.UP * hopPower)
 		
 	cameraFollowPoint.global_rotation = Vector3.ZERO
