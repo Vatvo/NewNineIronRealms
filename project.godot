@@ -80,5 +80,5 @@ Hop={
 
 [physics]
 
-3d/default_gravity=25.0
+3d/default_gravity=35.0
 common/physics_interpolation=true

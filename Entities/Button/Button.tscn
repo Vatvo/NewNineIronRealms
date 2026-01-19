@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8daipakeyltb"]
+
+[ext_resource type="ArrayMesh" uid="uid://dt1aoyu083mwa" path="res://Entities/Button/ButtonGem.obj" id="1_bu2gd"]
+[ext_resource type="ArrayMesh" uid="uid://tgccy4pttf1w" path="res://Entities/Button/ButtonStones.obj" id="2_61q6x"]
+
+[node name="Button" type="Node3D"]
+
+[node name="Gem" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_bu2gd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_61q6x")
