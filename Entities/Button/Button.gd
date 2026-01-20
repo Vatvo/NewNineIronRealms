@@ -36,10 +36,14 @@ func trigger() -> void:
 	
 func untrigger() -> void:
 	untriggered.emit()
+	isTriggered = false
+	animationPlayer.play("Activate")
+	await animationPlayer.animation_finished
+	animationPlayer.play("Default")
 
 func _on_trigger_body_entered(body: Node3D) -> void:
 	if body is Player:
-		if isTriggered:
-			untrigger()
-		else:
+		if !isTriggered:
 			trigger()
+		elif untriggerable:
+			untrigger()

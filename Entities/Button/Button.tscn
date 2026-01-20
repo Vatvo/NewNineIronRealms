@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b8daipakeyltb"]
+[gd_scene load_steps=25 format=3 uid="uid://b8daipakeyltb"]
 
 [ext_resource type="ArrayMesh" uid="uid://dt1aoyu083mwa" path="res://Entities/Button/ButtonGem.obj" id="1_bu2gd"]
 [ext_resource type="Script" uid="uid://cili246qf0k8h" path="res://Entities/Button/Button.gd" id="1_sdx6b"]
@@ -68,7 +68,7 @@ radius = 2.1225586
 
 [sub_resource type="Animation" id="Animation_bphlb"]
 resource_name = "Deactivate"
-length = 2.0
+length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -76,7 +76,7 @@ tracks/0/path = NodePath("Gem:rotation")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
+"times": PackedFloat32Array(0, 1.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 12.566371, 0)]
@@ -88,10 +88,10 @@ tracks/1/path = NodePath("LightColumn:mesh:material:shader_parameter/color")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 2),
+"times": PackedFloat32Array(0, 0.5, 1.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(10.129092, 6.297427, 14.065733, 1), Color(13.609984, 8.468667, 18.892157, 1), Color(0.005758624, 0.0018550705, 0.012617188, 1)]
+"values": [Color(10.129, 6.297, 14.066, 1), Color(13.609984, 8.468667, 18.892157, 1), Color(0.005758624, 0.0018550705, 0.012617188, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -100,7 +100,7 @@ tracks/2/path = NodePath("Swirl:scale")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(1.3666667, 1.6, 1.8),
+"times": PackedFloat32Array(0.8666667, 1.1, 1.3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(1, 1, 1), Vector3(1.5, 1.5, 1.5), Vector3(0, 0, 0)]
@@ -112,7 +112,7 @@ tracks/3/path = NodePath("Gem:position")
 tracks/3/interp = 2
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.3333334, 1.5333333, 1.7),
+"times": PackedFloat32Array(0, 0.8333334, 1.0333333, 1.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 2, 0), Vector3(0, 2.25, 0), Vector3(0, -0.75, 0), Vector3(0, -0.5, 0)]
@@ -124,10 +124,39 @@ tracks/4/path = NodePath("Gem/Light:light_energy")
 tracks/4/interp = 2
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 1.0333333, 2),
+"times": PackedFloat32Array(0, 1.0333333, 1.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [7.0, 7.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_welao"]
+resource_name = "Default"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gem:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 2, 0), Vector3(0, 2.5, 0), Vector3(0, 2, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Gem:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.2831855, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_nybw6"]
@@ -193,10 +222,9 @@ tracks/4/keys = {
 "values": [7.0]
 }
 
-[sub_resource type="Animation" id="Animation_welao"]
-resource_name = "Default"
-length = 3.0
-loop_mode = 1
+[sub_resource type="Animation" id="Animation_liem1"]
+resource_name = "Activate"
+length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -204,26 +232,63 @@ tracks/0/path = NodePath("Gem:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5, 3),
+"times": PackedFloat32Array(0, 0.25, 1.1333333),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 2, 0), Vector3(0, 2.5, 0), Vector3(0, 2, 0)]
+"values": [Vector3(0, -0.5, 0), Vector3(0, 3, 0), Vector3(0, 2, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Gem:rotation")
-tracks/1/interp = 1
+tracks/1/path = NodePath("Swirl:scale")
+tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 3),
+"times": PackedFloat32Array(0.25, 0.5, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1.5, 1.5, 1.5), Vector3(1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LightColumn:mesh:material:shader_parameter/color")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.33333334, 0.73333335, 1.16),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.003921569, 0, 0.011764706, 1), Color(24.293236, 15.13245, 33.704998, 1), Color(10.129, 6.297, 14.066, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Gem/Light:light_energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.71, 1.1666666),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 6.2831855, 0)]
+"values": [1.5, 7.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Gem:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.26, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 12.566371, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_welao"]
 _data = {
+&"Activate": SubResource("Animation_liem1"),
 &"Deactivate": SubResource("Animation_bphlb"),
 &"Default": SubResource("Animation_welao"),
 &"RESET": SubResource("Animation_nybw6")
@@ -231,6 +296,7 @@ _data = {
 
 [node name="Button" type="Node3D"]
 script = ExtResource("1_sdx6b")
+untriggerable = true
 
 [node name="Gem" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
