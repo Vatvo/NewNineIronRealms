@@ -1,4 +1,5 @@
 shader_type spatial;
+render_mode unshaded;
 
 uniform sampler2D noiseTexture;
 uniform vec2 speed;

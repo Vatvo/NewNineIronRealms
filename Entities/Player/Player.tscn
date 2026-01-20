@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b1uo6orqicguq"]
+[gd_scene load_steps=16 format=3 uid="uid://b1uo6orqicguq"]
 
 [ext_resource type="Script" uid="uid://hug26nyoc3wp" path="res://Entities/Player/Player.gd" id="1_vweq0"]
 [ext_resource type="ArrayMesh" uid="uid://befwqt1qhvy5t" path="res://Entities/Player/GolfBall.obj" id="1_ww0jn"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_t38ms"]
 [ext_resource type="Script" uid="uid://b8hhnqsugykly" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="6_hj1c0"]
 [ext_resource type="Script" uid="uid://cirhtt2m1sp5m" path="res://Entities/Player/AimMarker.gd" id="6_t38ms"]
+[ext_resource type="Material" uid="uid://c6d50ypk7ljfu" path="res://Entities/Player/AimMarkerMat.tres" id="8_x44r4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hj1c0"]
 rough = true
@@ -83,6 +84,7 @@ end_cap_mode = 2
 [node name="AimMarker" type="Node3D" parent="."]
 top_level = true
 script = ExtResource("6_t38ms")
+material = ExtResource("8_x44r4")
 
 [node name="CameraFollowPoint" type="Node3D" parent="."]
 

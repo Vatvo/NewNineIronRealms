@@ -2,6 +2,8 @@ extends Node3D
 
 class_name AimMarker
 
+@export var material: StandardMaterial3D
+
 @onready var ball: RigidBody3D = $".."
 
 func draw_aim(shotForce: Vector3, aimLength) -> void:
@@ -30,6 +32,7 @@ func draw_aim(shotForce: Vector3, aimLength) -> void:
 		var size = lerp(0.25, 0.8, 1 - i / aimLength)
 		point.scale = Vector3(size, size, size)
 		point.mesh = SphereMesh.new()
+		point.material_override = material
 		point.position = markerEnd
 		#point.material_override = load("res://Materials/ShotAimMarker.tres")
 		add_child(point)

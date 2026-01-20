@@ -28,6 +28,8 @@ shader_parameter/refractive_index = 2.71
 shader_parameter/emission_strength = 5.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0hmvl"]
+diffuse_mode = 3
+specular_mode = 1
 albedo_color = Color(0.86413413, 0.7978913, 0.7977719, 1)
 albedo_texture = ExtResource("7_jfi18")
 metallic = 0.48
@@ -59,6 +61,7 @@ size = Vector2(5, 5)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_welao"]
 transparency = 1
 cull_mode = 2
+shading_mode = 0
 albedo_color = Color(7.9112988, 5.4831357, 7.9112988, 0.07058824)
 albedo_texture = ExtResource("7_bphlb")
 

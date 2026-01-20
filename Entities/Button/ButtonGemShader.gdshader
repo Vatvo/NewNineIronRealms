@@ -1,7 +1,7 @@
 // Saw a few of these in Unreal Engine and Unity but no Godot :(
 // So I made one, check other comments for free textures and more info on the shader
 shader_type spatial;
-
+render_mode diffuse_toon, specular_toon;
 uniform sampler2D over_texture : source_color;
 uniform sampler2D under_texture : source_color;
 uniform sampler2D surface_normalmap : hint_normal;
