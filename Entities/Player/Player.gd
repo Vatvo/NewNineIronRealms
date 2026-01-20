@@ -5,6 +5,7 @@ class_name Player
 static var canMoveCamera: bool = true
 static var canShoot: bool = true
 static var canSteer: bool = true
+static var canBrake: bool = true
 
 @onready var cameraHost: PhantomCamera3D = $CameraHost
 @onready var shotPullLine: Line2D = $ShotUI/ShotPullLine

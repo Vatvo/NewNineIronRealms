@@ -1,0 +1,109 @@
+[gd_scene load_steps=10 format=3 uid="uid://cdpqkj645ckyr"]
+
+[ext_resource type="Texture2D" uid="uid://btrlylifh7w8o" path="res://Entities/BoostPad/BoostPad.png" id="1_5q71d"]
+[ext_resource type="Script" uid="uid://da7axshb0bb8s" path="res://Entities/BoostPad/BoostPad.gd" id="1_yf020"]
+[ext_resource type="Texture2D" uid="uid://drrug4mj1whob" path="res://VFXTextures/Luos_FreeGiveAway/Noise_Normals/T_NoiseNormal_72.png" id="3_yf020"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_5q71d"]
+resource_local_to_scene = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5q71d"]
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("1_5q71d")
+metallic = 1.0
+metallic_specular = 0.57
+roughness = 0.45
+emission_enabled = true
+emission = Color(1, 1, 0, 1)
+emission_energy_multiplier = 2.26
+normal_enabled = true
+normal_scale = 2.82
+normal_texture = ExtResource("3_yf020")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yf020"]
+resource_local_to_scene = true
+size = Vector3(0.6, 0.094, 1)
+
+[sub_resource type="Animation" id="Animation_yf020"]
+resource_name = "Boost"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh:surface_material_override/0:emission_energy_multiplier")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [12.0, 2.26]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh:surface_material_override/0:emission")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 0.73333335, 1), Color(1, 1, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_6ows3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh:surface_material_override/0:emission_energy_multiplier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.26]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh:surface_material_override/0:emission")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7ntff"]
+_data = {
+&"Boost": SubResource("Animation_yf020"),
+&"RESET": SubResource("Animation_6ows3")
+}
+
+[node name="BoostPad" type="Node3D"]
+script = ExtResource("1_yf020")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_5q71d")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_5q71d")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_yf020")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_7ntff")
+}
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

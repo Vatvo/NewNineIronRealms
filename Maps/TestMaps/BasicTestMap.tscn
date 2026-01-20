@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfvi1jcxpao3q"]
+[gd_scene load_steps=9 format=3 uid="uid://bfvi1jcxpao3q"]
 
 [ext_resource type="Material" uid="uid://bccll1bk162xa" path="res://Materials/TestMaterials/TestGridDark.tres" id="1_c31it"]
 [ext_resource type="PackedScene" uid="uid://b1uo6orqicguq" path="res://Entities/Player/Player.tscn" id="3_c31it"]
 [ext_resource type="PackedScene" uid="uid://b8daipakeyltb" path="res://Entities/Button/Button.tscn" id="4_agw8h"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_f3wry"]
+[ext_resource type="PackedScene" uid="uid://cdpqkj645ckyr" path="res://Entities/BoostPad/BoostPad.tscn" id="5_agw8h"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_f3wry"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -51,3 +52,9 @@ size = Vector3(36.61853, 20.185547, 15.647461)
 
 [node name="Button" parent="." instance=ExtResource("4_agw8h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.591185, 0.5010182, -1.1104908)
+
+[node name="BoostPad" parent="." instance=ExtResource("5_agw8h")]
+transform = Transform3D(0.7979733, 0, 0.6026928, 0, 1, 0, -0.6026928, 0, 0.7979733, 12.390848, 0.67110157, -29.175749)
+width = 10.0
+length = 10.0
+force = 80.0

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlnycjbnqlpbt"
-path.s3tc="res://.godot/imported/T_NoiseNormal_69.png-32d6a6f83ff9c540ca4be60868b9ccc7.s3tc.ctex"
+uid="uid://btrlylifh7w8o"
+path.s3tc="res://.godot/imported/BoostPad.png-136e69ee5c81f62816b2a6c4b9ab7bf9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://VFXTextures/Luos_FreeGiveAway/Noise_Normals/T_NoiseNormal_69.png"
-dest_files=["res://.godot/imported/T_NoiseNormal_69.png-32d6a6f83ff9c540ca4be60868b9ccc7.s3tc.ctex"]
+source_file="res://Entities/BoostPad/BoostPad.png"
+dest_files=["res://.godot/imported/BoostPad.png-136e69ee5c81f62816b2a6c4b9ab7bf9.s3tc.ctex"]
 
 [params]
 
@@ -22,12 +22,12 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=1
-roughness/src_normal="res://VFXTextures/Luos_FreeGiveAway/Noise_Normals/T_NoiseNormal_69.png"
+roughness/mode=0
+roughness/src_normal=""
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2
