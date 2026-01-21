@@ -81,7 +81,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("Brake") && isMoving:
 		activate_brake()
 	
-	if Input.is_action_just_released("Brake") && isBraking:
+	if Input.is_action_just_released("Brake"):
 		deactivate_brake()
 	
 	if Input.is_action_pressed("SteerLeft") && canSteer:
@@ -210,23 +210,25 @@ func get_aim_direction(pullLineEnd: Vector2, screenSize: Vector2):
 		return Vector3(screenDirection.x, 0, -screenDirection.y)
 	
 func activate_brake() -> void:
-	isBraking = true
-	
-	linear_velocity /= 1.75
-	angular_velocity /= 1.75
-	
-	var cameraFOVTween: Tween = get_tree().create_tween()
-	cameraFOVTween.tween_property(cameraHost, "fov", 70, 0.3)
-	await cameraFOVTween.finished
-	cameraFOVTween.kill()
+	if !isBraking && canBrake:
+		isBraking = true
+		
+		linear_velocity /= 1.75
+		angular_velocity /= 1.75
+		
+		var cameraFOVTween: Tween = get_tree().create_tween()
+		cameraFOVTween.tween_property(cameraHost, "fov", 70, 0.3)
+		await cameraFOVTween.finished
+		cameraFOVTween.kill()
 
 func deactivate_brake() -> void:
-	isBraking = false
-	
-	linear_velocity *= 1.75
-	angular_velocity *= 1.75
-	
-	var cameraFOVTween: Tween = get_tree().create_tween()
-	cameraFOVTween.tween_property(cameraHost, "fov", 75, 0.1)
-	await cameraFOVTween.finished
-	cameraFOVTween.kill()
+	if isBraking:
+		isBraking = false
+		
+		linear_velocity *= 1.75
+		angular_velocity *= 1.75
+		
+		var cameraFOVTween: Tween = get_tree().create_tween()
+		cameraFOVTween.tween_property(cameraHost, "fov", 75, 0.1)
+		await cameraFOVTween.finished
+		cameraFOVTween.kill()
