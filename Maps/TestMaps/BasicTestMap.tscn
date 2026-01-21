@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bfvi1jcxpao3q"]
+[gd_scene load_steps=20 format=3 uid="uid://bfvi1jcxpao3q"]
 
 [ext_resource type="Material" uid="uid://bccll1bk162xa" path="res://Materials/TestMaterials/TestGridDark.tres" id="1_c31it"]
 [ext_resource type="Shader" uid="uid://dddidxbjewoyo" path="res://Shaders/sky.gdshader" id="1_ypnia"]
@@ -8,29 +8,48 @@
 [ext_resource type="PackedScene" uid="uid://cdpqkj645ckyr" path="res://Entities/BoostPad/BoostPad.tscn" id="5_agw8h"]
 
 [sub_resource type="Gradient" id="Gradient_ypnia"]
-colors = PackedColorArray(0.61707747, 0.4517591, 0.9999905, 1, 0.9362647, 0.9362648, 0.9362647, 1)
+offsets = PackedFloat32Array(0, 0.5236842, 0.8473684)
+colors = PackedColorArray(0.30588236, 1, 1, 1, 1, 1, 1, 1, 0.30588236, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ypnia"]
 gradient = SubResource("Gradient_ypnia")
 fill_from = Vector2(0, 1)
 fill_to = Vector2(0, 0)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_0q38a"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ypnia"]
 noise_type = 0
-frequency = 0.001
-offset = Vector3(0, 14.6, 0)
+frequency = 0.0296
+fractal_octaves = 1
+fractal_weighted_strength = 1.0
+domain_warp_enabled = true
+domain_warp_amplitude = 32.89
+domain_warp_frequency = 0.01
+domain_warp_fractal_octaves = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0q38a"]
+width = 128
+noise = SubResource("FastNoiseLite_ypnia")
+seamless = true
+in_3d_space = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0q38a"]
+noise_type = 4
+frequency = 0.0028
+offset = Vector3(0, 408.76, 0)
 fractal_type = 2
-fractal_octaves = 7
+fractal_octaves = 4
 fractal_gain = 2.0
-fractal_weighted_strength = 0.9
+fractal_weighted_strength = 1.0
 domain_warp_enabled = true
 domain_warp_amplitude = 119.56
+domain_warp_fractal_octaves = 1
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gqgnc"]
 width = 64
+height = 256
 noise = SubResource("FastNoiseLite_0q38a")
 seamless = true
-seamless_blend_skirt = 0.12
+in_3d_space = true
 
 [sub_resource type="Gradient" id="Gradient_rd6b5"]
 offsets = PackedFloat32Array(0)
@@ -44,6 +63,8 @@ colors = PackedColorArray(0.54901963, 0.28235295, 1, 1, 0.30588236, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_io8ui"]
 gradient = SubResource("Gradient_m7wi6")
+width = 1
+height = 1024
 fill_from = Vector2(0, 1)
 fill_to = Vector2(0, 0)
 
@@ -53,6 +74,8 @@ shader_parameter/hdri_background = SubResource("GradientTexture1D_0q38a")
 shader_parameter/sky_background = SubResource("GradientTexture2D_io8ui")
 shader_parameter/clouds = SubResource("NoiseTexture2D_gqgnc")
 shader_parameter/cloud_color = SubResource("GradientTexture2D_ypnia")
+shader_parameter/cloud_mask = SubResource("NoiseTexture2D_0q38a")
+shader_parameter/cloud_speed = 0.02
 shader_parameter/exposure = 1.0
 
 [sub_resource type="Sky" id="Sky_rd6b5"]
@@ -63,7 +86,7 @@ background_mode = 2
 sky = SubResource("Sky_rd6b5")
 ambient_light_source = 2
 ambient_light_color = Color(0.13682577, 0.13682574, 0.13682571, 1)
-ambient_light_energy = 0.94
+ambient_light_energy = 4.27
 tonemap_mode = 2
 glow_enabled = true
 glow_normalized = true
@@ -76,7 +99,7 @@ volumetric_fog_density = 0.01
 environment = SubResource("Environment_ypnia")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.5201602, -0.8417654, 0.1444452, 0, 0.16912597, 0.98559445, -0.8540687, -0.51266706, 0.0879726, 0, 6.556366, 0)
+transform = Transform3D(0.50599295, -0.77963555, 0.3689708, 0.3692438, 0.58238566, 0.7242141, -0.7795064, -0.23020694, 0.58255863, 0, 6.556366, 0)
 light_indirect_energy = 8.89
 shadow_enabled = true
 shadow_opacity = 0.9

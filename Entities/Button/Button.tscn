@@ -4,9 +4,9 @@
 [ext_resource type="Script" uid="uid://cili246qf0k8h" path="res://Entities/Button/Button.gd" id="1_sdx6b"]
 [ext_resource type="ArrayMesh" uid="uid://tgccy4pttf1w" path="res://Entities/Button/ButtonStones.obj" id="2_61q6x"]
 [ext_resource type="Shader" uid="uid://dxwqrrlny11vo" path="res://Entities/Button/ButtonGemShader.gdshader" id="2_m0tpk"]
-[ext_resource type="Texture2D" uid="uid://bwq4x6qt5n2iw" path="res://VFXTextures/VFX_HQ_Seamless_Noise_Pack_Vol1/Noise_053.png" id="4_bphlb"]
-[ext_resource type="Texture2D" uid="uid://bm21nttowx61w" path="res://VFXTextures/Luos_FreeGiveAway/Noise_Normals/T_NoiseNormal_29.png" id="4_t667k"]
-[ext_resource type="Texture2D" uid="uid://dntfbkbvxovrh" path="res://VFXTextures/VFX_HQ_Seamless_Noise_Pack_Vol1/Noise_003.png" id="6_bphlb"]
+[ext_resource type="Texture2D" uid="uid://qjgtrne6p44e" path="res://VFXTextures/1MAFX_Noise/Noise_8.tga" id="4_bphlb"]
+[ext_resource type="Texture2D" uid="uid://co0h05q0c5nph" path="res://VFXTextures/VFX_HQ_Seamless_Noise_Pack_Vol1/Noise_008.png" id="4_nybw6"]
+[ext_resource type="Texture2D" uid="uid://31golmw3wk8g" path="res://VFXTextures/Luos_FreeGiveAway/Noise_Normals/T_NoiseNormal_30.png" id="5_welao"]
 [ext_resource type="Texture2D" uid="uid://ce73kouaju0le" path="res://VFXTextures/brackeys_vfx_bundle/particles/alpha/twirl_04_a.png" id="7_bphlb"]
 [ext_resource type="Texture2D" uid="uid://cfd7vv3rrgmx8" path="res://VFXTextures/1MAFX_Noise/Noise_4.tga" id="7_jfi18"]
 [ext_resource type="Texture2D" uid="uid://du3vhnnxh3svu" path="res://VFXTextures/Luos_FreeGiveAway/Noise_Normals/T_NoiseNormal_24.png" id="9_sdx6b"]
@@ -16,15 +16,15 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5q77j"]
 render_priority = 0
 shader = ExtResource("2_m0tpk")
-shader_parameter/over_texture = ExtResource("4_bphlb")
-shader_parameter/under_texture = ExtResource("6_bphlb")
-shader_parameter/surface_normalmap = ExtResource("4_t667k")
+shader_parameter/over_texture = ExtResource("4_nybw6")
+shader_parameter/under_texture = ExtResource("4_bphlb")
+shader_parameter/surface_normalmap = ExtResource("5_welao")
 shader_parameter/top_color = Color(0.9735195, 0.6493494, 1, 1)
-shader_parameter/depth = 1.03
-shader_parameter/normal_depth = 1.71
+shader_parameter/depth = 0.93
+shader_parameter/normal_depth = 1.5899999999999999
 shader_parameter/roughness = 0.0
 shader_parameter/metallic = 1.0
-shader_parameter/refractive_index = 5.61
+shader_parameter/refractive_index = 0.71
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0hmvl"]
 diffuse_mode = 3
@@ -41,7 +41,7 @@ shader = ExtResource("10_0hmvl")
 shader_parameter/noiseTexture = ExtResource("11_writv")
 shader_parameter/speed = Vector2(0, 1)
 shader_parameter/scale = Vector2(1, 0.1)
-shader_parameter/color = Color(10.129092, 6.297427, 14.065733, 1)
+shader_parameter/color = Color(9.466092, 4.048677, 14.065961, 1)
 shader_parameter/offset = 0.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_bphlb"]
@@ -61,7 +61,7 @@ size = Vector2(5, 5)
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_color = Color(7.9112988, 5.4831357, 7.9112988, 0.07058824)
+albedo_color = Color(7.8022466, 3.4154742, 7.9110003, 0.071)
 albedo_texture = ExtResource("7_bphlb")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_bphlb"]
@@ -105,7 +105,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0.33333334, 0.73333335, 1.16),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(0.003921569, 0, 0.011764706, 1), Color(24.293236, 15.13245, 33.704998, 1), Color(10.129, 6.297, 14.066, 1)]
+"values": [Color(0.003921569, 0, 0.011764706, 1), Color(24.293236, 15.13245, 33.704998, 1), Color(9.466092, 4.048677, 14.065961, 1)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -169,7 +169,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5, 1.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(10.129, 6.297, 14.066, 1), Color(13.609984, 8.468667, 18.892157, 1), Color(0.005758624, 0.0018550705, 0.012617188, 1)]
+"values": [Color(9.466092, 4.048677, 14.065961, 1), Color(13.609984, 8.468667, 18.892157, 1), Color(0.005758624, 0.0018550705, 0.012617188, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -273,7 +273,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(10.129092, 6.297427, 14.065733, 1)]
+"values": [Color(9.466092, 4.048677, 14.065961, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
