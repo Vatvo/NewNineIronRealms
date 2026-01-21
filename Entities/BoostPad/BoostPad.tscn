@@ -17,7 +17,7 @@ metallic = 1.0
 metallic_specular = 0.57
 roughness = 0.45
 emission_enabled = true
-emission = Color(1, 1, 0, 1)
+emission = Color(1, 1, 0.42352942, 1)
 emission_energy_multiplier = 2.26
 normal_enabled = true
 normal_scale = 2.82
@@ -79,7 +79,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 0, 1)]
+"values": [Color(1, 1, 0.42352942, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7ntff"]

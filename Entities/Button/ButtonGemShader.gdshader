@@ -16,7 +16,6 @@ uniform float normal_depth = 1.0;
 uniform float roughness : hint_range(0.0, 1.0) = 0.0;
 uniform float metallic : hint_range(0.0, 1.0) = 0.7;
 uniform float refractive_index = 0.1;
-uniform float emission_strength = 1;
 
 // ========= ↓↓↓ From u/lexpartizan the GOAT ↓↓↓ ==============
 float blendOverlay_f(float base, float blend) {
@@ -53,7 +52,7 @@ void fragment(){
 	vec3 color = blendOverlay(over_color, top_color.rgb);
 	vec2 offset = rd.xz;
 	vec3 under_color = texture(under_texture, UV + offset + (normal.xy)).rgb;
-	EMISSION = blendOverlay(color, under_color) * emission_strength;
+	ALBEDO = blendOverlay(color, under_color);
 	ROUGHNESS = roughness;
 	METALLIC = metallic;
 }

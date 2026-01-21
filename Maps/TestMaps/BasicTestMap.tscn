@@ -1,29 +1,85 @@
-[gd_scene load_steps=9 format=3 uid="uid://bfvi1jcxpao3q"]
+[gd_scene load_steps=18 format=3 uid="uid://bfvi1jcxpao3q"]
 
 [ext_resource type="Material" uid="uid://bccll1bk162xa" path="res://Materials/TestMaterials/TestGridDark.tres" id="1_c31it"]
+[ext_resource type="Shader" uid="uid://dddidxbjewoyo" path="res://Shaders/sky.gdshader" id="1_ypnia"]
 [ext_resource type="PackedScene" uid="uid://b1uo6orqicguq" path="res://Entities/Player/Player.tscn" id="3_c31it"]
 [ext_resource type="PackedScene" uid="uid://b8daipakeyltb" path="res://Entities/Button/Button.tscn" id="4_agw8h"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_f3wry"]
 [ext_resource type="PackedScene" uid="uid://cdpqkj645ckyr" path="res://Entities/BoostPad/BoostPad.tscn" id="5_agw8h"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_f3wry"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+[sub_resource type="Gradient" id="Gradient_ypnia"]
+colors = PackedColorArray(0.61707747, 0.4517591, 0.9999905, 1, 0.9362647, 0.9362648, 0.9362647, 1)
 
-[sub_resource type="Sky" id="Sky_agw8h"]
-sky_material = SubResource("ProceduralSkyMaterial_f3wry")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ypnia"]
+gradient = SubResource("Gradient_ypnia")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0q38a"]
+noise_type = 0
+frequency = 0.001
+offset = Vector3(0, 14.6, 0)
+fractal_type = 2
+fractal_octaves = 7
+fractal_gain = 2.0
+fractal_weighted_strength = 0.9
+domain_warp_enabled = true
+domain_warp_amplitude = 119.56
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gqgnc"]
+width = 64
+noise = SubResource("FastNoiseLite_0q38a")
+seamless = true
+seamless_blend_skirt = 0.12
+
+[sub_resource type="Gradient" id="Gradient_rd6b5"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0q38a"]
+gradient = SubResource("Gradient_rd6b5")
+
+[sub_resource type="Gradient" id="Gradient_m7wi6"]
+colors = PackedColorArray(0.54901963, 0.28235295, 1, 1, 0.30588236, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_io8ui"]
+gradient = SubResource("Gradient_m7wi6")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gqgnc"]
+shader = ExtResource("1_ypnia")
+shader_parameter/hdri_background = SubResource("GradientTexture1D_0q38a")
+shader_parameter/sky_background = SubResource("GradientTexture2D_io8ui")
+shader_parameter/clouds = SubResource("NoiseTexture2D_gqgnc")
+shader_parameter/cloud_color = SubResource("GradientTexture2D_ypnia")
+shader_parameter/exposure = 1.0
+
+[sub_resource type="Sky" id="Sky_rd6b5"]
+sky_material = SubResource("ShaderMaterial_gqgnc")
 
 [sub_resource type="Environment" id="Environment_ypnia"]
 background_mode = 2
-background_energy_multiplier = 1.2
-sky = SubResource("Sky_agw8h")
+sky = SubResource("Sky_rd6b5")
+ambient_light_source = 2
+ambient_light_color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+ambient_light_energy = 0.94
 tonemap_mode = 2
 glow_enabled = true
+glow_normalized = true
+glow_intensity = 1.85
+volumetric_fog_density = 0.01
 
 [node name="BasicTestMap" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ypnia")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.5201602, -0.8417654, 0.1444452, 0, 0.16912597, 0.98559445, -0.8540687, -0.51266706, 0.0879726, 0, 6.556366, 0)
+light_indirect_energy = 8.89
+shadow_enabled = true
+shadow_opacity = 0.9
 
 [node name="Ground" type="CSGBox3D" parent="."]
 use_collision = true
@@ -50,11 +106,11 @@ use_collision = true
 collision_layer = 3
 size = Vector3(36.61853, 20.185547, 15.647461)
 
-[node name="Button" parent="." instance=ExtResource("4_agw8h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.591185, 0.5010182, -1.1104908)
-
 [node name="BoostPad" parent="." instance=ExtResource("5_agw8h")]
 transform = Transform3D(0.7979733, 0, 0.6026928, 0, 1, 0, -0.6026928, 0, 0.7979733, 12.390848, 0.67110157, -29.175749)
 width = 10.0
 length = 10.0
 force = 60.0
+
+[node name="Button" parent="." instance=ExtResource("4_agw8h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.473904, 0.501018, 0.0691967)

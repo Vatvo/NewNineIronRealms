@@ -4,9 +4,9 @@
 [ext_resource type="Script" uid="uid://cili246qf0k8h" path="res://Entities/Button/Button.gd" id="1_sdx6b"]
 [ext_resource type="ArrayMesh" uid="uid://tgccy4pttf1w" path="res://Entities/Button/ButtonStones.obj" id="2_61q6x"]
 [ext_resource type="Shader" uid="uid://dxwqrrlny11vo" path="res://Entities/Button/ButtonGemShader.gdshader" id="2_m0tpk"]
-[ext_resource type="Texture2D" uid="uid://jqhsup1ok81o" path="res://VFXTextures/VFX_HQ_Seamless_Noise_Pack_Vol1/Noise_054.png" id="3_jfi18"]
+[ext_resource type="Texture2D" uid="uid://bwq4x6qt5n2iw" path="res://VFXTextures/VFX_HQ_Seamless_Noise_Pack_Vol1/Noise_053.png" id="4_bphlb"]
 [ext_resource type="Texture2D" uid="uid://bm21nttowx61w" path="res://VFXTextures/Luos_FreeGiveAway/Noise_Normals/T_NoiseNormal_29.png" id="4_t667k"]
-[ext_resource type="Texture2D" uid="uid://dntfbkbvxovrh" path="res://VFXTextures/VFX_HQ_Seamless_Noise_Pack_Vol1/Noise_003.png" id="5_t667k"]
+[ext_resource type="Texture2D" uid="uid://dntfbkbvxovrh" path="res://VFXTextures/VFX_HQ_Seamless_Noise_Pack_Vol1/Noise_003.png" id="6_bphlb"]
 [ext_resource type="Texture2D" uid="uid://ce73kouaju0le" path="res://VFXTextures/brackeys_vfx_bundle/particles/alpha/twirl_04_a.png" id="7_bphlb"]
 [ext_resource type="Texture2D" uid="uid://cfd7vv3rrgmx8" path="res://VFXTextures/1MAFX_Noise/Noise_4.tga" id="7_jfi18"]
 [ext_resource type="Texture2D" uid="uid://du3vhnnxh3svu" path="res://VFXTextures/Luos_FreeGiveAway/Noise_Normals/T_NoiseNormal_24.png" id="9_sdx6b"]
@@ -16,16 +16,15 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5q77j"]
 render_priority = 0
 shader = ExtResource("2_m0tpk")
-shader_parameter/over_texture = ExtResource("3_jfi18")
-shader_parameter/under_texture = ExtResource("5_t667k")
+shader_parameter/over_texture = ExtResource("4_bphlb")
+shader_parameter/under_texture = ExtResource("6_bphlb")
 shader_parameter/surface_normalmap = ExtResource("4_t667k")
-shader_parameter/top_color = Color(0.3254902, 0, 0.6509804, 1)
-shader_parameter/depth = 1.6800000000000002
-shader_parameter/normal_depth = 1.61
+shader_parameter/top_color = Color(0.9735195, 0.6493494, 1, 1)
+shader_parameter/depth = 1.03
+shader_parameter/normal_depth = 1.71
 shader_parameter/roughness = 0.0
 shader_parameter/metallic = 1.0
-shader_parameter/refractive_index = 2.71
-shader_parameter/emission_strength = 5.0
+shader_parameter/refractive_index = 5.61
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0hmvl"]
 diffuse_mode = 3
@@ -142,7 +141,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.47),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0.109803915, 0, 0.2509804, 1), Color(0.3254902, 0, 0.6509804, 1)]
+"values": [Color(0.35053453, 0.0015519279, 0.69768304, 1), Color(0.9735195, 0.6493494, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_bphlb"]
@@ -215,10 +214,10 @@ tracks/5/path = NodePath("Gem:surface_material_override/0:shader_parameter/top_c
 tracks/5/interp = 2
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 1.25, 1.5),
+"times": PackedFloat32Array(0, 1.2666667, 1.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(0.3254902, 0, 0.6509804, 1), Color(0.3254902, 0, 0.6509804, 1), Color(0.10980392, 0, 0.2509804, 1)]
+"values": [Color(0.9735195, 0.6493494, 1, 1), Color(0.9735195, 0.6493494, 1, 1), Color(0.35053453, 0.0015519279, 0.69768304, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_welao"]
@@ -322,7 +321,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.3254902, 0, 0.6509804, 1)]
+"values": [Color(0.9735195, 0.6493494, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_welao"]
@@ -339,14 +338,15 @@ untriggerable = true
 
 [node name="Gem" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+cast_shadow = 0
 mesh = ExtResource("1_bu2gd")
 surface_material_override/0 = SubResource("ShaderMaterial_5q77j")
 
 [node name="Light" type="OmniLight3D" parent="Gem"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2481914, 0)
-light_color = Color(0.65882355, 0, 1, 1)
+light_color = Color(0.8531771, 0.71378624, 1, 1)
 light_energy = 7.0
-omni_range = 3.7787755
+omni_range = 4.758061
 
 [node name="Stones" type="MeshInstance3D" parent="."]
 mesh = ExtResource("2_61q6x")
