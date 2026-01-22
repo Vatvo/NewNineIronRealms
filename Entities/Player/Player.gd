@@ -14,7 +14,7 @@ static var canBrake: bool = true
 @onready var mainCamera: Camera3D = get_tree().get_nodes_in_group("MainCamera")[0]
 @onready var cameraFollowPoint: Node3D = $CameraFollowPoint
 @onready var groundRayCast: RayCast3D = $GroundRayCast
-
+@onready var trail: GPUTrail3D = $Trail
 
 @export_category("Control Parameters")
 @export var cameraSensitivity: Vector2 = Vector2(1,1)
@@ -45,6 +45,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	groundRayCast.position = global_position
+	trail.position = global_position
 	
 	if check_is_grounded():
 		isGrounded = true
