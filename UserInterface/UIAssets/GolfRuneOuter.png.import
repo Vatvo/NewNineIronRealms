@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ldolpant4vof"
-path="res://.godot/imported/UIArrowTemp.png-0d52c5cad7acb483eec3c00c6779f477.ctex"
+uid="uid://h7gxyp7u4w87"
+path="res://.godot/imported/GolfRuneOuter.png-c699492c51fded76c9f6ac763e9c32f1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UserInterface/UIAssets/UIArrowTemp.png"
-dest_files=["res://.godot/imported/UIArrowTemp.png-0d52c5cad7acb483eec3c00c6779f477.ctex"]
+source_file="res://UserInterface/UIAssets/GolfRuneOuter.png"
+dest_files=["res://.godot/imported/GolfRuneOuter.png-c699492c51fded76c9f6ac763e9c32f1.ctex"]
 
 [params]
 
