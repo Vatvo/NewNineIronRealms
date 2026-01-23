@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://cmuyeado10gju"]
+[gd_scene load_steps=13 format=3 uid="uid://cmuyeado10gju"]
 
 [ext_resource type="PackedScene" uid="uid://cmkmtc1ukd7qg" path="res://UserInterface/ButtonUI/MenuButtonUI.tscn" id="1_cxvex"]
+[ext_resource type="Script" uid="uid://uqati7qdjawr" path="res://UserInterface/PauseUI/pause_menu.gd" id="1_vmvbr"]
 [ext_resource type="Script" uid="uid://pkp1epxfcmxg" path="res://UserInterface/ButtonUI/ButtonScripts/QuitBS.gd" id="2_ie44m"]
 [ext_resource type="Theme" uid="uid://qxvpm2dwr80a" path="res://UserInterface/MenuTheme.tres" id="3_aw0bk"]
 [ext_resource type="Texture2D" uid="uid://crrrc3g16tlhl" path="res://UserInterface/UIAssets/GolfRuneInner.png" id="4_aw0bk"]
@@ -9,8 +10,83 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vmvbr"]
 shader = ExtResource("6_6dtwm")
-shader_parameter/blur = 0.0
-shader_parameter/brightness = 0.0
+shader_parameter/blur = 0.4850000230375
+shader_parameter/brightness = 0.5650000268375
+
+[sub_resource type="Animation" id="Animation_145lo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/RuneOuter:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/MC_Buttons:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/MC_Title:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/RuneOuter:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.627451)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control/RuneInner:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.627451)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Control/Blur:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_vmvbr"]
 resource_name = "RuneSpin"
@@ -29,23 +105,73 @@ tracks/0/keys = {
 "values": [0.0, 6.2831855]
 }
 
-[sub_resource type="Animation" id="Animation_145lo"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_i1u63"]
+resource_name = "FadeIn"
+length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Control/RuneOuter:rotation")
+tracks/0/path = NodePath("Control/MC_Buttons:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/MC_Title:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/RuneOuter:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.04, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.627451)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/RuneInner:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.04, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.627451)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control/Blur:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.02),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i1u63"]
 _data = {
+&"FadeIn": SubResource("Animation_i1u63"),
 &"RESET": SubResource("Animation_145lo"),
 &"RuneSpin": SubResource("Animation_vmvbr")
 }
@@ -59,8 +185,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_vmvbr")
 
-[node name="MarginContainer2" type="MarginContainer" parent="Control"]
+[node name="MC_Buttons" type="MarginContainer" parent="Control"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -74,45 +202,46 @@ grow_vertical = 0
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 15
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MC_Buttons"]
 layout_mode = 2
 
-[node name="ResumeBTN" parent="Control/MarginContainer2/VBoxContainer" instance=ExtResource("1_cxvex")]
+[node name="ResumeBTN" parent="Control/MC_Buttons/VBoxContainer" instance=ExtResource("1_cxvex")]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Button" parent="Control/MarginContainer2/VBoxContainer/ResumeBTN/HBox" index="1"]
+[node name="Button" parent="Control/MC_Buttons/VBoxContainer/ResumeBTN/HBox" index="1"]
 text = "Resume"
 
-[node name="OptionsBTN" parent="Control/MarginContainer2/VBoxContainer" instance=ExtResource("1_cxvex")]
+[node name="OptionsBTN" parent="Control/MC_Buttons/VBoxContainer" instance=ExtResource("1_cxvex")]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Button" parent="Control/MarginContainer2/VBoxContainer/OptionsBTN/HBox" index="1"]
+[node name="Button" parent="Control/MC_Buttons/VBoxContainer/OptionsBTN/HBox" index="1"]
 text = "Options"
 
-[node name="QuitBTN" parent="Control/MarginContainer2/VBoxContainer" instance=ExtResource("1_cxvex")]
+[node name="QuitBTN" parent="Control/MC_Buttons/VBoxContainer" instance=ExtResource("1_cxvex")]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HBox" parent="Control/MarginContainer2/VBoxContainer/QuitBTN" index="0"]
+[node name="HBox" parent="Control/MC_Buttons/VBoxContainer/QuitBTN" index="0"]
 script = ExtResource("2_ie44m")
 
-[node name="Button" parent="Control/MarginContainer2/VBoxContainer/QuitBTN/HBox" index="1"]
+[node name="Button" parent="Control/MC_Buttons/VBoxContainer/QuitBTN/HBox" index="1"]
 text = "Quit"
 
-[node name="MarginContainer" type="MarginContainer" parent="Control"]
+[node name="MC_Title" type="MarginContainer" parent="Control"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_top = 10
 
-[node name="Label" type="Label" parent="Control/MarginContainer"]
+[node name="Label" type="Label" parent="Control/MC_Title"]
 layout_mode = 2
 theme = ExtResource("3_aw0bk")
 theme_override_font_sizes/font_size = 150
-text = "ᛈᚨᚢᛊᛖᛞ"
+text = "Paused"
 
 [node name="RuneInner" type="TextureRect" parent="Control"]
 modulate = Color(1, 1, 1, 0.627451)
@@ -148,7 +277,7 @@ grow_vertical = 2
 pivot_offset = Vector2(540, 540)
 texture = ExtResource("5_6dtwm")
 
-[node name="TextureRect" type="TextureRect" parent="Control"]
+[node name="Blur" type="TextureRect" parent="Control"]
 z_index = -5
 material = SubResource("ShaderMaterial_vmvbr")
 layout_mode = 1
@@ -164,6 +293,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_i1u63")
 }
 
-[editable path="Control/MarginContainer2/VBoxContainer/ResumeBTN"]
-[editable path="Control/MarginContainer2/VBoxContainer/OptionsBTN"]
-[editable path="Control/MarginContainer2/VBoxContainer/QuitBTN"]
+[editable path="Control/MC_Buttons/VBoxContainer/ResumeBTN"]
+[editable path="Control/MC_Buttons/VBoxContainer/OptionsBTN"]
+[editable path="Control/MC_Buttons/VBoxContainer/QuitBTN"]
