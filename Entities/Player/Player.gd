@@ -4,6 +4,8 @@ class_name Player
 
 static var canMoveCamera: bool = true
 static var canShoot: bool = true
+static var canSteer: bool = true
+static var canBrake: bool = true
 
 @onready var cameraHost: PhantomCamera3D = $CameraHost
 @onready var shotPullLine: Line2D = $ShotUI/ShotPullLine
@@ -12,13 +14,15 @@ static var canShoot: bool = true
 @onready var mainCamera: Camera3D = get_tree().get_nodes_in_group("MainCamera")[0]
 @onready var cameraFollowPoint: Node3D = $CameraFollowPoint
 @onready var groundRayCast: RayCast3D = $GroundRayCast
-
+@onready var trail: GPUTrail3D = $Trail
 
 @export_category("Control Parameters")
 @export var cameraSensitivity: Vector2 = Vector2(1,1)
 @export var cameraDistanceCurve: Curve
 @export var shotPower: float
 @export var spinPower: float
+@export var steerSensitivity: float 
+@export var hopPower: float
 
 var isShooting: bool = false
 var currentShotPower: float = 0.0
@@ -27,7 +31,9 @@ var maxPullLength: float
 var pullLength: float
 var aimDirection: Vector3
 
-var grounded: float
+var isGrounded: float = false
+var isMoving: bool = false
+var isBraking: bool = false
 
 var unmoddedDamp: float
 
@@ -38,32 +44,71 @@ func _ready() -> void:
 	cameraHost.spring_length = cameraDistanceCurve.sample(cameraHost.get_third_person_rotation().x)
 
 func _physics_process(delta: float) -> void:
-	cameraFollowPoint.global_position = global_position + (linear_velocity * delta)
 	groundRayCast.position = global_position
+	trail.position = global_position
 	
-	if groundRayCast.collide_with_bodies:
-		grounded = true
+	if check_is_grounded():
+		isGrounded = true
+	else:
+		isGrounded = false
+	
+	if linear_velocity.length() > 0.5:
+		canShoot = false
+		canSteer = true
+		isMoving = true
+	elif isMoving:
+		canShoot = true
+		canSteer = false
+		isMoving = false
 		
-	if linear_velocity.length() < 0.75:
 		linear_velocity = Vector3.ZERO
 		angular_velocity = Vector3.ZERO
-		canShoot = true
-	else:
-		canShoot = false
 		
-	if grounded && linear_velocity.length() > 0.1:
-		unmoddedDamp = clamp(0.1 / linear_velocity.length(), 0.5, 100)
-	else:
+		if isBraking:
+			deactivate_brake()
+		
+	if isGrounded:
+		unmoddedDamp = 1 / linear_velocity.length()
+	if !isGrounded || !isMoving:
 		unmoddedDamp = 0
 		
-	if Input.is_action_pressed("Brake"):
+	if isBraking:
 		angular_damp = unmoddedDamp * 2
 		linear_damp = unmoddedDamp * 2
 	else:
 		angular_damp = unmoddedDamp
 		linear_damp = unmoddedDamp
+		
+	if Input.is_action_just_pressed("Brake") && isMoving:
+		activate_brake()
 	
+	if Input.is_action_just_released("Brake"):
+		deactivate_brake()
 	
+	if Input.is_action_pressed("SteerLeft") && canSteer:
+		linear_velocity = linear_velocity.rotated(Vector3.UP, steerSensitivity)
+		angular_velocity = angular_velocity.rotated(Vector3.UP, steerSensitivity)
+		
+		var currentCameraRotation := cameraHost.get_third_person_rotation()
+		var newCameraRotation := currentCameraRotation
+		newCameraRotation.y += steerSensitivity
+		cameraHost.set_third_person_rotation(newCameraRotation)
+	
+	if Input.is_action_pressed("SteerRight") && canSteer:
+		linear_velocity = linear_velocity.rotated(Vector3.UP, -steerSensitivity)
+		angular_velocity = angular_velocity.rotated(Vector3.UP, -steerSensitivity)
+		
+		var currentCameraRotation := cameraHost.get_third_person_rotation()
+		var newCameraRotation := currentCameraRotation
+		newCameraRotation.y -= steerSensitivity
+		cameraHost.set_third_person_rotation(newCameraRotation)
+	
+	if Input.is_action_just_pressed("Hop") && isMoving && isGrounded:
+		linear_velocity.y = 0
+		apply_central_impulse(Vector3.UP * hopPower)
+		
+	cameraFollowPoint.global_rotation = Vector3.ZERO
+		
 func _process(delta: float) -> void:
 	if Input.is_action_just_released("Shoot") && isShooting:
 		shoot()
@@ -87,6 +132,19 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 		cameraHost.spring_length = cameraDistanceCurve.sample(newCameraRotation.x)
 
+func check_is_grounded() -> bool:
+	var space := get_viewport().get_world_3d().direct_space_state
+	var ray_query := PhysicsRayQueryParameters3D.new()
+	ray_query.from = Vector3(position.x, position.y, position.z)
+	ray_query.to = Vector3(position.x, position.y - 0.8, position.z)
+	ray_query.set_collision_mask(1)
+	var raycast_result := space.intersect_ray(ray_query)
+
+	if !raycast_result.is_empty():
+		return true
+	else:
+		return false
+		
 func handle_shot() -> void:
 	isShooting = true
 	shotUI.visible = true
@@ -140,11 +198,9 @@ func update_pull_line(direction: float, length: float) -> Vector2:
 
 func get_aim_direction(pullLineEnd: Vector2, screenSize: Vector2):
 	var planeIntersect = raycast_mouse_to_xz_plane(pullLineEnd)
-	#var oppositePlaneIntersect = raycast_mouse_to_xz_plane(screenSize - pullLineEnd)
 
-	if planeIntersect["success"]: #&& oppositePlaneIntersect["success"]:
+	if planeIntersect["success"]:
 		var intersectPoint: Vector3 = planeIntersect["value"]
-		#var oppositePoint: Vector3 = oppositePlaneIntersect["value"]
 		
 		return intersectPoint.direction_to(self.position)#intersectPoint.direction_to(oppositePoint)
 	else:
@@ -153,3 +209,27 @@ func get_aim_direction(pullLineEnd: Vector2, screenSize: Vector2):
 		screenDirection = screenDirection.rotated(mainCamera.rotation.y)
 		
 		return Vector3(screenDirection.x, 0, -screenDirection.y)
+	
+func activate_brake() -> void:
+	if !isBraking && canBrake:
+		isBraking = true
+		
+		linear_velocity /= 1.75
+		angular_velocity /= 1.75
+		
+		var cameraFOVTween: Tween = get_tree().create_tween()
+		cameraFOVTween.tween_property(cameraHost, "fov", 70, 0.3)
+		await cameraFOVTween.finished
+		cameraFOVTween.kill()
+
+func deactivate_brake() -> void:
+	if isBraking:
+		isBraking = false
+		
+		linear_velocity *= 1.75
+		angular_velocity *= 1.75
+		
+		var cameraFOVTween: Tween = get_tree().create_tween()
+		cameraFOVTween.tween_property(cameraHost, "fov", 75, 0.1)
+		await cameraFOVTween.finished
+		cameraFOVTween.kill()
