@@ -32,7 +32,9 @@ enabled=PackedStringArray("res://addons/gputrail/plugin.cfg", "res://addons/phan
 
 folder_colors={
 "res://Maps/": "blue",
-"res://Materials/": "pink"
+"res://Materials/": "pink",
+"res://UserInterface/": "green",
+"res://UserInterface/UIAssets/": "red"
 }
 
 [global_group]
