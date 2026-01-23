@@ -24,6 +24,12 @@ static var canBrake: bool = true
 @export var steerSensitivity: float 
 @export var hopPower: float
 
+@export_category("Audio")
+@onready var HitSoundPlayer: AudioStreamPlayer3D = $HitSoundPlayer
+@onready var ClubSoundPlayer: AudioStreamPlayer3D = $ClubSoundPlayer
+
+var last_velocity: Vector3 = Vector3.ZERO
+
 var isShooting: bool = false
 var currentShotPower: float = 0.0
 
@@ -38,6 +44,9 @@ var isBraking: bool = false
 var unmoddedDamp: float
 
 func _ready() -> void:
+	contact_monitor = true
+	max_contacts_reported = 4
+	body_entered.connect(_on_body_entered)
 	var newCameraRotation: Vector3 = cameraHost.get_third_person_rotation()
 	newCameraRotation.x = clamp(newCameraRotation.x, -PI/2 + 0.1, -0.5)
 	cameraHost.set_third_person_rotation(newCameraRotation)
@@ -46,6 +55,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	groundRayCast.position = global_position
 	trail.position = global_position
+	last_velocity = linear_velocity
 	
 	if check_is_grounded():
 		isGrounded = true
@@ -132,6 +142,21 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 		cameraHost.spring_length = cameraDistanceCurve.sample(newCameraRotation.x)
 
+func _on_body_entered(body: Node) -> void:
+	var speed_before: float = last_velocity.length()
+	var speed_after: float = linear_velocity.length()
+	var impact_strength: float = max(speed_before - speed_after, 0.0)
+	if impact_strength < 0.5:
+		return
+	if HitSoundPlayer.playing:
+		HitSoundPlayer.stop()
+	# Normalize
+	var max_impact: float = 8.0
+	var t: float = clamp(impact_strength / max_impact, 0.0, 1.0)
+	# Strong curve = quiet small hits
+	t = pow(t, 2.5)
+	HitSoundPlayer.play()
+
 func check_is_grounded() -> bool:
 	var space := get_viewport().get_world_3d().direct_space_state
 	var ray_query := PhysicsRayQueryParameters3D.new()
@@ -167,6 +192,7 @@ func handle_shot() -> void:
 	aimMarker.draw_aim(aimDirection, lerp(0, 5, pullLength / maxPullLength))
 		
 func shoot() -> void:
+	ClubSoundPlayer.play()
 	if floor(lerp(0, 5, pullLength / maxPullLength)) > 0:
 		var impulse: Vector3 = aimDirection * shotPower * pullLength / maxPullLength
 		apply_central_impulse(impulse)

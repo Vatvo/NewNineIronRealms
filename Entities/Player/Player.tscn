@@ -1,8 +1,10 @@
-[gd_scene load_steps=28 format=3 uid="uid://b1uo6orqicguq"]
+[gd_scene load_steps=32 format=3 uid="uid://b1uo6orqicguq"]
 
 [ext_resource type="Script" uid="uid://hug26nyoc3wp" path="res://Entities/Player/Player.gd" id="1_vweq0"]
 [ext_resource type="ArrayMesh" uid="uid://befwqt1qhvy5t" path="res://Entities/Player/GolfBall.obj" id="1_ww0jn"]
+[ext_resource type="AudioStream" uid="uid://do7qejml3eylw" path="res://Audio/SFX/BallHit.ogg" id="2_uw7o4"]
 [ext_resource type="Material" uid="uid://bgc7uahcu23x3" path="res://Materials/TestMaterials/TestGridRed.tres" id="2_vweq0"]
+[ext_resource type="AudioStream" uid="uid://uk0sb4hamuc1" path="res://Audio/SFX/BallClub.ogg" id="3_gallu"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="4_an6q6"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_t38ms"]
 [ext_resource type="Script" uid="uid://b8hhnqsugykly" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="6_hj1c0"]
@@ -64,7 +66,7 @@ shader = ExtResource("10_lmeus")
 shader_parameter/tex = ExtResource("12_061yh")
 shader_parameter/mask = ExtResource("11_lmeus")
 shader_parameter/mask_strength = 1.0
-shader_parameter/uv_offset = Vector2(0.7107035, 0)
+shader_parameter/uv_offset = Vector2(0.14040364, 0)
 shader_parameter/color_ramp = SubResource("GradientTexture1D_061yh")
 shader_parameter/curve = SubResource("CurveTexture_5m37j")
 shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
@@ -73,9 +75,21 @@ shader_parameter/flags = 62
 [sub_resource type="QuadMesh" id="QuadMesh_vcmon"]
 material = SubResource("ShaderMaterial_e34i1")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gallu"]
+streams_count = 1
+stream_0/stream = ExtResource("3_gallu")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_samso"]
+random_pitch = 1.15
+random_volume_offset_db = 0.15
+streams_count = 1
+stream_0/stream = ExtResource("2_uw7o4")
+
 [node name="Player" type="RigidBody3D" groups=["Player"]]
 physics_material_override = SubResource("PhysicsMaterial_hj1c0")
 continuous_cd = true
+contact_monitor = true
+max_contacts_reported = 4
 angular_damp = 0.2
 script = ExtResource("1_vweq0")
 cameraSensitivity = Vector2(0.01, 0.01)
@@ -152,3 +166,11 @@ use_red_as_alpha = true
 billboard = true
 snap_to_transform = true
 _defaults_have_been_set = true
+
+[node name="ClubSoundPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_gallu")
+
+[node name="HitSoundPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_samso")
+volume_db = -2.5
+max_db = 2.0

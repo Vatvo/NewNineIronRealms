@@ -31,6 +31,7 @@ enabled=PackedStringArray("res://addons/gputrail/plugin.cfg", "res://addons/phan
 [file_customization]
 
 folder_colors={
+"res://Audio/": "orange",
 "res://Maps/": "blue",
 "res://Materials/": "pink"
 }

@@ -11,6 +11,9 @@ extends Node3D
 @onready var area3d: Area3D = $Area3D
 @onready var animationPlayer: AnimationPlayer = $AnimationPlayer
 
+@export_category("Audio")
+@onready var BoostSound: AudioStreamPlayer3D = $BoostSound
+
 var canBoost: bool = true
 
 func _ready() -> void:
@@ -35,6 +38,7 @@ func _process(delta: float) -> void:
 
 func boost(body: Node3D) -> void:
 	if canBoost:
+		BoostSound.play()
 		animationPlayer.play("Boost")
 		body.linear_velocity = Vector3.ZERO
 		body.angular_velocity = Vector3.ZERO
