@@ -10,6 +10,9 @@ class_name CollisionButton
 
 @onready var gemStartPos = gem.position
 
+@export_category("Audio")
+@onready var HitSoundButton: AudioStreamPlayer3D = $HitSoundButton
+
 var isTriggered = false
 
 signal triggered
@@ -32,11 +35,13 @@ func _process(delta: float) -> void:
 func trigger() -> void:
 	triggered.emit()
 	isTriggered = true
+	HitSoundButton.play()
 	animationPlayer.play("Deactivate")
 	
 func untrigger() -> void:
 	untriggered.emit()
 	isTriggered = false
+	HitSoundButton.play()
 	animationPlayer.play("Activate")
 	await animationPlayer.animation_finished
 	animationPlayer.play("Default")

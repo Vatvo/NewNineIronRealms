@@ -27,6 +27,7 @@ static var canBrake: bool = true
 @export_category("Audio")
 @onready var HitSoundPlayer: AudioStreamPlayer3D = $HitSoundPlayer
 @onready var ClubSoundPlayer: AudioStreamPlayer3D = $ClubSoundPlayer
+@onready var JumpSoundPlayer: AudioStreamPlayer3D = $JumpSoundPlayer
 
 var last_velocity: Vector3 = Vector3.ZERO
 
@@ -114,6 +115,7 @@ func _physics_process(delta: float) -> void:
 		cameraHost.set_third_person_rotation(newCameraRotation)
 	
 	if Input.is_action_just_pressed("Hop") && isMoving && isGrounded:
+		JumpSoundPlayer.play()
 		linear_velocity.y = 0
 		apply_central_impulse(Vector3.UP * hopPower)
 		
