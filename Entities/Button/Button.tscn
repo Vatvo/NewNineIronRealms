@@ -6,7 +6,7 @@
 [ext_resource type="Shader" uid="uid://dxwqrrlny11vo" path="res://Entities/Button/ButtonGemShader.gdshader" id="2_m0tpk"]
 [ext_resource type="Texture2D" uid="uid://qjgtrne6p44e" path="res://VFXTextures/1MAFX_Noise/Noise_8.tga" id="4_bphlb"]
 [ext_resource type="Texture2D" uid="uid://co0h05q0c5nph" path="res://VFXTextures/VFX_HQ_Seamless_Noise_Pack_Vol1/Noise_008.png" id="4_nybw6"]
-[ext_resource type="Texture2D" uid="uid://31golmw3wk8g" path="res://VFXTextures/Luos_FreeGiveAway/Noise_Normals/T_NoiseNormal_30.png" id="5_welao"]
+[ext_resource type="Texture2D" uid="uid://bm21nttowx61w" path="res://VFXTextures/Luos_FreeGiveAway/Noise_Normals/T_NoiseNormal_29.png" id="5_bphlb"]
 [ext_resource type="Texture2D" uid="uid://ce73kouaju0le" path="res://VFXTextures/brackeys_vfx_bundle/particles/alpha/twirl_04_a.png" id="7_bphlb"]
 [ext_resource type="Texture2D" uid="uid://cfd7vv3rrgmx8" path="res://VFXTextures/1MAFX_Noise/Noise_4.tga" id="7_jfi18"]
 [ext_resource type="Texture2D" uid="uid://du3vhnnxh3svu" path="res://VFXTextures/Luos_FreeGiveAway/Noise_Normals/T_NoiseNormal_24.png" id="9_sdx6b"]
@@ -18,12 +18,12 @@ render_priority = 0
 shader = ExtResource("2_m0tpk")
 shader_parameter/over_texture = ExtResource("4_nybw6")
 shader_parameter/under_texture = ExtResource("4_bphlb")
-shader_parameter/surface_normalmap = ExtResource("5_welao")
+shader_parameter/surface_normalmap = ExtResource("5_bphlb")
 shader_parameter/top_color = Color(0.9735195, 0.6493494, 1, 1)
 shader_parameter/depth = 0.93
-shader_parameter/normal_depth = 1.5899999999999999
-shader_parameter/roughness = 0.0
-shader_parameter/metallic = 1.0
+shader_parameter/normal_depth = 1.59
+shader_parameter/roughness = 0.202000009595
+shader_parameter/metallic = 0.382000018145
 shader_parameter/refractive_index = 0.71
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0hmvl"]
