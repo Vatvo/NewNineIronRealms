@@ -8,16 +8,20 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="NewNineIronRealms"
 run/main_scene="uid://bfvi1jcxpao3q"
-config/features=PackedStringArray("4.5", "Forward Plus")
+config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
+PhantomCameraManager="*uid://duq6jhf6unyis"
 
 [display]
 
@@ -26,13 +30,15 @@ window/size/viewport_height=1080
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/gputrail/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/waterways/plugin.cfg")
+enabled=PackedStringArray("res://addons/SunshineClouds2/plugin.cfg", "res://addons/gputrail/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/waterways/plugin.cfg")
 
 [file_customization]
 
 folder_colors={
 "res://Maps/": "blue",
-"res://Materials/": "pink"
+"res://Materials/": "pink",
+"res://UserInterface/": "green",
+"res://UserInterface/UIAssets/": "red"
 }
 
 [global_group]
