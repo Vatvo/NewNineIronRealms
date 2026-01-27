@@ -15,6 +15,7 @@ static var canBrake: bool = true
 @onready var cameraFollowPoint: Node3D = $CameraFollowPoint
 @onready var groundRayCast: RayCast3D = $GroundRayCast
 @onready var trail: GPUTrail3D = $Trail
+@onready var circleTransition: ColorRect = $ResetFadeOut/CircleTransition
 
 @export_category("Control Parameters")
 @export var cameraSensitivity: Vector2 = Vector2(1,1)
@@ -44,7 +45,12 @@ var isBraking: bool = false
 
 var unmoddedDamp: float
 
+var lastShotPosition: Vector3 = Vector3.INF
+
 func _ready() -> void:
+	circleTransition.material.set_shader_parameter("screen_width", get_viewport().size.x)
+	circleTransition.material.set_shader_parameter("screen_height", get_viewport().size.y)
+
 	contact_monitor = true
 	max_contacts_reported = 4
 	body_entered.connect(_on_body_entered)
@@ -118,6 +124,9 @@ func _physics_process(delta: float) -> void:
 		JumpSoundPlayer.play()
 		linear_velocity.y = 0
 		apply_central_impulse(Vector3.UP * hopPower)
+	
+	if Input.is_action_just_pressed("Reset"):
+		reset()
 		
 	cameraFollowPoint.global_rotation = Vector3.ZERO
 		
@@ -196,6 +205,7 @@ func handle_shot() -> void:
 func shoot() -> void:
 	ClubSoundPlayer.play()
 	if floor(lerp(0, 5, pullLength / maxPullLength)) > 0:
+		lastShotPosition = position
 		var impulse: Vector3 = aimDirection * shotPower * pullLength / maxPullLength
 		apply_central_impulse(impulse)
 		
@@ -261,3 +271,40 @@ func deactivate_brake() -> void:
 		cameraFOVTween.tween_property(cameraHost, "fov", 75, 0.1)
 		await cameraFOVTween.finished
 		cameraFOVTween.kill()
+
+func reset() -> void:
+	if lastShotPosition != Vector3.INF:
+		circleTransition.material.set_shader_parameter("screen_width", get_viewport().size.x)
+		circleTransition.material.set_shader_parameter("screen_height", get_viewport().size.y)
+	
+		var inTween: Tween = get_tree().create_tween()
+		inTween.set_trans(Tween.TRANS_SINE)
+		inTween.set_ease(Tween.EASE_OUT)
+		inTween.tween_method(
+			func(value: float): circleTransition.material.set_shader_parameter("circle_size", value),
+			1.05,
+			0.0,
+			0.5
+		)
+		await inTween.finished
+		inTween.kill()
+		
+		
+		linear_velocity = Vector3.ZERO
+		angular_velocity = Vector3.ZERO
+		position = lastShotPosition
+		
+		lastShotPosition = Vector3.INF
+		
+		await get_tree().create_timer(0.5).timeout
+		var outTween: Tween = get_tree().create_tween()
+		outTween.set_trans(Tween.TRANS_SINE)
+		outTween.set_ease(Tween.EASE_IN)
+		outTween.tween_method(
+			func(value: float): circleTransition.material.set_shader_parameter("circle_size", value),
+			0.0,
+			1.05,
+			0.5
+		)
+		await outTween.finished
+		outTween.kill()

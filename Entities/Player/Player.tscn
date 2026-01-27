@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://bs62d312h73im" path="res://VFXTextures/1MAFX_Noise/Noise_7.tga" id="11_lmeus"]
 [ext_resource type="Texture2D" uid="uid://dntfbkbvxovrh" path="res://VFXTextures/VFX_HQ_Seamless_Noise_Pack_Vol1/Noise_003.png" id="12_061yh"]
 [ext_resource type="AudioStream" uid="uid://togfofgt0ja6" path="res://Audio/SFX/BallJump.ogg" id="16_samso"]
+[ext_resource type="Shader" uid="uid://c43inooujhjg5" path="res://Entities/Player/ResetFadeOut.gdshader" id="17_hl213"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hj1c0"]
 rough = true
@@ -34,13 +35,6 @@ script = ExtResource("5_t38ms")
 [sub_resource type="Resource" id="Resource_x44r4"]
 script = ExtResource("6_hj1c0")
 metadata/_custom_type_script = "uid://b8hhnqsugykly"
-
-[sub_resource type="Curve" id="Curve_t38ms"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Gradient" id="Gradient_an6q6"]
-colors = PackedColorArray(0.8369676, 0.5692811, 0, 1, 0.74998635, 2.6712567e-06, 6.738305e-07, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uw7o4"]
 shader = ExtResource("9_jynvv")
@@ -67,7 +61,7 @@ shader = ExtResource("10_lmeus")
 shader_parameter/tex = ExtResource("12_061yh")
 shader_parameter/mask = ExtResource("11_lmeus")
 shader_parameter/mask_strength = 1.0
-shader_parameter/uv_offset = Vector2(0.26047602, 0)
+shader_parameter/uv_offset = Vector2(0.18077153, 0)
 shader_parameter/color_ramp = SubResource("GradientTexture1D_061yh")
 shader_parameter/curve = SubResource("CurveTexture_5m37j")
 shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
@@ -90,6 +84,19 @@ stream_0/stream = ExtResource("2_uw7o4")
 random_pitch = 1.0293022
 streams_count = 1
 stream_0/stream = ExtResource("16_samso")
+
+[sub_resource type="Curve" id="Curve_t38ms"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_an6q6"]
+colors = PackedColorArray(0.8369676, 0.5692811, 0, 1, 0.74998635, 2.6712567e-06, 6.738305e-07, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5m37j"]
+shader = ExtResource("17_hl213")
+shader_parameter/circle_size = 1.04999995231628
+shader_parameter/screen_width = 1920.0
+shader_parameter/screen_height = 1080.0
 
 [node name="Player" type="RigidBody3D" unique_id=1430462939 groups=["Player"]]
 physics_material_override = SubResource("PhysicsMaterial_hj1c0")
@@ -129,16 +136,6 @@ align_transform_with_view = Callable()
 align_position_with_view = Callable()
 align_rotation_with_view = Callable()
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
-
-[node name="ShotUI" type="CanvasLayer" parent="." unique_id=1554008589]
-
-[node name="ShotPullLine" type="Line2D" parent="ShotUI" unique_id=229163799]
-points = PackedVector2Array(0, 0, 300, 0)
-width = 50.0
-width_curve = SubResource("Curve_t38ms")
-gradient = SubResource("Gradient_an6q6")
-texture_mode = 2
-end_cap_mode = 2
 
 [node name="AimMarker" type="Node3D" parent="." unique_id=375704360]
 top_level = true
@@ -185,3 +182,26 @@ max_db = 2.0
 stream = SubResource("AudioStreamRandomizer_hl213")
 volume_db = -2.5
 max_db = 2.0
+
+[node name="ShotUI" type="CanvasLayer" parent="." unique_id=1554008589]
+
+[node name="ShotPullLine" type="Line2D" parent="ShotUI" unique_id=229163799]
+points = PackedVector2Array(0, 0, 300, 0)
+width = 50.0
+width_curve = SubResource("Curve_t38ms")
+gradient = SubResource("Gradient_an6q6")
+texture_mode = 2
+end_cap_mode = 2
+
+[node name="ResetFadeOut" type="CanvasLayer" parent="." unique_id=1652572910]
+
+[node name="CircleTransition" type="ColorRect" parent="ResetFadeOut" unique_id=540745976]
+z_index = 300
+material = SubResource("ShaderMaterial_5m37j")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
