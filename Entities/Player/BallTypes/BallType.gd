@@ -19,5 +19,6 @@ func power_shot() -> void:
 func ability() -> void:
 	pass
 	
-func collect_money() -> void:
-	pass
+func collect_money(value: int) -> void:
+	parent.hacksilverParticles.amount = clamp(value, 0, 4)
+	parent.hacksilverParticles.emitting = true

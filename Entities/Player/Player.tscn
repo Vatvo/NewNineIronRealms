@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://do7qejml3eylw" path="res://Audio/SFX/BallHit.ogg" id="2_uw7o4"]
 [ext_resource type="Material" uid="uid://bgc7uahcu23x3" path="res://Materials/TestMaterials/TestGridRed.tres" id="2_vweq0"]
 [ext_resource type="AudioStream" uid="uid://uk0sb4hamuc1" path="res://Audio/SFX/BallClub.ogg" id="3_gallu"]
+[ext_resource type="Material" uid="uid://dfqw86r6sdr4f" path="res://Materials/Outline.tres" id="3_vcmon"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="4_an6q6"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_t38ms"]
 [ext_resource type="Script" uid="uid://b8hhnqsugykly" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="6_hj1c0"]
@@ -19,6 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://togfofgt0ja6" path="res://Audio/SFX/BallJump.ogg" id="16_samso"]
 [ext_resource type="Shader" uid="uid://c43inooujhjg5" path="res://Entities/Player/ResetFadeOut.gdshader" id="17_hl213"]
 [ext_resource type="Script" uid="uid://bfusbackygxpw" path="res://Entities/Player/BallTypes/DefaultBall.gd" id="18_5m37j"]
+[ext_resource type="Texture2D" uid="uid://c8eh4sp3a421j" path="res://icon.svg" id="21_h6pxy"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hj1c0"]
 rough = true
@@ -63,7 +65,7 @@ shader = ExtResource("10_lmeus")
 shader_parameter/tex = ExtResource("12_061yh")
 shader_parameter/mask = ExtResource("11_lmeus")
 shader_parameter/mask_strength = 1.0
-shader_parameter/uv_offset = Vector2(0.8648261, 0)
+shader_parameter/uv_offset = Vector2(0.12425071, 0)
 shader_parameter/color_ramp = SubResource("GradientTexture1D_061yh")
 shader_parameter/curve = SubResource("CurveTexture_5m37j")
 shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
@@ -100,6 +102,25 @@ shader_parameter/circle_size = 1.04999995231628
 shader_parameter/screen_width = 1920.0
 shader_parameter/screen_height = 1080.0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l80rc"]
+albedo_texture = ExtResource("21_h6pxy")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l2mqv"]
+emission_shape_scale = Vector3(0, 0, 0)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+damping_min = 30.000002
+damping_max = 30.000002
+
+[sub_resource type="QuadMesh" id="QuadMesh_mgqku"]
+
 [node name="Player" type="RigidBody3D" unique_id=1430462939 groups=["Player"]]
 physics_material_override = SubResource("PhysicsMaterial_hj1c0")
 continuous_cd = true
@@ -116,6 +137,7 @@ cameraSensitivity = Vector2(0.01, 0.01)
 cameraDistanceCurve = SubResource("Curve_an6q6")
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=358315486]
+material_overlay = ExtResource("3_vcmon")
 mesh = ExtResource("1_ww0jn")
 surface_material_override/0 = ExtResource("2_vweq0")
 
@@ -211,3 +233,14 @@ color = Color(0, 0, 0, 1)
 
 [node name="BallType" type="Node" parent="." unique_id=481427454]
 script = ExtResource("18_5m37j")
+
+[node name="HacksilverParticles" type="GPUParticles3D" parent="." unique_id=911010729]
+top_level = true
+material_override = SubResource("StandardMaterial3D_l80rc")
+emitting = false
+amount = 4
+one_shot = true
+explosiveness = 0.74
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_l2mqv")
+draw_pass_1 = SubResource("QuadMesh_mgqku")

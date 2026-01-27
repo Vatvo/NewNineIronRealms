@@ -17,6 +17,7 @@ static var canBrake: bool = true
 @onready var trail: GPUTrail3D = $Trail
 @onready var circleTransition: ColorRect = $ResetFadeOut/CircleTransition
 @onready var ballTypeNode: BallType = $BallType
+@onready var hacksilverParticles: GPUParticles3D = $HacksilverParticles
 
 @export_category("Ball Type")
 @export var ballTypeScript: Script = preload("res://Entities/Player/BallTypes/DefaultBall.gd")
@@ -72,6 +73,7 @@ func _physics_process(delta: float) -> void:
 	groundRayCast.position = global_position
 	trail.position = global_position
 	last_velocity = linear_velocity
+	hacksilverParticles.global_position = position
 	
 	if check_is_grounded():
 		isGrounded = true
@@ -138,6 +140,7 @@ func _physics_process(delta: float) -> void:
 		reset()
 		
 	cameraFollowPoint.global_rotation = Vector3.ZERO
+	
 		
 func _process(delta: float) -> void:
 	if Input.is_action_just_released("Shoot") && isShooting:
