@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://hug26nyoc3wp" path="res://Entities/Player/Player.gd" id="1_vweq0"]
 [ext_resource type="ArrayMesh" uid="uid://befwqt1qhvy5t" path="res://Entities/Player/GolfBall.obj" id="1_ww0jn"]
+[ext_resource type="Script" uid="uid://dokg3qy4mq058" path="res://Entities/Player/BallTypes/MjolnirBall.gd" id="2_e34i1"]
 [ext_resource type="AudioStream" uid="uid://do7qejml3eylw" path="res://Audio/SFX/BallHit.ogg" id="2_uw7o4"]
 [ext_resource type="Material" uid="uid://bgc7uahcu23x3" path="res://Materials/TestMaterials/TestGridRed.tres" id="2_vweq0"]
 [ext_resource type="AudioStream" uid="uid://uk0sb4hamuc1" path="res://Audio/SFX/BallClub.ogg" id="3_gallu"]
@@ -17,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://dntfbkbvxovrh" path="res://VFXTextures/VFX_HQ_Seamless_Noise_Pack_Vol1/Noise_003.png" id="12_061yh"]
 [ext_resource type="AudioStream" uid="uid://togfofgt0ja6" path="res://Audio/SFX/BallJump.ogg" id="16_samso"]
 [ext_resource type="Shader" uid="uid://c43inooujhjg5" path="res://Entities/Player/ResetFadeOut.gdshader" id="17_hl213"]
+[ext_resource type="Script" uid="uid://bfusbackygxpw" path="res://Entities/Player/BallTypes/DefaultBall.gd" id="18_5m37j"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hj1c0"]
 rough = true
@@ -61,7 +63,7 @@ shader = ExtResource("10_lmeus")
 shader_parameter/tex = ExtResource("12_061yh")
 shader_parameter/mask = ExtResource("11_lmeus")
 shader_parameter/mask_strength = 1.0
-shader_parameter/uv_offset = Vector2(0.18077153, 0)
+shader_parameter/uv_offset = Vector2(0.8648261, 0)
 shader_parameter/color_ramp = SubResource("GradientTexture1D_061yh")
 shader_parameter/curve = SubResource("CurveTexture_5m37j")
 shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
@@ -105,12 +107,13 @@ contact_monitor = true
 max_contacts_reported = 4
 angular_damp = 0.2
 script = ExtResource("1_vweq0")
-cameraSensitivity = Vector2(0.01, 0.01)
-cameraDistanceCurve = SubResource("Curve_an6q6")
+ballTypeScript = ExtResource("2_e34i1")
 shotPower = 40.0
 spinPower = 0.05
-steerSensitivity = 0.003
 hopPower = 25.0
+powerShotBound = 4.0
+cameraSensitivity = Vector2(0.01, 0.01)
+cameraDistanceCurve = SubResource("Curve_an6q6")
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=358315486]
 mesh = ExtResource("1_ww0jn")
@@ -205,3 +208,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+
+[node name="BallType" type="Node" parent="." unique_id=481427454]
+script = ExtResource("18_5m37j")
