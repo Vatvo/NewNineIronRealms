@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://bs62d312h73im" path="res://VFXTextures/1MAFX_Noise/Noise_7.tga" id="11_lmeus"]
 [ext_resource type="Texture2D" uid="uid://dntfbkbvxovrh" path="res://VFXTextures/VFX_HQ_Seamless_Noise_Pack_Vol1/Noise_003.png" id="12_061yh"]
 [ext_resource type="AudioStream" uid="uid://togfofgt0ja6" path="res://Audio/SFX/BallJump.ogg" id="16_samso"]
+[ext_resource type="AudioStream" uid="uid://bp8oqp5y15csm" path="res://Audio/SFX/BallBrake.ogg" id="17_hl213"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hj1c0"]
 rough = true
@@ -67,7 +68,7 @@ shader = ExtResource("10_lmeus")
 shader_parameter/tex = ExtResource("12_061yh")
 shader_parameter/mask = ExtResource("11_lmeus")
 shader_parameter/mask_strength = 1.0
-shader_parameter/uv_offset = Vector2(0.26047602, 0)
+shader_parameter/uv_offset = Vector2(0.21392943, 0)
 shader_parameter/color_ramp = SubResource("GradientTexture1D_061yh")
 shader_parameter/curve = SubResource("CurveTexture_5m37j")
 shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
@@ -81,7 +82,7 @@ streams_count = 1
 stream_0/stream = ExtResource("3_gallu")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_samso"]
-random_pitch = 1.15
+random_pitch = 1.122462
 random_volume_offset_db = 0.15
 streams_count = 1
 stream_0/stream = ExtResource("2_uw7o4")
@@ -90,6 +91,11 @@ stream_0/stream = ExtResource("2_uw7o4")
 random_pitch = 1.0293022
 streams_count = 1
 stream_0/stream = ExtResource("16_samso")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5m37j"]
+random_pitch = 1.122462
+streams_count = 1
+stream_0/stream = ExtResource("17_hl213")
 
 [node name="Player" type="RigidBody3D" unique_id=1430462939 groups=["Player"]]
 physics_material_override = SubResource("PhysicsMaterial_hj1c0")
@@ -178,10 +184,16 @@ stream = SubResource("AudioStreamRandomizer_gallu")
 
 [node name="HitSoundPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1080549192]
 stream = SubResource("AudioStreamRandomizer_samso")
-volume_db = -2.5
+volume_db = -1.5
 max_db = 2.0
 
 [node name="JumpSoundPlayer" type="AudioStreamPlayer3D" parent="." unique_id=52490144]
 stream = SubResource("AudioStreamRandomizer_hl213")
-volume_db = -2.5
+volume_db = -1.0
 max_db = 2.0
+
+[node name="BrakeSoundPlayer" type="AudioStreamPlayer3D" parent="." unique_id=696565292]
+stream = SubResource("AudioStreamRandomizer_5m37j")
+volume_db = -1.5
+max_db = 2.0
+autoplay = true

@@ -28,6 +28,7 @@ static var canBrake: bool = true
 @onready var HitSoundPlayer: AudioStreamPlayer3D = $HitSoundPlayer
 @onready var ClubSoundPlayer: AudioStreamPlayer3D = $ClubSoundPlayer
 @onready var JumpSoundPlayer: AudioStreamPlayer3D = $JumpSoundPlayer
+@onready var BrakeSoundPlayer: AudioStreamPlayer3D = $BrakeSoundPlayer
 
 var last_velocity: Vector3 = Vector3.ZERO
 
@@ -84,9 +85,11 @@ func _physics_process(delta: float) -> void:
 		unmoddedDamp = 0
 		
 	if isBraking:
+		BrakeSoundPlayer.volume_db = 1
 		angular_damp = unmoddedDamp * 2
 		linear_damp = unmoddedDamp * 2
 	else:
+		BrakeSoundPlayer.volume_db = -50
 		angular_damp = unmoddedDamp
 		linear_damp = unmoddedDamp
 		
