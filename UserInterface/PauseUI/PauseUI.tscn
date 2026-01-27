@@ -176,6 +176,44 @@ _data = {
 &"RuneSpin": SubResource("Animation_vmvbr")
 }
 
+[sub_resource type="Animation" id="Animation_2q3j6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/RuneOuter:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_nq4g1"]
+resource_name = "RuneSpin2"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/RuneOuter:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.2831855]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w4ptd"]
+_data = {
+&"RESET": SubResource("Animation_2q3j6"),
+&"RuneSpin2": SubResource("Animation_nq4g1")
+}
+
 [node name="PauseUi" type="CanvasLayer" unique_id=1760237439]
 
 [node name="Control" type="Control" parent="." unique_id=104998544]
@@ -288,8 +326,11 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1383436051]
+[node name="FadeAnimPlayer" type="AnimationPlayer" parent="." unique_id=1383436051]
 libraries/ = SubResource("AnimationLibrary_i1u63")
+
+[node name="SpinAnimPlayer" type="AnimationPlayer" parent="." unique_id=1522309446]
+libraries/ = SubResource("AnimationLibrary_w4ptd")
 
 [editable path="Control/MC_Buttons/VBoxContainer/ResumeBTN"]
 [editable path="Control/MC_Buttons/VBoxContainer/OptionsBTN"]
