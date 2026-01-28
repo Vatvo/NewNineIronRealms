@@ -19,7 +19,7 @@ size = Vector2(2, 2)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3cv5b"]
 transparency = 1
 shading_mode = 0
-albedo_color = Color(0.93786114, 1.4369954, 1.4369954, 1)
+albedo_color = Color(0.8268249, 1.0629996, 1.0616015, 1)
 albedo_texture = ExtResource("11_eqrvy")
 billboard_mode = 1
 
@@ -45,10 +45,6 @@ material_override = ExtResource("9_7ilse")
 material_overlay = ExtResource("10_e15t6")
 cast_shadow = 0
 mesh = ExtResource("2_rdqms")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Mesh" unique_id=1439811772]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.977786, 0)
-light_energy = 6.0
 
 [node name="Decal" type="Decal" parent="Mesh" unique_id=1718339341]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.0442321, 0)
