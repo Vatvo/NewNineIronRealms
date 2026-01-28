@@ -20,6 +20,8 @@ func ability() -> void:
 	pass
 	
 func collect_money(value: int) -> void:
+	for i in range(clamp(value, 0, 4)):
+		parent.HacksilverSoundPlayer.play()
 	parent.hacksilverParticles.amount = clamp(value, 0, 4)
 	parent.hacksilverParticles.restart()
 	await get_tree().process_frame
