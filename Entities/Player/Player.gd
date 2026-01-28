@@ -217,12 +217,16 @@ func handle_shot() -> void:
 	aimMarker.draw_aim(aimDirection, lerp(0, 5, pullLength / maxPullLength))
 		
 func shoot() -> void:
-	ClubSoundPlayer.play()
+	
 	if floor(lerp(0, 5, pullLength / maxPullLength)) > 4:
+		#POWER SHOT
 		lastShotPosition = position
 		ballTypeNode.power_shot()
 		
 	elif floor(lerp(0, 5, pullLength / maxPullLength)) > 0:
+		#NORMAL SHOT
+		ClubSoundPlayer.play()
+		
 		lastShotPosition = position
 		var impulse: Vector3 = aimDirection * shotPower * pullLength / maxPullLength
 		apply_central_impulse(impulse)
@@ -230,6 +234,7 @@ func shoot() -> void:
 		var spin: Vector3 = impulse * spinPower
 		apply_torque_impulse(spin.rotated(Vector3.UP, PI/2))
 	else:
+		#CANCEL
 		print("Cancelled")
 
 func raycast_mouse_to_xz_plane(mousePos: Vector2) -> Dictionary:
