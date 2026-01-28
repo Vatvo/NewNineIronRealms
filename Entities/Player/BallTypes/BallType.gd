@@ -21,4 +21,5 @@ func ability() -> void:
 	
 func collect_money(value: int) -> void:
 	parent.hacksilverParticles.amount = clamp(value, 0, 4)
-	parent.hacksilverParticles.emitting = true
+	parent.hacksilverParticles.restart()
+	await get_tree().process_frame
