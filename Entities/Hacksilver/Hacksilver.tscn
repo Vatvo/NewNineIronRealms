@@ -11,6 +11,7 @@
 [ext_resource type="Material" uid="uid://cb1abckvajhxf" path="res://Entities/Hacksilver/HacksilverMat.tres" id="9_7ilse"]
 [ext_resource type="Material" uid="uid://dfqw86r6sdr4f" path="res://Materials/Outline.tres" id="10_e15t6"]
 [ext_resource type="Texture2D" uid="uid://ciiu7nn23qn4b" path="res://VFXTextures/brackeys_vfx_bundle/particles/alpha/spotlight_07_a.png" id="11_eqrvy"]
+[ext_resource type="Texture2D" uid="uid://vdfsj86mewg" path="res://VFXTextures/brackeys_vfx_bundle/particles/alpha/circle_05_a.png" id="12_cexgs"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_eqrvy"]
 size = Vector2(2, 2)
@@ -18,7 +19,7 @@ size = Vector2(2, 2)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3cv5b"]
 transparency = 1
 shading_mode = 0
-albedo_color = Color(0.93786114, 1.4369954, 1.4369954, 1)
+albedo_color = Color(0.8268249, 1.0629996, 1.0616015, 1)
 albedo_texture = ExtResource("11_eqrvy")
 billboard_mode = 1
 
@@ -30,7 +31,7 @@ script = ExtResource("1_771iu")
 meshes = Array[Mesh]([ExtResource("2_rdqms"), ExtResource("3_7ilse"), ExtResource("4_e15t6"), ExtResource("5_eqrvy"), ExtResource("6_cexgs"), ExtResource("7_3cv5b"), ExtResource("8_6wtvc")])
 spinSpeed = 1.0
 oscillateSpeed = 1.0
-maxOscillateHeight = 1.0
+maxOscillateHeight = 0.1
 glowSpeed = 6.0
 
 [node name="Glow" type="MeshInstance3D" parent="." unique_id=1651620289]
@@ -42,11 +43,15 @@ surface_material_override/0 = SubResource("StandardMaterial3D_3cv5b")
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=127021888]
 material_override = ExtResource("9_7ilse")
 material_overlay = ExtResource("10_e15t6")
+cast_shadow = 0
 mesh = ExtResource("2_rdqms")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Mesh" unique_id=1439811772]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.977786, 0)
-light_energy = 6.0
+[node name="Decal" type="Decal" parent="Mesh" unique_id=1718339341]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.0442321, 0)
+size = Vector3(4, 4.266, 4)
+texture_albedo = ExtResource("12_cexgs")
+emission_energy = 0.0
+modulate = Color(0, 0, 0, 1)
 
 [node name="Collision" type="Area3D" parent="." unique_id=1751314234]
 
