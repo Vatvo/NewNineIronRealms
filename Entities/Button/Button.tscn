@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://du3vhnnxh3svu" path="res://VFXTextures/Luos_FreeGiveAway/Noise_Normals/T_NoiseNormal_24.png" id="9_sdx6b"]
 [ext_resource type="Shader" uid="uid://dtjtgdcwmmgy6" path="res://Entities/Button/ButtonLightColumn.gdshader" id="10_0hmvl"]
 [ext_resource type="Texture2D" uid="uid://b7foh3eeu1pf1" path="res://VFXTextures/1MAFX_Noise/Noise_9.tga" id="11_writv"]
-[ext_resource type="AudioStream" uid="uid://do7qejml3eylw" path="res://Audio/SFX/BallHit.ogg" id="13_nybw6"]
+[ext_resource type="AudioStream" uid="uid://fxuvs78ay8mc" path="res://Audio/SFX/Crystal.ogg" id="13_nybw6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5q77j"]
 render_priority = 0
