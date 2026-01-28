@@ -65,7 +65,7 @@ shader = ExtResource("10_lmeus")
 shader_parameter/tex = ExtResource("12_061yh")
 shader_parameter/mask = ExtResource("11_lmeus")
 shader_parameter/mask_strength = 1.0
-shader_parameter/uv_offset = Vector2(0.6418124, 0)
+shader_parameter/uv_offset = Vector2(0.112251945, 0)
 shader_parameter/color_ramp = SubResource("GradientTexture1D_061yh")
 shader_parameter/curve = SubResource("CurveTexture_5m37j")
 shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
@@ -103,6 +103,7 @@ shader_parameter/screen_width = 1920.0
 shader_parameter/screen_height = 1080.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l80rc"]
+shading_mode = 0
 albedo_texture = ExtResource("21_h6pxy")
 billboard_mode = 3
 particles_anim_h_frames = 1

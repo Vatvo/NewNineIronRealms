@@ -34,6 +34,7 @@ maxOscillateHeight = 1.0
 glowSpeed = 6.0
 
 [node name="Glow" type="MeshInstance3D" parent="." unique_id=1651620289]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2640996, 0, 0)
 cast_shadow = 0
 mesh = SubResource("QuadMesh_eqrvy")
 surface_material_override/0 = SubResource("StandardMaterial3D_3cv5b")
