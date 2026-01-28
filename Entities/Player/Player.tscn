@@ -67,7 +67,7 @@ shader = ExtResource("10_lmeus")
 shader_parameter/tex = ExtResource("12_061yh")
 shader_parameter/mask = ExtResource("11_lmeus")
 shader_parameter/mask_strength = 1.0
-shader_parameter/uv_offset = Vector2(0.9412802, 0)
+shader_parameter/uv_offset = Vector2(0.3797196, 0)
 shader_parameter/color_ramp = SubResource("GradientTexture1D_061yh")
 shader_parameter/curve = SubResource("CurveTexture_5m37j")
 shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
@@ -224,7 +224,6 @@ max_db = 2.0
 stream = ExtResource("19_l80rc")
 volume_db = -2.5
 pitch_scale = 0.5
-autoplay = true
 
 [node name="ShotUI" type="CanvasLayer" parent="." unique_id=1554008589]
 

@@ -103,11 +103,9 @@ func _physics_process(delta: float) -> void:
 		unmoddedDamp = 0
 		
 	if isBraking:
-		BrakeSoundPlayer.volume_db = 1
 		angular_damp = unmoddedDamp * 2
 		linear_damp = unmoddedDamp * 2
 	else:
-		BrakeSoundPlayer.volume_db = -50
 		angular_damp = unmoddedDamp
 		linear_damp = unmoddedDamp
 		
@@ -270,6 +268,7 @@ func get_aim_direction(pullLineEnd: Vector2, screenSize: Vector2):
 	
 func activate_brake() -> void:
 	if !isBraking && canBrake:
+		BrakeSoundPlayer.play()
 		isBraking = true
 		
 		linear_velocity /= 1.75
