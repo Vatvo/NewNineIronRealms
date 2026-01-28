@@ -7,8 +7,10 @@ class_name Hacksilver
 @export var oscillateSpeed: float
 @export var maxOscillateHeight: float
 @export var value: int = 1
+@export var glowSpeed: float = 1
 
 @onready var mesh: MeshInstance3D = $Mesh
+@onready var glow: MeshInstance3D = $Glow
 
 var time: float = 0
 
@@ -24,7 +26,15 @@ func _process(delta: float) -> void:
 	time += delta
 	mesh.position.y = maxOscillateHeight * sin(oscillateSpeed * time) + maxOscillateHeight
 	mesh.rotation.y += spinSpeed * delta
-
+	glow.mesh.size.x = 3 + 0.2 * sin(time * glowSpeed)
+	glow.mesh.size.y = 3 + 0.2 * sin(time * glowSpeed)
+	
+	var camera: Node3D = get_tree().get_nodes_in_group("MainCamera")[0]
+	var direction = camera.position.direction_to(position)
+	
+	glow.global_position = mesh.global_position + direction
+	#glow.position.y = mesh.position.y
+	
 
 func _on_collision_body_entered(body: Node3D) -> void:
 	if body is Player:

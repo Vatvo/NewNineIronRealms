@@ -65,7 +65,7 @@ shader = ExtResource("10_lmeus")
 shader_parameter/tex = ExtResource("12_061yh")
 shader_parameter/mask = ExtResource("11_lmeus")
 shader_parameter/mask_strength = 1.0
-shader_parameter/uv_offset = Vector2(0.52895594, 0)
+shader_parameter/uv_offset = Vector2(0.6418124, 0)
 shader_parameter/color_ramp = SubResource("GradientTexture1D_061yh")
 shader_parameter/curve = SubResource("CurveTexture_5m37j")
 shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
@@ -94,7 +94,7 @@ _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_an6q6"]
-colors = PackedColorArray(0.8369676, 0.5692811, 0, 1, 0.74998635, 2.6712567e-06, 6.738305e-07, 1)
+colors = PackedColorArray(0.9254902, 0.5686275, 0, 1, 0.8627451, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5m37j"]
 shader = ExtResource("17_hl213")

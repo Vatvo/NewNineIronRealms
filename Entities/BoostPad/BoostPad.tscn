@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cdpqkj645ckyr"]
+[gd_scene format=3 uid="uid://cdpqkj645ckyr"]
 
 [ext_resource type="Texture2D" uid="uid://btrlylifh7w8o" path="res://Entities/BoostPad/BoostPad.png" id="1_5q71d"]
 [ext_resource type="Script" uid="uid://da7axshb0bb8s" path="res://Entities/BoostPad/BoostPad.gd" id="1_yf020"]
@@ -94,26 +94,24 @@ random_pitch = 1.15
 streams_count = 1
 stream_0/stream = ExtResource("4_6ows3")
 
-[node name="BoostPad" type="Node3D"]
+[node name="BoostPad" type="Node3D" unique_id=1561804086]
 script = ExtResource("1_yf020")
 
-[node name="Mesh" type="MeshInstance3D" parent="."]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=2118674015]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
 mesh = SubResource("QuadMesh_5q71d")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_5q71d")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." unique_id=1821960497]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=87647586]
 shape = SubResource("BoxShape3D_yf020")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_7ntff")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1503120975]
+libraries/ = SubResource("AnimationLibrary_7ntff")
 
-[node name="BoostSound" type="AudioStreamPlayer3D" parent="."]
+[node name="BoostSound" type="AudioStreamPlayer3D" parent="." unique_id=1476178122]
 stream = SubResource("AudioStreamRandomizer_7ntff")
 volume_db = 1.0
 

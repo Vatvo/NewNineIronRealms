@@ -10,6 +10,17 @@
 [ext_resource type="ArrayMesh" uid="uid://d0y4nrf8mouau" path="res://Entities/Hacksilver/Meshes/Hacksilver7.obj" id="8_6wtvc"]
 [ext_resource type="Material" uid="uid://cb1abckvajhxf" path="res://Entities/Hacksilver/HacksilverMat.tres" id="9_7ilse"]
 [ext_resource type="Material" uid="uid://dfqw86r6sdr4f" path="res://Materials/Outline.tres" id="10_e15t6"]
+[ext_resource type="Texture2D" uid="uid://ciiu7nn23qn4b" path="res://VFXTextures/brackeys_vfx_bundle/particles/alpha/spotlight_07_a.png" id="11_eqrvy"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_eqrvy"]
+size = Vector2(2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3cv5b"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.93786114, 1.4369954, 1.4369954, 1)
+albedo_texture = ExtResource("11_eqrvy")
+billboard_mode = 1
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_e15t6"]
 radius = 1.5
@@ -20,6 +31,13 @@ meshes = Array[Mesh]([ExtResource("2_rdqms"), ExtResource("3_7ilse"), ExtResourc
 spinSpeed = 1.0
 oscillateSpeed = 1.0
 maxOscillateHeight = 1.0
+value = 4
+glowSpeed = 6.0
+
+[node name="Glow" type="MeshInstance3D" parent="." unique_id=1651620289]
+cast_shadow = 0
+mesh = SubResource("QuadMesh_eqrvy")
+surface_material_override/0 = SubResource("StandardMaterial3D_3cv5b")
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=127021888]
 material_override = ExtResource("9_7ilse")
