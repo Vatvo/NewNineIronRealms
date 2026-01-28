@@ -31,7 +31,7 @@ script = ExtResource("1_771iu")
 meshes = Array[Mesh]([ExtResource("2_rdqms"), ExtResource("3_7ilse"), ExtResource("4_e15t6"), ExtResource("5_eqrvy"), ExtResource("6_cexgs"), ExtResource("7_3cv5b"), ExtResource("8_6wtvc")])
 spinSpeed = 1.0
 oscillateSpeed = 1.0
-maxOscillateHeight = 1.0
+maxOscillateHeight = 0.1
 glowSpeed = 6.0
 
 [node name="Glow" type="MeshInstance3D" parent="." unique_id=1651620289]
