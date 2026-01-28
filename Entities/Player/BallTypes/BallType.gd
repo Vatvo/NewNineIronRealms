@@ -4,6 +4,8 @@ class_name BallType
 
 var parent: Player
 
+@export_category("Audio")
+
 var steerSensitivity: float = 0.003
 var brakeMeter: float = 100
 var jumpCount: int = 1
@@ -20,5 +22,8 @@ func ability() -> void:
 	pass
 	
 func collect_money(value: int) -> void:
+	for i in range(clamp(value, 0, 4)):
+		parent.HacksilverSoundPlayer.play()
 	parent.hacksilverParticles.amount = clamp(value, 0, 4)
 	parent.hacksilverParticles.emitting = true
+	print("collect_money called")

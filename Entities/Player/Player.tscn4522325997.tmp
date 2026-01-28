@@ -67,7 +67,7 @@ shader = ExtResource("10_lmeus")
 shader_parameter/tex = ExtResource("12_061yh")
 shader_parameter/mask = ExtResource("11_lmeus")
 shader_parameter/mask_strength = 1.0
-shader_parameter/uv_offset = Vector2(0.4890409, 0)
+shader_parameter/uv_offset = Vector2(0.8258936, 0)
 shader_parameter/color_ramp = SubResource("GradientTexture1D_061yh")
 shader_parameter/curve = SubResource("CurveTexture_5m37j")
 shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
@@ -95,11 +95,6 @@ stream_0/stream = ExtResource("16_samso")
 streams_count = 1
 stream_0/stream = ExtResource("19_l80rc")
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mgqku"]
-random_pitch = 1.0594631
-streams_count = 1
-stream_0/stream = ExtResource("20_l2mqv")
-
 [sub_resource type="Curve" id="Curve_t38ms"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -112,6 +107,11 @@ shader = ExtResource("17_hl213")
 shader_parameter/circle_size = 1.04999995231628
 shader_parameter/screen_width = 1920.0
 shader_parameter/screen_height = 1080.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mgqku"]
+random_pitch = 1.0293022
+streams_count = 1
+stream_0/stream = ExtResource("20_l2mqv")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l80rc"]
 albedo_texture = ExtResource("21_h6pxy")
@@ -226,10 +226,6 @@ max_db = 2.0
 pitch_scale = 0.5
 autoplay = true
 
-[node name="HacksilverSoundPlayer" type="AudioStreamPlayer3D" parent="." unique_id=2068050492]
-stream = SubResource("AudioStreamRandomizer_mgqku")
-volume_db = -1.5
-
 [node name="ShotUI" type="CanvasLayer" parent="." unique_id=1554008589]
 
 [node name="ShotPullLine" type="Line2D" parent="ShotUI" unique_id=229163799]
@@ -255,6 +251,10 @@ color = Color(0, 0, 0, 1)
 
 [node name="BallType" type="Node" parent="." unique_id=481427454]
 script = ExtResource("18_5m37j")
+
+[node name="HacksilverSoundPlayer" type="AudioStreamPlayer" parent="BallType" unique_id=913237987]
+stream = SubResource("AudioStreamRandomizer_mgqku")
+volume_db = -2.5
 
 [node name="HacksilverParticles" type="GPUParticles3D" parent="." unique_id=911010729]
 top_level = true

@@ -37,6 +37,7 @@ static var canBrake: bool = true
 @onready var ClubSoundPlayer: AudioStreamPlayer3D = $ClubSoundPlayer
 @onready var JumpSoundPlayer: AudioStreamPlayer3D = $JumpSoundPlayer
 @onready var BrakeSoundPlayer: AudioStreamPlayer3D = $BrakeSoundPlayer
+@onready var HacksilverSoundPlayer: AudioStreamPlayer3D = $HacksilverSoundPlayer
 
 var last_velocity: Vector3 = Vector3.ZERO
 
