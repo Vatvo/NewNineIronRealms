@@ -37,6 +37,7 @@ static var canBrake: bool = true
 @export_category("Audio")
 @onready var HitSoundPlayer: AudioStreamPlayer3D = $HitSoundPlayer
 @onready var ClubSoundPlayer: AudioStreamPlayer3D = $ClubSoundPlayer
+@onready var ClubSoundPlayerHard: AudioStreamPlayer3D = $ClubSoundPlayerHard
 @onready var JumpSoundPlayer: AudioStreamPlayer3D = $JumpSoundPlayer
 @onready var BrakeSoundPlayer: AudioStreamPlayer3D = $BrakeSoundPlayer
 @onready var HacksilverSoundPlayer: AudioStreamPlayer3D = $HacksilverSoundPlayer
@@ -225,11 +226,11 @@ func handle_shot() -> void:
 	aimMarker.draw_aim(aimDirection, lerp(0, 5, pullLength / maxPullLength))
 		
 func shoot() -> void:
-	
 	ballTypeNode.brakeMeter = ballTypeNode.maxBrake
 	
 	if floor(lerp(0, 5, pullLength / maxPullLength)) > 4:
 		#POWER SHOT
+		ClubSoundPlayerHard.play()
 		lastShotPosition = position
 		ballTypeNode.power_shot()
 		

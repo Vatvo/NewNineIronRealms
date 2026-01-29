@@ -17,10 +17,11 @@
 [ext_resource type="Script" uid="uid://cog4epjh8vd4u" path="res://addons/gputrail/GPUTrail3D.gd" id="11_061yh"]
 [ext_resource type="Texture2D" uid="uid://bs62d312h73im" path="res://VFXTextures/1MAFX_Noise/Noise_7.tga" id="11_lmeus"]
 [ext_resource type="Texture2D" uid="uid://dntfbkbvxovrh" path="res://VFXTextures/VFX_HQ_Seamless_Noise_Pack_Vol1/Noise_003.png" id="12_061yh"]
-[ext_resource type="AudioStream" uid="uid://du4y7fvx0xbxb" path="res://Audio/SFX/HacksilverCollect.ogg" id="16_l2mqv"]
+[ext_resource type="AudioStream" uid="uid://bnuet7g5vtr61" path="res://Audio/SFX/HacksilverCollect.ogg" id="16_l2mqv"]
 [ext_resource type="AudioStream" uid="uid://togfofgt0ja6" path="res://Audio/SFX/BallJump.ogg" id="16_samso"]
 [ext_resource type="Shader" uid="uid://c43inooujhjg5" path="res://Entities/Player/ResetFadeOut.gdshader" id="17_hl213"]
 [ext_resource type="Script" uid="uid://bfusbackygxpw" path="res://Entities/Player/BallTypes/DefaultBall.gd" id="18_5m37j"]
+[ext_resource type="AudioStream" uid="uid://bvsn22cq4q8qp" path="res://Audio/SFX/BallHitHard.ogg" id="19_80tt4"]
 [ext_resource type="AudioStream" uid="uid://bp8oqp5y15csm" path="res://Audio/SFX/BallBrake.ogg" id="19_l80rc"]
 [ext_resource type="Texture2D" uid="uid://b5lquls2p7b5" path="res://Entities/Hacksilver/hacksilver.png" id="23_l2mqv"]
 [ext_resource type="Script" uid="uid://p6p4btw7o23v" path="res://Entities/Player/BrakeMeter.gd" id="24_mgqku"]
@@ -68,7 +69,7 @@ shader = ExtResource("10_lmeus")
 shader_parameter/tex = ExtResource("12_061yh")
 shader_parameter/mask = ExtResource("11_lmeus")
 shader_parameter/mask_strength = 1.0
-shader_parameter/uv_offset = Vector2(0.28322786, 0)
+shader_parameter/uv_offset = Vector2(0.5200217, 0)
 shader_parameter/color_ramp = SubResource("GradientTexture1D_061yh")
 shader_parameter/curve = SubResource("CurveTexture_5m37j")
 shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
@@ -78,22 +79,27 @@ shader_parameter/flags = 62
 material = SubResource("ShaderMaterial_e34i1")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mgqku"]
-random_pitch = 1.0594631
+random_pitch = 1.122462
 streams_count = 1
 stream_0/stream = ExtResource("16_l2mqv")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gallu"]
+random_pitch = 1.0594631
 streams_count = 1
 stream_0/stream = ExtResource("3_gallu")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_tepoh"]
+random_pitch = 1.0594631
+streams_count = 1
+stream_0/stream = ExtResource("19_80tt4")
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_samso"]
-random_pitch = 1.15
-random_volume_offset_db = 0.15
+random_pitch = 1.1892071
 streams_count = 1
 stream_0/stream = ExtResource("2_uw7o4")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hl213"]
-random_pitch = 1.0293022
+random_pitch = 1.0594631
 streams_count = 1
 stream_0/stream = ExtResource("16_samso")
 
@@ -230,15 +236,20 @@ _defaults_have_been_set = true
 
 [node name="HacksilverSoundPlayer" type="AudioStreamPlayer3D" parent="." unique_id=119981243]
 stream = SubResource("AudioStreamRandomizer_mgqku")
-volume_db = -1.5
+volume_db = -0.5
 
 [node name="ClubSoundPlayer" type="AudioStreamPlayer3D" parent="." unique_id=509467909]
 stream = SubResource("AudioStreamRandomizer_gallu")
+
+[node name="ClubSoundPlayerHard" type="AudioStreamPlayer3D" parent="." unique_id=1375700028]
+stream = SubResource("AudioStreamRandomizer_tepoh")
+volume_db = 1.0
 
 [node name="HitSoundPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1080549192]
 stream = SubResource("AudioStreamRandomizer_samso")
 volume_db = -2.5
 max_db = 2.0
+pitch_scale = 0.8
 
 [node name="JumpSoundPlayer" type="AudioStreamPlayer3D" parent="." unique_id=52490144]
 stream = SubResource("AudioStreamRandomizer_hl213")
@@ -248,7 +259,7 @@ max_db = 2.0
 [node name="BrakeSoundPlayer" type="AudioStreamPlayer3D" parent="." unique_id=188126931]
 stream = ExtResource("19_l80rc")
 volume_db = -2.5
-pitch_scale = 0.5
+autoplay = true
 
 [node name="HacksilverParticles" type="GPUParticles3D" parent="." unique_id=911010729]
 top_level = true
