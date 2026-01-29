@@ -10,6 +10,8 @@ var jumpCount: int = 1
 var resetCount: int = 1
 var coyoteTime: float = 0
 
+var maxBrake: float = brakeMeter
+
 func begin() -> void:
 	pass
 	

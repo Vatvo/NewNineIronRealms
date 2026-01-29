@@ -18,6 +18,7 @@ static var canBrake: bool = true
 @onready var circleTransition: ColorRect = $ResetFadeOut/CircleTransition
 @onready var ballTypeNode: BallType = $BallType
 @onready var hacksilverParticles: GPUParticles3D = $HacksilverParticles
+@onready var brakeMeter: CanvasLayer = $BrakeMeter
 
 @export_category("Ball Type")
 @export var ballTypeScript: Script = preload("res://Entities/Player/BallTypes/DefaultBall.gd")
@@ -27,6 +28,7 @@ static var canBrake: bool = true
 @export var spinPower: float
 @export var hopPower: float
 @export var powerShotBound: float
+@export var brakeDepeltionSpeed: float
 
 @export_category("Camera")
 @export var cameraSensitivity: Vector2 = Vector2(1,1)
@@ -103,12 +105,18 @@ func _physics_process(delta: float) -> void:
 		unmoddedDamp = 0
 		
 	if isBraking:
+		if ballTypeNode.brakeMeter <= 0:
+			deactivate_brake()
+			
 		angular_damp = unmoddedDamp * 2
 		linear_damp = unmoddedDamp * 2
+		ballTypeNode.brakeMeter -= brakeDepeltionSpeed * delta
+		
+		
 	else:
 		angular_damp = unmoddedDamp
 		linear_damp = unmoddedDamp
-		
+	
 	if Input.is_action_just_pressed("Brake") && isMoving:
 		activate_brake()
 	
@@ -218,6 +226,8 @@ func handle_shot() -> void:
 		
 func shoot() -> void:
 	
+	ballTypeNode.brakeMeter = ballTypeNode.maxBrake
+	
 	if floor(lerp(0, 5, pullLength / maxPullLength)) > 4:
 		#POWER SHOT
 		lastShotPosition = position
@@ -272,7 +282,8 @@ func get_aim_direction(pullLineEnd: Vector2, screenSize: Vector2):
 		return Vector3(screenDirection.x, 0, -screenDirection.y)
 	
 func activate_brake() -> void:
-	if !isBraking && canBrake:
+	if !isBraking && canBrake && ballTypeNode.brakeMeter > 0:
+		brakeMeter.visible = true
 		BrakeSoundPlayer.play()
 		isBraking = true
 		
@@ -286,6 +297,7 @@ func activate_brake() -> void:
 
 func deactivate_brake() -> void:
 	if isBraking:
+		brakeMeter.visible = false
 		isBraking = false
 		
 		linear_velocity *= 1.75

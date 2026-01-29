@@ -22,7 +22,8 @@
 [ext_resource type="Shader" uid="uid://c43inooujhjg5" path="res://Entities/Player/ResetFadeOut.gdshader" id="17_hl213"]
 [ext_resource type="Script" uid="uid://bfusbackygxpw" path="res://Entities/Player/BallTypes/DefaultBall.gd" id="18_5m37j"]
 [ext_resource type="AudioStream" uid="uid://bp8oqp5y15csm" path="res://Audio/SFX/BallBrake.ogg" id="19_l80rc"]
-[ext_resource type="Texture2D" uid="uid://c8eh4sp3a421j" path="res://icon.svg" id="21_h6pxy"]
+[ext_resource type="Texture2D" uid="uid://b5lquls2p7b5" path="res://Entities/Hacksilver/hacksilver.png" id="23_l2mqv"]
+[ext_resource type="Script" uid="uid://p6p4btw7o23v" path="res://Entities/Player/BrakeMeter.gd" id="24_mgqku"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hj1c0"]
 rough = true
@@ -67,7 +68,7 @@ shader = ExtResource("10_lmeus")
 shader_parameter/tex = ExtResource("12_061yh")
 shader_parameter/mask = ExtResource("11_lmeus")
 shader_parameter/mask_strength = 1.0
-shader_parameter/uv_offset = Vector2(0.09140223, 0)
+shader_parameter/uv_offset = Vector2(0.28322786, 0)
 shader_parameter/color_ramp = SubResource("GradientTexture1D_061yh")
 shader_parameter/curve = SubResource("CurveTexture_5m37j")
 shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
@@ -96,6 +97,29 @@ random_pitch = 1.0293022
 streams_count = 1
 stream_0/stream = ExtResource("16_samso")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l80rc"]
+render_priority = 10
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("23_l2mqv")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l2mqv"]
+emission_shape_scale = Vector3(0, 0, 0)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+damping_min = 20.0
+damping_max = 20.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_mgqku"]
+size = Vector2(1.5, 1.5)
+
 [sub_resource type="Curve" id="Curve_t38ms"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -109,25 +133,22 @@ shader_parameter/circle_size = 1.04999995231628
 shader_parameter/screen_width = 1920.0
 shader_parameter/screen_height = 1080.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l80rc"]
-shading_mode = 0
-albedo_texture = ExtResource("21_h6pxy")
-billboard_mode = 3
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
+[sub_resource type="Gradient" id="Gradient_l2mqv"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 0)
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l2mqv"]
-emission_shape_scale = Vector3(0, 0, 0)
-direction = Vector3(0, 1, 0)
-spread = 0.0
-initial_velocity_min = 10.0
-initial_velocity_max = 10.0
-gravity = Vector3(0, 0, 0)
-damping_min = 30.000002
-damping_max = 30.000002
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mgqku"]
+gradient = SubResource("Gradient_l2mqv")
 
-[sub_resource type="QuadMesh" id="QuadMesh_mgqku"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_80tt4"]
+bg_color = Color(1.0591738, 0.8008459, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 4.0
+expand_margin_right = 4.0
 
 [node name="Player" type="RigidBody3D" unique_id=1430462939 groups=["Player"]]
 physics_material_override = SubResource("PhysicsMaterial_hj1c0")
@@ -141,8 +162,12 @@ shotPower = 40.0
 spinPower = 0.05
 hopPower = 25.0
 powerShotBound = 4.0
+brakeDepeltionSpeed = 25.0
 cameraSensitivity = Vector2(0.01, 0.01)
 cameraDistanceCurve = SubResource("Curve_an6q6")
+
+[node name="BallType" type="Node" parent="." unique_id=481427454]
+script = ExtResource("18_5m37j")
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=358315486]
 material_overlay = ExtResource("3_vcmon")
@@ -225,6 +250,17 @@ stream = ExtResource("19_l80rc")
 volume_db = -2.5
 pitch_scale = 0.5
 
+[node name="HacksilverParticles" type="GPUParticles3D" parent="." unique_id=911010729]
+top_level = true
+material_override = SubResource("StandardMaterial3D_l80rc")
+emitting = false
+amount = 4
+one_shot = true
+explosiveness = 0.74
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_l2mqv")
+draw_pass_1 = SubResource("QuadMesh_mgqku")
+
 [node name="ShotUI" type="CanvasLayer" parent="." unique_id=1554008589]
 
 [node name="ShotPullLine" type="Line2D" parent="ShotUI" unique_id=229163799]
@@ -248,17 +284,26 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="BallType" type="Node" parent="." unique_id=481427454]
-script = ExtResource("18_5m37j")
+[node name="BrakeMeter" type="CanvasLayer" parent="." unique_id=793979931]
+visible = false
+script = ExtResource("24_mgqku")
 
-[node name="HacksilverParticles" type="GPUParticles3D" parent="." unique_id=911010729]
-top_level = true
-material_override = SubResource("StandardMaterial3D_l80rc")
-emitting = false
-amount = 4
-lifetime = 0.6
-one_shot = true
-explosiveness = 0.74
-local_coords = true
-process_material = SubResource("ParticleProcessMaterial_l2mqv")
-draw_pass_1 = SubResource("QuadMesh_mgqku")
+[node name="VSlider" type="VSlider" parent="BrakeMeter" unique_id=157609350]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 104.0
+offset_top = -102.0
+offset_right = 120.0
+offset_bottom = 102.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_icons/grabber_disabled = SubResource("GradientTexture1D_mgqku")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_80tt4")
+step = 0.1
+value = 62.0
+editable = false
+scrollable = false
