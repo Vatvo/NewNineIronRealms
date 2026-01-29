@@ -180,7 +180,7 @@ func _on_body_entered(body: Node) -> void:
 	var speed_before: float = last_velocity.length()
 	var speed_after: float = linear_velocity.length()
 	var impact_strength: float = max(speed_before - speed_after, 0.0)
-	if impact_strength < 0.5:
+	if impact_strength < 0.15:
 		return
 	if HitSoundPlayer.playing:
 		HitSoundPlayer.stop()
@@ -188,7 +188,7 @@ func _on_body_entered(body: Node) -> void:
 	var max_impact: float = 8.0
 	var t: float = clamp(impact_strength / max_impact, 0.0, 1.0)
 	# Strong curve = quiet small hits
-	t = pow(t, 2.5)
+	t = pow(t, 5.5)
 	HitSoundPlayer.play()
 
 func check_is_grounded() -> bool:
@@ -285,7 +285,7 @@ func get_aim_direction(pullLineEnd: Vector2, screenSize: Vector2):
 func activate_brake() -> void:
 	if !isBraking && canBrake && ballTypeNode.brakeMeter > 0:
 		brakeMeter.visible = true
-		BrakeSoundPlayer.play()
+		BrakeSoundPlayer.volume_db=0.5
 		isBraking = true
 		
 		linear_velocity /= 1.75
@@ -300,7 +300,7 @@ func deactivate_brake() -> void:
 	if isBraking:
 		brakeMeter.visible = false
 		isBraking = false
-		
+		BrakeSoundPlayer.volume_db=-50
 		linear_velocity *= 1.75
 		angular_velocity *= 1.75
 		
