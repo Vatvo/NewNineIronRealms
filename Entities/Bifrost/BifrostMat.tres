@@ -1,0 +1,33 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bxfocirerhbg5"]
+
+[ext_resource type="Shader" uid="uid://b6l6p8701iv2" path="res://Entities/Bifrost/Bifrost.gdshader" id="1_2bckt"]
+[ext_resource type="Texture2D" uid="uid://vhebsi61n7bo" path="res://Entities/Bifrost/rainbow.png" id="2_xly5r"]
+[ext_resource type="Texture2D" uid="uid://c2sd0onxl0rfi" path="res://VFXTextures/1MAFX_Noise/Noise_21.tga" id="3_04lxw"]
+[ext_resource type="Texture2D" uid="uid://dgra1y0wmusvf" path="res://VFXTextures/Luos_FreeGiveAway/Noise_Normals/T_NoiseNormal_80.png" id="3_am4j5"]
+[ext_resource type="Texture2D" uid="uid://crdmh4i8qvhsk" path="res://VFXTextures/VFX_HQ_Seamless_Noise_Pack_Vol1/Noise_077.png" id="3_ut7th"]
+[ext_resource type="Texture2D" uid="uid://c2vpjkcj4t87q" path="res://VFXTextures/1MAFX_Noise/Noise_25.tga" id="4_am4j5"]
+[ext_resource type="Texture2D" uid="uid://qjkr024wv1lm" path="res://VFXTextures/VFX_HQ_Seamless_Noise_Pack_Vol1/Noise_026.png" id="4_o3ktk"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_2bckt")
+shader_parameter/base_texture = ExtResource("2_xly5r")
+shader_parameter/normal_map = ExtResource("3_am4j5")
+shader_parameter/normal_depth = 6.79
+shader_parameter/uv_warp_1 = ExtResource("3_ut7th")
+shader_parameter/uv_warp_1_speed = Vector2(0.1, 0)
+shader_parameter/uv_warp_2 = ExtResource("4_am4j5")
+shader_parameter/uv_warp_2_speed = Vector2(-0.1, 0)
+shader_parameter/warp_strength = 0.30999999307088
+shader_parameter/screen_warp_strength = 0.01999999955296
+shader_parameter/metallic = 0.30999999307088
+shader_parameter/roughness = 0.18999999575312
+shader_parameter/specular = 0.5499999877064
+shader_parameter/fresnel_opacity = 0.1999999955296
+shader_parameter/refraction_strength = 0.10000000475
+shader_parameter/is_depth_based = true
+shader_parameter/glitter_texture = ExtResource("4_o3ktk")
+shader_parameter/glitter_mask = ExtResource("3_04lxw")
+shader_parameter/glitter_color = Color(4.7037287, 3.500891, 2.1211643, 1)
+shader_parameter/vertex_distortion_speed = Vector2(0.05, 0)
+shader_parameter/vertex_distortion_amount = Vector2(0.2, 0)
