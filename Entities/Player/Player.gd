@@ -144,8 +144,8 @@ func _process(delta: float) -> void:
 		
 #Pause Stuff ----------------------------------------------
 	if Input.is_action_just_released("Pause"):
-		pauseUi.visible = visible
 		pauseUi.pause()
+		pauseUi.visible = visible
 		
 func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_pressed("MoveCamera") && event is InputEventMouseMotion\

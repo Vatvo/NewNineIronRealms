@@ -10,10 +10,13 @@ func _ready() -> void:
 	MenuBtn.mouse_exited.connect(hover_stop)
 
 func button_pressed() -> void:
-	print ("doodoo fart")
+	resume()
 
 func hover_play() -> void:
 	Animator.play("ArrowFade")
 
 func hover_stop() -> void:
 	Animator.stop()
+	
+func resume () -> void:
+	print("bomboclaat")
