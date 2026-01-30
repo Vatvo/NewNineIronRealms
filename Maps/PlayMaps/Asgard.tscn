@@ -1,90 +1,53 @@
 [gd_scene format=3 uid="uid://uhu4yk1pcl52"]
 
-[ext_resource type="Image" uid="uid://dajy2tbino7wd" path="res://Maps/PlayMaps/Asgard/Heightmap_0_0.res" id="1_6vnus"]
-[ext_resource type="Image" uid="uid://c8cofej0wyav3" path="res://Maps/PlayMaps/Asgard/Heightmap_1_0.res" id="2_hlmin"]
+[ext_resource type="ArrayMesh" uid="uid://d1spk61n6rg7p" path="res://Maps/PlayMaps/Asgard/AS_Dammed_Water.obj" id="2_407w6"]
 [ext_resource type="PackedScene" uid="uid://b1uo6orqicguq" path="res://Entities/Player/Player.tscn" id="2_xv5w7"]
-[ext_resource type="Image" uid="uid://ckagpxahjb6s6" path="res://Maps/PlayMaps/Asgard/Heightmap_1_-1.res" id="3_hlk88"]
-[ext_resource type="Image" uid="uid://bq8x6ce2ymg2" path="res://Maps/PlayMaps/Asgard/Heightmap_1_-2.res" id="4_ffokv"]
-[ext_resource type="Image" uid="uid://dhgec8hbq2if6" path="res://Maps/PlayMaps/Asgard/Heightmap_0_-1.res" id="5_fsqio"]
-[ext_resource type="Image" uid="uid://b1mg2tdekfxwu" path="res://Maps/PlayMaps/Asgard/Heightmap_0_-2.res" id="6_upe5e"]
-[ext_resource type="Image" uid="uid://cx18snt2givup" path="res://Maps/PlayMaps/Asgard/Heightmap_-1_-2.res" id="7_ub8ks"]
-[ext_resource type="Image" uid="uid://c2boi1xpsmlb" path="res://Maps/PlayMaps/Asgard/Heightmap_-1_-1.res" id="8_ujjcc"]
-[ext_resource type="Image" uid="uid://b5eqww17u4wll" path="res://Maps/PlayMaps/Asgard/Heightmap_-1_0.res" id="9_lp7j4"]
-[ext_resource type="Image" uid="uid://ppwuuvuhbnkq" path="res://Maps/PlayMaps/Asgard/Heightmap_0_1.res" id="10_beibe"]
-[ext_resource type="Image" uid="uid://djshrr0accu27" path="res://Maps/PlayMaps/Asgard/Heightmap_1_1.res" id="11_qbmoj"]
-[ext_resource type="Image" uid="uid://dcs4sxilifokv" path="res://Maps/PlayMaps/Asgard/Heightmap_-1_1.res" id="12_q6i8l"]
-[ext_resource type="Image" uid="uid://dt58xf52tg1ua" path="res://Maps/PlayMaps/Asgard/Heightmap_2_0.res" id="13_fsqio"]
-[ext_resource type="Image" uid="uid://4hqmvt4kg1cw" path="res://Maps/PlayMaps/Asgard/Heightmap_2_1.res" id="14_upe5e"]
-[ext_resource type="Image" uid="uid://d2svyqpuwa45o" path="res://Maps/PlayMaps/Asgard/Heightmap_2_-1.res" id="15_ub8ks"]
-
-[sub_resource type="ZoneResource" id="ZoneResource_qeqcc"]
-heightMapImage = ExtResource("1_6vnus")
-
-[sub_resource type="ZoneResource" id="ZoneResource_ke8xg"]
-zonePosition = Vector2i(1, 0)
-heightMapImage = ExtResource("2_hlmin")
-
-[sub_resource type="ZoneResource" id="ZoneResource_ts81x"]
-zonePosition = Vector2i(1, -1)
-heightMapImage = ExtResource("3_hlk88")
-
-[sub_resource type="ZoneResource" id="ZoneResource_cvs27"]
-zonePosition = Vector2i(1, -2)
-heightMapImage = ExtResource("4_ffokv")
-
-[sub_resource type="ZoneResource" id="ZoneResource_qyosk"]
-zonePosition = Vector2i(0, -1)
-heightMapImage = ExtResource("5_fsqio")
-
-[sub_resource type="ZoneResource" id="ZoneResource_vohyr"]
-zonePosition = Vector2i(0, -2)
-heightMapImage = ExtResource("6_upe5e")
-
-[sub_resource type="ZoneResource" id="ZoneResource_biphk"]
-zonePosition = Vector2i(-1, -2)
-heightMapImage = ExtResource("7_ub8ks")
-
-[sub_resource type="ZoneResource" id="ZoneResource_xapg2"]
-zonePosition = Vector2i(-1, -1)
-heightMapImage = ExtResource("8_ujjcc")
-
-[sub_resource type="ZoneResource" id="ZoneResource_y0sre"]
-zonePosition = Vector2i(-1, 0)
-heightMapImage = ExtResource("9_lp7j4")
-
-[sub_resource type="ZoneResource" id="ZoneResource_8x5r5"]
-zonePosition = Vector2i(0, 1)
-heightMapImage = ExtResource("10_beibe")
-
-[sub_resource type="ZoneResource" id="ZoneResource_pq55p"]
-zonePosition = Vector2i(1, 1)
-heightMapImage = ExtResource("11_qbmoj")
-
-[sub_resource type="ZoneResource" id="ZoneResource_c4xwp"]
-zonePosition = Vector2i(-1, 1)
-heightMapImage = ExtResource("12_q6i8l")
-
-[sub_resource type="ZoneResource" id="ZoneResource_ujjcc"]
-zonePosition = Vector2i(2, 0)
-heightMapImage = ExtResource("13_fsqio")
-
-[sub_resource type="ZoneResource" id="ZoneResource_lp7j4"]
-zonePosition = Vector2i(2, 1)
-heightMapImage = ExtResource("14_upe5e")
-
-[sub_resource type="ZoneResource" id="ZoneResource_beibe"]
-zonePosition = Vector2i(2, -1)
-heightMapImage = ExtResource("15_ub8ks")
-
-[sub_resource type="ZonesResource" id="ZonesResource_004c8"]
-zones = Array[ZoneResource]([SubResource("ZoneResource_qeqcc"), SubResource("ZoneResource_ke8xg"), SubResource("ZoneResource_ts81x"), SubResource("ZoneResource_cvs27"), SubResource("ZoneResource_qyosk"), SubResource("ZoneResource_vohyr"), SubResource("ZoneResource_biphk"), SubResource("ZoneResource_xapg2"), SubResource("ZoneResource_y0sre"), SubResource("ZoneResource_8x5r5"), SubResource("ZoneResource_pq55p"), SubResource("ZoneResource_c4xwp"), SubResource("ZoneResource_ujjcc"), SubResource("ZoneResource_lp7j4"), SubResource("ZoneResource_beibe")])
+[ext_resource type="ArrayMesh" uid="uid://cyl076vcq72so" path="res://Maps/PlayMaps/Asgard/AS_Dock.obj" id="3_4bowc"]
+[ext_resource type="ArrayMesh" uid="uid://wr2k77km3wb" path="res://Maps/PlayMaps/Asgard/AS_Door.obj" id="4_2nc5f"]
+[ext_resource type="ArrayMesh" uid="uid://c0uy8i5e12f7c" path="res://Maps/PlayMaps/Asgard/AS_Funnel.obj" id="5_hlmin"]
+[ext_resource type="ArrayMesh" uid="uid://x6ml0bc2s27y" path="res://Maps/PlayMaps/Asgard/AS_Garden.obj" id="6_hlk88"]
+[ext_resource type="ArrayMesh" uid="uid://w4dlvnciwqwo" path="res://Maps/PlayMaps/Asgard/AS_Opening.obj" id="7_ffokv"]
+[ext_resource type="ArrayMesh" uid="uid://co0efkc8f0nwi" path="res://Maps/PlayMaps/Asgard/AS_Palace_base.obj" id="8_fsqio"]
+[ext_resource type="ArrayMesh" uid="uid://bht7gmg651p3l" path="res://Maps/PlayMaps/Asgard/AS_SLIDE.obj" id="9_upe5e"]
+[ext_resource type="ArrayMesh" uid="uid://6thq7g2qrgkg" path="res://Maps/PlayMaps/Asgard/AS_Village.obj" id="10_ub8ks"]
 
 [node name="Asgard" type="Node3D" unique_id=1419564980]
 
-[node name="TerraBrush" type="TerraBrush" parent="." unique_id=894225507]
-dataPath = "res://Maps/PlayMaps/Asgard"
-terrainZones = SubResource("ZonesResource_004c8")
-metadata/_edit_lock_ = true
-
 [node name="Player" parent="." unique_id=630880669 instance=ExtResource("2_xv5w7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 367.93954, 1.0000019, -8.201813)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 715.89374, 113.24246, 156.65277)
+
+[node name="AsDammedWater" type="MeshInstance3D" parent="." unique_id=1181017608]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.688034, 662.2299, -308.51535)
+mesh = ExtResource("2_407w6")
+
+[node name="AsDock" type="MeshInstance3D" parent="." unique_id=1486865390]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.688034, 662.2299, -308.51535)
+mesh = ExtResource("3_4bowc")
+
+[node name="AsDoor" type="MeshInstance3D" parent="." unique_id=1719186884]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.688034, 662.2299, -308.51535)
+mesh = ExtResource("4_2nc5f")
+
+[node name="AsFunnel" type="MeshInstance3D" parent="." unique_id=222504371]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.688034, 662.2299, -308.51535)
+mesh = ExtResource("5_hlmin")
+
+[node name="AsGarden" type="MeshInstance3D" parent="." unique_id=776525906]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.688034, 662.2299, -308.51535)
+mesh = ExtResource("6_hlk88")
+
+[node name="AsOpening" type="MeshInstance3D" parent="." unique_id=1112153902]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.688034, 662.2299, -308.51535)
+mesh = ExtResource("7_ffokv")
+
+[node name="AsPalaceBase" type="MeshInstance3D" parent="." unique_id=1254831860]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.688034, 662.2299, -308.51535)
+mesh = ExtResource("8_fsqio")
+
+[node name="AsSlide" type="MeshInstance3D" parent="." unique_id=316583775]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.688034, 662.2299, -308.51535)
+mesh = ExtResource("9_upe5e")
+
+[node name="AsVillage" type="MeshInstance3D" parent="." unique_id=835824513]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.688034, 662.2299, -308.51535)
+mesh = ExtResource("10_ub8ks")

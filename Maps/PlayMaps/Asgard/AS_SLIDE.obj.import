@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bht7gmg651p3l"
+path="res://.godot/imported/AS_SLIDE.obj-28bf887da06c43e2bd3068972f2844ad.mesh"
+
+[deps]
+
+files=["res://.godot/imported/AS_SLIDE.obj-28bf887da06c43e2bd3068972f2844ad.mesh"]
+
+source_file="res://Maps/PlayMaps/Asgard/AS_SLIDE.obj"
+dest_files=["res://.godot/imported/AS_SLIDE.obj-28bf887da06c43e2bd3068972f2844ad.mesh", "res://.godot/imported/AS_SLIDE.obj-28bf887da06c43e2bd3068972f2844ad.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
