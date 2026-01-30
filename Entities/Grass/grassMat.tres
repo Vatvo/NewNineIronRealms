@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://c0q0cgnbsk3cy"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://c0q0cgnbsk3cy"]
 
 [ext_resource type="Shader" uid="uid://cuh671cf75be0" path="res://Entities/Grass/grass.gdshader" id="1_svw6o"]
 [ext_resource type="Texture2D" uid="uid://dxav3a8v0hws8" path="res://VFXTextures/VFX_HQ_Seamless_Noise_Pack_Vol1/Noise_002.png" id="2_x42cv"]
