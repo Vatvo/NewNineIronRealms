@@ -10,7 +10,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vmvbr"]
 shader = ExtResource("6_6dtwm")
-shader_parameter/blur = 0.4850000230375
+shader_parameter/blur = 1.330000063175
 shader_parameter/brightness = 0.5650000268375
 
 [sub_resource type="Animation" id="Animation_i1u63"]
@@ -215,6 +215,8 @@ _data = {
 }
 
 [node name="PauseUi" type="CanvasLayer" unique_id=1760237439]
+process_mode = 3
+script = ExtResource("1_vmvbr")
 
 [node name="Control" type="Control" parent="." unique_id=104998544]
 layout_mode = 3
@@ -223,7 +225,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_vmvbr")
 
 [node name="MC_Buttons" type="MarginContainer" parent="Control" unique_id=569660008]
 modulate = Color(1, 1, 1, 0)
