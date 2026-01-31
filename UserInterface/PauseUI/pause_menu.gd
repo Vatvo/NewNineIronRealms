@@ -1,13 +1,32 @@
-extends Control
+extends CanvasLayer
 
-@onready var Animator: AnimationPlayer = $"../AnimationPlayer"
+@onready var FadeAnimator: AnimationPlayer = $FadeAnimPlayer
+@onready var SpinAnimator: AnimationPlayer = $SpinAnimPlayer
+@onready var ResumeBtn: Button = $Control/MC_Buttons/VBoxContainer/ResumeBTN/HBox/Button
 
+var canUnpause: bool = false
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Animator.play("FadeIn")
-
-
+	ResumeBtn.pressed.connect(resume)
+	
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if Input.is_action_just_released("Pause") && canUnpause == false:
+		#
+		#canUnpause = true
+		pass
+	
+	if Input.is_action_just_released("Pause") && canUnpause:
+		resume()
+	
+	
+func pause() -> void:
+	get_tree().paused = true
+	FadeAnimator.play("FadeIn")
+	SpinAnimator.play("RuneSpin2")
+	
+	
+func resume() -> void:
+		get_tree().paused = false
+		FadeAnimator.play_backwards("FadeIn")

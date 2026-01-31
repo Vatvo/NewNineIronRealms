@@ -10,6 +10,7 @@ static var canBrake: bool = true
 @onready var cameraHost: PhantomCamera3D = $CameraHost
 @onready var shotPullLine: Line2D = $ShotUI/ShotPullLine
 @onready var shotUI: CanvasLayer = $ShotUI
+@onready var pauseUi: CanvasLayer = $PauseUi
 @onready var aimMarker: AimMarker = $AimMarker
 @onready var mainCamera: Camera3D = get_tree().get_nodes_in_group("MainCamera")[0]
 @onready var cameraFollowPoint: Node3D = $CameraFollowPoint
@@ -165,6 +166,11 @@ func _process(delta: float) -> void:
 		isShooting = false
 		shotUI.visible = false
 		aimMarker.visible = false
+		
+#Pause Stuff ----------------------------------------------
+	if Input.is_action_just_released("Pause"):
+		pauseUi.pause()
+		pauseUi.visible = visible
 		
 func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_pressed("MoveCamera") && event is InputEventMouseMotion\
@@ -349,3 +355,4 @@ func reset() -> void:
 		)
 		await outTween.finished
 		outTween.kill()
+# PAUSE STUFF--------------------------------------------------------------
