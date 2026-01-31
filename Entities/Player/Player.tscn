@@ -19,12 +19,17 @@
 [ext_resource type="Texture2D" uid="uid://dntfbkbvxovrh" path="res://VFXTextures/VFX_HQ_Seamless_Noise_Pack_Vol1/Noise_003.png" id="12_061yh"]
 [ext_resource type="AudioStream" uid="uid://bnuet7g5vtr61" path="res://Audio/SFX/HacksilverCollect.ogg" id="16_l2mqv"]
 [ext_resource type="AudioStream" uid="uid://togfofgt0ja6" path="res://Audio/SFX/BallJump.ogg" id="16_samso"]
+[ext_resource type="AudioStream" uid="uid://bv774l75ahkeb" path="res://Audio/SFX/BallReset.ogg" id="17_e8qxc"]
 [ext_resource type="Shader" uid="uid://c43inooujhjg5" path="res://Entities/Player/ResetFadeOut.gdshader" id="17_hl213"]
 [ext_resource type="Script" uid="uid://bfusbackygxpw" path="res://Entities/Player/BallTypes/DefaultBall.gd" id="18_5m37j"]
 [ext_resource type="AudioStream" uid="uid://bvsn22cq4q8qp" path="res://Audio/SFX/BallClubHard.ogg" id="19_80tt4"]
 [ext_resource type="AudioStream" uid="uid://bp8oqp5y15csm" path="res://Audio/SFX/BallBrake.ogg" id="19_l80rc"]
+[ext_resource type="AudioStream" uid="uid://dgxfhooqh0k0f" path="res://Audio/SFX/ThunderCrack1.mp3" id="22_ewrch"]
+[ext_resource type="AudioStream" uid="uid://dabk2f0labcq3" path="res://Audio/SFX/ThunderCrack2.mp3" id="23_e8qxc"]
 [ext_resource type="Texture2D" uid="uid://b5lquls2p7b5" path="res://Entities/Hacksilver/hacksilver.png" id="23_l2mqv"]
 [ext_resource type="Script" uid="uid://p6p4btw7o23v" path="res://Entities/Player/BrakeMeter.gd" id="24_mgqku"]
+[ext_resource type="AudioStream" uid="uid://d0060uxvg5aqp" path="res://Audio/SFX/ThunderCrack3.mp3" id="24_rvtm2"]
+[ext_resource type="AudioStream" uid="uid://b5dqfpenkou8d" path="res://Audio/SFX/ThunderCrack4.mp3" id="25_o8vwu"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hj1c0"]
 rough = true
@@ -69,7 +74,7 @@ shader = ExtResource("10_lmeus")
 shader_parameter/tex = ExtResource("12_061yh")
 shader_parameter/mask = ExtResource("11_lmeus")
 shader_parameter/mask_strength = 1.0
-shader_parameter/uv_offset = Vector2(0.4720106, 0)
+shader_parameter/uv_offset = Vector2(0.34449786, 0)
 shader_parameter/color_ramp = SubResource("GradientTexture1D_061yh")
 shader_parameter/curve = SubResource("CurveTexture_5m37j")
 shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
@@ -82,6 +87,11 @@ material = SubResource("ShaderMaterial_e34i1")
 random_pitch = 1.0293022
 streams_count = 1
 stream_0/stream = ExtResource("16_l2mqv")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rvtm2"]
+random_pitch = 1.0293022
+streams_count = 1
+stream_0/stream = ExtResource("17_e8qxc")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gallu"]
 random_pitch = 1.0594631
@@ -102,6 +112,14 @@ stream_0/stream = ExtResource("2_uw7o4")
 random_pitch = 1.0594631
 streams_count = 1
 stream_0/stream = ExtResource("16_samso")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_80tt4"]
+random_pitch = 1.122462
+streams_count = 4
+stream_0/stream = ExtResource("22_ewrch")
+stream_1/stream = ExtResource("23_e8qxc")
+stream_2/stream = ExtResource("24_rvtm2")
+stream_3/stream = ExtResource("25_o8vwu")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l80rc"]
 render_priority = 10
@@ -237,30 +255,48 @@ _defaults_have_been_set = true
 [node name="HacksilverSoundPlayer" type="AudioStreamPlayer3D" parent="." unique_id=119981243]
 stream = SubResource("AudioStreamRandomizer_mgqku")
 volume_db = 3.5
+bus = &"SFX"
+attenuation_filter_db = -12.0
+
+[node name="ResetSoundPlayer" type="AudioStreamPlayer3D" parent="." unique_id=530359686]
+stream = SubResource("AudioStreamRandomizer_rvtm2")
+pitch_scale = 1.5
+bus = &"SFX"
 attenuation_filter_db = -12.0
 
 [node name="ClubSoundPlayer" type="AudioStreamPlayer3D" parent="." unique_id=509467909]
 stream = SubResource("AudioStreamRandomizer_gallu")
+bus = &"SFX"
 
 [node name="ClubSoundPlayerHard" type="AudioStreamPlayer3D" parent="." unique_id=1375700028]
 stream = SubResource("AudioStreamRandomizer_tepoh")
 volume_db = 1.0
 pitch_scale = 1.25
+bus = &"SFX"
 
 [node name="HitSoundPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1080549192]
 stream = SubResource("AudioStreamRandomizer_samso")
 volume_db = -1.5
 max_db = 2.0
+bus = &"SFX"
 
 [node name="JumpSoundPlayer" type="AudioStreamPlayer3D" parent="." unique_id=52490144]
 stream = SubResource("AudioStreamRandomizer_hl213")
 volume_db = -2.5
 max_db = 2.0
+bus = &"SFX"
 
 [node name="BrakeSoundPlayer" type="AudioStreamPlayer3D" parent="." unique_id=188126931]
 stream = ExtResource("19_l80rc")
 volume_db = -50.0
 autoplay = true
+bus = &"SFX"
+
+[node name="ThunderSoundPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1067584540]
+stream = SubResource("AudioStreamRandomizer_80tt4")
+volume_db = -1.5
+pitch_scale = 1.5
+bus = &"SFX"
 
 [node name="HacksilverParticles" type="GPUParticles3D" parent="." unique_id=911010729]
 top_level = true

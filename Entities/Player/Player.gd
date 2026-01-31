@@ -37,10 +37,12 @@ static var canBrake: bool = true
 @export_category("Audio")
 @onready var HitSoundPlayer: AudioStreamPlayer3D = $HitSoundPlayer
 @onready var ClubSoundPlayer: AudioStreamPlayer3D = $ClubSoundPlayer
+@onready var ThunderSoundPlayer: AudioStreamPlayer3D = $ThunderSoundPlayer
 @onready var ClubSoundPlayerHard: AudioStreamPlayer3D = $ClubSoundPlayerHard
 @onready var JumpSoundPlayer: AudioStreamPlayer3D = $JumpSoundPlayer
 @onready var BrakeSoundPlayer: AudioStreamPlayer3D = $BrakeSoundPlayer
 @onready var HacksilverSoundPlayer: AudioStreamPlayer3D = $HacksilverSoundPlayer
+@onready var ResetSoundPlayer: AudioStreamPlayer3D = $ResetSoundPlayer
 
 var last_velocity: Vector3 = Vector3.ZERO
 
@@ -312,7 +314,7 @@ func deactivate_brake() -> void:
 func reset() -> void:
 	if lastShotPosition != Vector3.INF && ballTypeNode.resetCount > 0:
 		ballTypeNode.resetCount -= 1
-		
+		ResetSoundPlayer.play()
 		circleTransition.material.set_shader_parameter("screen_width", get_viewport().size.x)
 		circleTransition.material.set_shader_parameter("screen_height", get_viewport().size.y)
 	

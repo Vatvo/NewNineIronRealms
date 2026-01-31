@@ -388,5 +388,6 @@ autoplay = &"Default"
 stream = SubResource("AudioStreamRandomizer_welao")
 volume_db = -2.5
 max_db = 2.0
+bus = &"SFX"
 
 [connection signal="body_entered" from="Trigger" to="." method="_on_trigger_body_entered"]
