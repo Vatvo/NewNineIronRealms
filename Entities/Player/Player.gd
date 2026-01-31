@@ -67,6 +67,7 @@ func _ready() -> void:
 
 	ballTypeNode.set_script(ballTypeScript)
 	ballTypeNode.parent = self
+	ballTypeNode.begin()
 	
 	contact_monitor = true
 	max_contacts_reported = 4
@@ -312,7 +313,7 @@ func deactivate_brake() -> void:
 		cameraFOVTween.kill()
 
 func reset() -> void:
-	if lastShotPosition != Vector3.INF && ballTypeNode.resetCount > 0:
+	if lastShotPosition != Vector3.INF && (ballTypeNode.resetCount > 0):
 		ballTypeNode.resetCount -= 1
 		ResetSoundPlayer.play()
 		circleTransition.material.set_shader_parameter("screen_width", get_viewport().size.x)

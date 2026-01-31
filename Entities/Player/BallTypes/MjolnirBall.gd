@@ -1,7 +1,7 @@
 extends BallType
 
 func begin() -> void:
-	resetCount = INF
+	resetCount = 9999999999
 	
 func power_shot() -> void:
 	var impulse: Vector3 = parent.aimDirection * parent.shotPower * parent.pullLength / parent.maxPullLength
