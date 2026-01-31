@@ -74,7 +74,7 @@ shader = ExtResource("10_lmeus")
 shader_parameter/tex = ExtResource("12_061yh")
 shader_parameter/mask = ExtResource("11_lmeus")
 shader_parameter/mask_strength = 1.0
-shader_parameter/uv_offset = Vector2(0.34449786, 0)
+shader_parameter/uv_offset = Vector2(0.52803236, 0)
 shader_parameter/color_ramp = SubResource("GradientTexture1D_061yh")
 shader_parameter/curve = SubResource("CurveTexture_5m37j")
 shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
@@ -84,7 +84,7 @@ shader_parameter/flags = 62
 material = SubResource("ShaderMaterial_e34i1")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mgqku"]
-random_pitch = 1.0293022
+random_pitch = 1.005793
 streams_count = 1
 stream_0/stream = ExtResource("16_l2mqv")
 
@@ -284,6 +284,7 @@ bus = &"SFX"
 stream = SubResource("AudioStreamRandomizer_hl213")
 volume_db = -2.5
 max_db = 2.0
+pitch_scale = 0.9
 bus = &"SFX"
 
 [node name="BrakeSoundPlayer" type="AudioStreamPlayer3D" parent="." unique_id=188126931]
