@@ -6,6 +6,7 @@ static var canMoveCamera: bool = true
 static var canShoot: bool = true
 static var canSteer: bool = true
 static var canBrake: bool = true
+static var canReset: bool = true
 
 @onready var cameraHost: PhantomCamera3D = $CameraHost
 @onready var shotPullLine: Line2D = $ShotUI/ShotPullLine
@@ -19,6 +20,7 @@ static var canBrake: bool = true
 @onready var ballTypeNode: BallType = $BallType
 @onready var hacksilverParticles: GPUParticles3D = $HacksilverParticles
 @onready var brakeMeter: CanvasLayer = $BrakeMeter
+@onready var mesh: MeshInstance3D = $Mesh
 
 @export_category("Ball Type")
 @export var ballTypeScript: Script = preload("res://Entities/Player/BallTypes/DefaultBall.gd")
@@ -67,6 +69,7 @@ func _ready() -> void:
 
 	ballTypeNode.set_script(ballTypeScript)
 	ballTypeNode.parent = self
+	ballTypeNode.initialize()
 	
 	contact_monitor = true
 	max_contacts_reported = 4
@@ -312,7 +315,8 @@ func deactivate_brake() -> void:
 		cameraFOVTween.kill()
 
 func reset() -> void:
-	if lastShotPosition != Vector3.INF && ballTypeNode.resetCount > 0:
+	if canReset && lastShotPosition != Vector3.INF && (ballTypeNode.resetCount > 0):
+		canReset = false
 		ballTypeNode.resetCount -= 1
 		ResetSoundPlayer.play()
 		circleTransition.material.set_shader_parameter("screen_width", get_viewport().size.x)
@@ -349,3 +353,4 @@ func reset() -> void:
 		)
 		await outTween.finished
 		outTween.kill()
+		canReset = true
