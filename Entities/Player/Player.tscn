@@ -21,7 +21,6 @@
 [ext_resource type="AudioStream" uid="uid://togfofgt0ja6" path="res://Audio/SFX/BallJump.ogg" id="16_samso"]
 [ext_resource type="AudioStream" uid="uid://bv774l75ahkeb" path="res://Audio/SFX/BallReset.ogg" id="17_e8qxc"]
 [ext_resource type="Shader" uid="uid://c43inooujhjg5" path="res://Entities/Player/ResetFadeOut.gdshader" id="17_hl213"]
-[ext_resource type="Script" uid="uid://bfusbackygxpw" path="res://Entities/Player/BallTypes/DefaultBall.gd" id="18_5m37j"]
 [ext_resource type="AudioStream" uid="uid://bvsn22cq4q8qp" path="res://Audio/SFX/BallClubHard.ogg" id="19_80tt4"]
 [ext_resource type="AudioStream" uid="uid://bp8oqp5y15csm" path="res://Audio/SFX/BallBrake.ogg" id="19_l80rc"]
 [ext_resource type="AudioStream" uid="uid://dgxfhooqh0k0f" path="res://Audio/SFX/ThunderCrack1.mp3" id="22_ewrch"]
@@ -74,7 +73,7 @@ shader = ExtResource("10_lmeus")
 shader_parameter/tex = ExtResource("12_061yh")
 shader_parameter/mask = ExtResource("11_lmeus")
 shader_parameter/mask_strength = 1.0
-shader_parameter/uv_offset = Vector2(0.52803236, 0)
+shader_parameter/uv_offset = Vector2(0.6560379, 0)
 shader_parameter/color_ramp = SubResource("GradientTexture1D_061yh")
 shader_parameter/curve = SubResource("CurveTexture_5m37j")
 shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
@@ -191,7 +190,7 @@ cameraSensitivity = Vector2(0.01, 0.01)
 cameraDistanceCurve = SubResource("Curve_an6q6")
 
 [node name="BallType" type="Node" parent="." unique_id=481427454]
-script = ExtResource("18_5m37j")
+script = ExtResource("2_e34i1")
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=358315486]
 material_overlay = ExtResource("3_vcmon")
