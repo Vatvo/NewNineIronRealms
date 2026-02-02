@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://dm05aksimrc85"]
+
+[ext_resource type="Script" uid="uid://bfaodbbtlncsg" path="res://Entities/Hacksilver/Hacksilver.gd" id="1_771iu"]
+[ext_resource type="ArrayMesh" uid="uid://bb2h5pd40x2uc" path="res://Entities/Hacksilver/Meshes/Hacksilver1.obj" id="2_rdqms"]
+[ext_resource type="ArrayMesh" uid="uid://ckpi5d5ax4vww" path="res://Entities/Hacksilver/Meshes/Hacksilver2.obj" id="3_7ilse"]
+[ext_resource type="ArrayMesh" uid="uid://bds1ti4r6unoa" path="res://Entities/Hacksilver/Meshes/Hacksilver3.obj" id="4_e15t6"]
+[ext_resource type="ArrayMesh" uid="uid://wa0lh4jjevq4" path="res://Entities/Hacksilver/Meshes/Hacksilver4.obj" id="5_eqrvy"]
+[ext_resource type="ArrayMesh" uid="uid://du3fda4mwaxuy" path="res://Entities/Hacksilver/Meshes/Hacksilver5.obj" id="6_cexgs"]
+[ext_resource type="ArrayMesh" uid="uid://c266gueputemt" path="res://Entities/Hacksilver/Meshes/Hacksilver6.obj" id="7_3cv5b"]
+[ext_resource type="ArrayMesh" uid="uid://d0y4nrf8mouau" path="res://Entities/Hacksilver/Meshes/Hacksilver7.obj" id="8_6wtvc"]
+[ext_resource type="Material" uid="uid://cb1abckvajhxf" path="res://Entities/Hacksilver/HacksilverMat.tres" id="9_7ilse"]
+[ext_resource type="Material" uid="uid://dfqw86r6sdr4f" path="res://Materials/Outline.tres" id="10_e15t6"]
+[ext_resource type="Texture2D" uid="uid://ciiu7nn23qn4b" path="res://VFXTextures/brackeys_vfx_bundle/particles/alpha/spotlight_07_a.png" id="11_eqrvy"]
+[ext_resource type="Texture2D" uid="uid://vdfsj86mewg" path="res://VFXTextures/brackeys_vfx_bundle/particles/alpha/circle_05_a.png" id="12_cexgs"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_eqrvy"]
+size = Vector2(2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3cv5b"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.8268249, 1.0629996, 1.0616015, 1)
+albedo_texture = ExtResource("11_eqrvy")
+billboard_mode = 1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_e15t6"]
+radius = 1.5
+
+[node name="Hacksilver" type="Node3D" unique_id=1062257410]
+script = ExtResource("1_771iu")
+meshes = Array[Mesh]([ExtResource("2_rdqms"), ExtResource("3_7ilse"), ExtResource("4_e15t6"), ExtResource("5_eqrvy"), ExtResource("6_cexgs"), ExtResource("7_3cv5b"), ExtResource("8_6wtvc")])
+spinSpeed = 1.0
+oscillateSpeed = 1.0
+maxOscillateHeight = 0.1
+glowSpeed = 6.0
+
+[node name="Glow" type="MeshInstance3D" parent="." unique_id=1651620289]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2640996, 0, 0)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_eqrvy")
+surface_material_override/0 = SubResource("StandardMaterial3D_3cv5b")
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=127021888]
+material_override = ExtResource("9_7ilse")
+material_overlay = ExtResource("10_e15t6")
+cast_shadow = 0
+mesh = ExtResource("2_rdqms")
+
+[node name="Decal" type="Decal" parent="Mesh" unique_id=1718339341]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.0442321, 0)
+size = Vector3(4, 4.266, 4)
+texture_albedo = ExtResource("12_cexgs")
+emission_energy = 0.0
+modulate = Color(0, 0, 0, 1)
+
+[node name="Collision" type="Area3D" parent="." unique_id=1751314234]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision" unique_id=1893685741]
+shape = SubResource("SphereShape3D_e15t6")
+
+[connection signal="body_entered" from="Collision" to="." method="_on_collision_body_entered"]
