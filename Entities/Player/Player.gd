@@ -354,3 +354,9 @@ func reset() -> void:
 		await outTween.finished
 		outTween.kill()
 		canReset = true
+
+
+func _on_collision(body: Node) -> void:
+	print(body)
+	if body.get_parent() is Bumper:
+		body.get_parent().bounce(self)
