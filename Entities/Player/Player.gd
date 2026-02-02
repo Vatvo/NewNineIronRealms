@@ -56,7 +56,7 @@ var maxPullLength: float
 var pullLength: float
 var aimDirection: Vector3
 
-var isGrounded: float = false
+var isGrounded: bool = false
 var isMoving: bool = false
 var isBraking: bool = false
 
@@ -124,6 +124,8 @@ func _physics_process(delta: float) -> void:
 		angular_damp = unmoddedDamp
 		linear_damp = unmoddedDamp
 	
+	if linear_velocity.length() < 0.2:
+		linear_velocity = Vector3.ZERO
 	if Input.is_action_just_pressed("Brake") && isMoving:
 		activate_brake()
 	
@@ -206,10 +208,13 @@ func check_is_grounded() -> bool:
 	var raycast_result := space.intersect_ray(ray_query)
 
 	if !raycast_result.is_empty():
+		position.y = raycast_result["position"].y + 0.499
+		#linear_velocity.y = 0
 		return true
 	else:
 		return false
-		
+
+	
 func handle_shot() -> void:
 	isShooting = true
 	shotUI.visible = true
@@ -355,3 +360,8 @@ func reset() -> void:
 		await outTween.finished
 		outTween.kill()
 		canReset = true
+
+
+func _on_collision(body: Node) -> void:
+	if body.get_parent() is Bumper:
+		body.get_parent().bounce(self)

@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://dq2mqqs567abn"]
+
+[ext_resource type="Script" uid="uid://c72fhw57uxlif" path="res://Entities/Bumper/Bumper.gd" id="1_yswlo"]
+
+[sub_resource type="Curve3D" id="Curve3D_xrme5"]
+
+[sub_resource type="Curve" id="Curve_6hegx"]
+_limits = [1.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 2), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_yswlo"]
+
+[node name="Bumper" type="Path3D" unique_id=1857681311]
+curve = SubResource("Curve3D_xrme5")
+script = ExtResource("1_yswlo")
+expansionCurve = SubResource("Curve_6hegx")
+bounceForce = null
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="." unique_id=188140665]
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_rotation_accurate = true
+path_local = true
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+
+[node name="Collision" type="RigidBody3D" parent="." unique_id=1228035744]
+collision_priority = 300.0
+can_sleep = false
+lock_rotation = true
+freeze = true
+continuous_cd = true
+contact_monitor = true
+max_contacts_reported = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision" unique_id=1344644610]
+shape = SubResource("ConcavePolygonShape3D_yswlo")
+
+[connection signal="body_entered" from="Collision" to="." method="_on_collision_body_entered"]
