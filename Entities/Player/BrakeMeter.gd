@@ -25,6 +25,7 @@ func _process(delta: float) -> void:
 		ballType.material.albedo_color = lerp(ballColor2, ballColor1, ballType.brakeMeter / maxValue)
 		textureProgressBar.tint_progress = lerp(meterColor1, meterColor2, pow(1 - ballType.brakeMeter / maxValue,8))
 		if ballType.brakeMeter <= 0.1:
+			player.BrakePoofSoundPlayer.play()
 			brake_over.emitting = true
 	else:
 		ballType.material.albedo_color = ballColor1
