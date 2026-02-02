@@ -7,6 +7,7 @@ class_name Bumper
 @onready var csg_polygon_3d: CSGPolygon3D = $CSGPolygon3D
 
 @export_tool_button("Bake Shape", "Shape3D") var bakeButton = bake_shape
+@export var bounceForce: float = 40
 
 var outTween: Tween
 # Called when the node enters the scene tree for the first time.
@@ -24,8 +25,10 @@ func bake_shape() -> void:
 func bounce(body: RigidBody3D) -> void:
 	
 	var point: Vector3 = curve.get_closest_point(to_local(body.position))
+	point.y += 0.5
+	
 	var direction: Vector3 = to_global(point).direction_to(body.global_position)
-	body.apply_central_impulse(40 * direction)
+	body.apply_central_impulse(bounceForce * direction)
 	
 	csg_polygon_3d.polygon[2].x = 1
 	csg_polygon_3d.polygon[3].x = 1
@@ -46,7 +49,3 @@ func bounce(body: RigidBody3D) -> void:
 		1
 	)
 	
-#func _on_collision_body_entered(body: Node3D) -> void:
-#	print("collided")
-#	if body is RigidBody3D:
-#		
