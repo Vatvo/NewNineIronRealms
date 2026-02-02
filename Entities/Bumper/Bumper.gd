@@ -9,6 +9,9 @@ class_name Bumper
 @export_tool_button("Bake Shape", "Shape3D") var bakeButton = bake_shape
 @export var bounceForce: float = 40
 
+@export_category("Audio")
+@onready var BounceSoundBumper: AudioStreamPlayer3D = $BounceSoundBumper
+
 var outTween: Tween
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -23,6 +26,8 @@ func bake_shape() -> void:
 	collision_shape_3d.shape = csg_polygon_3d.bake_collision_shape()
 
 func bounce(body: RigidBody3D) -> void:
+	
+	BounceSoundBumper.play()
 	
 	var point: Vector3 = curve.get_closest_point(to_local(body.position))
 	point.y += 0.5
