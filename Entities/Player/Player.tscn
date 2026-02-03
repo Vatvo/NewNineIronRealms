@@ -76,7 +76,11 @@ shader = ExtResource("10_lmeus")
 shader_parameter/tex = ExtResource("12_061yh")
 shader_parameter/mask = ExtResource("11_lmeus")
 shader_parameter/mask_strength = 1.0
-shader_parameter/uv_offset = Vector2(0.7141883, 0)
+<<<<<<< Updated upstream
+shader_parameter/uv_offset = Vector2(0.9734677, 0)
+=======
+shader_parameter/uv_offset = Vector2(0.74299556, 0)
+>>>>>>> Stashed changes
 shader_parameter/color_ramp = SubResource("GradientTexture1D_061yh")
 shader_parameter/curve = SubResource("CurveTexture_5m37j")
 shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
