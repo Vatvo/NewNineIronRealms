@@ -33,6 +33,8 @@ func bounce(body: RigidBody3D) -> void:
 	point.y += 0.5
 	
 	var direction: Vector3 = to_global(point).direction_to(body.global_position)
+	body.linear_velocity = Vector3.ZERO
+	await get_tree().process_frame
 	body.apply_central_impulse(bounceForce * direction)
 	
 	csg_polygon_3d.polygon[2].x = 1
