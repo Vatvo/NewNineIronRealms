@@ -6,6 +6,16 @@
 [ext_resource type="AudioStream" uid="uid://dddgxpxhvjs4n" path="res://Audio/SFX/UI_Hover.ogg" id="4_448g2"]
 [ext_resource type="AudioStream" uid="uid://dsesoxqjidqqx" path="res://Audio/SFX/UI_Confirm.ogg" id="5_054v2"]
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8wl41"]
+random_pitch = 1.0293022
+streams_count = 1
+stream_0/stream = ExtResource("5_054v2")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_054v2"]
+random_pitch = 1.0293022
+streams_count = 1
+stream_0/stream = ExtResource("4_448g2")
+
 [sub_resource type="Animation" id="Animation_lv5mv"]
 resource_name = "ArrowFade"
 length = 0.75
@@ -44,16 +54,6 @@ _data = {
 &"RESET": SubResource("Animation_448g2")
 }
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_054v2"]
-random_pitch = 1.0293022
-streams_count = 1
-stream_0/stream = ExtResource("4_448g2")
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8wl41"]
-random_pitch = 1.0293022
-streams_count = 1
-stream_0/stream = ExtResource("5_054v2")
-
 [node name="MenuButtonUI" type="Control" unique_id=719326111]
 layout_mode = 3
 anchors_preset = 0
@@ -82,14 +82,14 @@ size_flags_stretch_ratio = 2.0
 theme = ExtResource("2_el4c1")
 text = "Button"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1042125960]
-root_node = NodePath("../HBox/ArrowImg")
-libraries/ = SubResource("AnimationLibrary_054v2")
+[node name="ConfirmSound" type="AudioStreamPlayer" parent="HBox" unique_id=452372940]
+stream = SubResource("AudioStreamRandomizer_8wl41")
+bus = &"SFX"
 
-[node name="HoverSound" type="AudioStreamPlayer" parent="." unique_id=363689491]
+[node name="HoverSound" type="AudioStreamPlayer" parent="HBox" unique_id=363689491]
 stream = SubResource("AudioStreamRandomizer_054v2")
 bus = &"SFX"
 
-[node name="ConfirmSound" type="AudioStreamPlayer" parent="." unique_id=452372940]
-stream = SubResource("AudioStreamRandomizer_8wl41")
-bus = &"SFX"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1042125960]
+root_node = NodePath("../HBox/ArrowImg")
+libraries/ = SubResource("AnimationLibrary_054v2")
