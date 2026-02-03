@@ -59,7 +59,7 @@ func _ready() -> void:
 	newCameraRotation.x = clamp(newCameraRotation.x, -PI/2 + 0.1, -0.5)
 	cameraHost.set_third_person_rotation(newCameraRotation)
 	cameraHost.spring_length = cameraDistanceCurve.sample(cameraHost.get_third_person_rotation().x)
-
+	
 func _physics_process(delta: float) -> void:
 	groundRayCast.position = global_position
 	trail.position = global_position
@@ -142,10 +142,6 @@ func _process(delta: float) -> void:
 		shotUI.visible = false
 		aimMarker.visible = false
 		
-#Pause Stuff ----------------------------------------------
-	if Input.is_action_just_released("Pause"):
-		pauseUi.pause()
-		pauseUi.visible = visible
 		
 func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_pressed("MoveCamera") && event is InputEventMouseMotion\
@@ -314,4 +310,3 @@ func reset() -> void:
 		)
 		await outTween.finished
 		outTween.kill()
-# PAUSE STUFF--------------------------------------------------------------
