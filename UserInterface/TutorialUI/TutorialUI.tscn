@@ -14,8 +14,8 @@ grow_vertical = 2
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Control" unique_id=1334645461]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 stream = ExtResource("1_8pixq")
 autoplay = true
 loop = true
