@@ -1,53 +1,24 @@
 [gd_scene format=3 uid="uid://uhu4yk1pcl52"]
 
-[ext_resource type="ArrayMesh" uid="uid://d1spk61n6rg7p" path="res://Maps/PlayMaps/Asgard/AS_Dammed_Water.obj" id="2_407w6"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_xv5w7"]
+[ext_resource type="PackedScene" uid="uid://c4aouvmso4mkf" path="res://Maps/PlayMaps/Asgard/AS_Garden.glb" id="2_6vnus"]
 [ext_resource type="PackedScene" uid="uid://b1uo6orqicguq" path="res://Entities/Player/Player.tscn" id="2_xv5w7"]
-[ext_resource type="ArrayMesh" uid="uid://cyl076vcq72so" path="res://Maps/PlayMaps/Asgard/AS_Dock.obj" id="3_4bowc"]
-[ext_resource type="ArrayMesh" uid="uid://wr2k77km3wb" path="res://Maps/PlayMaps/Asgard/AS_Door.obj" id="4_2nc5f"]
-[ext_resource type="ArrayMesh" uid="uid://c0uy8i5e12f7c" path="res://Maps/PlayMaps/Asgard/AS_Funnel.obj" id="5_hlmin"]
-[ext_resource type="ArrayMesh" uid="uid://x6ml0bc2s27y" path="res://Maps/PlayMaps/Asgard/AS_Garden.obj" id="6_hlk88"]
-[ext_resource type="ArrayMesh" uid="uid://w4dlvnciwqwo" path="res://Maps/PlayMaps/Asgard/AS_Opening.obj" id="7_ffokv"]
-[ext_resource type="ArrayMesh" uid="uid://co0efkc8f0nwi" path="res://Maps/PlayMaps/Asgard/AS_Palace_base.obj" id="8_fsqio"]
-[ext_resource type="ArrayMesh" uid="uid://bht7gmg651p3l" path="res://Maps/PlayMaps/Asgard/AS_SLIDE.obj" id="9_upe5e"]
-[ext_resource type="ArrayMesh" uid="uid://6thq7g2qrgkg" path="res://Maps/PlayMaps/Asgard/AS_Village.obj" id="10_ub8ks"]
 
 [node name="Asgard" type="Node3D" unique_id=1419564980]
 
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1204041851 groups=["MainCamera"]]
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 0.9063073, 0.42261928, 0, -0.42261928, 0.9063073, 233.79813, 659.8737, -214.88284)
+
+[node name="PhantomCameraHost" type="Node" parent="Camera3D" unique_id=908063206]
+process_priority = 300
+process_physics_priority = 300
+physics_interpolation_mode = 1
+script = ExtResource("1_xv5w7")
+metadata/_custom_type_script = "uid://bd046eokvcnu2"
+
 [node name="Player" parent="." unique_id=630880669 instance=ExtResource("2_xv5w7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 715.89374, 113.24246, 156.65277)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 233.79813, 651.4213, -233.009)
 
-[node name="AsDammedWater" type="MeshInstance3D" parent="." unique_id=1181017608]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.688034, 662.2299, -308.51535)
-mesh = ExtResource("2_407w6")
-
-[node name="AsDock" type="MeshInstance3D" parent="." unique_id=1486865390]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.688034, 662.2299, -308.51535)
-mesh = ExtResource("3_4bowc")
-
-[node name="AsDoor" type="MeshInstance3D" parent="." unique_id=1719186884]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.688034, 662.2299, -308.51535)
-mesh = ExtResource("4_2nc5f")
-
-[node name="AsFunnel" type="MeshInstance3D" parent="." unique_id=222504371]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.688034, 662.2299, -308.51535)
-mesh = ExtResource("5_hlmin")
-
-[node name="AsGarden" type="MeshInstance3D" parent="." unique_id=776525906]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.688034, 662.2299, -308.51535)
-mesh = ExtResource("6_hlk88")
-
-[node name="AsOpening" type="MeshInstance3D" parent="." unique_id=1112153902]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.688034, 662.2299, -308.51535)
-mesh = ExtResource("7_ffokv")
-
-[node name="AsPalaceBase" type="MeshInstance3D" parent="." unique_id=1254831860]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.688034, 662.2299, -308.51535)
-mesh = ExtResource("8_fsqio")
-
-[node name="AsSlide" type="MeshInstance3D" parent="." unique_id=316583775]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.688034, 662.2299, -308.51535)
-mesh = ExtResource("9_upe5e")
-
-[node name="AsVillage" type="MeshInstance3D" parent="." unique_id=835824513]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.688034, 662.2299, -308.51535)
-mesh = ExtResource("10_ub8ks")
+[node name="AS_Garden" parent="." unique_id=313918632 instance=ExtResource("2_6vnus")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1858.7755, -107.937256, 1949.8485)
