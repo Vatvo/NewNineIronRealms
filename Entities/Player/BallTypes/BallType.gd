@@ -11,6 +11,12 @@ var resetCount: int = 1
 var coyoteTime: float = 0
 
 var maxBrake: float = brakeMeter
+var material: Material = preload("res://Entities/Player/Materials/Default/DefaultBallMat.tres")
+
+
+func initialize() -> void:
+	parent.mesh.material_override = material
+	begin()
 
 func begin() -> void:
 	pass

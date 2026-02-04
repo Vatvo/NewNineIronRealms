@@ -6,6 +6,7 @@ static var canMoveCamera: bool = true
 static var canShoot: bool = true
 static var canSteer: bool = true
 static var canBrake: bool = true
+static var canReset: bool = true
 
 @onready var cameraHost: PhantomCamera3D = $CameraHost
 @onready var shotPullLine: Line2D = $ShotUI/ShotPullLine
@@ -19,6 +20,7 @@ static var canBrake: bool = true
 @onready var ballTypeNode: BallType = $BallType
 @onready var hacksilverParticles: GPUParticles3D = $HacksilverParticles
 @onready var brakeMeter: CanvasLayer = $BrakeMeter
+@onready var mesh: MeshInstance3D = $Mesh
 
 @export_category("Ball Type")
 @export var ballTypeScript: Script = preload("res://Entities/Player/BallTypes/DefaultBall.gd")
@@ -37,10 +39,13 @@ static var canBrake: bool = true
 @export_category("Audio")
 @onready var HitSoundPlayer: AudioStreamPlayer3D = $HitSoundPlayer
 @onready var ClubSoundPlayer: AudioStreamPlayer3D = $ClubSoundPlayer
+@onready var ThunderSoundPlayer: AudioStreamPlayer3D = $ThunderSoundPlayer
 @onready var ClubSoundPlayerHard: AudioStreamPlayer3D = $ClubSoundPlayerHard
 @onready var JumpSoundPlayer: AudioStreamPlayer3D = $JumpSoundPlayer
 @onready var BrakeSoundPlayer: AudioStreamPlayer3D = $BrakeSoundPlayer
+@onready var BrakePoofSoundPlayer: AudioStreamPlayer3D = $BrakePoofSoundPlayer
 @onready var HacksilverSoundPlayer: AudioStreamPlayer3D = $HacksilverSoundPlayer
+@onready var ResetSoundPlayer: AudioStreamPlayer3D = $ResetSoundPlayer
 
 var last_velocity: Vector3 = Vector3.ZERO
 
@@ -51,7 +56,7 @@ var maxPullLength: float
 var pullLength: float
 var aimDirection: Vector3
 
-var isGrounded: float = false
+var isGrounded: bool = false
 var isMoving: bool = false
 var isBraking: bool = false
 
@@ -65,6 +70,7 @@ func _ready() -> void:
 
 	ballTypeNode.set_script(ballTypeScript)
 	ballTypeNode.parent = self
+	ballTypeNode.initialize()
 	
 	contact_monitor = true
 	max_contacts_reported = 4
@@ -118,6 +124,8 @@ func _physics_process(delta: float) -> void:
 		angular_damp = unmoddedDamp
 		linear_damp = unmoddedDamp
 	
+	if linear_velocity.length() < 0.2:
+		linear_velocity = Vector3.ZERO
 	if Input.is_action_just_pressed("Brake") && isMoving:
 		activate_brake()
 	
@@ -200,10 +208,13 @@ func check_is_grounded() -> bool:
 	var raycast_result := space.intersect_ray(ray_query)
 
 	if !raycast_result.is_empty():
+		position.y = raycast_result["position"].y + 0.499
+		#linear_velocity.y = 0
 		return true
 	else:
 		return false
-		
+
+	
 func handle_shot() -> void:
 	isShooting = true
 	shotUI.visible = true
@@ -285,7 +296,7 @@ func get_aim_direction(pullLineEnd: Vector2, screenSize: Vector2):
 func activate_brake() -> void:
 	if !isBraking && canBrake && ballTypeNode.brakeMeter > 0:
 		brakeMeter.visible = true
-		BrakeSoundPlayer.volume_db=0.5
+		BrakeSoundPlayer.volume_db=2.0
 		isBraking = true
 		
 		linear_velocity /= 1.75
@@ -310,9 +321,10 @@ func deactivate_brake() -> void:
 		cameraFOVTween.kill()
 
 func reset() -> void:
-	if lastShotPosition != Vector3.INF && ballTypeNode.resetCount > 0:
+	if canReset && lastShotPosition != Vector3.INF && (ballTypeNode.resetCount > 0):
+		canReset = false
 		ballTypeNode.resetCount -= 1
-		
+		ResetSoundPlayer.play()
 		circleTransition.material.set_shader_parameter("screen_width", get_viewport().size.x)
 		circleTransition.material.set_shader_parameter("screen_height", get_viewport().size.y)
 	
@@ -347,3 +359,9 @@ func reset() -> void:
 		)
 		await outTween.finished
 		outTween.kill()
+		canReset = true
+
+
+func _on_collision(body: Node) -> void:
+	if body.get_parent() is Bumper:
+		body.get_parent().bounce(self)
