@@ -14,11 +14,11 @@ func _ready() -> void:
 	MenuBtn.mouse_exited.connect(hover_stop)
 
 func button_pressed() -> void:
-	ConfirmSound.play()
+	#ConfirmSound.play()
 	pass
 
 func hover_play() -> void:
-	HoverSound.play()
+	#HoverSound.play()
 	Animator.play("ArrowFade")
 
 func hover_stop() -> void:
