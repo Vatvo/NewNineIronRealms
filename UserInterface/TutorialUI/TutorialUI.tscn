@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b6vwbdga2t6ow"]
 
 [ext_resource type="VideoStream" uid="uid://csb1s5ka44fbu" path="res://UserInterface/UIVideos/shot1.ogv" id="1_8pixq"]
+[ext_resource type="Texture2D" uid="uid://dwh8x7wtc16ee" path="res://UserInterface/UIAssets/DividerLine.png" id="2_de4wf"]
 
 [node name="TutorialUi" type="CanvasLayer" unique_id=1082330632]
 
@@ -29,3 +30,7 @@ scale = Vector2(0.6, 0.6)
 stream = ExtResource("1_8pixq")
 autoplay = true
 loop = true
+
+[node name="DividerLine" type="Sprite2D" parent="Control" unique_id=1239141902]
+position = Vector2(946, 200)
+texture = ExtResource("2_de4wf")
