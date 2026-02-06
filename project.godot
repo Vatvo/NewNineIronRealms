@@ -38,6 +38,7 @@ folder_colors={
 "res://Audio/": "orange",
 "res://Maps/": "blue",
 "res://Materials/": "pink",
+"res://Models/": "red",
 "res://UserInterface/": "green",
 "res://UserInterface/UIAssets/": "red",
 "res://UserInterface/UIVideos/": "orange"
