@@ -1,0 +1,157 @@
+[gd_scene format=3 uid="uid://dmy3q0vweo2kh"]
+
+[ext_resource type="Shader" uid="uid://dddidxbjewoyo" path="res://Shaders/sky.gdshader" id="1_58ajm"]
+[ext_resource type="Shader" uid="uid://fq6kk6kqjdec" path="res://Shaders/water.gdshader" id="1_olabj"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_a0j0t"]
+noise_type = 3
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0gaus"]
+noise = SubResource("FastNoiseLite_a0j0t")
+seamless = true
+as_normal_map = true
+bump_strength = 10.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_rtawf"]
+noise_type = 3
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_f5npa"]
+noise = SubResource("FastNoiseLite_rtawf")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_og0lo"]
+render_priority = 0
+shader = ExtResource("1_olabj")
+shader_parameter/color = Color(3.128499e-07, 0.21960548, 0.36582294, 1)
+shader_parameter/roughness = 0.2000000095
+shader_parameter/metallic = 1.0
+shader_parameter/beer_law_factor = 2.0
+shader_parameter/_distance = 50.0
+shader_parameter/edge_color = Color(0.5774178, 0.7824627, 0.99999815, 1)
+shader_parameter/edge_scale = 100.0
+shader_parameter/far = 100.0
+shader_parameter/wave = SubResource("NoiseTexture2D_f5npa")
+shader_parameter/speed = 0.0050000477375000685
+shader_parameter/wave_direction = Vector2(2, 0)
+shader_parameter/wave_direction2 = Vector2(0, 1)
+shader_parameter/height_scale = 100.0
+shader_parameter/noise_scale = 10.0
+shader_parameter/normalmap = SubResource("NoiseTexture2D_0gaus")
+
+[sub_resource type="QuadMesh" id="QuadMesh_olabj"]
+material = SubResource("ShaderMaterial_og0lo")
+size = Vector2(10000, 10000)
+subdivide_width = 500
+subdivide_depth = 500
+orientation = 1
+
+[sub_resource type="Gradient" id="Gradient_og0lo"]
+offsets = PackedFloat32Array(0, 0.5236842, 0.8473684)
+colors = PackedColorArray(0.30588236, 1, 1, 1, 1, 1, 1, 1, 0.30588236, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ypnia"]
+gradient = SubResource("Gradient_og0lo")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6k2uy"]
+noise_type = 0
+frequency = 0.0296
+fractal_octaves = 1
+fractal_weighted_strength = 1.0
+domain_warp_enabled = true
+domain_warp_amplitude = 32.89
+domain_warp_frequency = 0.01
+domain_warp_fractal_octaves = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0q38a"]
+width = 128
+noise = SubResource("FastNoiseLite_6k2uy")
+seamless = true
+in_3d_space = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hygqa"]
+noise_type = 4
+frequency = 0.0028
+offset = Vector3(0, 408.76, 0)
+fractal_type = 2
+fractal_octaves = 4
+fractal_gain = 2.0
+fractal_weighted_strength = 1.0
+domain_warp_enabled = true
+domain_warp_amplitude = 119.56
+domain_warp_fractal_octaves = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gqgnc"]
+width = 64
+height = 256
+noise = SubResource("FastNoiseLite_hygqa")
+seamless = true
+in_3d_space = true
+
+[sub_resource type="Gradient" id="Gradient_a0j0t"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0q38a"]
+gradient = SubResource("Gradient_a0j0t")
+
+[sub_resource type="Gradient" id="Gradient_0gaus"]
+colors = PackedColorArray(0.54901963, 0.28235295, 1, 1, 0.30588236, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_io8ui"]
+gradient = SubResource("Gradient_0gaus")
+width = 1
+height = 1024
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rtawf"]
+shader = ExtResource("1_58ajm")
+shader_parameter/hdri_background = SubResource("GradientTexture1D_0q38a")
+shader_parameter/sky_background = SubResource("GradientTexture2D_io8ui")
+shader_parameter/clouds = SubResource("NoiseTexture2D_gqgnc")
+shader_parameter/cloud_color = SubResource("GradientTexture2D_ypnia")
+shader_parameter/cloud_mask = SubResource("NoiseTexture2D_0q38a")
+shader_parameter/cloud_speed = 0.02
+shader_parameter/exposure = 1.0
+
+[sub_resource type="Sky" id="Sky_rd6b5"]
+sky_material = SubResource("ShaderMaterial_rtawf")
+
+[sub_resource type="Environment" id="Environment_f5npa"]
+background_mode = 2
+sky = SubResource("Sky_rd6b5")
+ambient_light_color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+ambient_light_sky_contribution = 0.9
+tonemap_mode = 2
+tonemap_exposure = 0.9
+tonemap_white = 1.1
+ssao_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+glow_normalized = true
+volumetric_fog_density = 0.01
+adjustment_enabled = true
+adjustment_contrast = 1.05
+adjustment_saturation = 1.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_og0lo"]
+albedo_color = Color(0.51718444, 0.5171845, 0.51718444, 1)
+
+[node name="WaterTest" type="Node3D" unique_id=2086076632]
+
+[node name="Water" type="MeshInstance3D" parent="." unique_id=457133644]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 513.01)
+cast_shadow = 0
+lod_bias = 128.0
+mesh = SubResource("QuadMesh_olabj")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=960359968]
+environment = SubResource("Environment_f5npa")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1068150490]
+size = Vector3(1000, 1000, 1000)
+material = SubResource("StandardMaterial3D_og0lo")
