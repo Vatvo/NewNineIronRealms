@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://dy2f2t4l6qbc6" path="res://UserInterface/ButtonUI/menu_button_ui.gd" id="1_lv5mv"]
 [ext_resource type="Theme" uid="uid://qxvpm2dwr80a" path="res://UserInterface/MenuTheme.tres" id="2_el4c1"]
 [ext_resource type="Texture2D" uid="uid://dj0f6triha51f" path="res://UserInterface/UIAssets/UIArrowSmall.png" id="2_lv5mv"]
+[ext_resource type="AudioStream" uid="uid://dddgxpxhvjs4n" path="res://Audio/SFX/UI_Hover.ogg" id="4_448g2"]
+[ext_resource type="AudioStream" uid="uid://dsesoxqjidqqx" path="res://Audio/SFX/UI_Confirm.ogg" id="5_054v2"]
 
 [sub_resource type="Animation" id="Animation_lv5mv"]
 resource_name = "ArrowFade"
@@ -42,19 +44,29 @@ _data = {
 &"RESET": SubResource("Animation_448g2")
 }
 
-[node name="MenuButtonUI" type="Control" unique_id=1176090080]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_054v2"]
+random_pitch = 1.0293022
+streams_count = 1
+stream_0/stream = ExtResource("4_448g2")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8wl41"]
+random_pitch = 1.0293022
+streams_count = 1
+stream_0/stream = ExtResource("5_054v2")
+
+[node name="MenuButtonUI" type="Control" unique_id=719326111]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 355.0
 offset_bottom = 78.0
 
-[node name="HBox" type="HBoxContainer" parent="." unique_id=64086104]
+[node name="HBox" type="HBoxContainer" parent="." unique_id=57015838]
 layout_mode = 0
 offset_right = 252.0
 offset_bottom = 78.0
 script = ExtResource("1_lv5mv")
 
-[node name="ArrowImg" type="TextureRect" parent="HBox" unique_id=1136527744]
+[node name="ArrowImg" type="TextureRect" parent="HBox" unique_id=666673223]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
@@ -63,13 +75,21 @@ texture = ExtResource("2_lv5mv")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Button" type="Button" parent="HBox" unique_id=305689010]
+[node name="Button" type="Button" parent="HBox" unique_id=598183682]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 theme = ExtResource("2_el4c1")
 text = "Button"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1518182769]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1042125960]
 root_node = NodePath("../HBox/ArrowImg")
 libraries/ = SubResource("AnimationLibrary_054v2")
+
+[node name="HoverSound" type="AudioStreamPlayer" parent="." unique_id=363689491]
+stream = SubResource("AudioStreamRandomizer_054v2")
+bus = &"SFX"
+
+[node name="ConfirmSound" type="AudioStreamPlayer" parent="." unique_id=452372940]
+stream = SubResource("AudioStreamRandomizer_8wl41")
+bus = &"SFX"

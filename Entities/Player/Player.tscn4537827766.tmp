@@ -1,0 +1,268 @@
+[gd_scene format=3 uid="uid://b1uo6orqicguq"]
+
+[ext_resource type="Script" uid="uid://hug26nyoc3wp" path="res://Entities/Player/Player.gd" id="1_vweq0"]
+[ext_resource type="ArrayMesh" uid="uid://befwqt1qhvy5t" path="res://Entities/Player/GolfBall.obj" id="1_ww0jn"]
+[ext_resource type="Script" uid="uid://dokg3qy4mq058" path="res://Entities/Player/BallTypes/MjolnirBall.gd" id="2_e34i1"]
+[ext_resource type="AudioStream" uid="uid://do7qejml3eylw" path="res://Audio/SFX/BallHit.ogg" id="2_uw7o4"]
+[ext_resource type="Material" uid="uid://bgc7uahcu23x3" path="res://Materials/TestMaterials/TestGridRed.tres" id="2_vweq0"]
+[ext_resource type="AudioStream" uid="uid://uk0sb4hamuc1" path="res://Audio/SFX/BallClub.ogg" id="3_gallu"]
+[ext_resource type="Material" uid="uid://dfqw86r6sdr4f" path="res://Materials/Outline.tres" id="3_vcmon"]
+[ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="4_an6q6"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_t38ms"]
+[ext_resource type="Script" uid="uid://b8hhnqsugykly" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="6_hj1c0"]
+[ext_resource type="Script" uid="uid://cirhtt2m1sp5m" path="res://Entities/Player/AimMarker.gd" id="6_t38ms"]
+[ext_resource type="Material" uid="uid://c6d50ypk7ljfu" path="res://Entities/Player/AimMarkerMat.tres" id="8_x44r4"]
+[ext_resource type="Shader" uid="uid://crdw71a0xc0xf" path="res://addons/gputrail/shaders/trail.gdshader" id="9_jynvv"]
+[ext_resource type="Shader" uid="uid://25tj77wedi3w" path="res://addons/gputrail/shaders/trail_draw_pass.gdshader" id="10_lmeus"]
+[ext_resource type="Script" uid="uid://cog4epjh8vd4u" path="res://addons/gputrail/GPUTrail3D.gd" id="11_061yh"]
+[ext_resource type="Texture2D" uid="uid://bs62d312h73im" path="res://VFXTextures/1MAFX_Noise/Noise_7.tga" id="11_lmeus"]
+[ext_resource type="Texture2D" uid="uid://dntfbkbvxovrh" path="res://VFXTextures/VFX_HQ_Seamless_Noise_Pack_Vol1/Noise_003.png" id="12_061yh"]
+[ext_resource type="AudioStream" uid="uid://togfofgt0ja6" path="res://Audio/SFX/BallJump.ogg" id="16_samso"]
+[ext_resource type="Shader" uid="uid://c43inooujhjg5" path="res://Entities/Player/ResetFadeOut.gdshader" id="17_hl213"]
+[ext_resource type="Script" uid="uid://bfusbackygxpw" path="res://Entities/Player/BallTypes/DefaultBall.gd" id="18_5m37j"]
+[ext_resource type="AudioStream" uid="uid://bp8oqp5y15csm" path="res://Audio/SFX/BallBrake.ogg" id="19_l80rc"]
+[ext_resource type="AudioStream" uid="uid://du4y7fvx0xbxb" path="res://Audio/SFX/HacksilverCollect.ogg" id="20_l2mqv"]
+[ext_resource type="Texture2D" uid="uid://c8eh4sp3a421j" path="res://icon.svg" id="21_h6pxy"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hj1c0"]
+rough = true
+bounce = 0.6
+
+[sub_resource type="Curve" id="Curve_an6q6"]
+_limits = [0.0, 40.0, -1.57, 0.0]
+_data = [Vector2(-1.57, 27.60755), 0.0, -13.843921, 0, 1, Vector2(0, 5.872593), -13.843921, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1des2"]
+
+[sub_resource type="Resource" id="Resource_an6q6"]
+script = ExtResource("5_t38ms")
+
+[sub_resource type="Resource" id="Resource_x44r4"]
+script = ExtResource("6_hj1c0")
+metadata/_custom_type_script = "uid://b8hhnqsugykly"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uw7o4"]
+shader = ExtResource("9_jynvv")
+
+[sub_resource type="Gradient" id="Gradient_lmeus"]
+offsets = PackedFloat32Array(0, 0.1764706, 0.5819328, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0.28627452, 0.28627452, 0.28627452, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_061yh"]
+gradient = SubResource("Gradient_lmeus")
+
+[sub_resource type="Curve" id="Curve_hl213"]
+bake_resolution = 16
+_data = [Vector2(0, 0.35518336), 0.0, 0.0, 0, 0, Vector2(1, 0.1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5m37j"]
+curve = SubResource("Curve_hl213")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e34i1"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("10_lmeus")
+shader_parameter/tex = ExtResource("12_061yh")
+shader_parameter/mask = ExtResource("11_lmeus")
+shader_parameter/mask_strength = 1.0
+shader_parameter/uv_offset = Vector2(0.5850606, 0)
+shader_parameter/color_ramp = SubResource("GradientTexture1D_061yh")
+shader_parameter/curve = SubResource("CurveTexture_5m37j")
+shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+shader_parameter/flags = 62
+
+[sub_resource type="QuadMesh" id="QuadMesh_vcmon"]
+material = SubResource("ShaderMaterial_e34i1")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gallu"]
+streams_count = 1
+stream_0/stream = ExtResource("3_gallu")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_samso"]
+random_pitch = 1.15
+random_volume_offset_db = 0.15
+streams_count = 1
+stream_0/stream = ExtResource("2_uw7o4")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hl213"]
+random_pitch = 1.0293022
+streams_count = 1
+stream_0/stream = ExtResource("16_samso")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_l2mqv"]
+streams_count = 1
+stream_0/stream = ExtResource("19_l80rc")
+
+[sub_resource type="Curve" id="Curve_t38ms"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_an6q6"]
+colors = PackedColorArray(0.8369676, 0.5692811, 0, 1, 0.74998635, 2.6712567e-06, 6.738305e-07, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5m37j"]
+shader = ExtResource("17_hl213")
+shader_parameter/circle_size = 1.04999995231628
+shader_parameter/screen_width = 1920.0
+shader_parameter/screen_height = 1080.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mgqku"]
+random_pitch = 1.0293022
+streams_count = 1
+stream_0/stream = ExtResource("20_l2mqv")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l80rc"]
+albedo_texture = ExtResource("21_h6pxy")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l2mqv"]
+emission_shape_scale = Vector3(0, 0, 0)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+damping_min = 30.000002
+damping_max = 30.000002
+
+[sub_resource type="QuadMesh" id="QuadMesh_mgqku"]
+
+[node name="Player" type="RigidBody3D" unique_id=1430462939 groups=["Player"]]
+physics_material_override = SubResource("PhysicsMaterial_hj1c0")
+continuous_cd = true
+contact_monitor = true
+max_contacts_reported = 4
+angular_damp = 0.2
+script = ExtResource("1_vweq0")
+ballTypeScript = ExtResource("2_e34i1")
+shotPower = 40.0
+spinPower = 0.05
+hopPower = 25.0
+powerShotBound = 4.0
+cameraSensitivity = Vector2(0.01, 0.01)
+cameraDistanceCurve = SubResource("Curve_an6q6")
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=358315486]
+material_overlay = ExtResource("3_vcmon")
+mesh = ExtResource("1_ww0jn")
+surface_material_override/0 = ExtResource("2_vweq0")
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1213877811]
+shape = SubResource("SphereShape3D_1des2")
+
+[node name="CameraHost" type="Node3D" parent="." unique_id=675515484 node_paths=PackedStringArray("follow_target")]
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 0.90630776, 0.42261827, 0, -0.42261827, 0.90630776, 0, 8.452366, 18.126156)
+script = ExtResource("4_an6q6")
+follow_mode = 6
+follow_target = NodePath("../CameraFollowPoint")
+tween_resource = SubResource("Resource_an6q6")
+tween_on_load = false
+camera_3d_resource = SubResource("Resource_x44r4")
+follow_distance = 20.0
+vertical_rotation_offset = 0.4363323129985824
+spring_length = 20.0
+collision_mask = 2
+align_transform_with_view = Callable()
+align_position_with_view = Callable()
+align_rotation_with_view = Callable()
+metadata/_custom_type_script = "uid://csjccrhj5wnx7"
+
+[node name="AimMarker" type="Node3D" parent="." unique_id=375704360]
+top_level = true
+script = ExtResource("6_t38ms")
+material = ExtResource("8_x44r4")
+
+[node name="CameraFollowPoint" type="Node3D" parent="." unique_id=1372337104]
+
+[node name="GroundRayCast" type="RayCast3D" parent="." unique_id=735118039]
+process_physics_priority = 100
+top_level = true
+hit_back_faces = false
+
+[node name="Trail" type="GPUParticles3D" parent="." unique_id=1136205079]
+top_level = true
+amount = 50
+lifetime = 50.0
+explosiveness = 1.0
+fixed_fps = 59
+process_material = SubResource("ShaderMaterial_uw7o4")
+draw_pass_1 = SubResource("QuadMesh_vcmon")
+script = ExtResource("11_061yh")
+length = 50
+length_seconds = 0.847457627118644
+texture = ExtResource("12_061yh")
+mask = ExtResource("11_lmeus")
+scroll = Vector2(0.5, 0)
+color_ramp = SubResource("GradientTexture1D_061yh")
+curve = SubResource("CurveTexture_5m37j")
+use_red_as_alpha = true
+billboard = true
+snap_to_transform = true
+_defaults_have_been_set = true
+
+[node name="ClubSoundPlayer" type="AudioStreamPlayer3D" parent="." unique_id=509467909]
+stream = SubResource("AudioStreamRandomizer_gallu")
+
+[node name="HitSoundPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1080549192]
+stream = SubResource("AudioStreamRandomizer_samso")
+volume_db = -2.5
+max_db = 2.0
+
+[node name="JumpSoundPlayer" type="AudioStreamPlayer3D" parent="." unique_id=52490144]
+stream = SubResource("AudioStreamRandomizer_hl213")
+volume_db = -2.5
+max_db = 2.0
+
+[node name="BrakeSoundPlayer" type="AudioStreamPlayer3D" parent="." unique_id=260135552]
+stream = SubResource("AudioStreamRandomizer_l2mqv")
+volume_db = -3.5
+max_db = 2.0
+pitch_scale = 0.5
+autoplay = true
+
+[node name="ShotUI" type="CanvasLayer" parent="." unique_id=1554008589]
+
+[node name="ShotPullLine" type="Line2D" parent="ShotUI" unique_id=229163799]
+points = PackedVector2Array(0, 0, 300, 0)
+width = 50.0
+width_curve = SubResource("Curve_t38ms")
+gradient = SubResource("Gradient_an6q6")
+texture_mode = 2
+end_cap_mode = 2
+
+[node name="ResetFadeOut" type="CanvasLayer" parent="." unique_id=1652572910]
+
+[node name="CircleTransition" type="ColorRect" parent="ResetFadeOut" unique_id=540745976]
+z_index = 300
+material = SubResource("ShaderMaterial_5m37j")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BallType" type="Node" parent="." unique_id=481427454]
+script = ExtResource("18_5m37j")
+
+[node name="HacksilverSoundPlayer" type="AudioStreamPlayer" parent="BallType" unique_id=913237987]
+stream = SubResource("AudioStreamRandomizer_mgqku")
+volume_db = -2.5
+
+[node name="HacksilverParticles" type="GPUParticles3D" parent="." unique_id=911010729]
+top_level = true
+material_override = SubResource("StandardMaterial3D_l80rc")
+emitting = false
+amount = 4
+one_shot = true
+explosiveness = 0.74
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_l2mqv")
+draw_pass_1 = SubResource("QuadMesh_mgqku")
