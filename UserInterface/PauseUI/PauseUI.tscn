@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://crrrc3g16tlhl" path="res://UserInterface/UIAssets/GolfRuneInner.png" id="4_aw0bk"]
 [ext_resource type="Texture2D" uid="uid://h7gxyp7u4w87" path="res://UserInterface/UIAssets/GolfRuneOuter.png" id="5_6dtwm"]
 [ext_resource type="Shader" uid="uid://2hqavb8513gt" path="res://UserInterface/UIAssets/Shaders/PauseBlur.gdshader" id="6_6dtwm"]
+[ext_resource type="AudioStream" uid="uid://dsesoxqjidqqx" path="res://Audio/SFX/UI_Confirm.ogg" id="9_i1u63"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vmvbr"]
 shader = ExtResource("6_6dtwm")
@@ -95,6 +96,11 @@ _data = {
 &"RuneSpin2": SubResource("Animation_nq4g1")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2q3j6"]
+random_pitch = 1.0145453
+streams_count = 1
+stream_0/stream = ExtResource("9_i1u63")
+
 [node name="PauseUi" type="CanvasLayer" unique_id=1760237439]
 process_mode = 3
 script = ExtResource("1_vmvbr")
@@ -130,27 +136,27 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HBox" parent="Control/MC_Buttons/VBoxContainer/ResumeBTN" index="0" unique_id=64086104]
+[node name="HBox" parent="Control/MC_Buttons/VBoxContainer/ResumeBTN" index="0" unique_id=57015838]
 script = ExtResource("3_145lo")
 
-[node name="Button" parent="Control/MC_Buttons/VBoxContainer/ResumeBTN/HBox" index="1" unique_id=305689010]
+[node name="Button" parent="Control/MC_Buttons/VBoxContainer/ResumeBTN/HBox" index="1" unique_id=598183682]
 text = "Resume"
 
 [node name="OptionsBTN" parent="Control/MC_Buttons/VBoxContainer" unique_id=1431170965 instance=ExtResource("1_cxvex")]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Button" parent="Control/MC_Buttons/VBoxContainer/OptionsBTN/HBox" parent_id_path=PackedInt32Array(1431170965, 64086104) index="1" unique_id=305689010]
+[node name="Button" parent="Control/MC_Buttons/VBoxContainer/OptionsBTN/HBox" parent_id_path=PackedInt32Array(1431170965, 57015838) index="1" unique_id=598183682]
 text = "Options"
 
 [node name="QuitBTN" parent="Control/MC_Buttons/VBoxContainer" unique_id=1375632675 instance=ExtResource("1_cxvex")]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HBox" parent="Control/MC_Buttons/VBoxContainer/QuitBTN" index="0" unique_id=64086104]
+[node name="HBox" parent="Control/MC_Buttons/VBoxContainer/QuitBTN" index="0" unique_id=57015838]
 script = ExtResource("2_ie44m")
 
-[node name="Button" parent="Control/MC_Buttons/VBoxContainer/QuitBTN/HBox" index="1" unique_id=305689010]
+[node name="Button" parent="Control/MC_Buttons/VBoxContainer/QuitBTN/HBox" index="1" unique_id=598183682]
 text = "Quit"
 
 [node name="MC_Title" type="MarginContainer" parent="Control" unique_id=453537442]
@@ -214,6 +220,10 @@ libraries/ = SubResource("AnimationLibrary_i1u63")
 
 [node name="SpinAnimPlayer" type="AnimationPlayer" parent="." unique_id=1522309446]
 libraries/ = SubResource("AnimationLibrary_w4ptd")
+
+[node name="PausePlaySound" type="AudioStreamPlayer" parent="." unique_id=174313370]
+stream = SubResource("AudioStreamRandomizer_2q3j6")
+pitch_scale = 0.5
 
 [editable path="Control/MC_Buttons/VBoxContainer/ResumeBTN"]
 [editable path="Control/MC_Buttons/VBoxContainer/OptionsBTN"]
