@@ -129,27 +129,27 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HBox" parent="Control/MC_Buttons/VBoxContainer/ResumeBTN" index="0" unique_id=64086104]
+[node name="HBox" parent="Control/MC_Buttons/VBoxContainer/ResumeBTN" index="0" unique_id=57015838]
 script = ExtResource("3_145lo")
 
-[node name="Button" parent="Control/MC_Buttons/VBoxContainer/ResumeBTN/HBox" index="1" unique_id=305689010]
+[node name="Button" parent="Control/MC_Buttons/VBoxContainer/ResumeBTN/HBox" index="1" unique_id=598183682]
 text = "Resume"
 
 [node name="OptionsBTN" parent="Control/MC_Buttons/VBoxContainer" unique_id=1431170965 instance=ExtResource("1_cxvex")]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Button" parent="Control/MC_Buttons/VBoxContainer/OptionsBTN/HBox" parent_id_path=PackedInt32Array(1431170965, 64086104) index="1" unique_id=305689010]
+[node name="Button" parent="Control/MC_Buttons/VBoxContainer/OptionsBTN/HBox" parent_id_path=PackedInt32Array(1431170965, 57015838) index="1" unique_id=598183682]
 text = "Options"
 
 [node name="QuitBTN" parent="Control/MC_Buttons/VBoxContainer" unique_id=1375632675 instance=ExtResource("1_cxvex")]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HBox" parent="Control/MC_Buttons/VBoxContainer/QuitBTN" index="0" unique_id=64086104]
+[node name="HBox" parent="Control/MC_Buttons/VBoxContainer/QuitBTN" index="0" unique_id=57015838]
 script = ExtResource("2_ie44m")
 
-[node name="Button" parent="Control/MC_Buttons/VBoxContainer/QuitBTN/HBox" index="1" unique_id=305689010]
+[node name="Button" parent="Control/MC_Buttons/VBoxContainer/QuitBTN/HBox" index="1" unique_id=598183682]
 text = "Quit"
 
 [node name="MC_Title" type="MarginContainer" parent="Control" unique_id=453537442]
@@ -197,7 +197,7 @@ grow_vertical = 2
 pivot_offset = Vector2(540, 540)
 texture = ExtResource("5_6dtwm")
 
-[node name="ColorRect" type="ColorRect" parent="Control" unique_id=885449927]
+[node name="Blur" type="ColorRect" parent="Control" unique_id=885449927]
 z_index = -5
 material = SubResource("ShaderMaterial_145lo")
 layout_mode = 1

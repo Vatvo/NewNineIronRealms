@@ -1,8 +1,14 @@
 [gd_scene format=3 uid="uid://b6vwbdga2t6ow"]
 
-[ext_resource type="VideoStream" uid="uid://csb1s5ka44fbu" path="res://UserInterface/UIVideos/shot1.ogv" id="1_8pixq"]
+[ext_resource type="VideoStream" uid="uid://bn4odanilu55b" path="res://UserInterface/UIVideos/tut2.ogv" id="1_qp8r7"]
 [ext_resource type="Texture2D" uid="uid://dwh8x7wtc16ee" path="res://UserInterface/UIAssets/DividerLine.png" id="2_de4wf"]
 [ext_resource type="Theme" uid="uid://qxvpm2dwr80a" path="res://UserInterface/MenuTheme.tres" id="3_ie7ef"]
+[ext_resource type="Shader" uid="uid://2hqavb8513gt" path="res://UserInterface/UIAssets/Shaders/PauseBlur.gdshader" id="4_h27qs"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_frovg"]
+shader = ExtResource("4_h27qs")
+shader_parameter/blur = 1.42800006783
+shader_parameter/brightness = 0.5650000268375
 
 [node name="TutorialUi" type="CanvasLayer" unique_id=1082330632]
 
@@ -28,7 +34,7 @@ offset_bottom = 796.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.6, 0.6)
-stream = ExtResource("1_8pixq")
+stream = ExtResource("1_qp8r7")
 autoplay = true
 loop = true
 buffering_msec = 1000
@@ -48,4 +54,15 @@ offset_right = 101.0
 offset_bottom = 182.0
 grow_horizontal = 2
 theme = ExtResource("3_ie7ef")
-text = "gooning"
+text = "Label"
+
+[node name="Blur" type="ColorRect" parent="Control" unique_id=1595189107]
+z_index = -5
+material = SubResource("ShaderMaterial_frovg")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
