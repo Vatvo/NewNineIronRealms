@@ -46,6 +46,51 @@
 [ext_resource type="Image" uid="uid://ctgn167wrp6vd" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_2_-5.res" id="43_12was"]
 [ext_resource type="Image" uid="uid://d0lnag7h234nf" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_3_-4.res" id="44_e8mxw"]
 [ext_resource type="Image" uid="uid://chnsjhumshhxk" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_3_-3.res" id="45_sev63"]
+[ext_resource type="Image" uid="uid://b2ho38xvn6a42" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_3_-5.res" id="46_12was"]
+[ext_resource type="Image" uid="uid://6c6ggp0v6t1r" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_2_-6.res" id="47_sev63"]
+[ext_resource type="Image" uid="uid://bw6yyoa5w3fu8" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_3_-6.res" id="48_0gid3"]
+[ext_resource type="Image" uid="uid://blhwjgmxipwvu" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_0_-6.res" id="49_rp5a3"]
+[ext_resource type="Image" uid="uid://33xdini36hsf" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_1_-6.res" id="50_8u1j2"]
+[ext_resource type="Image" uid="uid://dcw6r6tkv8ws8" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_1_-7.res" id="51_bove1"]
+[ext_resource type="Image" uid="uid://n57hkc1q401l" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_0_-7.res" id="52_keuxf"]
+[ext_resource type="Image" uid="uid://curp78xxitibg" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_2_-7.res" id="53_so05j"]
+[ext_resource type="Image" uid="uid://toejqktoo0vr" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_3_-7.res" id="54_x8q6i"]
+[ext_resource type="Image" uid="uid://4tcto5sakf6a" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_1_-8.res" id="55_u1r6p"]
+[ext_resource type="Image" uid="uid://bkimjrvyxw4ch" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_2_-8.res" id="56_dwnur"]
+[ext_resource type="Image" uid="uid://y0sq07csql7y" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_3_-8.res" id="57_1w1ir"]
+[ext_resource type="Image" uid="uid://7cx5nevyh35" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-1_-7.res" id="58_x8q6i"]
+[ext_resource type="Image" uid="uid://drx2oyw0k0ry7" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-1_-6.res" id="59_u1r6p"]
+[ext_resource type="Image" uid="uid://u2s6tqbpgmx7" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-1_-5.res" id="60_dwnur"]
+[ext_resource type="Image" uid="uid://b5nnfgskj1utw" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_0_-8.res" id="61_1w1ir"]
+[ext_resource type="Image" uid="uid://c44png7hjm5c" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-1_-8.res" id="62_dud2f"]
+[ext_resource type="Image" uid="uid://ca1eip4jksag7" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_3_-9.res" id="63_a0q6q"]
+[ext_resource type="Image" uid="uid://d3w0t57r67c8g" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_2_-9.res" id="64_7d80j"]
+[ext_resource type="Image" uid="uid://dejmvyfkk1gfy" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_2_-10.res" id="65_dgyrq"]
+[ext_resource type="Image" uid="uid://ll7fyr32oh8q" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_3_-10.res" id="66_ojxkv"]
+[ext_resource type="Image" uid="uid://ca6cdjf8ppenw" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_4_-10.res" id="67_kg75r"]
+[ext_resource type="Image" uid="uid://dek8da46ra71r" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_4_-9.res" id="68_m81tu"]
+[ext_resource type="Image" uid="uid://bca3mi6gqcl3m" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_4_-8.res" id="69_aq7d7"]
+[ext_resource type="Image" uid="uid://crtdsl5qo7uls" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_1_-9.res" id="70_7ke11"]
+[ext_resource type="Image" uid="uid://c38sa8ud8g0oi" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_0_-9.res" id="71_mfkc8"]
+[ext_resource type="Image" uid="uid://yjw1oxgjaojo" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-1_-10.res" id="72_kape7"]
+[ext_resource type="Image" uid="uid://sxcn65umfjel" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-1_-9.res" id="73_uerer"]
+[ext_resource type="Image" uid="uid://da0x7fp88xti8" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_0_-10.res" id="74_hhrub"]
+[ext_resource type="Image" uid="uid://bd88m5xuffvv4" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-1_-11.res" id="75_lspp8"]
+[ext_resource type="Image" uid="uid://b6ix5oc7gy7lo" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_0_-11.res" id="76_a4m8g"]
+[ext_resource type="Image" uid="uid://bmhx80cyh0077" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-2_-11.res" id="77_qmq5f"]
+[ext_resource type="Image" uid="uid://cpo360yndl2w3" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-1_-12.res" id="78_85kqv"]
+[ext_resource type="Image" uid="uid://bu5wonjkgqbv8" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_0_-12.res" id="79_pv2hi"]
+[ext_resource type="Image" uid="uid://dk85ecihua6j2" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-2_-10.res" id="80_mmhdw"]
+[ext_resource type="Image" uid="uid://l0sjudubm14n" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_1_-11.res" id="81_8wj02"]
+[ext_resource type="Image" uid="uid://b22puoj7p0xyk" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_1_-10.res" id="82_tu81d"]
+[ext_resource type="Image" uid="uid://dq0xmutcffama" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-2_-12.res" id="83_0tpbj"]
+[ext_resource type="Image" uid="uid://kyu65yk2ukj1" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-3_-12.res" id="84_gik2p"]
+[ext_resource type="Image" uid="uid://cjsivku18ay6" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-3_-11.res" id="85_07ebn"]
+[ext_resource type="Image" uid="uid://cakw0e1jjhdl5" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-2_-7.res" id="86_qmq5f"]
+[ext_resource type="Image" uid="uid://djjakevtkaqxo" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-2_-6.res" id="87_85kqv"]
+[ext_resource type="Image" uid="uid://cxrxv073jfdd5" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-3_-10.res" id="88_pv2hi"]
+[ext_resource type="Image" uid="uid://b846uv7423hkp" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-3_-9.res" id="89_mmhdw"]
+[ext_resource type="Image" uid="uid://bs6apooyaabm5" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-2_-9.res" id="90_8wj02"]
 
 [sub_resource type="ZoneResource" id="ZoneResource_hlk88"]
 heightMapImage = ExtResource("3_gc2s2")
@@ -164,8 +209,188 @@ heightMapImage = ExtResource("44_e8mxw")
 zonePosition = Vector2i(3, -3)
 heightMapImage = ExtResource("45_sev63")
 
+[sub_resource type="ZoneResource" id="ZoneResource_e8mxw"]
+zonePosition = Vector2i(3, -5)
+heightMapImage = ExtResource("46_12was")
+
+[sub_resource type="ZoneResource" id="ZoneResource_wjtg2"]
+zonePosition = Vector2i(2, -6)
+heightMapImage = ExtResource("47_sev63")
+
+[sub_resource type="ZoneResource" id="ZoneResource_hh3im"]
+zonePosition = Vector2i(3, -6)
+heightMapImage = ExtResource("48_0gid3")
+
+[sub_resource type="ZoneResource" id="ZoneResource_dud2f"]
+zonePosition = Vector2i(0, -6)
+heightMapImage = ExtResource("49_rp5a3")
+
+[sub_resource type="ZoneResource" id="ZoneResource_mdmdf"]
+zonePosition = Vector2i(1, -6)
+heightMapImage = ExtResource("50_8u1j2")
+
+[sub_resource type="ZoneResource" id="ZoneResource_clj6u"]
+zonePosition = Vector2i(1, -7)
+heightMapImage = ExtResource("51_bove1")
+
+[sub_resource type="ZoneResource" id="ZoneResource_8d728"]
+zonePosition = Vector2i(0, -7)
+heightMapImage = ExtResource("52_keuxf")
+
+[sub_resource type="ZoneResource" id="ZoneResource_phce3"]
+zonePosition = Vector2i(2, -7)
+heightMapImage = ExtResource("53_so05j")
+
+[sub_resource type="ZoneResource" id="ZoneResource_a0q6q"]
+zonePosition = Vector2i(3, -7)
+heightMapImage = ExtResource("54_x8q6i")
+
+[sub_resource type="ZoneResource" id="ZoneResource_7d80j"]
+zonePosition = Vector2i(1, -8)
+heightMapImage = ExtResource("55_u1r6p")
+
+[sub_resource type="ZoneResource" id="ZoneResource_dgyrq"]
+zonePosition = Vector2i(2, -8)
+heightMapImage = ExtResource("56_dwnur")
+
+[sub_resource type="ZoneResource" id="ZoneResource_ojxkv"]
+zonePosition = Vector2i(3, -8)
+heightMapImage = ExtResource("57_1w1ir")
+
+[sub_resource type="ZoneResource" id="ZoneResource_kg75r"]
+zonePosition = Vector2i(-1, -7)
+heightMapImage = ExtResource("58_x8q6i")
+
+[sub_resource type="ZoneResource" id="ZoneResource_m81tu"]
+zonePosition = Vector2i(-1, -6)
+heightMapImage = ExtResource("59_u1r6p")
+
+[sub_resource type="ZoneResource" id="ZoneResource_aq7d7"]
+zonePosition = Vector2i(-1, -5)
+heightMapImage = ExtResource("60_dwnur")
+
+[sub_resource type="ZoneResource" id="ZoneResource_7ke11"]
+zonePosition = Vector2i(0, -8)
+heightMapImage = ExtResource("61_1w1ir")
+
+[sub_resource type="ZoneResource" id="ZoneResource_mfkc8"]
+zonePosition = Vector2i(-1, -8)
+heightMapImage = ExtResource("62_dud2f")
+
+[sub_resource type="ZoneResource" id="ZoneResource_vdaop"]
+zonePosition = Vector2i(3, -9)
+heightMapImage = ExtResource("63_a0q6q")
+
+[sub_resource type="ZoneResource" id="ZoneResource_d40pk"]
+zonePosition = Vector2i(2, -9)
+heightMapImage = ExtResource("64_7d80j")
+
+[sub_resource type="ZoneResource" id="ZoneResource_68uxt"]
+zonePosition = Vector2i(2, -10)
+heightMapImage = ExtResource("65_dgyrq")
+
+[sub_resource type="ZoneResource" id="ZoneResource_mfn4f"]
+zonePosition = Vector2i(3, -10)
+heightMapImage = ExtResource("66_ojxkv")
+
+[sub_resource type="ZoneResource" id="ZoneResource_kqtor"]
+zonePosition = Vector2i(4, -10)
+heightMapImage = ExtResource("67_kg75r")
+
+[sub_resource type="ZoneResource" id="ZoneResource_kape7"]
+zonePosition = Vector2i(4, -9)
+heightMapImage = ExtResource("68_m81tu")
+
+[sub_resource type="ZoneResource" id="ZoneResource_uerer"]
+zonePosition = Vector2i(4, -8)
+heightMapImage = ExtResource("69_aq7d7")
+
+[sub_resource type="ZoneResource" id="ZoneResource_hhrub"]
+zonePosition = Vector2i(1, -9)
+heightMapImage = ExtResource("70_7ke11")
+
+[sub_resource type="ZoneResource" id="ZoneResource_lspp8"]
+zonePosition = Vector2i(0, -9)
+heightMapImage = ExtResource("71_mfkc8")
+
+[sub_resource type="ZoneResource" id="ZoneResource_rp85u"]
+zonePosition = Vector2i(-1, -10)
+heightMapImage = ExtResource("72_kape7")
+
+[sub_resource type="ZoneResource" id="ZoneResource_v2fch"]
+zonePosition = Vector2i(-1, -9)
+heightMapImage = ExtResource("73_uerer")
+
+[sub_resource type="ZoneResource" id="ZoneResource_fr4ep"]
+zonePosition = Vector2i(0, -10)
+heightMapImage = ExtResource("74_hhrub")
+
+[sub_resource type="ZoneResource" id="ZoneResource_1rdrt"]
+zonePosition = Vector2i(-1, -11)
+heightMapImage = ExtResource("75_lspp8")
+
+[sub_resource type="ZoneResource" id="ZoneResource_ny7jx"]
+zonePosition = Vector2i(0, -11)
+heightMapImage = ExtResource("76_a4m8g")
+
+[sub_resource type="ZoneResource" id="ZoneResource_1l3hp"]
+zonePosition = Vector2i(-2, -11)
+heightMapImage = ExtResource("77_qmq5f")
+
+[sub_resource type="ZoneResource" id="ZoneResource_exinx"]
+zonePosition = Vector2i(-1, -12)
+heightMapImage = ExtResource("78_85kqv")
+
+[sub_resource type="ZoneResource" id="ZoneResource_t3k1x"]
+zonePosition = Vector2i(0, -12)
+heightMapImage = ExtResource("79_pv2hi")
+
+[sub_resource type="ZoneResource" id="ZoneResource_5a6um"]
+zonePosition = Vector2i(-2, -10)
+heightMapImage = ExtResource("80_mmhdw")
+
+[sub_resource type="ZoneResource" id="ZoneResource_gica5"]
+zonePosition = Vector2i(1, -11)
+heightMapImage = ExtResource("81_8wj02")
+
+[sub_resource type="ZoneResource" id="ZoneResource_46q1j"]
+zonePosition = Vector2i(1, -10)
+heightMapImage = ExtResource("82_tu81d")
+
+[sub_resource type="ZoneResource" id="ZoneResource_gc5bd"]
+zonePosition = Vector2i(-2, -12)
+heightMapImage = ExtResource("83_0tpbj")
+
+[sub_resource type="ZoneResource" id="ZoneResource_ilp3d"]
+zonePosition = Vector2i(-3, -12)
+heightMapImage = ExtResource("84_gik2p")
+
+[sub_resource type="ZoneResource" id="ZoneResource_alnsk"]
+zonePosition = Vector2i(-3, -11)
+heightMapImage = ExtResource("85_07ebn")
+
+[sub_resource type="ZoneResource" id="ZoneResource_tu81d"]
+zonePosition = Vector2i(-2, -7)
+heightMapImage = ExtResource("86_qmq5f")
+
+[sub_resource type="ZoneResource" id="ZoneResource_0tpbj"]
+zonePosition = Vector2i(-2, -6)
+heightMapImage = ExtResource("87_85kqv")
+
+[sub_resource type="ZoneResource" id="ZoneResource_gik2p"]
+zonePosition = Vector2i(-3, -10)
+heightMapImage = ExtResource("88_pv2hi")
+
+[sub_resource type="ZoneResource" id="ZoneResource_07ebn"]
+zonePosition = Vector2i(-3, -9)
+heightMapImage = ExtResource("89_mmhdw")
+
+[sub_resource type="ZoneResource" id="ZoneResource_d5a62"]
+zonePosition = Vector2i(-2, -9)
+heightMapImage = ExtResource("90_8wj02")
+
 [sub_resource type="ZonesResource" id="ZonesResource_lp7j4"]
-zones = Array[ZoneResource]([SubResource("ZoneResource_hlk88"), SubResource("ZoneResource_ffokv"), SubResource("ZoneResource_fsqio"), SubResource("ZoneResource_upe5e"), SubResource("ZoneResource_ub8ks"), SubResource("ZoneResource_ujjcc"), SubResource("ZoneResource_c4xwp"), SubResource("ZoneResource_004c8"), SubResource("ZoneResource_puhd0"), SubResource("ZoneResource_l67m6"), SubResource("ZoneResource_oaxll"), SubResource("ZoneResource_xo2cj"), SubResource("ZoneResource_spd0d"), SubResource("ZoneResource_ma4vl"), SubResource("ZoneResource_khon3"), SubResource("ZoneResource_p4uey"), SubResource("ZoneResource_k1i40"), SubResource("ZoneResource_wf6vq"), SubResource("ZoneResource_y0sre"), SubResource("ZoneResource_8x5r5"), SubResource("ZoneResource_qvnkq"), SubResource("ZoneResource_0gid3"), SubResource("ZoneResource_vn6cw"), SubResource("ZoneResource_aq0lq"), SubResource("ZoneResource_ibqim")])
+zones = Array[ZoneResource]([SubResource("ZoneResource_hlk88"), SubResource("ZoneResource_ffokv"), SubResource("ZoneResource_fsqio"), SubResource("ZoneResource_upe5e"), SubResource("ZoneResource_ub8ks"), SubResource("ZoneResource_ujjcc"), SubResource("ZoneResource_c4xwp"), SubResource("ZoneResource_004c8"), SubResource("ZoneResource_puhd0"), SubResource("ZoneResource_l67m6"), SubResource("ZoneResource_oaxll"), SubResource("ZoneResource_xo2cj"), SubResource("ZoneResource_spd0d"), SubResource("ZoneResource_ma4vl"), SubResource("ZoneResource_khon3"), SubResource("ZoneResource_p4uey"), SubResource("ZoneResource_k1i40"), SubResource("ZoneResource_wf6vq"), SubResource("ZoneResource_y0sre"), SubResource("ZoneResource_8x5r5"), SubResource("ZoneResource_qvnkq"), SubResource("ZoneResource_0gid3"), SubResource("ZoneResource_vn6cw"), SubResource("ZoneResource_aq0lq"), SubResource("ZoneResource_ibqim"), SubResource("ZoneResource_e8mxw"), SubResource("ZoneResource_wjtg2"), SubResource("ZoneResource_hh3im"), SubResource("ZoneResource_dud2f"), SubResource("ZoneResource_mdmdf"), SubResource("ZoneResource_clj6u"), SubResource("ZoneResource_8d728"), SubResource("ZoneResource_phce3"), SubResource("ZoneResource_a0q6q"), SubResource("ZoneResource_7d80j"), SubResource("ZoneResource_dgyrq"), SubResource("ZoneResource_ojxkv"), SubResource("ZoneResource_kg75r"), SubResource("ZoneResource_m81tu"), SubResource("ZoneResource_aq7d7"), SubResource("ZoneResource_7ke11"), SubResource("ZoneResource_mfkc8"), SubResource("ZoneResource_vdaop"), SubResource("ZoneResource_d40pk"), SubResource("ZoneResource_68uxt"), SubResource("ZoneResource_mfn4f"), SubResource("ZoneResource_kqtor"), SubResource("ZoneResource_kape7"), SubResource("ZoneResource_uerer"), SubResource("ZoneResource_hhrub"), SubResource("ZoneResource_lspp8"), SubResource("ZoneResource_rp85u"), SubResource("ZoneResource_v2fch"), SubResource("ZoneResource_fr4ep"), SubResource("ZoneResource_1rdrt"), SubResource("ZoneResource_ny7jx"), SubResource("ZoneResource_1l3hp"), SubResource("ZoneResource_exinx"), SubResource("ZoneResource_t3k1x"), SubResource("ZoneResource_5a6um"), SubResource("ZoneResource_gica5"), SubResource("ZoneResource_46q1j"), SubResource("ZoneResource_gc5bd"), SubResource("ZoneResource_ilp3d"), SubResource("ZoneResource_alnsk"), SubResource("ZoneResource_tu81d"), SubResource("ZoneResource_0tpbj"), SubResource("ZoneResource_gik2p"), SubResource("ZoneResource_07ebn"), SubResource("ZoneResource_d5a62")])
 
 [sub_resource type="Gradient" id="Gradient_407w6"]
 offsets = PackedFloat32Array(0, 0.5236842, 0.8473684)
@@ -262,7 +487,7 @@ adjustment_saturation = 1.1
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1204041851 groups=["MainCamera"]]
 physics_interpolation_mode = 1
-transform = Transform3D(1, 0, 0, 0, 0.9063078, 0.42261818, 0, -0.42261818, 0.9063078, -6.2823887, 9.160409, -616.1549)
+transform = Transform3D(1, 0, 0, 0, 0.9063078, 0.42261818, 0, -0.42261818, 0.9063078, -6.2823887, 9.160409, -658.61725)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D" unique_id=908063206]
 process_priority = 300
@@ -272,12 +497,75 @@ script = ExtResource("1_xv5w7")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
 [node name="Player" parent="." unique_id=630880669 instance=ExtResource("2_xv5w7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.2823887, 0.7080431, -634.28107)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.2823887, 0.7080431, -676.7434)
+shotPower = 30.0
 
 [node name="TerraBrush" type="TerraBrush" parent="." unique_id=821570681]
 dataPath = "res://Maps/PlayMaps/Asgard/TerraBrush"
 terrainZones = SubResource("ZonesResource_lp7j4")
-metadata/_edit_lock_ = false
+metadata/_edit_lock_ = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2108588787]
 environment = SubResource("Environment_fsqio")
+
+[node name="Walls" type="Node" parent="." unique_id=611634113]
+
+[node name="Angle Wall 1" type="CSGBox3D" parent="Walls" unique_id=156437122]
+transform = Transform3D(0.6782494, 0, 0.7348317, 0, 1, 0, -0.7348317, 0, 0.6782494, -19.253017, 3.048133, -254.31055)
+use_collision = true
+size = Vector3(18.859009, 6.1904907, 5.413574)
+
+[node name="Angle Wall 2" type="CSGBox3D" parent="Walls" unique_id=743174196]
+transform = Transform3D(0.6782494, 0, 0.7348317, 0, 1, 0, -0.7348317, 0, 0.6782494, 113.07468, 3.048133, -231.76715)
+use_collision = true
+size = Vector3(18.859009, 6.1904907, 5.413574)
+
+[node name="Angle Wall 3" type="CSGBox3D" parent="Walls" unique_id=733731306]
+transform = Transform3D(0.68730295, 0, -0.72637075, 0, 1, 0, 0.72637075, 0, 0.68730295, 116.51348, 2.9163847, -393.39648)
+use_collision = true
+size = Vector3(18.859009, 6.1904907, 5.413574)
+
+[node name="Boundary Wall 1" type="CSGBox3D" parent="." unique_id=1504655087]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.205719, 1.0324707, -103.75659)
+use_collision = true
+size = Vector3(2.805359, 3.0649414, 238.23291)
+
+[node name="Boundary Wall 4" type="CSGBox3D" parent="." unique_id=75283052]
+transform = Transform3D(0.022251157, 0, 0.9997524, 0, 1, 0, -0.9997524, 0, 0.022251157, 64.823875, 1.0324707, -223.57083)
+use_collision = true
+size = Vector3(2.805359, 3.0649414, 105.21092)
+
+[node name="Boundary Wall 5" type="CSGBox3D" parent="." unique_id=1453429907]
+transform = Transform3D(0.022251157, 0, 0.9997524, 0, 1, 0, -0.9997524, 0, 0.022251157, 27.456617, 1.0324707, -263.59607)
+use_collision = true
+size = Vector3(2.805359, 3.0649414, 110.317245)
+
+[node name="Boundary Wall 6" type="CSGBox3D" parent="." unique_id=830339877]
+transform = Transform3D(0.9999955, 0, -0.0029846076, 0, 1, 0, 0.0029846076, 0, 0.9999955, 84.25978, 1.0324707, -313.2082)
+use_collision = true
+size = Vector3(2.805359, 3.0649414, 102.66281)
+
+[node name="Boundary Wall 8" type="CSGBox3D" parent="." unique_id=622871764]
+transform = Transform3D(0.0070509664, 0, -0.99997526, 0, 1, 0, 0.99997526, 0, 0.0070509664, 27.168772, 1.0324707, -361.6578)
+use_collision = true
+size = Vector3(2.805359, 3.0649414, 118.03316)
+
+[node name="Boundary Wall 9" type="CSGBox3D" parent="." unique_id=494063755]
+transform = Transform3D(0.0070509664, 0, -0.99997526, 0, 1, 0, 0.99997526, 0, 0.0070509664, 68.323685, 1.032486, -398.19077)
+use_collision = true
+size = Vector3(2.805359, 3.0649414, 110.02647)
+
+[node name="Boundary Wall 7" type="CSGBox3D" parent="." unique_id=1885545555]
+transform = Transform3D(0.9999955, 0, -0.0029846076, 0, 1, 0, 0.0029846076, 0, 0.9999955, 121.66641, 1.0324707, -309.99738)
+use_collision = true
+size = Vector3(2.805359, 3.0649414, 174.72675)
+
+[node name="Boundary Wall 2" type="CSGBox3D" parent="." unique_id=347944923]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.582088, 1.0324707, -123.984375)
+use_collision = true
+size = Vector3(2.805359, 3.0649414, 278.68848)
+
+[node name="Boundary Wall 3" type="CSGBox3D" parent="." unique_id=1021210024]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6468773, 2.654335, 14.508482)
+use_collision = true
+size = Vector3(37.026978, 4.0839233, 1.7445068)
