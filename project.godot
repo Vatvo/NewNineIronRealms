@@ -30,7 +30,7 @@ window/size/viewport_height=1080
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/SunshineClouds2/plugin.cfg", "res://addons/gputrail/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/waterways/plugin.cfg")
+enabled=PackedStringArray("res://addons/SunshineClouds2/plugin.cfg", "res://addons/boujie_water_shader/plugin.cfg", "res://addons/gputrail/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/waterways/plugin.cfg")
 
 [file_customization]
 

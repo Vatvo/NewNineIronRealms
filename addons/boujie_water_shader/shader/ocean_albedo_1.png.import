@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jlyajnvtjrv2"
-path.s3tc="res://.godot/imported/Noise_009.png-a9fa9031c3f57bcf5e938e670b62d36c.s3tc.ctex"
+uid="uid://c28pojjx0kja3"
+path.s3tc="res://.godot/imported/ocean_albedo_1.png-669972af9d76395b1ae51309ac2e2ec5.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://VFXTextures/VFX_HQ_Seamless_Noise_Pack_Vol1/Noise_009.png"
-dest_files=["res://.godot/imported/Noise_009.png-a9fa9031c3f57bcf5e938e670b62d36c.s3tc.ctex"]
+source_file="res://addons/boujie_water_shader/shader/ocean_albedo_1.png"
+dest_files=["res://.godot/imported/ocean_albedo_1.png-669972af9d76395b1ae51309ac2e2ec5.s3tc.ctex"]
 
 [params]
 
