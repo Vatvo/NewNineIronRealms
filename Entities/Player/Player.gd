@@ -31,6 +31,7 @@ static var canReset: bool = true
 @export var hopPower: float
 @export var powerShotBound: float
 @export var brakeDepeltionSpeed: float
+@export var dampingCoefficient: float = 1
 
 @export_category("Camera")
 @export var cameraSensitivity: Vector2 = Vector2(1,1)
@@ -107,7 +108,7 @@ func _physics_process(delta: float) -> void:
 			deactivate_brake()
 		
 	if isGrounded:
-		unmoddedDamp = 1 / linear_velocity.length()
+		unmoddedDamp = dampingCoefficient / linear_velocity.length()
 	if !isGrounded || !isMoving:
 		unmoddedDamp = 0
 		
