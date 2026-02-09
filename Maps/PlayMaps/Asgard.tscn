@@ -596,7 +596,7 @@ adjustment_saturation = 1.1
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1204041851 groups=["MainCamera"]]
 physics_interpolation_mode = 1
-transform = Transform3D(1, 0, 0, 0, 0.9063078, 0.42261818, 0, -0.42261818, 0.9063078, -6.2823887, 9.160409, -658.61725)
+transform = Transform3D(1, 0, 0, 0, 0.90630776, 0.42261827, 0, -0.42261827, 0.90630776, -6.2823887, 9.160409, 5.2695885)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D" unique_id=908063206]
 process_priority = 300
@@ -606,13 +606,13 @@ script = ExtResource("1_xv5w7")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
 [node name="Player" parent="." unique_id=630880669 instance=ExtResource("2_xv5w7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.2823887, 0.7080431, -676.7434)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.2823887, 0.7080431, -12.856567)
 shotPower = 30.0
 
 [node name="TerraBrush" type="TerraBrush" parent="." unique_id=821570681]
 dataPath = "res://Maps/PlayMaps/Asgard/TerraBrush"
 terrainZones = SubResource("ZonesResource_lp7j4")
-metadata/_edit_lock_ = true
+metadata/_edit_lock_ = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2108588787]
 environment = SubResource("Environment_fsqio")
