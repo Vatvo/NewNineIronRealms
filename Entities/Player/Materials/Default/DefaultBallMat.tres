@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c32mg3gktarpr"]
+
+[ext_resource type="Texture2D" uid="uid://ba2yfc0ihd34y" path="res://Entities/Player/Materials/Default/GolfBallDefaultTexture.png" id="1_011ab"]
+[ext_resource type="Texture2D" uid="uid://bf7g7h3o5pcc7" path="res://Entities/Player/Materials/Default/GolfNormals.png" id="2_a28xl"]
+
+[resource]
+diffuse_mode = 3
+specular_mode = 1
+disable_ambient_light = true
+albedo_texture = ExtResource("1_011ab")
+normal_enabled = true
+normal_scale = 6.58
+normal_texture = ExtResource("2_a28xl")

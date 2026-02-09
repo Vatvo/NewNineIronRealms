@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cili246qf0k8h" path="res://Entities/Button/Button.gd" id="1_sdx6b"]
 [ext_resource type="ArrayMesh" uid="uid://tgccy4pttf1w" path="res://Entities/Button/ButtonStones.obj" id="2_61q6x"]
 [ext_resource type="Shader" uid="uid://dxwqrrlny11vo" path="res://Entities/Button/ButtonGemShader.gdshader" id="2_m0tpk"]
+[ext_resource type="Material" uid="uid://dfqw86r6sdr4f" path="res://Materials/Outline.tres" id="2_welao"]
 [ext_resource type="Texture2D" uid="uid://qjgtrne6p44e" path="res://VFXTextures/1MAFX_Noise/Noise_8.tga" id="4_bphlb"]
 [ext_resource type="Texture2D" uid="uid://co0h05q0c5nph" path="res://VFXTextures/VFX_HQ_Seamless_Noise_Pack_Vol1/Noise_008.png" id="4_nybw6"]
 [ext_resource type="Texture2D" uid="uid://bm21nttowx61w" path="res://VFXTextures/Luos_FreeGiveAway/Noise_Normals/T_NoiseNormal_29.png" id="5_bphlb"]
@@ -12,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://du3vhnnxh3svu" path="res://VFXTextures/Luos_FreeGiveAway/Noise_Normals/T_NoiseNormal_24.png" id="9_sdx6b"]
 [ext_resource type="Shader" uid="uid://dtjtgdcwmmgy6" path="res://Entities/Button/ButtonLightColumn.gdshader" id="10_0hmvl"]
 [ext_resource type="Texture2D" uid="uid://b7foh3eeu1pf1" path="res://VFXTextures/1MAFX_Noise/Noise_9.tga" id="11_writv"]
-[ext_resource type="AudioStream" uid="uid://do7qejml3eylw" path="res://Audio/SFX/BallHit.ogg" id="13_nybw6"]
+[ext_resource type="AudioStream" uid="uid://fxuvs78ay8mc" path="res://Audio/SFX/Crystal.ogg" id="13_nybw6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5q77j"]
 render_priority = 0
@@ -35,6 +36,8 @@ albedo_texture = ExtResource("7_jfi18")
 metallic = 0.48
 normal_texture = ExtResource("9_sdx6b")
 uv1_triplanar = true
+stencil_flags = 2
+stencil_outline_thickness = 0.1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_writv"]
 render_priority = 0
@@ -334,8 +337,7 @@ _data = {
 }
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_welao"]
-random_pitch = 1.15
-random_volume_offset_db = 0.15
+random_pitch = 1.0594631
 streams_count = 1
 stream_0/stream = ExtResource("13_nybw6")
 
@@ -345,6 +347,7 @@ untriggerable = true
 
 [node name="Gem" type="MeshInstance3D" parent="." unique_id=873197145]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+material_overlay = ExtResource("2_welao")
 cast_shadow = 0
 mesh = ExtResource("1_bu2gd")
 surface_material_override/0 = SubResource("ShaderMaterial_5q77j")
@@ -356,6 +359,7 @@ light_energy = 7.0
 omni_range = 4.758061
 
 [node name="Stones" type="MeshInstance3D" parent="." unique_id=345385505]
+material_overlay = ExtResource("2_welao")
 mesh = ExtResource("2_61q6x")
 surface_material_override/0 = SubResource("StandardMaterial3D_0hmvl")
 
@@ -381,7 +385,8 @@ autoplay = &"Default"
 
 [node name="HitSoundButton" type="AudioStreamPlayer3D" parent="." unique_id=1314736010]
 stream = SubResource("AudioStreamRandomizer_welao")
-volume_db = -2.5
 max_db = 2.0
+bus = &"SFX"
+attenuation_filter_db = 0.0
 
 [connection signal="body_entered" from="Trigger" to="." method="_on_trigger_body_entered"]

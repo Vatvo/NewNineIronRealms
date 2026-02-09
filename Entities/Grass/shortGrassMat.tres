@@ -1,0 +1,29 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://c00aqec510pjw"]
+
+[ext_resource type="Shader" uid="uid://b65jirnlynnab" path="res://Entities/Grass/ShortGrass.gdshader" id="1_fof1t"]
+[ext_resource type="Texture2D" uid="uid://ybgt4yxtolkf" path="res://Entities/Grass/Textures/shortGrass.jpg" id="2_fof1t"]
+[ext_resource type="Texture2D" uid="uid://dxav3a8v0hws8" path="res://VFXTextures/VFX_HQ_Seamless_Noise_Pack_Vol1/Noise_002.png" id="2_mcco0"]
+[ext_resource type="Texture2D" uid="uid://crdmh4i8qvhsk" path="res://VFXTextures/VFX_HQ_Seamless_Noise_Pack_Vol1/Noise_077.png" id="3_fof1t"]
+
+[sub_resource type="Gradient" id="Gradient_q53ry"]
+colors = PackedColorArray(0, 0.16470589, 0, 1, 1.6183965e-06, 0.364729, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_s8uy1"]
+gradient = SubResource("Gradient_q53ry")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_fof1t")
+shader_parameter/mask = ExtResource("2_fof1t")
+shader_parameter/color = SubResource("GradientTexture2D_s8uy1")
+shader_parameter/color_variation_mask = ExtResource("2_mcco0")
+shader_parameter/variation_color = Color(0.58431375, 0, 0, 1)
+shader_parameter/color_variation_strength = 0.5
+shader_parameter/color_varitation_speed = Vector2(0, 0)
+shader_parameter/variation_mask_size = Vector2(0, 0)
+shader_parameter/wind = ExtResource("3_fof1t")
+shader_parameter/wind_speed = 0.1
+shader_parameter/wind_stength = 0.2
+shader_parameter/wind_rot_strength = 0.5
