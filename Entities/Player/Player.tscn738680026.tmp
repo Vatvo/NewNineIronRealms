@@ -79,7 +79,7 @@ shader = ExtResource("10_lmeus")
 shader_parameter/tex = ExtResource("12_061yh")
 shader_parameter/mask = ExtResource("11_lmeus")
 shader_parameter/mask_strength = 1.0
-shader_parameter/uv_offset = Vector2(0.7948002, 0)
+shader_parameter/uv_offset = Vector2(0.8119972, 0)
 shader_parameter/color_ramp = SubResource("GradientTexture1D_061yh")
 shader_parameter/curve = SubResource("CurveTexture_5m37j")
 shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
@@ -117,6 +117,15 @@ stream_0/stream = ExtResource("2_uw7o4")
 random_pitch = 1.0594631
 streams_count = 1
 stream_0/stream = ExtResource("16_samso")
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_p4d7x"]
+clip_count = 2
+clip_0/name = &"Rolling"
+clip_0/stream = ExtResource("24_kcvdc")
+clip_0/auto_advance = 0
+clip_1/name = &"Flying"
+clip_1/stream = ExtResource("25_ow4hj")
+clip_1/auto_advance = 0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_80tt4"]
 random_pitch = 1.122462
@@ -335,16 +344,14 @@ autoplay = true
 bus = &"SFX"
 
 [node name="RollingSoundPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1932084827]
-stream = ExtResource("24_kcvdc")
-volume_db = 1.0
-pitch_scale = 0.5
+stream = SubResource("AudioStreamInteractive_p4d7x")
+volume_db = -50.0
 autoplay = true
 bus = &"SFX"
 
 [node name="WindSoundPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1770270324]
-stream = ExtResource("25_ow4hj")
-volume_db = 1.0
-pitch_scale = 0.5
+stream = SubResource("AudioStreamInteractive_p4d7x")
+volume_db = -50.0
 autoplay = true
 bus = &"SFX"
 
