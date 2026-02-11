@@ -126,6 +126,10 @@
 [ext_resource type="Image" uid="uid://cqgvpkymfcdch" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_5_-5.res" id="123_scitx"]
 [ext_resource type="Image" uid="uid://dpocw2shcdh7c" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-2_-8.res" id="124_eoeor"]
 [ext_resource type="Image" uid="uid://3qgthr1q8mf7" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_2_-11.res" id="125_ntcwf"]
+[ext_resource type="PackedScene" uid="uid://cieyisu7esk8a" path="res://Models/GladsheimHall/GladsheimHall.tscn" id="127_3c0ae"]
+[ext_resource type="PackedScene" uid="uid://dy0o4uahqhtih" path="res://Models/Valaskjr/ValaskjrHall.glb" id="128_e1nd5"]
+[ext_resource type="PackedScene" uid="uid://df7wpqerysto0" path="res://Models/Noatun/NoatunScene.tscn" id="129_d25sb"]
+[ext_resource type="PackedScene" uid="uid://dfpcrqgr2vj8k" path="res://Models/Himinbjorg/HiminbjorgHome.glb" id="130_e1nd5"]
 
 [sub_resource type="ZoneResource" id="ZoneResource_hlk88"]
 heightMapImage = ExtResource("3_gc2s2")
@@ -678,3 +682,15 @@ size = Vector3(2.805359, 3.0649414, 278.68848)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6468773, 2.654335, 14.508482)
 use_collision = true
 size = Vector3(37.026978, 4.0839233, 1.7445068)
+
+[node name="GladsheimHall2" parent="." unique_id=1559271822 instance=ExtResource("127_3c0ae")]
+transform = Transform3D(4.531511, 0, 0.899894, 0, 4.62, 0, -0.899894, 0, 4.531511, 255.8139, 517.48, -2429.3833)
+
+[node name="ValaskjrHall" parent="." unique_id=1826100163 instance=ExtResource("128_e1nd5")]
+transform = Transform3D(8.064441, 0, 5.308839, 0, 9.654998, 0, -5.308839, 0, 8.064441, -316.32272, 873.9548, -2702.616)
+
+[node name="Noatun2" parent="." unique_id=1771686233 instance=ExtResource("129_d25sb")]
+transform = Transform3D(3.63073, 0, 0.6861648, 0, 3.695, 0, -0.6861648, 0, 3.63073, -0.9539871, -7.9760933, -1031.9907)
+
+[node name="HiminbjorgHome" parent="." unique_id=2071098456 instance=ExtResource("130_e1nd5")]
+transform = Transform3D(12.472347, 0, -13.026963, 0, 18.035, 0, 13.026963, 0, 12.472347, 830.8796, 429.85895, -2381.6062)
