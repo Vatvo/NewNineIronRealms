@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://hug26nyoc3wp" path="res://Entities/Player/Player.gd" id="1_vweq0"]
 [ext_resource type="ArrayMesh" uid="uid://befwqt1qhvy5t" path="res://Entities/Player/GolfBall.obj" id="1_ww0jn"]
-[ext_resource type="Script" uid="uid://dokg3qy4mq058" path="res://Entities/Player/BallTypes/MjolnirBall.gd" id="2_e34i1"]
 [ext_resource type="AudioStream" uid="uid://do7qejml3eylw" path="res://Audio/SFX/BallHit.ogg" id="2_uw7o4"]
 [ext_resource type="Material" uid="uid://bgc7uahcu23x3" path="res://Materials/TestMaterials/TestGridRed.tres" id="2_vweq0"]
 [ext_resource type="AudioStream" uid="uid://uk0sb4hamuc1" path="res://Audio/SFX/BallClub.ogg" id="3_gallu"]
@@ -79,7 +78,7 @@ shader = ExtResource("10_lmeus")
 shader_parameter/tex = ExtResource("12_061yh")
 shader_parameter/mask = ExtResource("11_lmeus")
 shader_parameter/mask_strength = 1.0
-shader_parameter/uv_offset = Vector2(0.7948002, 0)
+shader_parameter/uv_offset = Vector2(0.16208729, 0)
 shader_parameter/color_ramp = SubResource("GradientTexture1D_061yh")
 shader_parameter/curve = SubResource("CurveTexture_5m37j")
 shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
@@ -222,7 +221,6 @@ contact_monitor = true
 max_contacts_reported = 4
 angular_damp = 0.2
 script = ExtResource("1_vweq0")
-ballTypeScript = ExtResource("2_e34i1")
 shotPower = 40.0
 spinPower = 0.05
 hopPower = 25.0
