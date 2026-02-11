@@ -687,10 +687,10 @@ size = Vector3(37.026978, 4.0839233, 1.7445068)
 transform = Transform3D(4.531511, 0, 0.899894, 0, 4.62, 0, -0.899894, 0, 4.531511, 255.8139, 517.48, -2429.3833)
 
 [node name="ValaskjrHall" parent="." unique_id=1826100163 instance=ExtResource("128_e1nd5")]
-transform = Transform3D(8.064441, 0, 5.308839, 0, 9.654998, 0, -5.308839, 0, 8.064441, -316.32272, 873.9548, -2702.616)
+transform = Transform3D(5.16444, 0, 8.157667, 0, 9.654997, 0, -8.157667, 0, 5.16444, -335.5068, 1093.1963, -2774.7302)
 
 [node name="Noatun2" parent="." unique_id=1771686233 instance=ExtResource("129_d25sb")]
 transform = Transform3D(3.63073, 0, 0.6861648, 0, 3.695, 0, -0.6861648, 0, 3.63073, -0.9539871, -7.9760933, -1031.9907)
 
 [node name="HiminbjorgHome" parent="." unique_id=2071098456 instance=ExtResource("130_e1nd5")]
-transform = Transform3D(12.472347, 0, -13.026963, 0, 18.035, 0, 13.026963, 0, 12.472347, 830.8796, 429.85895, -2381.6062)
+transform = Transform3D(12.472347, 0, -13.026963, 0, 18.035, 0, 13.026963, 0, 12.472347, 1041.4158, 604.1515, -2481.6335)
