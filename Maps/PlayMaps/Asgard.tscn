@@ -150,7 +150,7 @@
 [ext_resource type="Image" uid="uid://dykoa6qtbdeg4" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_-2_-7.res" id="125_u82ie"]
 [ext_resource type="PackedScene" uid="uid://cieyisu7esk8a" path="res://Models/GladsheimHall/GladsheimHall.tscn" id="127_3c0ae"]
 [ext_resource type="Image" uid="uid://cyj7t8y55mh1c" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_-2_-6.res" id="127_q7qyj"]
-[ext_resource type="PackedScene" uid="uid://dy0o4uahqhtih" path="res://Models/Valaskjr/ValaskjrHall.glb" id="128_e1nd5"]
+[ext_resource type="PackedScene" uid="uid://d0d4hyrwnur7" path="res://Models/Valaskjalf/ValaskjalfHall.glb" id="128_e1nd5"]
 [ext_resource type="PackedScene" uid="uid://df7wpqerysto0" path="res://Models/Noatun/NoatunScene.tscn" id="129_d25sb"]
 [ext_resource type="PackedScene" uid="uid://dfpcrqgr2vj8k" path="res://Models/Himinbjorg/HiminbjorgHome.glb" id="130_e1nd5"]
 [ext_resource type="Image" uid="uid://cdck4jqyqfiq0" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_-2_-9.res" id="131_2mdey"]
@@ -684,7 +684,7 @@ shotPower = 30.0
 [node name="TerraBrush" type="TerraBrush" parent="." unique_id=821570681]
 dataPath = "res://Maps/PlayMaps/Asgard/TerraBrush"
 terrainZones = SubResource("ZonesResource_lp7j4")
-metadata/_edit_lock_ = false
+metadata/_edit_lock_ = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2108588787]
 environment = SubResource("Environment_fsqio")
