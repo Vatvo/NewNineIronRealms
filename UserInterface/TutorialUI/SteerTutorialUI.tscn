@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://do84t40y0xhk4"]
+
+[ext_resource type="VideoStream" uid="uid://8vfl6cbhi53f" path="res://UserInterface/UIVideos/Steering.ogv" id="1_jnsni"]
+[ext_resource type="Theme" uid="uid://qxvpm2dwr80a" path="res://UserInterface/MenuTheme.tres" id="2_ox0fd"]
+[ext_resource type="Texture2D" uid="uid://dwh8x7wtc16ee" path="res://UserInterface/UIAssets/DividerLine.png" id="4_uvywm"]
+
+[node name="Control" type="Control" unique_id=912131519]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=70717850]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -712.0
+offset_top = 176.0
+offset_right = 712.0
+offset_bottom = 262.0
+grow_horizontal = 2
+texture = ExtResource("4_uvywm")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=1334645461]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -568.0
+offset_top = -172.0
+offset_right = 1352.0
+offset_bottom = 908.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+stream = ExtResource("1_jnsni")
+autoplay = true
+loop = true
+buffering_msec = 1000
+
+[node name="Title" type="Label" parent="." unique_id=1757983321]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = 49.0
+offset_right = 101.0
+offset_bottom = 182.0
+grow_horizontal = 2
+theme = ExtResource("2_ox0fd")
+text = "Steering"
+
+[node name="Description" type="Label" parent="." unique_id=1662373685]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -139.0
+offset_top = -298.5
+offset_right = 139.0
+offset_bottom = -165.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "While the ball is rolling, hold down the A or D key to steer left or right."
+horizontal_alignment = 1

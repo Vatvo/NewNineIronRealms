@@ -10,9 +10,9 @@
 [ext_resource type="Shader" uid="uid://2hqavb8513gt" path="res://UserInterface/UIAssets/Shaders/PauseBlur.gdshader" id="6_6dtwm"]
 [ext_resource type="AudioStream" uid="uid://dsesoxqjidqqx" path="res://Audio/SFX/UI_Confirm.ogg" id="9_i1u63"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vmvbr"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_145lo"]
 shader = ExtResource("6_6dtwm")
-shader_parameter/blur = 1.330000063175
+shader_parameter/blur = 1.42800006783
 shader_parameter/brightness = 0.5650000268375
 
 [sub_resource type="Animation" id="Animation_i1u63"]
@@ -106,7 +106,6 @@ process_mode = 3
 script = ExtResource("1_vmvbr")
 
 [node name="Control" type="Control" parent="." unique_id=104998544]
-visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 15
@@ -204,9 +203,9 @@ grow_vertical = 2
 pivot_offset = Vector2(540, 540)
 texture = ExtResource("5_6dtwm")
 
-[node name="Blur" type="TextureRect" parent="Control" unique_id=2086110494]
+[node name="Blur" type="ColorRect" parent="Control" unique_id=885449927]
 z_index = -5
-material = SubResource("ShaderMaterial_vmvbr")
+material = SubResource("ShaderMaterial_145lo")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

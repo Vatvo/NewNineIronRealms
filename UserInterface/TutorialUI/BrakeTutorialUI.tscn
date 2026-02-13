@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://sqgftrvov6yl"]
+
+[ext_resource type="VideoStream" uid="uid://bn4odanilu55b" path="res://UserInterface/UIVideos/Braking.ogv" id="1_4e3u3"]
+[ext_resource type="Theme" uid="uid://qxvpm2dwr80a" path="res://UserInterface/MenuTheme.tres" id="2_sa18q"]
+[ext_resource type="Texture2D" uid="uid://dwh8x7wtc16ee" path="res://UserInterface/UIAssets/DividerLine.png" id="4_ohaan"]
+
+[node name="Control" type="Control" unique_id=912131519]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=70717850]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -712.0
+offset_top = 176.0
+offset_right = 712.0
+offset_bottom = 262.0
+grow_horizontal = 2
+texture = ExtResource("4_ohaan")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=1334645461]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -568.0
+offset_top = -172.0
+offset_right = 1352.0
+offset_bottom = 908.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+stream = ExtResource("1_4e3u3")
+autoplay = true
+loop = true
+buffering_msec = 1000
+
+[node name="Title" type="Label" parent="." unique_id=1757983321]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = 49.0
+offset_right = 101.0
+offset_bottom = 182.0
+grow_horizontal = 2
+theme = ExtResource("2_sa18q")
+text = "Braking"
+
+[node name="Description" type="Label" parent="." unique_id=1662373685]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -139.0
+offset_top = -298.5
+offset_right = 139.0
+offset_bottom = -165.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "While the ball is rolling, hold down the S key to slow it down. 
+Braking too much will deplete your brake meter."
+horizontal_alignment = 1

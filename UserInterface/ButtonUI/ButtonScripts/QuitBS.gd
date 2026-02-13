@@ -16,6 +16,7 @@ func _ready() -> void:
 func button_pressed() -> void:
 	ConfirmSound.play()
 	print("message received")
+	await get_tree().create_timer(0.39).timeout
 	get_tree().quit()
 
 func hover_play() -> void:

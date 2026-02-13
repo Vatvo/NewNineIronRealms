@@ -95,6 +95,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 theme = ExtResource("2_el4c1")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Button"
 
 [node name="ConfirmSound" type="AudioStreamPlayer" parent="HBox" unique_id=452372940]
