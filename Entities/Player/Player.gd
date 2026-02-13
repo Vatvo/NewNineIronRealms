@@ -31,6 +31,7 @@ static var canReset: bool = true
 @export var hopPower: float
 @export var powerShotBound: float
 @export var brakeDepeltionSpeed: float
+@export var dampingCoefficient: float = 1
 
 @export_category("Camera")
 @export var cameraSensitivity: Vector2 = Vector2(1,1)
@@ -46,6 +47,8 @@ static var canReset: bool = true
 @onready var BrakePoofSoundPlayer: AudioStreamPlayer3D = $BrakePoofSoundPlayer
 @onready var HacksilverSoundPlayer: AudioStreamPlayer3D = $HacksilverSoundPlayer
 @onready var ResetSoundPlayer: AudioStreamPlayer3D = $ResetSoundPlayer
+@onready var RollingSoundPlayer: AudioStreamPlayer3D = $RollingSoundPlayer
+@onready var WindSoundPlayer: AudioStreamPlayer3D = $WindSoundPlayer
 
 var last_velocity: Vector3 = Vector3.ZERO
 
@@ -107,7 +110,7 @@ func _physics_process(delta: float) -> void:
 			deactivate_brake()
 		
 	if isGrounded:
-		unmoddedDamp = 1 / linear_velocity.length()
+		unmoddedDamp = dampingCoefficient / linear_velocity.length()
 	if !isGrounded || !isMoving:
 		unmoddedDamp = 0
 		
@@ -160,6 +163,57 @@ func _physics_process(delta: float) -> void:
 		
 	cameraFollowPoint.global_rotation = Vector3.ZERO
 	
+	update_movement_audio(delta)
+
+func update_movement_audio(delta: float) -> void:
+	var speed: float = linear_velocity.length()
+	var moving: bool = speed > 0.3
+
+	# ---- ROLLING ----
+	if isGrounded and moving:
+		if !RollingSoundPlayer.playing:
+			RollingSoundPlayer.play()
+
+		RollingSoundPlayer.volume_db = lerp(
+			RollingSoundPlayer.volume_db,
+			0.5 + speed * 0.025,
+			6.0 * delta
+		)
+		
+		RollingSoundPlayer.pitch_scale = lerp(
+			RollingSoundPlayer.pitch_scale,
+			0.5 + speed * 0.025,
+			6.0 * delta
+		)
+	else:
+		RollingSoundPlayer.volume_db = lerp(
+			RollingSoundPlayer.volume_db,
+			-60.0,
+			8.0 * delta
+		)
+
+	# ---- WIND ----
+	if !isGrounded and moving:
+		if !WindSoundPlayer.playing:
+			WindSoundPlayer.play()
+
+		WindSoundPlayer.volume_db = lerp(
+			WindSoundPlayer.volume_db,
+			0.5 + speed * 0.025,
+			6.0 * delta
+			)
+		
+		WindSoundPlayer.pitch_scale = lerp(
+			WindSoundPlayer.pitch_scale,
+			0.5 + speed * 0.025,
+			6.0 * delta
+		)
+	else:
+		WindSoundPlayer.volume_db = lerp(
+			WindSoundPlayer.volume_db,
+			-60.0,
+			8.0 * delta
+		)
 		
 func _process(delta: float) -> void:
 	if Input.is_action_just_released("Shoot") && isShooting:
