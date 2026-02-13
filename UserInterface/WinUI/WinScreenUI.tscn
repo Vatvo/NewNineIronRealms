@@ -1,0 +1,344 @@
+[gd_scene format=3 uid="uid://cshblrxdk3qli"]
+
+[ext_resource type="Script" uid="uid://cx4ivt0k47x5p" path="res://UserInterface/WinUI/WinUI.gd" id="1_0decv"]
+[ext_resource type="Texture2D" uid="uid://l63e070ljabe" path="res://UserInterface/UIAssets/WinBG.png" id="2_du18b"]
+[ext_resource type="Theme" uid="uid://qxvpm2dwr80a" path="res://UserInterface/MenuTheme.tres" id="3_5nl1f"]
+[ext_resource type="Texture2D" uid="uid://h7gxyp7u4w87" path="res://UserInterface/UIAssets/GolfRuneOuter.png" id="4_unr27"]
+[ext_resource type="PackedScene" uid="uid://cmkmtc1ukd7qg" path="res://UserInterface/ButtonUI/MenuButtonUI.tscn" id="5_5nl1f"]
+[ext_resource type="Script" uid="uid://pkp1epxfcmxg" path="res://UserInterface/ButtonUI/ButtonScripts/QuitBS.gd" id="6_unr27"]
+
+[sub_resource type="Animation" id="Animation_5nl1f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/MenuButtonUI2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/MenuButtonUI:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/TextureRect/Label:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_unr27"]
+resource_name = "TextFade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/MenuButtonUI2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/MenuButtonUI:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/TextureRect/Label:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.33333337),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jysgd"]
+_data = {
+&"RESET": SubResource("Animation_5nl1f"),
+&"TextFade": SubResource("Animation_unr27")
+}
+
+[sub_resource type="Animation" id="Animation_jysgd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/RuneCircle:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/RuneCircle2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.31, 1.31)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/RuneCircle2:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/RuneCircle:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_g7sb0"]
+resource_name = "RunePlayIn"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/RuneCircle2:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.31, 1.31), Vector2(3.855, 3.855)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/RuneCircle2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.23333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0.30588236)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/RuneCircle:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ly7y3"]
+resource_name = "RuneSpin"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/RuneCircle:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.283185307179586]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0vfgt"]
+_data = {
+&"RESET": SubResource("Animation_jysgd"),
+&"RunePlayIn": SubResource("Animation_g7sb0"),
+&"RuneSpin": SubResource("Animation_ly7y3")
+}
+
+[node name="WinScreenUi" type="CanvasLayer" unique_id=99277615]
+
+[node name="Control" type="Control" parent="." unique_id=1390138994]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0decv")
+
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=1256910462]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_du18b")
+
+[node name="Label" type="Label" parent="Control/TextureRect" unique_id=283750182]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -66.5
+offset_right = 20.0
+offset_bottom = 66.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_5nl1f")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "VICTORY"
+
+[node name="RuneCircle" type="TextureRect" parent="Control" unique_id=693893732]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -600.0
+offset_top = -600.4085
+offset_right = 600.0
+offset_bottom = 599.59155
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.31, 1.31)
+pivot_offset = Vector2(600, 600)
+texture = ExtResource("4_unr27")
+
+[node name="RuneCircle2" type="TextureRect" parent="Control" unique_id=648316880]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -600.0
+offset_top = -600.4085
+offset_right = 600.0
+offset_bottom = 599.59155
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.31, 1.31)
+pivot_offset = Vector2(600, 600)
+texture = ExtResource("4_unr27")
+
+[node name="MenuButtonUI" parent="Control" unique_id=719326111 instance=ExtResource("5_5nl1f")]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -449.0
+offset_top = -100.0
+offset_right = -23.0
+offset_bottom = -13.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_vertical = 3
+
+[node name="HBox" parent="Control/MenuButtonUI" index="0" unique_id=57015838]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -413.0
+offset_top = -78.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Button" parent="Control/MenuButtonUI/HBox" index="1" unique_id=598183682]
+text = "Main Menu"
+
+[node name="MenuButtonUI2" parent="Control" unique_id=591766524 instance=ExtResource("5_5nl1f")]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -282.0
+offset_top = -185.0
+offset_right = -13.0
+offset_bottom = -105.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_vertical = 3
+
+[node name="HBox" parent="Control/MenuButtonUI2" index="0" unique_id=57015838]
+script = ExtResource("6_unr27")
+
+[node name="Button" parent="Control/MenuButtonUI2/HBox" index="1" unique_id=598183682]
+text = "quit"
+
+[node name="FadeAnimator" type="AnimationPlayer" parent="." unique_id=923040023]
+libraries/ = SubResource("AnimationLibrary_jysgd")
+
+[node name="RuneSpin" type="AnimationPlayer" parent="." unique_id=1136852915]
+libraries/ = SubResource("AnimationLibrary_0vfgt")
+
+[editable path="Control/MenuButtonUI"]
+[editable path="Control/MenuButtonUI2"]
