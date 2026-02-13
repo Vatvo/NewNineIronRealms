@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://b70cm42kvcd6r"]
+
+[ext_resource type="Script" uid="uid://5xvlavqa32d2" path="res://Entities/Crossbow/Crossbow.gd" id="1_i20wl"]
+[ext_resource type="PackedScene" uid="uid://cl1ujcg8w2owj" path="res://Entities/Crossbow/CrossbowBody.tscn" id="1_u36i8"]
+[ext_resource type="PackedScene" uid="uid://csrnm16b0ripj" path="res://Models/Crossbow/CrossbowRocks.glb" id="2_ppv1d"]
+[ext_resource type="Material" uid="uid://dfqw86r6sdr4f" path="res://Materials/Outline.tres" id="3_ppv1d"]
+[ext_resource type="Material" uid="uid://cu5fykh4jtm5v" path="res://Materials/Rocks.tres" id="4_iu6rj"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_i20wl"]
+
+[sub_resource type="Animation" id="Animation_ifw23"]
+resource_name = "CrossbowShoot"
+length = 1.533
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CrossbowBody/Armature/Skeleton3D/Crossbow/BallMount:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.91, 1.0333333, 1.0666667, 1.25, 1.533),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.9353094, -2.208395), Vector3(0, 0.9353094, 2.3744917), Vector3(0, 0.9353094, 2.3744917), Vector3(0, 0.9353094, 2.3744917), Vector3(0, 0.9353094, 2.3744917), Vector3(0, 0.9353094, -2.208395)]
+}
+
+[sub_resource type="Animation" id="Animation_0mhig"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CrossbowBody/Armature/Skeleton3D/Crossbow/BallMount:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.9353094, -2.208395)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8tbhl"]
+_data = {
+&"CrossbowShoot": SubResource("Animation_ifw23"),
+&"RESET": SubResource("Animation_0mhig")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_i20wl"]
+radius = 7.0
+
+[node name="Crossbow" type="Node3D" unique_id=2111159242]
+script = ExtResource("1_i20wl")
+shotForce = 0.07
+
+[node name="CrossbowBody" parent="." unique_id=845220300 instance=ExtResource("1_u36i8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, -1)
+
+[node name="BallMount" type="MeshInstance3D" parent="CrossbowBody/Armature/Skeleton3D/Crossbow" parent_id_path=PackedInt32Array(845220300, 766211569) index="0" unique_id=259281519]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9353094, -2.208395)
+mesh = SubResource("SphereMesh_i20wl")
+skeleton = NodePath("../../../../..")
+
+[node name="MountMover" type="AnimationPlayer" parent="CrossbowBody/Armature/Skeleton3D/Crossbow" parent_id_path=PackedInt32Array(845220300, 766211569) index="1" unique_id=1065098645]
+root_node = NodePath("../../../../..")
+libraries/ = SubResource("AnimationLibrary_8tbhl")
+
+[node name="CrossbowRocks" parent="." unique_id=2079558794 instance=ExtResource("2_ppv1d")]
+
+[node name="Rock" parent="CrossbowRocks" index="0" unique_id=1283580441]
+material_overlay = ExtResource("3_ppv1d")
+surface_material_override/0 = ExtResource("4_iu6rj")
+
+[node name="Collision" type="Area3D" parent="." unique_id=2028442353]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision" unique_id=1690365274]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.80687, 0)
+shape = SubResource("SphereShape3D_i20wl")
+
+[connection signal="body_entered" from="Collision" to="." method="_on_collision_body_entered"]
+
+[editable path="CrossbowBody"]
+[editable path="CrossbowRocks"]
