@@ -744,7 +744,7 @@ mesh = SubResource("QuadMesh_t2c6i")
 [node name="TerraBrush" type="TerraBrush" parent="." unique_id=821570681]
 dataPath = "res://Maps/PlayMaps/Asgard/TerraBrush"
 terrainZones = SubResource("ZonesResource_lp7j4")
-metadata/_edit_lock_ = false
+metadata/_edit_lock_ = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2108588787]
 environment = SubResource("Environment_fsqio")
