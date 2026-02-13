@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://hug26nyoc3wp" path="res://Entities/Player/Player.gd" id="1_vweq0"]
 [ext_resource type="ArrayMesh" uid="uid://befwqt1qhvy5t" path="res://Entities/Player/GolfBall.obj" id="1_ww0jn"]
+[ext_resource type="Script" uid="uid://dokg3qy4mq058" path="res://Entities/Player/BallTypes/MjolnirBall.gd" id="2_e34i1"]
 [ext_resource type="AudioStream" uid="uid://do7qejml3eylw" path="res://Audio/SFX/BallHit.ogg" id="2_uw7o4"]
 [ext_resource type="Material" uid="uid://bgc7uahcu23x3" path="res://Materials/TestMaterials/TestGridRed.tres" id="2_vweq0"]
 [ext_resource type="AudioStream" uid="uid://uk0sb4hamuc1" path="res://Audio/SFX/BallClub.ogg" id="3_gallu"]
@@ -27,17 +28,15 @@
 [ext_resource type="AudioStream" uid="uid://dabk2f0labcq3" path="res://Audio/SFX/ThunderCrack2.mp3" id="23_e8qxc"]
 [ext_resource type="Texture2D" uid="uid://b5lquls2p7b5" path="res://Entities/Hacksilver/hacksilver.png" id="23_l2mqv"]
 [ext_resource type="AudioStream" uid="uid://de20qxhisaqvu" path="res://Audio/SFX/BallBrakePoof.ogg" id="24_gbla8"]
-[ext_resource type="AudioStream" uid="uid://b38hg2d3vetxn" path="res://Audio/SFX/BallRoll.ogg" id="24_kcvdc"]
 [ext_resource type="Script" uid="uid://p6p4btw7o23v" path="res://Entities/Player/BrakeMeter.gd" id="24_mgqku"]
 [ext_resource type="AudioStream" uid="uid://d0060uxvg5aqp" path="res://Audio/SFX/ThunderCrack3.mp3" id="24_rvtm2"]
 [ext_resource type="AudioStream" uid="uid://b5dqfpenkou8d" path="res://Audio/SFX/ThunderCrack4.mp3" id="25_o8vwu"]
-[ext_resource type="AudioStream" uid="uid://fx0idp8xku1t" path="res://Audio/SFX/BallFly.ogg" id="25_ow4hj"]
 [ext_resource type="Texture2D" uid="uid://cripk8620glg" path="res://VFXTextures/brackeys_vfx_bundle/particles/alpha/smoke_03_a.png" id="31_o8vwu"]
 [ext_resource type="PackedScene" uid="uid://cmuyeado10gju" path="res://UserInterface/PauseUI/PauseUI.tscn" id="33_vi0tq"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hj1c0"]
 rough = true
-bounce = 0.6
+bounce = 0.9
 
 [sub_resource type="Curve" id="Curve_an6q6"]
 _limits = [0.0, 40.0, -1.57, 0.0]
@@ -78,7 +77,7 @@ shader = ExtResource("10_lmeus")
 shader_parameter/tex = ExtResource("12_061yh")
 shader_parameter/mask = ExtResource("11_lmeus")
 shader_parameter/mask_strength = 1.0
-shader_parameter/uv_offset = Vector2(0.16208729, 0)
+shader_parameter/uv_offset = Vector2(0.80051595, 0)
 shader_parameter/color_ramp = SubResource("GradientTexture1D_061yh")
 shader_parameter/curve = SubResource("CurveTexture_5m37j")
 shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
@@ -221,11 +220,13 @@ contact_monitor = true
 max_contacts_reported = 4
 angular_damp = 0.2
 script = ExtResource("1_vweq0")
+ballTypeScript = ExtResource("2_e34i1")
 shotPower = 40.0
 spinPower = 0.05
 hopPower = 25.0
 powerShotBound = 4.0
 brakeDepeltionSpeed = 25.0
+dampingCoefficient = 2.0
 cameraSensitivity = Vector2(0.01, 0.01)
 cameraDistanceCurve = SubResource("Curve_an6q6")
 
@@ -329,20 +330,6 @@ bus = &"SFX"
 [node name="BrakeSoundPlayer" type="AudioStreamPlayer3D" parent="." unique_id=188126931]
 stream = ExtResource("19_l80rc")
 volume_db = -50.0
-autoplay = true
-bus = &"SFX"
-
-[node name="RollingSoundPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1932084827]
-stream = ExtResource("24_kcvdc")
-volume_db = 1.0
-pitch_scale = 0.5
-autoplay = true
-bus = &"SFX"
-
-[node name="WindSoundPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1770270324]
-stream = ExtResource("25_ow4hj")
-volume_db = 1.0
-pitch_scale = 0.5
 autoplay = true
 bus = &"SFX"
 
