@@ -164,6 +164,53 @@
 [ext_resource type="Image" uid="uid://hxgo8wuiyufm" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_5_-6.res" id="149_3y3jo"]
 [ext_resource type="Image" uid="uid://c3ra52y6h0mbl" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_5_-5.res" id="151_6kcxy"]
 [ext_resource type="Image" uid="uid://dn5pps66bgx0a" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_-2_-8.res" id="153_hfjkn"]
+[ext_resource type="PackedScene" uid="uid://cdpqkj645ckyr" path="res://Entities/BoostPad/BoostPad.tscn" id="162_e03xk"]
+[ext_resource type="PackedScene" uid="uid://dq2mqqs567abn" path="res://Entities/Bumper/Bumper.tscn" id="162_prutw"]
+[ext_resource type="Shader" uid="uid://fq6kk6kqjdec" path="res://Shaders/water.gdshader" id="165_6xwsw"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_a0j0t"]
+noise_type = 3
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_e03xk"]
+noise = SubResource("FastNoiseLite_a0j0t")
+seamless = true
+as_normal_map = true
+bump_strength = 10.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_rtawf"]
+noise_type = 3
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_prutw"]
+noise = SubResource("FastNoiseLite_rtawf")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_og0lo"]
+render_priority = 0
+shader = ExtResource("165_6xwsw")
+shader_parameter/color = Color(3.128499e-07, 0.21960548, 0.36582294, 1)
+shader_parameter/roughness = 0.2000000095
+shader_parameter/metallic = 1.0
+shader_parameter/beer_law_factor = 2.0
+shader_parameter/_distance = 50.0
+shader_parameter/edge_color = Color(0.5774178, 0.7824627, 0.99999815, 1)
+shader_parameter/edge_scale = 100.0
+shader_parameter/far = 100.0
+shader_parameter/wave = SubResource("NoiseTexture2D_prutw")
+shader_parameter/speed = 0.00500004773750006
+shader_parameter/wave_direction = Vector2(2, 0)
+shader_parameter/wave_direction2 = Vector2(0, 1)
+shader_parameter/height_scale = 100.0
+shader_parameter/noise_scale = 10.0
+shader_parameter/normalmap = SubResource("NoiseTexture2D_e03xk")
+
+[sub_resource type="QuadMesh" id="QuadMesh_t2c6i"]
+material = SubResource("ShaderMaterial_og0lo")
+size = Vector2(10000, 10000)
+subdivide_width = 500
+subdivide_depth = 500
+orientation = 1
 
 [sub_resource type="ZoneResource" id="ZoneResource_hlk88"]
 heightMapImage = ExtResource("3_gc2s2")
@@ -664,11 +711,18 @@ adjustment_enabled = true
 adjustment_contrast = 1.05
 adjustment_saturation = 1.1
 
+[sub_resource type="Curve3D" id="Curve3D_t2c6i"]
+_data = {
+"points": PackedVector3Array(7.3895187, -0.116160154, 2.5216446, 0, 0, 0, 11.789734, -13.718458, 12.908112, 0, 0, 0, 0, 0, 0, 1.246933, -13.730731, -3.7265015, 0, 0, 0, 0, 0, 0, -9.046143, -13.983788, -20.500504),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
 [node name="Asgard" type="Node3D" unique_id=1419564980]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1204041851 groups=["MainCamera"]]
 physics_interpolation_mode = 1
-transform = Transform3D(1, 0, 0, 0, 0.90630776, 0.42261827, 0, -0.42261827, 0.90630776, -6.2823887, 9.160409, 5.2695885)
+transform = Transform3D(1, 0, 0, 0, 0.90630776, 0.42261827, 0, -0.42261827, 0.90630776, -6.2823887, 9.160409, -22.865788)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D" unique_id=908063206]
 process_priority = 300
@@ -678,13 +732,19 @@ script = ExtResource("1_xv5w7")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
 [node name="Player" parent="." unique_id=630880669 instance=ExtResource("2_xv5w7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.2823887, 0.7080431, -12.856567)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.2823887, 0.7080431, -40.991943)
 shotPower = 30.0
+
+[node name="Water" type="MeshInstance3D" parent="." unique_id=1295098931]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -111.49371, 513.01)
+cast_shadow = 0
+lod_bias = 128.0
+mesh = SubResource("QuadMesh_t2c6i")
 
 [node name="TerraBrush" type="TerraBrush" parent="." unique_id=821570681]
 dataPath = "res://Maps/PlayMaps/Asgard/TerraBrush"
 terrainZones = SubResource("ZonesResource_lp7j4")
-metadata/_edit_lock_ = true
+metadata/_edit_lock_ = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2108588787]
 environment = SubResource("Environment_fsqio")
@@ -692,99 +752,124 @@ environment = SubResource("Environment_fsqio")
 [node name="Walls" type="Node" parent="." unique_id=611634113]
 
 [node name="Angle Wall 1" type="CSGBox3D" parent="Walls" unique_id=156437122]
-transform = Transform3D(0.6782494, 0, 0.7348317, 0, 1, 0, -0.7348317, 0, 0.6782494, -19.253017, 3.048133, -254.31055)
+transform = Transform3D(0.9998065, 0, -0.01966858, 0, 1, 0, 0.01966858, 0, 0.9998065, -11.973756, 9.0342245, -257.75107)
 use_collision = true
-size = Vector3(18.859009, 6.1904907, 5.413574)
+size = Vector3(25.891876, 18.162674, 17.043823)
 
 [node name="Angle Wall 2" type="CSGBox3D" parent="Walls" unique_id=743174196]
-transform = Transform3D(0.6782494, 0, 0.7348317, 0, 1, 0, -0.7348317, 0, 0.6782494, 113.07468, 3.048133, -231.76715)
+transform = Transform3D(0.8817155, 0, 0.47178152, 0, 1, 0, -0.47178152, 0, 0.8817155, 107.80291, 13.352012, -224.31978)
 use_collision = true
-size = Vector3(18.859009, 6.1904907, 5.413574)
+size = Vector3(38.964752, 26.798248, 28.093018)
+
+[node name="Bumper" parent="Walls/Angle Wall 2" unique_id=1857681311 instance=ExtResource("162_prutw")]
+transform = Transform3D(-0.5415027, 0, -0.84069896, 0, 1, 0, 0.84069896, 0, -0.5415027, -2.2947998, 0.503603, -17.990593)
+curve = SubResource("Curve3D_t2c6i")
+bounceForce = 60.0
 
 [node name="Angle Wall 3" type="CSGBox3D" parent="Walls" unique_id=733731306]
-transform = Transform3D(0.68730295, 0, -0.72637075, 0, 1, 0, 0.72637075, 0, 0.68730295, 116.51348, 2.9163847, -393.39648)
+transform = Transform3D(0.7752973, 0, -0.6315963, 0, 1, 0, 0.6315963, 0, 0.7752973, 112.59312, 11.327189, -389.5141)
 use_collision = true
-size = Vector3(18.859009, 6.1904907, 5.413574)
+size = Vector3(29.827545, 40.775787, 26.289185)
 
-[node name="Boundary Wall 1" type="CSGBox3D" parent="." unique_id=1504655087]
+[node name="Boundary Wall 1" type="CSGBox3D" parent="Walls" unique_id=1504655087]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.205719, 1.0324707, -103.75659)
 use_collision = true
 size = Vector3(2.805359, 3.0649414, 238.23291)
 
-[node name="Boundary Wall 4" type="CSGBox3D" parent="." unique_id=75283052]
+[node name="Boundary Wall 4" type="CSGBox3D" parent="Walls" unique_id=75283052]
 transform = Transform3D(0.022251157, 0, 0.9997524, 0, 1, 0, -0.9997524, 0, 0.022251157, 64.823875, 1.0324707, -223.57083)
 use_collision = true
 size = Vector3(2.805359, 3.0649414, 105.21092)
 
-[node name="Boundary Wall 5" type="CSGBox3D" parent="." unique_id=1453429907]
+[node name="Boundary Wall 5" type="CSGBox3D" parent="Walls" unique_id=1453429907]
 transform = Transform3D(0.022251157, 0, 0.9997524, 0, 1, 0, -0.9997524, 0, 0.022251157, 27.456617, 1.0324707, -263.59607)
 use_collision = true
 size = Vector3(2.805359, 3.0649414, 110.317245)
 
-[node name="Boundary Wall 6" type="CSGBox3D" parent="." unique_id=830339877]
+[node name="Boundary Wall 6" type="CSGBox3D" parent="Walls" unique_id=830339877]
 transform = Transform3D(0.9999955, 0, -0.0029846076, 0, 1, 0, 0.0029846076, 0, 0.9999955, 84.25978, 1.0324707, -313.2082)
 use_collision = true
 size = Vector3(2.805359, 3.0649414, 102.66281)
 
-[node name="Boundary Wall 8" type="CSGBox3D" parent="." unique_id=622871764]
+[node name="Boundary Wall 8" type="CSGBox3D" parent="Walls" unique_id=622871764]
 transform = Transform3D(0.0070509664, 0, -0.99997526, 0, 1, 0, 0.99997526, 0, 0.0070509664, 27.168772, 1.0324707, -361.6578)
 use_collision = true
 size = Vector3(2.805359, 3.0649414, 118.03316)
 
-[node name="Boundary Wall 10" type="CSGBox3D" parent="." unique_id=765696841]
+[node name="Boundary Wall 10" type="CSGBox3D" parent="Walls" unique_id=765696841]
 transform = Transform3D(0.99995726, 0, 0.009249961, 0, 1, 0, -0.009249961, 0, 0.99995726, -31.035952, 1.0324707, -434.9464)
 use_collision = true
 size = Vector3(2.805359, 3.0649414, 148.00005)
 
-[node name="Boundary Wall 11" type="CSGBox3D" parent="." unique_id=1578392524]
+[node name="Boundary Wall 11" type="CSGBox3D" parent="Walls" unique_id=1578392524]
 transform = Transform3D(0.99995726, 0, 0.009249961, 0, 1, 0, -0.009249961, 0, 0.99995726, 8.87994, 1.0324707, -453.19955)
 use_collision = true
 size = Vector3(2.805359, 3.0649414, 111.49221)
 
-[node name="Boundary Wall 12" type="CSGBox3D" parent="." unique_id=1656296120]
+[node name="Boundary Wall 12" type="CSGBox3D" parent="Walls" unique_id=1656296120]
 transform = Transform3D(0.00886631, 0, 0.99996066, 0, 1, 0, -0.99996066, 0, 0.00886631, 136.39429, 1.0324707, -536.84344)
 use_collision = true
 size = Vector3(2.805359, 3.0649414, 182.05324)
 
-[node name="Boundary Wall 14" type="CSGBox3D" parent="." unique_id=2142863819]
+[node name="Boundary Wall 14" type="CSGBox3D" parent="Walls" unique_id=2142863819]
 transform = Transform3D(0.00886631, 0, 0.99996066, 0, 1, 0, -0.99996066, 0, 0.00886631, -141.48462, 1.0324707, -536.84344)
 use_collision = true
 size = Vector3(2.805359, 3.0649414, 182.05324)
 
-[node name="Boundary Wall 13" type="CSGBox3D" parent="." unique_id=2055855932]
+[node name="Boundary Wall 13" type="CSGBox3D" parent="Walls" unique_id=2055855932]
 transform = Transform3D(0.99999654, 0, 0.0026527643, 0, 1, 0, -0.0026527643, 0, 0.99999654, 226.22462, 1.032486, -609.04706)
 use_collision = true
 size = Vector3(2.805359, 3.0649414, 147.78003)
 
-[node name="Boundary Wall 15" type="CSGBox3D" parent="." unique_id=474676169]
+[node name="Boundary Wall 15" type="CSGBox3D" parent="Walls" unique_id=474676169]
 transform = Transform3D(0.99999654, 0, 0.0026527643, 0, 1, 0, -0.0026527643, 0, 0.99999654, -230.4467, 1.032486, -609.04706)
 use_collision = true
 size = Vector3(2.805359, 3.0649414, 147.78003)
 
-[node name="Boundary Wall 16" type="CSGBox3D" parent="." unique_id=337765712]
+[node name="Boundary Wall 16" type="CSGBox3D" parent="Walls" unique_id=337765712]
 transform = Transform3D(0.99999654, 0, 0.0026527643, 0, 1, 0, -0.0026527643, 0, 0.99999654, -230.4467, 1.032486, -609.04706)
 use_collision = true
 size = Vector3(2.805359, 3.0649414, 147.78003)
 
-[node name="Boundary Wall 9" type="CSGBox3D" parent="." unique_id=494063755]
+[node name="Boundary Wall 9" type="CSGBox3D" parent="Walls" unique_id=494063755]
 transform = Transform3D(0.0070509664, 0, -0.99997526, 0, 1, 0, 0.99997526, 0, 0.0070509664, 68.323685, 1.032486, -398.19077)
 use_collision = true
 size = Vector3(2.805359, 3.0649414, 110.02647)
 
-[node name="Boundary Wall 7" type="CSGBox3D" parent="." unique_id=1885545555]
+[node name="Boundary Wall 7" type="CSGBox3D" parent="Walls" unique_id=1885545555]
 transform = Transform3D(0.9999955, 0, -0.0029846076, 0, 1, 0, 0.0029846076, 0, 0.9999955, 121.66641, 1.0324707, -309.99738)
 use_collision = true
 size = Vector3(2.805359, 3.0649414, 174.72675)
 
-[node name="Boundary Wall 2" type="CSGBox3D" parent="." unique_id=347944923]
+[node name="Boundary Wall 2" type="CSGBox3D" parent="Walls" unique_id=347944923]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.582088, 1.0324707, -123.984375)
 use_collision = true
 size = Vector3(2.805359, 3.0649414, 278.68848)
 
-[node name="Boundary Wall 3" type="CSGBox3D" parent="." unique_id=1021210024]
+[node name="Boundary Wall 3" type="CSGBox3D" parent="Walls" unique_id=1021210024]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6468773, 2.654335, 14.508482)
 use_collision = true
 size = Vector3(37.026978, 4.0839233, 1.7445068)
+
+[node name="Boost Pads" type="Node" parent="." unique_id=915253747]
+
+[node name="BoostPad" parent="Boost Pads" unique_id=1561804086 instance=ExtResource("162_e03xk")]
+transform = Transform3D(0.002618093, 0, -0.9999965, 0, 1, 0, 0.9999965, 0, 0.002618093, 16.873585, 0.67110157, -242.60019)
+width = 10.0
+length = 10.0
+force = 60.0
+
+[node name="BoostPad2" parent="Boost Pads" unique_id=1729609190 instance=ExtResource("162_e03xk")]
+transform = Transform3D(0.99994457, 0, 0.010524262, 0, 1, 0, -0.010524262, 0, 0.99994457, 101.63513, 0.67110157, -322.57272)
+width = 10.0
+length = 10.0
+force = 60.0
+
+[node name="BoostPad3" parent="Boost Pads" unique_id=502215104 instance=ExtResource("162_e03xk")]
+transform = Transform3D(-0.010576636, 0, 0.99994403, 0, 1, 0, -0.99994403, 0, -0.010576636, 56.174152, 0.67110157, -379.18317)
+width = 10.0
+length = 10.0
+force = 60.0
 
 [node name="GladsheimHall2" parent="." unique_id=1559271822 instance=ExtResource("127_3c0ae")]
 transform = Transform3D(4.531511, 0, 0.899894, 0, 4.62, 0, -0.899894, 0, 4.531511, 255.8139, 517.48, -2429.3833)
