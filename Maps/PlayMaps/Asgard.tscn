@@ -1,53 +1,799 @@
 [gd_scene format=3 uid="uid://uhu4yk1pcl52"]
 
-[ext_resource type="ArrayMesh" uid="uid://d1spk61n6rg7p" path="res://Maps/PlayMaps/Asgard/AS_Dammed_Water.obj" id="2_407w6"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_xv5w7"]
 [ext_resource type="PackedScene" uid="uid://b1uo6orqicguq" path="res://Entities/Player/Player.tscn" id="2_xv5w7"]
-[ext_resource type="ArrayMesh" uid="uid://cyl076vcq72so" path="res://Maps/PlayMaps/Asgard/AS_Dock.obj" id="3_4bowc"]
-[ext_resource type="ArrayMesh" uid="uid://wr2k77km3wb" path="res://Maps/PlayMaps/Asgard/AS_Door.obj" id="4_2nc5f"]
-[ext_resource type="ArrayMesh" uid="uid://c0uy8i5e12f7c" path="res://Maps/PlayMaps/Asgard/AS_Funnel.obj" id="5_hlmin"]
-[ext_resource type="ArrayMesh" uid="uid://x6ml0bc2s27y" path="res://Maps/PlayMaps/Asgard/AS_Garden.obj" id="6_hlk88"]
-[ext_resource type="ArrayMesh" uid="uid://w4dlvnciwqwo" path="res://Maps/PlayMaps/Asgard/AS_Opening.obj" id="7_ffokv"]
-[ext_resource type="ArrayMesh" uid="uid://co0efkc8f0nwi" path="res://Maps/PlayMaps/Asgard/AS_Palace_base.obj" id="8_fsqio"]
-[ext_resource type="ArrayMesh" uid="uid://bht7gmg651p3l" path="res://Maps/PlayMaps/Asgard/AS_SLIDE.obj" id="9_upe5e"]
-[ext_resource type="ArrayMesh" uid="uid://6thq7g2qrgkg" path="res://Maps/PlayMaps/Asgard/AS_Village.obj" id="10_ub8ks"]
+[ext_resource type="Image" uid="uid://fr2od23i0idj" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_0_0.res" id="3_4bowc"]
+[ext_resource type="Image" uid="uid://cgnan72bktddr" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_0_0.res" id="3_gc2s2"]
+[ext_resource type="Image" uid="uid://coc6cptyin5ll" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_0_-1.res" id="4_4datg"]
+[ext_resource type="Image" uid="uid://td828tqs1c3x" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-1_-1.res" id="5_407w6"]
+[ext_resource type="Image" uid="uid://dxctgeaeic3g4" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_0_-1.res" id="5_biphk"]
+[ext_resource type="Image" uid="uid://potu2em175jv" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-1_0.res" id="6_4bowc"]
+[ext_resource type="Image" uid="uid://dab5bex4ecoxu" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-1_-2.res" id="7_2nc5f"]
+[ext_resource type="Image" uid="uid://dsibstxq4wgok" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_-1_0.res" id="7_hlmin"]
+[ext_resource type="Image" uid="uid://duxlydvs84gyv" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_-1_-1.res" id="7_ma4vl"]
+[ext_resource type="Image" uid="uid://db7vy8mtodfgq" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_0_-2.res" id="8_hlmin"]
+[ext_resource type="Shader" uid="uid://dddidxbjewoyo" path="res://Shaders/sky.gdshader" id="9_4datg"]
+[ext_resource type="Image" uid="uid://c4jfg2j73ovb6" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_-1_-2.res" id="10_xapg2"]
+[ext_resource type="Image" uid="uid://ccuy4fasrpimx" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_1_-2.res" id="11_q6i8l"]
+[ext_resource type="Image" uid="uid://mebrnmjvkbeg" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_1_-1.res" id="12_qeqcc"]
+[ext_resource type="Image" uid="uid://dj3k4a016tqdi" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_0_-2.res" id="12_y0sre"]
+[ext_resource type="Image" uid="uid://co570b5y7iki6" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_0_-3.res" id="13_ke8xg"]
+[ext_resource type="Image" uid="uid://tu0u3hr31onn" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_1_-2.res" id="14_8x5r5"]
+[ext_resource type="Image" uid="uid://bruufthbfjtlv" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-1_-3.res" id="14_ts81x"]
+[ext_resource type="Image" uid="uid://byjn4vwjfe0lu" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_1_-3.res" id="15_cvs27"]
+[ext_resource type="Image" uid="uid://dpdglbtycxxg6" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_0_-4.res" id="16_qyosk"]
+[ext_resource type="Image" uid="uid://ct21xs62bwxqm" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_1_-1.res" id="17_khon3"]
+[ext_resource type="Image" uid="uid://uui7atx3c3jc" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_0_-3.res" id="17_pq55p"]
+[ext_resource type="Image" uid="uid://dk1enlbsko1j6" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_1_-4.res" id="17_vohyr"]
+[ext_resource type="Image" uid="uid://cii8y8tjredwr" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_2_-3.res" id="18_biphk"]
+[ext_resource type="Image" uid="uid://m7lpbxeix5me" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_-1_-3.res" id="19_c4xwp"]
+[ext_resource type="Image" uid="uid://dg2le161hi133" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_2_-2.res" id="19_xapg2"]
+[ext_resource type="Image" uid="uid://csl6uccf4bwk5" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-2_-2.res" id="20_y0sre"]
+[ext_resource type="Image" uid="uid://fxkuv64qewi3" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_1_-3.res" id="21_004c8"]
+[ext_resource type="Image" uid="uid://bnxrg5n8w4seq" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-2_-1.res" id="21_8x5r5"]
+[ext_resource type="Image" uid="uid://daff2ohl5c2hj" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-2_-3.res" id="22_pq55p"]
+[ext_resource type="Image" uid="uid://bapvdy0vhwd5e" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_0_-4.res" id="25_p4uey"]
+[ext_resource type="Image" uid="uid://bn7ufwiei8d4c" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_1_-4.res" id="27_k1i40"]
+[ext_resource type="Image" uid="uid://d37elmdlh7vev" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_2_-3.res" id="29_wf6vq"]
+[ext_resource type="Image" uid="uid://nrw60l5b0ehv" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_2_-4.res" id="30_xapg2"]
+[ext_resource type="Image" uid="uid://dkjg263ag4pc5" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_2_-2.res" id="31_12was"]
+[ext_resource type="Image" uid="uid://dwhp5t0y0nvc6" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-1_-4.res" id="31_y0sre"]
+[ext_resource type="Image" uid="uid://c6kxg77dt822q" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_-2_-2.res" id="33_e8mxw"]
+[ext_resource type="Image" uid="uid://bhrqim02r8ur5" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_-2_-3.res" id="36_sev63"]
+[ext_resource type="Image" uid="uid://cqte4dlj15y2" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_2_-4.res" id="38_0gid3"]
+[ext_resource type="Image" uid="uid://cdy3gmlgp0ss1" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_-1_-4.res" id="40_0tpbj"]
+[ext_resource type="Image" uid="uid://cefrkpxec3arg" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_1_-5.res" id="41_tu81d"]
+[ext_resource type="Image" uid="uid://cyb4x1w1h07my" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_1_-5.res" id="41_vn6cw"]
+[ext_resource type="Image" uid="uid://b8b7ierfcxjvl" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_0_-5.res" id="42_wf6vq"]
+[ext_resource type="Image" uid="uid://ctgn167wrp6vd" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_2_-5.res" id="43_12was"]
+[ext_resource type="Image" uid="uid://2tvl7hpruuac" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_2_-5.res" id="44_0tpbj"]
+[ext_resource type="Image" uid="uid://bo78ot6k405a" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_0_-5.res" id="44_alnsk"]
+[ext_resource type="Image" uid="uid://d0lnag7h234nf" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_3_-4.res" id="44_e8mxw"]
+[ext_resource type="Image" uid="uid://chnsjhumshhxk" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_3_-3.res" id="45_sev63"]
+[ext_resource type="Image" uid="uid://b2ho38xvn6a42" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_3_-5.res" id="46_12was"]
+[ext_resource type="Image" uid="uid://bnpuxaur27oci" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_3_-4.res" id="46_gik2p"]
+[ext_resource type="Image" uid="uid://6c6ggp0v6t1r" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_2_-6.res" id="47_sev63"]
+[ext_resource type="Image" uid="uid://bw6yyoa5w3fu8" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_3_-6.res" id="48_0gid3"]
+[ext_resource type="Image" uid="uid://dkgd4y5b6w7e7" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_3_-3.res" id="48_07ebn"]
+[ext_resource type="Image" uid="uid://blhwjgmxipwvu" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_0_-6.res" id="49_rp5a3"]
+[ext_resource type="Image" uid="uid://33xdini36hsf" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_1_-6.res" id="50_8u1j2"]
+[ext_resource type="Image" uid="uid://dd21tlnxp51kl" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_3_-5.res" id="50_rp85u"]
+[ext_resource type="Image" uid="uid://dcw6r6tkv8ws8" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_1_-7.res" id="51_bove1"]
+[ext_resource type="Image" uid="uid://n57hkc1q401l" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_0_-7.res" id="52_keuxf"]
+[ext_resource type="Image" uid="uid://cif853i58giu1" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_2_-6.res" id="53_gik2p"]
+[ext_resource type="Image" uid="uid://curp78xxitibg" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_2_-7.res" id="53_so05j"]
+[ext_resource type="Image" uid="uid://toejqktoo0vr" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_3_-7.res" id="54_x8q6i"]
+[ext_resource type="Image" uid="uid://bolwfss8we8xu" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_3_-6.res" id="55_1l3hp"]
+[ext_resource type="Image" uid="uid://4tcto5sakf6a" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_1_-8.res" id="55_u1r6p"]
+[ext_resource type="Image" uid="uid://bkimjrvyxw4ch" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_2_-8.res" id="56_dwnur"]
+[ext_resource type="Image" uid="uid://y0sq07csql7y" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_3_-8.res" id="57_1w1ir"]
+[ext_resource type="Image" uid="uid://dacxqu7jfiw3j" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_0_-6.res" id="57_exinx"]
+[ext_resource type="Image" uid="uid://7cx5nevyh35" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-1_-7.res" id="58_x8q6i"]
+[ext_resource type="Image" uid="uid://bvhk6a1twbkgg" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_1_-6.res" id="59_t3k1x"]
+[ext_resource type="Image" uid="uid://drx2oyw0k0ry7" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-1_-6.res" id="59_u1r6p"]
+[ext_resource type="Image" uid="uid://u2s6tqbpgmx7" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-1_-5.res" id="60_dwnur"]
+[ext_resource type="Image" uid="uid://b5nnfgskj1utw" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_0_-8.res" id="61_1w1ir"]
+[ext_resource type="Image" uid="uid://dh70io1fqxvn0" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_1_-7.res" id="61_5a6um"]
+[ext_resource type="Image" uid="uid://c44png7hjm5c" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-1_-8.res" id="62_dud2f"]
+[ext_resource type="Image" uid="uid://ca1eip4jksag7" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_3_-9.res" id="63_a0q6q"]
+[ext_resource type="Image" uid="uid://busfu76m8lhsm" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_0_-7.res" id="63_gica5"]
+[ext_resource type="Image" uid="uid://d3w0t57r67c8g" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_2_-9.res" id="64_7d80j"]
+[ext_resource type="Image" uid="uid://ch6f6qfdc80rs" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_2_-7.res" id="65_46q1j"]
+[ext_resource type="Image" uid="uid://dejmvyfkk1gfy" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_2_-10.res" id="65_dgyrq"]
+[ext_resource type="Image" uid="uid://ll7fyr32oh8q" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_3_-10.res" id="66_ojxkv"]
+[ext_resource type="Image" uid="uid://dgiegrakcbtaq" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_3_-7.res" id="67_gc5bd"]
+[ext_resource type="Image" uid="uid://ca6cdjf8ppenw" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_4_-10.res" id="67_kg75r"]
+[ext_resource type="Image" uid="uid://dek8da46ra71r" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_4_-9.res" id="68_m81tu"]
+[ext_resource type="Image" uid="uid://bca3mi6gqcl3m" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_4_-8.res" id="69_aq7d7"]
+[ext_resource type="Image" uid="uid://crtdsl5qo7uls" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_1_-9.res" id="70_7ke11"]
+[ext_resource type="Image" uid="uid://coicrr1ym8g3g" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_1_-8.res" id="70_d5a62"]
+[ext_resource type="Image" uid="uid://c38sa8ud8g0oi" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_0_-9.res" id="71_mfkc8"]
+[ext_resource type="Image" uid="uid://yjw1oxgjaojo" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-1_-10.res" id="72_kape7"]
+[ext_resource type="Image" uid="uid://ro5hwwrxmnhp" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_2_-8.res" id="72_vbynq"]
+[ext_resource type="Image" uid="uid://sxcn65umfjel" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-1_-9.res" id="73_uerer"]
+[ext_resource type="Image" uid="uid://bylpgo0yk56u4" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_3_-8.res" id="74_bax4i"]
+[ext_resource type="Image" uid="uid://da0x7fp88xti8" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_0_-10.res" id="74_hhrub"]
+[ext_resource type="Image" uid="uid://bl7117q42dwuy" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_-1_-7.res" id="75_5uvyu"]
+[ext_resource type="Image" uid="uid://bd88m5xuffvv4" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-1_-11.res" id="75_lspp8"]
+[ext_resource type="Image" uid="uid://b6ix5oc7gy7lo" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_0_-11.res" id="76_a4m8g"]
+[ext_resource type="Image" uid="uid://den7a2j8f4u0r" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_-1_-6.res" id="77_gy0kt"]
+[ext_resource type="Image" uid="uid://bmhx80cyh0077" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-2_-11.res" id="77_qmq5f"]
+[ext_resource type="Image" uid="uid://cpo360yndl2w3" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-1_-12.res" id="78_85kqv"]
+[ext_resource type="Image" uid="uid://bd8y50mdw1d80" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_-1_-5.res" id="79_0phkd"]
+[ext_resource type="Image" uid="uid://bu5wonjkgqbv8" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_0_-12.res" id="79_pv2hi"]
+[ext_resource type="Image" uid="uid://dk85ecihua6j2" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-2_-10.res" id="80_mmhdw"]
+[ext_resource type="Image" uid="uid://l0sjudubm14n" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_1_-11.res" id="81_8wj02"]
+[ext_resource type="Image" uid="uid://blvvwe5gasyvw" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_0_-8.res" id="81_x6y23"]
+[ext_resource type="Image" uid="uid://b22puoj7p0xyk" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_1_-10.res" id="82_tu81d"]
+[ext_resource type="Image" uid="uid://dq0xmutcffama" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-2_-12.res" id="83_0tpbj"]
+[ext_resource type="Image" uid="uid://11dc1bp3bsyi" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_-1_-8.res" id="83_kbet7"]
+[ext_resource type="Image" uid="uid://kyu65yk2ukj1" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-3_-12.res" id="84_gik2p"]
+[ext_resource type="Image" uid="uid://cjsivku18ay6" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-3_-11.res" id="85_07ebn"]
+[ext_resource type="Image" uid="uid://yglep2o362nk" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_3_-9.res" id="86_8qkqe"]
+[ext_resource type="Image" uid="uid://cakw0e1jjhdl5" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-2_-7.res" id="86_qmq5f"]
+[ext_resource type="Image" uid="uid://djjakevtkaqxo" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-2_-6.res" id="87_85kqv"]
+[ext_resource type="Image" uid="uid://dev5e8w2fmfys" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_2_-9.res" id="88_fp06m"]
+[ext_resource type="Image" uid="uid://cxrxv073jfdd5" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-3_-10.res" id="88_pv2hi"]
+[ext_resource type="Image" uid="uid://b846uv7423hkp" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-3_-9.res" id="89_mmhdw"]
+[ext_resource type="Image" uid="uid://bs6apooyaabm5" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-2_-9.res" id="90_8wj02"]
+[ext_resource type="Image" uid="uid://c6xt8l01ocuyf" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_2_-10.res" id="90_kvs2h"]
+[ext_resource type="Image" uid="uid://dh3ilnxcyq6k" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_3_-10.res" id="92_6xwsw"]
+[ext_resource type="Image" uid="uid://dpt7xone5yemh" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_4_-10.res" id="94_e03xk"]
+[ext_resource type="Image" uid="uid://c86pyvnwgejbj" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_4_-9.res" id="96_prutw"]
+[ext_resource type="Image" uid="uid://ccsph2a4fm8ei" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_4_-8.res" id="98_t2c6i"]
+[ext_resource type="Image" uid="uid://br70ounb6ox3w" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_1_-9.res" id="100_463kg"]
+[ext_resource type="Image" uid="uid://cvxmjjpstixmx" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_0_-9.res" id="102_5mqj6"]
+[ext_resource type="Image" uid="uid://du0wc5sm0iyqb" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_-1_-10.res" id="104_7njn1"]
+[ext_resource type="Image" uid="uid://c51ha4otj223v" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_-1_-9.res" id="106_awqsx"]
+[ext_resource type="Image" uid="uid://cgrmhtg2li6cv" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_0_-10.res" id="108_fr8a3"]
+[ext_resource type="Image" uid="uid://slpqc12rg0lt" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_-1_-11.res" id="110_6xwsw"]
+[ext_resource type="Image" uid="uid://23yjmv8qer4n" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_0_-11.res" id="111_j04k3"]
+[ext_resource type="Image" uid="uid://cfa08nl26lrr3" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_4_-6.res" id="113_5byf7"]
+[ext_resource type="Image" uid="uid://olqoelufm2dc" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_4_-5.res" id="114_clkmm"]
+[ext_resource type="Image" uid="uid://bmsxg6770sdk8" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_-2_-11.res" id="114_e03xk"]
+[ext_resource type="Image" uid="uid://biws68t57tvcr" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_4_-7.res" id="115_r8esw"]
+[ext_resource type="Image" uid="uid://dvcd6v8x82vgb" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_5_-8.res" id="116_3c0ae"]
+[ext_resource type="Image" uid="uid://cyjsixctbkq2l" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_-2_-10.res" id="116_cqq4e"]
+[ext_resource type="Image" uid="uid://lscys5hcixab" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_-1_-12.res" id="116_prutw"]
+[ext_resource type="Image" uid="uid://cqoj7esmv66fy" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_5_-7.res" id="117_e1nd5"]
+[ext_resource type="Image" uid="uid://dhdl1vmb1v71a" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_1_-11.res" id="118_0caqk"]
+[ext_resource type="Image" uid="uid://dwm5eo553roxt" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_5_-9.res" id="118_d25sb"]
+[ext_resource type="Image" uid="uid://baum4xrptpeee" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_0_-12.res" id="118_t2c6i"]
+[ext_resource type="Image" uid="uid://t1eky2ihsev0" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_6_-9.res" id="119_tgpq3"]
+[ext_resource type="Image" uid="uid://chb7p1l6pmhoq" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_1_-10.res" id="120_t2tin"]
+[ext_resource type="Image" uid="uid://btjneb71voacb" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_6_-8.res" id="120_wlm2q"]
+[ext_resource type="Image" uid="uid://d2ovt2q1i0c2i" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_4_-4.res" id="121_pctio"]
+[ext_resource type="Image" uid="uid://cfrm6sq0pcfop" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_5_-6.res" id="122_lwclv"]
+[ext_resource type="Image" uid="uid://cqgvpkymfcdch" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_5_-5.res" id="123_scitx"]
+[ext_resource type="Image" uid="uid://dpocw2shcdh7c" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_-2_-8.res" id="124_eoeor"]
+[ext_resource type="Image" uid="uid://3qgthr1q8mf7" path="res://Maps/PlayMaps/Asgard/TerraBrush/Heightmap_2_-11.res" id="125_ntcwf"]
+[ext_resource type="Image" uid="uid://dykoa6qtbdeg4" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_-2_-7.res" id="125_u82ie"]
+[ext_resource type="PackedScene" uid="uid://cieyisu7esk8a" path="res://Models/GladsheimHall/GladsheimHall.tscn" id="127_3c0ae"]
+[ext_resource type="Image" uid="uid://cyj7t8y55mh1c" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_-2_-6.res" id="127_q7qyj"]
+[ext_resource type="PackedScene" uid="uid://dy0o4uahqhtih" path="res://Models/Valaskjr/ValaskjrHall.glb" id="128_e1nd5"]
+[ext_resource type="PackedScene" uid="uid://df7wpqerysto0" path="res://Models/Noatun/NoatunScene.tscn" id="129_d25sb"]
+[ext_resource type="PackedScene" uid="uid://dfpcrqgr2vj8k" path="res://Models/Himinbjorg/HiminbjorgHome.glb" id="130_e1nd5"]
+[ext_resource type="Image" uid="uid://cdck4jqyqfiq0" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_-2_-9.res" id="131_2mdey"]
+[ext_resource type="Image" uid="uid://jfan5ysuqpqw" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_4_-6.res" id="133_x6xua"]
+[ext_resource type="Image" uid="uid://b8158etjhda3j" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_4_-5.res" id="135_1y048"]
+[ext_resource type="Image" uid="uid://dcr4wxm4xpwc5" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_4_-7.res" id="137_2pl2p"]
+[ext_resource type="Image" uid="uid://k3gey4owhhhb" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_5_-8.res" id="139_kx3o5"]
+[ext_resource type="Image" uid="uid://hsa3g4nf3w2o" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_5_-7.res" id="141_ritee"]
+[ext_resource type="Image" uid="uid://dthsx8xn4voaa" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_5_-9.res" id="143_ieufy"]
+[ext_resource type="Image" uid="uid://dn7rfvbl2ryfe" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_4_-4.res" id="147_1ric0"]
+[ext_resource type="Image" uid="uid://hxgo8wuiyufm" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_5_-6.res" id="149_3y3jo"]
+[ext_resource type="Image" uid="uid://c3ra52y6h0mbl" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_5_-5.res" id="151_6kcxy"]
+[ext_resource type="Image" uid="uid://dn5pps66bgx0a" path="res://Maps/PlayMaps/Asgard/TerraBrush/Color_-2_-8.res" id="153_hfjkn"]
+
+[sub_resource type="ZoneResource" id="ZoneResource_hlk88"]
+heightMapImage = ExtResource("3_gc2s2")
+colorImage = ExtResource("3_4bowc")
+
+[sub_resource type="ZoneResource" id="ZoneResource_ffokv"]
+zonePosition = Vector2i(0, -1)
+heightMapImage = ExtResource("4_4datg")
+colorImage = ExtResource("5_biphk")
+
+[sub_resource type="ZoneResource" id="ZoneResource_fsqio"]
+zonePosition = Vector2i(-1, -1)
+heightMapImage = ExtResource("5_407w6")
+colorImage = ExtResource("7_ma4vl")
+
+[sub_resource type="ZoneResource" id="ZoneResource_upe5e"]
+zonePosition = Vector2i(-1, 0)
+heightMapImage = ExtResource("6_4bowc")
+colorImage = ExtResource("7_hlmin")
+
+[sub_resource type="ZoneResource" id="ZoneResource_ub8ks"]
+zonePosition = Vector2i(-1, -2)
+heightMapImage = ExtResource("7_2nc5f")
+colorImage = ExtResource("10_xapg2")
+
+[sub_resource type="ZoneResource" id="ZoneResource_ujjcc"]
+zonePosition = Vector2i(0, -2)
+heightMapImage = ExtResource("8_hlmin")
+colorImage = ExtResource("12_y0sre")
+
+[sub_resource type="ZoneResource" id="ZoneResource_c4xwp"]
+zonePosition = Vector2i(1, -2)
+heightMapImage = ExtResource("11_q6i8l")
+colorImage = ExtResource("14_8x5r5")
+
+[sub_resource type="ZoneResource" id="ZoneResource_004c8"]
+zonePosition = Vector2i(1, -1)
+heightMapImage = ExtResource("12_qeqcc")
+colorImage = ExtResource("17_khon3")
+
+[sub_resource type="ZoneResource" id="ZoneResource_puhd0"]
+zonePosition = Vector2i(0, -3)
+heightMapImage = ExtResource("13_ke8xg")
+colorImage = ExtResource("17_pq55p")
+
+[sub_resource type="ZoneResource" id="ZoneResource_l67m6"]
+zonePosition = Vector2i(-1, -3)
+heightMapImage = ExtResource("14_ts81x")
+colorImage = ExtResource("19_c4xwp")
+
+[sub_resource type="ZoneResource" id="ZoneResource_oaxll"]
+zonePosition = Vector2i(1, -3)
+heightMapImage = ExtResource("15_cvs27")
+colorImage = ExtResource("21_004c8")
+
+[sub_resource type="ZoneResource" id="ZoneResource_xo2cj"]
+zonePosition = Vector2i(0, -4)
+heightMapImage = ExtResource("16_qyosk")
+colorImage = ExtResource("25_p4uey")
+
+[sub_resource type="ZoneResource" id="ZoneResource_spd0d"]
+zonePosition = Vector2i(1, -4)
+heightMapImage = ExtResource("17_vohyr")
+colorImage = ExtResource("27_k1i40")
+
+[sub_resource type="ZoneResource" id="ZoneResource_ma4vl"]
+zonePosition = Vector2i(2, -3)
+heightMapImage = ExtResource("18_biphk")
+colorImage = ExtResource("29_wf6vq")
+
+[sub_resource type="ZoneResource" id="ZoneResource_khon3"]
+zonePosition = Vector2i(2, -2)
+heightMapImage = ExtResource("19_xapg2")
+colorImage = ExtResource("31_12was")
+
+[sub_resource type="ZoneResource" id="ZoneResource_p4uey"]
+zonePosition = Vector2i(-2, -2)
+heightMapImage = ExtResource("20_y0sre")
+colorImage = ExtResource("33_e8mxw")
+
+[sub_resource type="ZoneResource" id="ZoneResource_k1i40"]
+zonePosition = Vector2i(-2, -1)
+heightMapImage = ExtResource("21_8x5r5")
+
+[sub_resource type="ZoneResource" id="ZoneResource_wf6vq"]
+zonePosition = Vector2i(-2, -3)
+heightMapImage = ExtResource("22_pq55p")
+colorImage = ExtResource("36_sev63")
+
+[sub_resource type="ZoneResource" id="ZoneResource_y0sre"]
+zonePosition = Vector2i(2, -4)
+heightMapImage = ExtResource("30_xapg2")
+colorImage = ExtResource("38_0gid3")
+
+[sub_resource type="ZoneResource" id="ZoneResource_8x5r5"]
+zonePosition = Vector2i(-1, -4)
+heightMapImage = ExtResource("31_y0sre")
+colorImage = ExtResource("40_0tpbj")
+
+[sub_resource type="ZoneResource" id="ZoneResource_qvnkq"]
+zonePosition = Vector2i(1, -5)
+heightMapImage = ExtResource("41_vn6cw")
+colorImage = ExtResource("41_tu81d")
+
+[sub_resource type="ZoneResource" id="ZoneResource_0gid3"]
+zonePosition = Vector2i(0, -5)
+heightMapImage = ExtResource("42_wf6vq")
+colorImage = ExtResource("44_alnsk")
+
+[sub_resource type="ZoneResource" id="ZoneResource_vn6cw"]
+zonePosition = Vector2i(2, -5)
+heightMapImage = ExtResource("43_12was")
+colorImage = ExtResource("44_0tpbj")
+
+[sub_resource type="ZoneResource" id="ZoneResource_aq0lq"]
+zonePosition = Vector2i(3, -4)
+heightMapImage = ExtResource("44_e8mxw")
+colorImage = ExtResource("46_gik2p")
+
+[sub_resource type="ZoneResource" id="ZoneResource_ibqim"]
+zonePosition = Vector2i(3, -3)
+heightMapImage = ExtResource("45_sev63")
+colorImage = ExtResource("48_07ebn")
+
+[sub_resource type="ZoneResource" id="ZoneResource_e8mxw"]
+zonePosition = Vector2i(3, -5)
+heightMapImage = ExtResource("46_12was")
+colorImage = ExtResource("50_rp85u")
+
+[sub_resource type="ZoneResource" id="ZoneResource_wjtg2"]
+zonePosition = Vector2i(2, -6)
+heightMapImage = ExtResource("47_sev63")
+colorImage = ExtResource("53_gik2p")
+
+[sub_resource type="ZoneResource" id="ZoneResource_hh3im"]
+zonePosition = Vector2i(3, -6)
+heightMapImage = ExtResource("48_0gid3")
+colorImage = ExtResource("55_1l3hp")
+
+[sub_resource type="ZoneResource" id="ZoneResource_dud2f"]
+zonePosition = Vector2i(0, -6)
+heightMapImage = ExtResource("49_rp5a3")
+colorImage = ExtResource("57_exinx")
+
+[sub_resource type="ZoneResource" id="ZoneResource_mdmdf"]
+zonePosition = Vector2i(1, -6)
+heightMapImage = ExtResource("50_8u1j2")
+colorImage = ExtResource("59_t3k1x")
+
+[sub_resource type="ZoneResource" id="ZoneResource_clj6u"]
+zonePosition = Vector2i(1, -7)
+heightMapImage = ExtResource("51_bove1")
+colorImage = ExtResource("61_5a6um")
+
+[sub_resource type="ZoneResource" id="ZoneResource_8d728"]
+zonePosition = Vector2i(0, -7)
+heightMapImage = ExtResource("52_keuxf")
+colorImage = ExtResource("63_gica5")
+
+[sub_resource type="ZoneResource" id="ZoneResource_phce3"]
+zonePosition = Vector2i(2, -7)
+heightMapImage = ExtResource("53_so05j")
+colorImage = ExtResource("65_46q1j")
+
+[sub_resource type="ZoneResource" id="ZoneResource_a0q6q"]
+zonePosition = Vector2i(3, -7)
+heightMapImage = ExtResource("54_x8q6i")
+colorImage = ExtResource("67_gc5bd")
+
+[sub_resource type="ZoneResource" id="ZoneResource_7d80j"]
+zonePosition = Vector2i(1, -8)
+heightMapImage = ExtResource("55_u1r6p")
+colorImage = ExtResource("70_d5a62")
+
+[sub_resource type="ZoneResource" id="ZoneResource_dgyrq"]
+zonePosition = Vector2i(2, -8)
+heightMapImage = ExtResource("56_dwnur")
+colorImage = ExtResource("72_vbynq")
+
+[sub_resource type="ZoneResource" id="ZoneResource_ojxkv"]
+zonePosition = Vector2i(3, -8)
+heightMapImage = ExtResource("57_1w1ir")
+colorImage = ExtResource("74_bax4i")
+
+[sub_resource type="ZoneResource" id="ZoneResource_kg75r"]
+zonePosition = Vector2i(-1, -7)
+heightMapImage = ExtResource("58_x8q6i")
+colorImage = ExtResource("75_5uvyu")
+
+[sub_resource type="ZoneResource" id="ZoneResource_m81tu"]
+zonePosition = Vector2i(-1, -6)
+heightMapImage = ExtResource("59_u1r6p")
+colorImage = ExtResource("77_gy0kt")
+
+[sub_resource type="ZoneResource" id="ZoneResource_aq7d7"]
+zonePosition = Vector2i(-1, -5)
+heightMapImage = ExtResource("60_dwnur")
+colorImage = ExtResource("79_0phkd")
+
+[sub_resource type="ZoneResource" id="ZoneResource_7ke11"]
+zonePosition = Vector2i(0, -8)
+heightMapImage = ExtResource("61_1w1ir")
+colorImage = ExtResource("81_x6y23")
+
+[sub_resource type="ZoneResource" id="ZoneResource_mfkc8"]
+zonePosition = Vector2i(-1, -8)
+heightMapImage = ExtResource("62_dud2f")
+colorImage = ExtResource("83_kbet7")
+
+[sub_resource type="ZoneResource" id="ZoneResource_vdaop"]
+zonePosition = Vector2i(3, -9)
+heightMapImage = ExtResource("63_a0q6q")
+colorImage = ExtResource("86_8qkqe")
+
+[sub_resource type="ZoneResource" id="ZoneResource_d40pk"]
+zonePosition = Vector2i(2, -9)
+heightMapImage = ExtResource("64_7d80j")
+colorImage = ExtResource("88_fp06m")
+
+[sub_resource type="ZoneResource" id="ZoneResource_68uxt"]
+zonePosition = Vector2i(2, -10)
+heightMapImage = ExtResource("65_dgyrq")
+colorImage = ExtResource("90_kvs2h")
+
+[sub_resource type="ZoneResource" id="ZoneResource_mfn4f"]
+zonePosition = Vector2i(3, -10)
+heightMapImage = ExtResource("66_ojxkv")
+colorImage = ExtResource("92_6xwsw")
+
+[sub_resource type="ZoneResource" id="ZoneResource_kqtor"]
+zonePosition = Vector2i(4, -10)
+heightMapImage = ExtResource("67_kg75r")
+colorImage = ExtResource("94_e03xk")
+
+[sub_resource type="ZoneResource" id="ZoneResource_kape7"]
+zonePosition = Vector2i(4, -9)
+heightMapImage = ExtResource("68_m81tu")
+colorImage = ExtResource("96_prutw")
+
+[sub_resource type="ZoneResource" id="ZoneResource_uerer"]
+zonePosition = Vector2i(4, -8)
+heightMapImage = ExtResource("69_aq7d7")
+colorImage = ExtResource("98_t2c6i")
+
+[sub_resource type="ZoneResource" id="ZoneResource_hhrub"]
+zonePosition = Vector2i(1, -9)
+heightMapImage = ExtResource("70_7ke11")
+colorImage = ExtResource("100_463kg")
+
+[sub_resource type="ZoneResource" id="ZoneResource_lspp8"]
+zonePosition = Vector2i(0, -9)
+heightMapImage = ExtResource("71_mfkc8")
+colorImage = ExtResource("102_5mqj6")
+
+[sub_resource type="ZoneResource" id="ZoneResource_rp85u"]
+zonePosition = Vector2i(-1, -10)
+heightMapImage = ExtResource("72_kape7")
+colorImage = ExtResource("104_7njn1")
+
+[sub_resource type="ZoneResource" id="ZoneResource_v2fch"]
+zonePosition = Vector2i(-1, -9)
+heightMapImage = ExtResource("73_uerer")
+colorImage = ExtResource("106_awqsx")
+
+[sub_resource type="ZoneResource" id="ZoneResource_fr4ep"]
+zonePosition = Vector2i(0, -10)
+heightMapImage = ExtResource("74_hhrub")
+colorImage = ExtResource("108_fr8a3")
+
+[sub_resource type="ZoneResource" id="ZoneResource_1rdrt"]
+zonePosition = Vector2i(-1, -11)
+heightMapImage = ExtResource("75_lspp8")
+colorImage = ExtResource("110_6xwsw")
+
+[sub_resource type="ZoneResource" id="ZoneResource_ny7jx"]
+zonePosition = Vector2i(0, -11)
+heightMapImage = ExtResource("76_a4m8g")
+colorImage = ExtResource("111_j04k3")
+
+[sub_resource type="ZoneResource" id="ZoneResource_1l3hp"]
+zonePosition = Vector2i(-2, -11)
+heightMapImage = ExtResource("77_qmq5f")
+colorImage = ExtResource("114_e03xk")
+
+[sub_resource type="ZoneResource" id="ZoneResource_exinx"]
+zonePosition = Vector2i(-1, -12)
+heightMapImage = ExtResource("78_85kqv")
+colorImage = ExtResource("116_prutw")
+
+[sub_resource type="ZoneResource" id="ZoneResource_t3k1x"]
+zonePosition = Vector2i(0, -12)
+heightMapImage = ExtResource("79_pv2hi")
+colorImage = ExtResource("118_t2c6i")
+
+[sub_resource type="ZoneResource" id="ZoneResource_5a6um"]
+zonePosition = Vector2i(-2, -10)
+heightMapImage = ExtResource("80_mmhdw")
+colorImage = ExtResource("116_cqq4e")
+
+[sub_resource type="ZoneResource" id="ZoneResource_gica5"]
+zonePosition = Vector2i(1, -11)
+heightMapImage = ExtResource("81_8wj02")
+colorImage = ExtResource("118_0caqk")
+
+[sub_resource type="ZoneResource" id="ZoneResource_46q1j"]
+zonePosition = Vector2i(1, -10)
+heightMapImage = ExtResource("82_tu81d")
+colorImage = ExtResource("120_t2tin")
+
+[sub_resource type="ZoneResource" id="ZoneResource_gc5bd"]
+zonePosition = Vector2i(-2, -12)
+heightMapImage = ExtResource("83_0tpbj")
+
+[sub_resource type="ZoneResource" id="ZoneResource_ilp3d"]
+zonePosition = Vector2i(-3, -12)
+heightMapImage = ExtResource("84_gik2p")
+
+[sub_resource type="ZoneResource" id="ZoneResource_alnsk"]
+zonePosition = Vector2i(-3, -11)
+heightMapImage = ExtResource("85_07ebn")
+
+[sub_resource type="ZoneResource" id="ZoneResource_tu81d"]
+zonePosition = Vector2i(-2, -7)
+heightMapImage = ExtResource("86_qmq5f")
+colorImage = ExtResource("125_u82ie")
+
+[sub_resource type="ZoneResource" id="ZoneResource_0tpbj"]
+zonePosition = Vector2i(-2, -6)
+heightMapImage = ExtResource("87_85kqv")
+colorImage = ExtResource("127_q7qyj")
+
+[sub_resource type="ZoneResource" id="ZoneResource_gik2p"]
+zonePosition = Vector2i(-3, -10)
+heightMapImage = ExtResource("88_pv2hi")
+
+[sub_resource type="ZoneResource" id="ZoneResource_07ebn"]
+zonePosition = Vector2i(-3, -9)
+heightMapImage = ExtResource("89_mmhdw")
+
+[sub_resource type="ZoneResource" id="ZoneResource_d5a62"]
+zonePosition = Vector2i(-2, -9)
+heightMapImage = ExtResource("90_8wj02")
+colorImage = ExtResource("131_2mdey")
+
+[sub_resource type="ZoneResource" id="ZoneResource_cuuw5"]
+zonePosition = Vector2i(4, -6)
+heightMapImage = ExtResource("113_5byf7")
+colorImage = ExtResource("133_x6xua")
+
+[sub_resource type="ZoneResource" id="ZoneResource_oleoe"]
+zonePosition = Vector2i(4, -5)
+heightMapImage = ExtResource("114_clkmm")
+colorImage = ExtResource("135_1y048")
+
+[sub_resource type="ZoneResource" id="ZoneResource_jcdm0"]
+zonePosition = Vector2i(4, -7)
+heightMapImage = ExtResource("115_r8esw")
+colorImage = ExtResource("137_2pl2p")
+
+[sub_resource type="ZoneResource" id="ZoneResource_0n8oi"]
+zonePosition = Vector2i(5, -8)
+heightMapImage = ExtResource("116_3c0ae")
+colorImage = ExtResource("139_kx3o5")
+
+[sub_resource type="ZoneResource" id="ZoneResource_qwoj0"]
+zonePosition = Vector2i(5, -7)
+heightMapImage = ExtResource("117_e1nd5")
+colorImage = ExtResource("141_ritee")
+
+[sub_resource type="ZoneResource" id="ZoneResource_c7s0s"]
+zonePosition = Vector2i(5, -9)
+heightMapImage = ExtResource("118_d25sb")
+colorImage = ExtResource("143_ieufy")
+
+[sub_resource type="ZoneResource" id="ZoneResource_l2vj3"]
+zonePosition = Vector2i(6, -9)
+heightMapImage = ExtResource("119_tgpq3")
+
+[sub_resource type="ZoneResource" id="ZoneResource_06lj1"]
+zonePosition = Vector2i(6, -8)
+heightMapImage = ExtResource("120_wlm2q")
+
+[sub_resource type="ZoneResource" id="ZoneResource_l865a"]
+zonePosition = Vector2i(4, -4)
+heightMapImage = ExtResource("121_pctio")
+colorImage = ExtResource("147_1ric0")
+
+[sub_resource type="ZoneResource" id="ZoneResource_k7rld"]
+zonePosition = Vector2i(5, -6)
+heightMapImage = ExtResource("122_lwclv")
+colorImage = ExtResource("149_3y3jo")
+
+[sub_resource type="ZoneResource" id="ZoneResource_t2o72"]
+zonePosition = Vector2i(5, -5)
+heightMapImage = ExtResource("123_scitx")
+colorImage = ExtResource("151_6kcxy")
+
+[sub_resource type="ZoneResource" id="ZoneResource_yrfxq"]
+zonePosition = Vector2i(-2, -8)
+heightMapImage = ExtResource("124_eoeor")
+colorImage = ExtResource("153_hfjkn")
+
+[sub_resource type="ZoneResource" id="ZoneResource_tjjth"]
+zonePosition = Vector2i(2, -11)
+heightMapImage = ExtResource("125_ntcwf")
+
+[sub_resource type="ZonesResource" id="ZonesResource_lp7j4"]
+zones = Array[ZoneResource]([SubResource("ZoneResource_hlk88"), SubResource("ZoneResource_ffokv"), SubResource("ZoneResource_fsqio"), SubResource("ZoneResource_upe5e"), SubResource("ZoneResource_ub8ks"), SubResource("ZoneResource_ujjcc"), SubResource("ZoneResource_c4xwp"), SubResource("ZoneResource_004c8"), SubResource("ZoneResource_puhd0"), SubResource("ZoneResource_l67m6"), SubResource("ZoneResource_oaxll"), SubResource("ZoneResource_xo2cj"), SubResource("ZoneResource_spd0d"), SubResource("ZoneResource_ma4vl"), SubResource("ZoneResource_khon3"), SubResource("ZoneResource_p4uey"), SubResource("ZoneResource_k1i40"), SubResource("ZoneResource_wf6vq"), SubResource("ZoneResource_y0sre"), SubResource("ZoneResource_8x5r5"), SubResource("ZoneResource_qvnkq"), SubResource("ZoneResource_0gid3"), SubResource("ZoneResource_vn6cw"), SubResource("ZoneResource_aq0lq"), SubResource("ZoneResource_ibqim"), SubResource("ZoneResource_e8mxw"), SubResource("ZoneResource_wjtg2"), SubResource("ZoneResource_hh3im"), SubResource("ZoneResource_dud2f"), SubResource("ZoneResource_mdmdf"), SubResource("ZoneResource_clj6u"), SubResource("ZoneResource_8d728"), SubResource("ZoneResource_phce3"), SubResource("ZoneResource_a0q6q"), SubResource("ZoneResource_7d80j"), SubResource("ZoneResource_dgyrq"), SubResource("ZoneResource_ojxkv"), SubResource("ZoneResource_kg75r"), SubResource("ZoneResource_m81tu"), SubResource("ZoneResource_aq7d7"), SubResource("ZoneResource_7ke11"), SubResource("ZoneResource_mfkc8"), SubResource("ZoneResource_vdaop"), SubResource("ZoneResource_d40pk"), SubResource("ZoneResource_68uxt"), SubResource("ZoneResource_mfn4f"), SubResource("ZoneResource_kqtor"), SubResource("ZoneResource_kape7"), SubResource("ZoneResource_uerer"), SubResource("ZoneResource_hhrub"), SubResource("ZoneResource_lspp8"), SubResource("ZoneResource_rp85u"), SubResource("ZoneResource_v2fch"), SubResource("ZoneResource_fr4ep"), SubResource("ZoneResource_1rdrt"), SubResource("ZoneResource_ny7jx"), SubResource("ZoneResource_1l3hp"), SubResource("ZoneResource_exinx"), SubResource("ZoneResource_t3k1x"), SubResource("ZoneResource_5a6um"), SubResource("ZoneResource_gica5"), SubResource("ZoneResource_46q1j"), SubResource("ZoneResource_gc5bd"), SubResource("ZoneResource_ilp3d"), SubResource("ZoneResource_alnsk"), SubResource("ZoneResource_tu81d"), SubResource("ZoneResource_0tpbj"), SubResource("ZoneResource_gik2p"), SubResource("ZoneResource_07ebn"), SubResource("ZoneResource_d5a62"), SubResource("ZoneResource_cuuw5"), SubResource("ZoneResource_oleoe"), SubResource("ZoneResource_jcdm0"), SubResource("ZoneResource_0n8oi"), SubResource("ZoneResource_qwoj0"), SubResource("ZoneResource_c7s0s"), SubResource("ZoneResource_l2vj3"), SubResource("ZoneResource_06lj1"), SubResource("ZoneResource_l865a"), SubResource("ZoneResource_k7rld"), SubResource("ZoneResource_t2o72"), SubResource("ZoneResource_yrfxq"), SubResource("ZoneResource_tjjth")])
+
+[sub_resource type="Gradient" id="Gradient_407w6"]
+offsets = PackedFloat32Array(0, 0.5236842, 0.8473684)
+colors = PackedColorArray(0.30588236, 1, 1, 1, 1, 1, 1, 1, 0.30588236, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ypnia"]
+gradient = SubResource("Gradient_407w6")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4bowc"]
+noise_type = 0
+frequency = 0.0296
+fractal_octaves = 1
+fractal_weighted_strength = 1.0
+domain_warp_enabled = true
+domain_warp_amplitude = 32.89
+domain_warp_frequency = 0.01
+domain_warp_fractal_octaves = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0q38a"]
+width = 128
+noise = SubResource("FastNoiseLite_4bowc")
+seamless = true
+in_3d_space = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2nc5f"]
+noise_type = 4
+frequency = 0.0028
+offset = Vector3(0, 408.76, 0)
+fractal_type = 2
+fractal_octaves = 4
+fractal_gain = 2.0
+fractal_weighted_strength = 1.0
+domain_warp_enabled = true
+domain_warp_amplitude = 119.56
+domain_warp_fractal_octaves = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gqgnc"]
+width = 64
+height = 256
+noise = SubResource("FastNoiseLite_2nc5f")
+seamless = true
+in_3d_space = true
+
+[sub_resource type="Gradient" id="Gradient_hlmin"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0q38a"]
+gradient = SubResource("Gradient_hlmin")
+
+[sub_resource type="Gradient" id="Gradient_hlk88"]
+colors = PackedColorArray(0.54901963, 0.28235295, 1, 1, 0.30588236, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_io8ui"]
+gradient = SubResource("Gradient_hlk88")
+width = 1
+height = 1024
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ffokv"]
+shader = ExtResource("9_4datg")
+shader_parameter/hdri_background = SubResource("GradientTexture1D_0q38a")
+shader_parameter/sky_background = SubResource("GradientTexture2D_io8ui")
+shader_parameter/clouds = SubResource("NoiseTexture2D_gqgnc")
+shader_parameter/cloud_color = SubResource("GradientTexture2D_ypnia")
+shader_parameter/cloud_mask = SubResource("NoiseTexture2D_0q38a")
+shader_parameter/cloud_speed = 0.02
+shader_parameter/exposure = 1.0
+
+[sub_resource type="Sky" id="Sky_rd6b5"]
+sky_material = SubResource("ShaderMaterial_ffokv")
+
+[sub_resource type="Environment" id="Environment_fsqio"]
+background_mode = 2
+sky = SubResource("Sky_rd6b5")
+ambient_light_color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+ambient_light_sky_contribution = 0.9
+tonemap_mode = 2
+tonemap_exposure = 0.9
+tonemap_white = 1.1
+ssao_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+glow_normalized = true
+volumetric_fog_density = 0.01
+adjustment_enabled = true
+adjustment_contrast = 1.05
+adjustment_saturation = 1.1
 
 [node name="Asgard" type="Node3D" unique_id=1419564980]
 
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1204041851 groups=["MainCamera"]]
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 0.90630776, 0.42261827, 0, -0.42261827, 0.90630776, -6.2823887, 9.160409, 5.2695885)
+
+[node name="PhantomCameraHost" type="Node" parent="Camera3D" unique_id=908063206]
+process_priority = 300
+process_physics_priority = 300
+physics_interpolation_mode = 1
+script = ExtResource("1_xv5w7")
+metadata/_custom_type_script = "uid://bd046eokvcnu2"
+
 [node name="Player" parent="." unique_id=630880669 instance=ExtResource("2_xv5w7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 715.89374, 113.24246, 156.65277)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.2823887, 0.7080431, -12.856567)
+shotPower = 30.0
 
-[node name="AsDammedWater" type="MeshInstance3D" parent="." unique_id=1181017608]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.688034, 662.2299, -308.51535)
-mesh = ExtResource("2_407w6")
+[node name="TerraBrush" type="TerraBrush" parent="." unique_id=821570681]
+dataPath = "res://Maps/PlayMaps/Asgard/TerraBrush"
+terrainZones = SubResource("ZonesResource_lp7j4")
+metadata/_edit_lock_ = false
 
-[node name="AsDock" type="MeshInstance3D" parent="." unique_id=1486865390]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.688034, 662.2299, -308.51535)
-mesh = ExtResource("3_4bowc")
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2108588787]
+environment = SubResource("Environment_fsqio")
 
-[node name="AsDoor" type="MeshInstance3D" parent="." unique_id=1719186884]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.688034, 662.2299, -308.51535)
-mesh = ExtResource("4_2nc5f")
+[node name="Walls" type="Node" parent="." unique_id=611634113]
 
-[node name="AsFunnel" type="MeshInstance3D" parent="." unique_id=222504371]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.688034, 662.2299, -308.51535)
-mesh = ExtResource("5_hlmin")
+[node name="Angle Wall 1" type="CSGBox3D" parent="Walls" unique_id=156437122]
+transform = Transform3D(0.6782494, 0, 0.7348317, 0, 1, 0, -0.7348317, 0, 0.6782494, -19.253017, 3.048133, -254.31055)
+use_collision = true
+size = Vector3(18.859009, 6.1904907, 5.413574)
 
-[node name="AsGarden" type="MeshInstance3D" parent="." unique_id=776525906]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.688034, 662.2299, -308.51535)
-mesh = ExtResource("6_hlk88")
+[node name="Angle Wall 2" type="CSGBox3D" parent="Walls" unique_id=743174196]
+transform = Transform3D(0.6782494, 0, 0.7348317, 0, 1, 0, -0.7348317, 0, 0.6782494, 113.07468, 3.048133, -231.76715)
+use_collision = true
+size = Vector3(18.859009, 6.1904907, 5.413574)
 
-[node name="AsOpening" type="MeshInstance3D" parent="." unique_id=1112153902]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.688034, 662.2299, -308.51535)
-mesh = ExtResource("7_ffokv")
+[node name="Angle Wall 3" type="CSGBox3D" parent="Walls" unique_id=733731306]
+transform = Transform3D(0.68730295, 0, -0.72637075, 0, 1, 0, 0.72637075, 0, 0.68730295, 116.51348, 2.9163847, -393.39648)
+use_collision = true
+size = Vector3(18.859009, 6.1904907, 5.413574)
 
-[node name="AsPalaceBase" type="MeshInstance3D" parent="." unique_id=1254831860]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.688034, 662.2299, -308.51535)
-mesh = ExtResource("8_fsqio")
+[node name="Boundary Wall 1" type="CSGBox3D" parent="." unique_id=1504655087]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.205719, 1.0324707, -103.75659)
+use_collision = true
+size = Vector3(2.805359, 3.0649414, 238.23291)
 
-[node name="AsSlide" type="MeshInstance3D" parent="." unique_id=316583775]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.688034, 662.2299, -308.51535)
-mesh = ExtResource("9_upe5e")
+[node name="Boundary Wall 4" type="CSGBox3D" parent="." unique_id=75283052]
+transform = Transform3D(0.022251157, 0, 0.9997524, 0, 1, 0, -0.9997524, 0, 0.022251157, 64.823875, 1.0324707, -223.57083)
+use_collision = true
+size = Vector3(2.805359, 3.0649414, 105.21092)
 
-[node name="AsVillage" type="MeshInstance3D" parent="." unique_id=835824513]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.688034, 662.2299, -308.51535)
-mesh = ExtResource("10_ub8ks")
+[node name="Boundary Wall 5" type="CSGBox3D" parent="." unique_id=1453429907]
+transform = Transform3D(0.022251157, 0, 0.9997524, 0, 1, 0, -0.9997524, 0, 0.022251157, 27.456617, 1.0324707, -263.59607)
+use_collision = true
+size = Vector3(2.805359, 3.0649414, 110.317245)
+
+[node name="Boundary Wall 6" type="CSGBox3D" parent="." unique_id=830339877]
+transform = Transform3D(0.9999955, 0, -0.0029846076, 0, 1, 0, 0.0029846076, 0, 0.9999955, 84.25978, 1.0324707, -313.2082)
+use_collision = true
+size = Vector3(2.805359, 3.0649414, 102.66281)
+
+[node name="Boundary Wall 8" type="CSGBox3D" parent="." unique_id=622871764]
+transform = Transform3D(0.0070509664, 0, -0.99997526, 0, 1, 0, 0.99997526, 0, 0.0070509664, 27.168772, 1.0324707, -361.6578)
+use_collision = true
+size = Vector3(2.805359, 3.0649414, 118.03316)
+
+[node name="Boundary Wall 10" type="CSGBox3D" parent="." unique_id=765696841]
+transform = Transform3D(0.99995726, 0, 0.009249961, 0, 1, 0, -0.009249961, 0, 0.99995726, -31.035952, 1.0324707, -434.9464)
+use_collision = true
+size = Vector3(2.805359, 3.0649414, 148.00005)
+
+[node name="Boundary Wall 11" type="CSGBox3D" parent="." unique_id=1578392524]
+transform = Transform3D(0.99995726, 0, 0.009249961, 0, 1, 0, -0.009249961, 0, 0.99995726, 8.87994, 1.0324707, -453.19955)
+use_collision = true
+size = Vector3(2.805359, 3.0649414, 111.49221)
+
+[node name="Boundary Wall 12" type="CSGBox3D" parent="." unique_id=1656296120]
+transform = Transform3D(0.00886631, 0, 0.99996066, 0, 1, 0, -0.99996066, 0, 0.00886631, 136.39429, 1.0324707, -536.84344)
+use_collision = true
+size = Vector3(2.805359, 3.0649414, 182.05324)
+
+[node name="Boundary Wall 14" type="CSGBox3D" parent="." unique_id=2142863819]
+transform = Transform3D(0.00886631, 0, 0.99996066, 0, 1, 0, -0.99996066, 0, 0.00886631, -141.48462, 1.0324707, -536.84344)
+use_collision = true
+size = Vector3(2.805359, 3.0649414, 182.05324)
+
+[node name="Boundary Wall 13" type="CSGBox3D" parent="." unique_id=2055855932]
+transform = Transform3D(0.99999654, 0, 0.0026527643, 0, 1, 0, -0.0026527643, 0, 0.99999654, 226.22462, 1.032486, -609.04706)
+use_collision = true
+size = Vector3(2.805359, 3.0649414, 147.78003)
+
+[node name="Boundary Wall 15" type="CSGBox3D" parent="." unique_id=474676169]
+transform = Transform3D(0.99999654, 0, 0.0026527643, 0, 1, 0, -0.0026527643, 0, 0.99999654, -230.4467, 1.032486, -609.04706)
+use_collision = true
+size = Vector3(2.805359, 3.0649414, 147.78003)
+
+[node name="Boundary Wall 16" type="CSGBox3D" parent="." unique_id=337765712]
+transform = Transform3D(0.99999654, 0, 0.0026527643, 0, 1, 0, -0.0026527643, 0, 0.99999654, -230.4467, 1.032486, -609.04706)
+use_collision = true
+size = Vector3(2.805359, 3.0649414, 147.78003)
+
+[node name="Boundary Wall 9" type="CSGBox3D" parent="." unique_id=494063755]
+transform = Transform3D(0.0070509664, 0, -0.99997526, 0, 1, 0, 0.99997526, 0, 0.0070509664, 68.323685, 1.032486, -398.19077)
+use_collision = true
+size = Vector3(2.805359, 3.0649414, 110.02647)
+
+[node name="Boundary Wall 7" type="CSGBox3D" parent="." unique_id=1885545555]
+transform = Transform3D(0.9999955, 0, -0.0029846076, 0, 1, 0, 0.0029846076, 0, 0.9999955, 121.66641, 1.0324707, -309.99738)
+use_collision = true
+size = Vector3(2.805359, 3.0649414, 174.72675)
+
+[node name="Boundary Wall 2" type="CSGBox3D" parent="." unique_id=347944923]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.582088, 1.0324707, -123.984375)
+use_collision = true
+size = Vector3(2.805359, 3.0649414, 278.68848)
+
+[node name="Boundary Wall 3" type="CSGBox3D" parent="." unique_id=1021210024]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6468773, 2.654335, 14.508482)
+use_collision = true
+size = Vector3(37.026978, 4.0839233, 1.7445068)
+
+[node name="GladsheimHall2" parent="." unique_id=1559271822 instance=ExtResource("127_3c0ae")]
+transform = Transform3D(4.531511, 0, 0.899894, 0, 4.62, 0, -0.899894, 0, 4.531511, 255.8139, 517.48, -2429.3833)
+
+[node name="ValaskjrHall" parent="." unique_id=1826100163 instance=ExtResource("128_e1nd5")]
+transform = Transform3D(5.16444, 0, 8.157667, 0, 9.654997, 0, -8.157667, 0, 5.16444, -439.43262, 1225.4462, -2873.3123)
+
+[node name="Noatun2" parent="." unique_id=1771686233 instance=ExtResource("129_d25sb")]
+transform = Transform3D(3.63073, 0, 0.6861648, 0, 3.695, 0, -0.6861648, 0, 3.63073, -0.9539871, -7.9760933, -1031.9907)
+
+[node name="HiminbjorgHome" parent="." unique_id=2071098456 instance=ExtResource("130_e1nd5")]
+transform = Transform3D(12.472347, 0, -13.026963, 0, 18.035, 0, 13.026963, 0, 12.472347, 1041.4158, 604.1515, -2481.6335)
