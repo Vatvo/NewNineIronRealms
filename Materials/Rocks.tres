@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cu5fykh4jtm5v"]
+
+[ext_resource type="Texture2D" uid="uid://cfd7vv3rrgmx8" path="res://VFXTextures/1MAFX_Noise/Noise_4.tga" id="1_8ihtf"]
+[ext_resource type="Texture2D" uid="uid://du3vhnnxh3svu" path="res://VFXTextures/Luos_FreeGiveAway/Noise_Normals/T_NoiseNormal_24.png" id="2_8n0vj"]
+
+[resource]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.86413413, 0.7978913, 0.7977719, 1)
+albedo_texture = ExtResource("1_8ihtf")
+metallic = 0.48
+normal_texture = ExtResource("2_8n0vj")
+uv1_triplanar = true
+stencil_flags = 2
+stencil_outline_thickness = 0.1
