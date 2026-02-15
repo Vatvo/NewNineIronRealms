@@ -2,6 +2,7 @@ extends RigidBody3D
 
 class_name Player
 
+
 static var canMoveCamera: bool = true
 static var canShoot: bool = true
 static var canSteer: bool = true
@@ -216,15 +217,29 @@ func update_movement_audio(delta: float) -> void:
 		)
 		
 func _process(delta: float) -> void:
-	if Input.is_action_just_released("Shoot") && isShooting:
-		shoot()
+	if Manager.controlMode == Manager.ControlMode.KEYBOARD:
+		if Input.is_action_just_released("Shoot") && isShooting:
+			shoot()
+			
+		if Input.is_action_pressed("Shoot") && canShoot:
+			handle_shot()
+		else:
+			isShooting = false
+			shotUI.visible = false
+			aimMarker.visible = false
+	if Manager.controlMode == Manager.ControlMode.CONTROLLER:
+		var currentCameraRotation := cameraHost.get_third_person_rotation()
+		var newCameraRotation := currentCameraRotation
+		newCameraRotation.y += Manager.rightJoyAxis.x * cameraSensitivity.x
+		newCameraRotation.x -= Manager.rightJoyAxis.y * cameraSensitivity.y
+		newCameraRotation.x = clamp(newCameraRotation.x, -PI/2 + 0.1, -0.5)
+		cameraHost.set_third_person_rotation(newCameraRotation)
 		
-	if Input.is_action_pressed("Shoot") && canShoot:
-		handle_shot()
-	else:
-		isShooting = false
-		shotUI.visible = false
-		aimMarker.visible = false
+		cameraHost.spring_length = cameraDistanceCurve.sample(newCameraRotation.x)
+		
+		if Manager.leftJoyAxis.length() > 0:
+			handle_shot_controller()
+			
 		
 func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_pressed("MoveCamera") && event is InputEventMouseMotion\
@@ -289,6 +304,22 @@ func handle_shot() -> void:
 	var pullLineEnd: Vector2 = update_pull_line(direction, pullLength)
 	aimDirection = get_aim_direction(pullLineEnd, screenSize)
 	aimMarker.draw_aim(aimDirection, lerp(0, 5, pullLength / maxPullLength))
+
+func handle_shot_controller() -> void:
+	isShooting = true
+	shotUI.visible = true
+	aimMarker.visible = true
+	
+	var screenSize: Vector2 = get_viewport().size
+	maxPullLength = screenSize.y / 3
+	
+	var direction: float = atan2(-Manager.leftJoyAxis.y, Manager.leftJoyAxis.x)
+	pullLength = Manager.leftJoyAxis.length() * maxPullLength
+	
+	var pullLineEnd: Vector2 = update_pull_line(direction, pullLength)
+	aimDirection = get_aim_direction(pullLineEnd, screenSize)
+	aimMarker.draw_aim(aimDirection, lerp(0, 5, pullLength / maxPullLength))
+	
 		
 func shoot() -> void:
 	ballTypeNode.brakeMeter = ballTypeNode.maxBrake
