@@ -27,9 +27,14 @@ Dialogic="*uid://ds2q0uclmolvu"
 [dialogic]
 
 directories/dch_directory={
+"GOMG": "res://UserInterface/Dialogue/CharacterSpirtes/GOMG.dch",
+"Loki": "res://UserInterface/Dialogue/CharacterSpirtes/Loki.dch",
+"Odin": "res://UserInterface/Dialogue/CharacterSpirtes/Odin.dch",
 "unit_test_character": "res://Tests/Resources/unit_test_character.dch"
 }
-directories/dtl_directory={}
+directories/dtl_directory={
+"Intro": "res://UserInterface/Dialogue/Intro.dtl"
+}
 layout/style_directory={}
 
 [display]
