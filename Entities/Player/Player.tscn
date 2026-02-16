@@ -79,7 +79,7 @@ shader = ExtResource("10_lmeus")
 shader_parameter/tex = ExtResource("12_061yh")
 shader_parameter/mask = ExtResource("11_lmeus")
 shader_parameter/mask_strength = 1.0
-shader_parameter/uv_offset = Vector2(0.35289726, 0)
+shader_parameter/uv_offset = Vector2(0.134149, 0)
 shader_parameter/color_ramp = SubResource("GradientTexture1D_061yh")
 shader_parameter/curve = SubResource("CurveTexture_5m37j")
 shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
@@ -424,5 +424,6 @@ process_material = SubResource("ParticleProcessMaterial_vi0tq")
 draw_pass_1 = SubResource("QuadMesh_c5u7s")
 
 [node name="PauseUi" parent="." unique_id=1760237439 instance=ExtResource("33_vi0tq")]
+visible = false
 
 [connection signal="body_entered" from="." to="." method="_on_collision"]

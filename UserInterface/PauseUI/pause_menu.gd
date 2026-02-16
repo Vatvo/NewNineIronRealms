@@ -19,6 +19,7 @@ func _process(delta: float) -> void:
 
 	if Input.is_action_just_released("Pause") && canUnpause == false:
 		pause()
+		show()
 		await get_tree().create_timer(0.1).timeout
 		PausePlaySound.play()
 		canUnpause = true
