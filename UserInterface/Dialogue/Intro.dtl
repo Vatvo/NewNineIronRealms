@@ -1,2 +1,60 @@
-join  center
-<Empty Text Event>
+join GOMG (Reg) center
+GOMG: Oh my gods! Odin’s gonna love my new mini golf course! Should only take a good six hours.
+GOMG: ooooo He’s having a party? Odin must have known I was coming so didn’t bother to invite me. Gosh he’s so smart and cool and has a beard.
+leave GOMG
+[INSIDE ODIN'S CASTLE]
+join Odin (reg) right
+Odin:  Ah finally… A nice relaxing party where nothing can go wrong… OH NO! We’re out of the mead that makes you good at writing poetry!
+*LOKI destroys the roof and floats above the castle floor above everyone*
+join Loki (reg) left [animation="Slide In Down" length="0.7"]
+update Odin (gray)
+Loki: Sup foids and chads! IT IS I! LOKI!! FREE FROM MY CONFINEMENT! 
+update Odin (reg)
+update Loki (gray)
+Odin: Loki!? But how?!
+update Odin (gray)
+update Loki (reg)
+Loki:  Silence! Tying me to a tree and dripping venom on my face had the opposite effect! I mean look at how good my skin looks! Man killing Baldr was the best thing I ever did!
+Loki: What?! Are you turds still mourning Baldr? PFFT! That was like…. A long time ago. Besides, you have more important things to worry about! Like ragnorock!
+Loki:  By the way, I started ragnarok.
+update Odin (reg)
+update Loki (gray)
+Odin: Why!? Why forsake the world like this!? Even for you this is too far!
+update Odin (gray)
+update Loki (reg)
+Loki: Well it’s quite simple actually- WOMEN! 
+update Odin (reg)
+update Loki (gray)
+Odin:  Oh gods he’s a norse themed incel now…
+update Odin (gray)
+update Loki (gray)
+*Loki begins to rant about women or something. Not even I the narrator cared to listen to his nonsense*
+join GOMG rightmost
+*GOMG appears behind Odin and tugs his cloaks like a child*
+update Odin (gray)
+update Loki (gray)
+update GOMG (Reg)
+GOMG: Odin lets play mini golf. I made a new course. I took your advice! This one should only take like 5 hours. Oh hi Loki!!!
+update Odin (gray)
+update Loki (reg)
+update GOMG (gray)
+Loki:  AH! You guys aren’t even listening! Ah Whatever! Later losers!
+update Odin (gray)
+update GOMG (gray)
+leave Loki [animation="Slide Out Up" length="1.0"]
+update Odin (gray) center [move_time="0.5"]
+update GOMG (Reg)
+GOMG: I guess he didn’t want to join us… Anywhohow!-
+update Odin (reg)
+update GOMG (gray)
+Odin:  God of mini golf! Please fulfill that prophecy I told you about and go to each nine iron realm to stop ragnorock. And try to hit Loki with your golf balls, I’m like 80% sure he’s allergic.
+update Odin (reg)
+update GOMG (gray)
+GOMG: ok.
+update Odin (reg)
+update GOMG (gray)
+Odin:  ok!?... FINE! Well play mini golf after ok? Just... Please handle this...
+update Odin (reg)
+update GOMG (gray)
+GOMG: OK! I’ll see you later I love you bye.
+leave GOMG [animation="Slide To Left" length="0.6"]
