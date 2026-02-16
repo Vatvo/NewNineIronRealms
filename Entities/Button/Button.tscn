@@ -3,41 +3,13 @@
 [ext_resource type="ArrayMesh" uid="uid://dt1aoyu083mwa" path="res://Entities/Button/ButtonGem.obj" id="1_bu2gd"]
 [ext_resource type="Script" uid="uid://cili246qf0k8h" path="res://Entities/Button/Button.gd" id="1_sdx6b"]
 [ext_resource type="ArrayMesh" uid="uid://tgccy4pttf1w" path="res://Entities/Button/ButtonStones.obj" id="2_61q6x"]
-[ext_resource type="Shader" uid="uid://dxwqrrlny11vo" path="res://Entities/Button/ButtonGemShader.gdshader" id="2_m0tpk"]
 [ext_resource type="Material" uid="uid://dfqw86r6sdr4f" path="res://Materials/Outline.tres" id="2_welao"]
-[ext_resource type="Texture2D" uid="uid://qjgtrne6p44e" path="res://VFXTextures/1MAFX_Noise/Noise_8.tga" id="4_bphlb"]
-[ext_resource type="Texture2D" uid="uid://co0h05q0c5nph" path="res://VFXTextures/VFX_HQ_Seamless_Noise_Pack_Vol1/Noise_008.png" id="4_nybw6"]
-[ext_resource type="Texture2D" uid="uid://bm21nttowx61w" path="res://VFXTextures/Luos_FreeGiveAway/Noise_Normals/T_NoiseNormal_29.png" id="5_bphlb"]
+[ext_resource type="Material" uid="uid://d0nn1c7ysvt8c" path="res://Materials/PurpleGem.tres" id="4_writv"]
+[ext_resource type="Material" uid="uid://cu5fykh4jtm5v" path="res://Materials/Rocks.tres" id="6_0hmvl"]
 [ext_resource type="Texture2D" uid="uid://ce73kouaju0le" path="res://VFXTextures/brackeys_vfx_bundle/particles/alpha/twirl_04_a.png" id="7_bphlb"]
-[ext_resource type="Texture2D" uid="uid://cfd7vv3rrgmx8" path="res://VFXTextures/1MAFX_Noise/Noise_4.tga" id="7_jfi18"]
-[ext_resource type="Texture2D" uid="uid://du3vhnnxh3svu" path="res://VFXTextures/Luos_FreeGiveAway/Noise_Normals/T_NoiseNormal_24.png" id="9_sdx6b"]
 [ext_resource type="Shader" uid="uid://dtjtgdcwmmgy6" path="res://Entities/Button/ButtonLightColumn.gdshader" id="10_0hmvl"]
 [ext_resource type="Texture2D" uid="uid://b7foh3eeu1pf1" path="res://VFXTextures/1MAFX_Noise/Noise_9.tga" id="11_writv"]
 [ext_resource type="AudioStream" uid="uid://fxuvs78ay8mc" path="res://Audio/SFX/Crystal.ogg" id="13_nybw6"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5q77j"]
-render_priority = 0
-shader = ExtResource("2_m0tpk")
-shader_parameter/over_texture = ExtResource("4_nybw6")
-shader_parameter/under_texture = ExtResource("4_bphlb")
-shader_parameter/surface_normalmap = ExtResource("5_bphlb")
-shader_parameter/top_color = Color(0.9735195, 0.6493494, 1, 1)
-shader_parameter/depth = 0.93
-shader_parameter/normal_depth = 1.59
-shader_parameter/roughness = 0.202000009595
-shader_parameter/metallic = 0.382000018145
-shader_parameter/refractive_index = 0.71
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0hmvl"]
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0.86413413, 0.7978913, 0.7977719, 1)
-albedo_texture = ExtResource("7_jfi18")
-metallic = 0.48
-normal_texture = ExtResource("9_sdx6b")
-uv1_triplanar = true
-stencil_flags = 2
-stencil_outline_thickness = 0.1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_writv"]
 render_priority = 0
@@ -350,7 +322,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 material_overlay = ExtResource("2_welao")
 cast_shadow = 0
 mesh = ExtResource("1_bu2gd")
-surface_material_override/0 = SubResource("ShaderMaterial_5q77j")
+surface_material_override/0 = ExtResource("4_writv")
 
 [node name="Light" type="OmniLight3D" parent="Gem" unique_id=91673204]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2481914, 0)
@@ -361,7 +333,7 @@ omni_range = 4.758061
 [node name="Stones" type="MeshInstance3D" parent="." unique_id=345385505]
 material_overlay = ExtResource("2_welao")
 mesh = ExtResource("2_61q6x")
-surface_material_override/0 = SubResource("StandardMaterial3D_0hmvl")
+surface_material_override/0 = ExtResource("6_0hmvl")
 
 [node name="LightColumn" type="MeshInstance3D" parent="." unique_id=1023109665]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)

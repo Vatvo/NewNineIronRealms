@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://cl1ujcg8w2owj"]
+
+[ext_resource type="PackedScene" uid="uid://bpgwl2mjfmtpf" path="res://Models/Crossbow/Crossbow.glb" id="1_3y2fg"]
+[ext_resource type="Material" uid="uid://d0nn1c7ysvt8c" path="res://Materials/PurpleGem.tres" id="2_erpeg"]
+[ext_resource type="Material" uid="uid://dfqw86r6sdr4f" path="res://Materials/Outline.tres" id="2_kqx4d"]
+
+[node name="Crossbow2" unique_id=845220300 instance=ExtResource("1_3y2fg")]
+
+[node name="Gem" parent="." index="0" unique_id=1257687890]
+transform = Transform3D(0.70952255, 0, 0, 0, -3.1014217e-08, -0.70952255, 0, 0.70952255, -3.1014217e-08, 0, 0, 7.551548)
+material_overlay = ExtResource("2_kqx4d")
+surface_material_override/0 = ExtResource("2_erpeg")
+
+[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(215060226) index="0" unique_id=1541253156]
+bones/2/rotation = Quaternion(0, 0, -0.061441097, 0.9981107)
+bones/3/rotation = Quaternion(0, 0, -0.065634675, 0.99784374)
+bones/4/rotation = Quaternion(0, 0, -0.06975755, 0.99756396)
+bones/5/rotation = Quaternion(0, 0, 0.89866096, -0.438644)
+bones/7/rotation = Quaternion(0.9861615, -1.9763434e-08, 1.1755949e-07, -0.16578786)
+bones/8/rotation = Quaternion(0.9861615, 1.9763434e-08, -1.1755949e-07, -0.16578786)
+bones/10/rotation = Quaternion(0, 0, 0.061441097, 0.9981107)
+bones/11/rotation = Quaternion(0, 0, 0.065634675, 0.99784374)
+bones/12/rotation = Quaternion(0, 0, 0.06975755, 0.99756396)
+
+[node name="Crossbow" parent="Armature/Skeleton3D" index="0" unique_id=766211569]
+material_overlay = ExtResource("2_kqx4d")
+
+[node name="Block" parent="." index="2" unique_id=682810006]
+transform = Transform3D(-1, 0, -3.8941437e-07, 0, 1, 0, 3.8941437e-07, 0, -1, 0, 0.87519455, -0.87793005)
+material_overlay = ExtResource("2_kqx4d")
+
+[node name="Cable" parent="." index="3" unique_id=2088082742]
+transform = Transform3D(0.98482347, -0.11449055, -0.13043961, 0.11955558, 0.99232256, 0.031659096, 0.1258135, -0.046773404, 0.99095064, -7.241803, 0, -1.6632874)
+material_overlay = ExtResource("2_kqx4d")
+
+[node name="Cable_001" parent="." index="4" unique_id=51926199]
+transform = Transform3D(1.0570604, -0.13686617, -0.067561746, 0.14494431, 0.99047893, -0.024235457, 0.0751234, 0.014795957, 0.99742067, 7.3421073, 0.12190927, -1.7228653)
+material_overlay = ExtResource("2_kqx4d")
