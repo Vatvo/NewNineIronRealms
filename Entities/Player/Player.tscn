@@ -79,7 +79,7 @@ shader = ExtResource("10_lmeus")
 shader_parameter/tex = ExtResource("12_061yh")
 shader_parameter/mask = ExtResource("11_lmeus")
 shader_parameter/mask_strength = 1.0
-shader_parameter/uv_offset = Vector2(0.134149, 0)
+shader_parameter/uv_offset = Vector2(0.017975297, 0)
 shader_parameter/color_ramp = SubResource("GradientTexture1D_061yh")
 shader_parameter/curve = SubResource("CurveTexture_5m37j")
 shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
@@ -248,6 +248,7 @@ shape = SubResource("SphereShape3D_1des2")
 physics_interpolation_mode = 1
 transform = Transform3D(1, 0, 0, 0, 0.90630776, 0.42261827, 0, -0.42261827, 0.90630776, 0, 8.452366, 18.126156)
 script = ExtResource("4_an6q6")
+priority = 1
 follow_mode = 6
 follow_target = NodePath("../CameraFollowPoint")
 tween_resource = SubResource("Resource_an6q6")
@@ -424,6 +425,5 @@ process_material = SubResource("ParticleProcessMaterial_vi0tq")
 draw_pass_1 = SubResource("QuadMesh_c5u7s")
 
 [node name="PauseUi" parent="." unique_id=1760237439 instance=ExtResource("33_vi0tq")]
-visible = false
 
 [connection signal="body_entered" from="." to="." method="_on_collision"]
