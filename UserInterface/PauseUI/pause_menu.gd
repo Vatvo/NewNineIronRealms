@@ -14,6 +14,7 @@ func _ready() -> void:
 	ResumeBtn.pressed.connect(resume)
 	
 	
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 
@@ -34,6 +35,7 @@ func pause() -> void:
 	FadeAnimator.play("FadeIn")
 	SpinAnimator.play("RuneSpin2")
 	VisControl.show()
+	ResumeBtn.grab_focus()
 	
 func resume() -> void:
 		get_tree().paused = false
