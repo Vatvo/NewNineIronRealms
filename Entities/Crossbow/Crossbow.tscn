@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://5xvlavqa32d2" path="res://Entities/Crossbow/Crossbow.gd" id="1_i20wl"]
 [ext_resource type="PackedScene" uid="uid://cl1ujcg8w2owj" path="res://Entities/Crossbow/CrossbowBody.tscn" id="1_u36i8"]
-[ext_resource type="PackedScene" uid="uid://csrnm16b0ripj" path="res://Models/Crossbow/CrossbowRocks.glb" id="2_ppv1d"]
+[ext_resource type="PackedScene" uid="uid://csrnm16b0ripj" path="res://Models/Asgard/Crossbow/CrossbowRocks.glb" id="2_ppv1d"]
 [ext_resource type="Material" uid="uid://dfqw86r6sdr4f" path="res://Materials/Outline.tres" id="3_ppv1d"]
 [ext_resource type="Material" uid="uid://cu5fykh4jtm5v" path="res://Materials/Rocks.tres" id="4_iu6rj"]
 
