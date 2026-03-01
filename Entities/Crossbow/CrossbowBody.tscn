@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cl1ujcg8w2owj"]
 
-[ext_resource type="PackedScene" uid="uid://bpgwl2mjfmtpf" path="res://Models/Crossbow/Crossbow.glb" id="1_3y2fg"]
+[ext_resource type="PackedScene" uid="uid://bpgwl2mjfmtpf" path="res://Models/Asgard/Crossbow/Crossbow.glb" id="1_3y2fg"]
 [ext_resource type="Material" uid="uid://d0nn1c7ysvt8c" path="res://Materials/PurpleGem.tres" id="2_erpeg"]
 [ext_resource type="Material" uid="uid://dfqw86r6sdr4f" path="res://Materials/Outline.tres" id="2_kqx4d"]
 
