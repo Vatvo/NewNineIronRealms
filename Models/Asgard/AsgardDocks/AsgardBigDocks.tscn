@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://dmb7g2niy6tym"]
+
+[ext_resource type="PackedScene" uid="uid://b6j0nuticejfs" path="res://Models/Asgard/AsgardDocks/AsgardBigDocks.glb" id="1_x5707"]
+
+[node name="AsgardBigDocks" unique_id=168035760 instance=ExtResource("1_x5707")]
