@@ -19,7 +19,7 @@
 &"portraits": {
 "gray": {
 "export_overrides": {
-"image": "\"res://UserInterface/Dialogue/CharacterSpirtes/sprites/itknows.png\""
+"image": "\"res://UserInterface/Dialogue/CharacterSpirtes/sprites/lokiBW.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),
@@ -28,7 +28,7 @@
 },
 "reg": {
 "export_overrides": {
-"image": "\"res://UserInterface/Dialogue/CharacterSpirtes/sprites/AHHHHHHHHHHHH.png\""
+"image": "\"res://UserInterface/Dialogue/CharacterSpirtes/sprites/LokiConceptlocktheSHIZZLE.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),
