@@ -233,7 +233,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		var newCameraRotation := currentCameraRotation
 		newCameraRotation.y -= event.relative.x * cameraSensitivity.x
 		newCameraRotation.x -= event.relative.y * cameraSensitivity.y
-		newCameraRotation.x = clamp(newCameraRotation.x, -PI/2 + 0.1, -0.28)
+		newCameraRotation.x = clamp(newCameraRotation.x, -PI/2 + 0.1, -0.2)
 		cameraHost.set_third_person_rotation(newCameraRotation)
 		
 		cameraHost.spring_length = cameraDistanceCurve.sample(newCameraRotation.x)
@@ -275,7 +275,7 @@ func handle_shot() -> void:
 	aimMarker.visible = true
 		
 	var screenSize: Vector2 = get_viewport().size
-	maxPullLength = screenSize.y / 6
+	maxPullLength = screenSize.y / 4
 		
 	var mousePos: Vector2 = get_viewport().get_mouse_position()
 	var centerScreen: Vector2 = get_viewport().size / 2
@@ -284,12 +284,15 @@ func handle_shot() -> void:
 	var direction: float = atan2(centeredMousePos.y, centeredMousePos.x)
 		
 	pullLength = mousePos.distance_to(centerScreen)
+	
+	
 	pullLength = clamp(pullLength, 0, maxPullLength)
-		
+	var rayLineEnd: Vector2 = update_pull_line(direction, 50)
 	var pullLineEnd: Vector2 = update_pull_line(direction, pullLength)
-	aimDirection = get_aim_direction(pullLineEnd, screenSize)
+	
+	aimDirection = get_aim_direction(rayLineEnd, screenSize)
 	aimMarker.draw_aim(aimDirection, lerp(0, 5, pullLength / maxPullLength))
-		
+	
 func shoot() -> void:
 	ballTypeNode.brakeMeter = ballTypeNode.maxBrake
 	
