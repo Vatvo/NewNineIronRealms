@@ -233,7 +233,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		var newCameraRotation := currentCameraRotation
 		newCameraRotation.y -= event.relative.x * cameraSensitivity.x
 		newCameraRotation.x -= event.relative.y * cameraSensitivity.y
-		newCameraRotation.x = clamp(newCameraRotation.x, -PI/2 + 0.1, -0.5)
+		newCameraRotation.x = clamp(newCameraRotation.x, -PI/2 + 0.1, -0.28)
 		cameraHost.set_third_person_rotation(newCameraRotation)
 		
 		cameraHost.spring_length = cameraDistanceCurve.sample(newCameraRotation.x)
@@ -275,7 +275,7 @@ func handle_shot() -> void:
 	aimMarker.visible = true
 		
 	var screenSize: Vector2 = get_viewport().size
-	maxPullLength = screenSize.y / 3
+	maxPullLength = screenSize.y / 6
 		
 	var mousePos: Vector2 = get_viewport().get_mouse_position()
 	var centerScreen: Vector2 = get_viewport().size / 2
