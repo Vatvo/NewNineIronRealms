@@ -1,0 +1,6 @@
+[gd_resource type="TextureSetsResource" format=3 uid="uid://ds1bmgatlm2t2"]
+
+[ext_resource type="TextureSetResource" uid="uid://hpnj3lrnsmal" path="res://Textures/Stonetextureset.tres" id="1_oophl"]
+
+[resource]
+textureSets = Array[TextureSetResource]([ExtResource("1_oophl")])
