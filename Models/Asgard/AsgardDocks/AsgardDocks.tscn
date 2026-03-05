@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bc3ypnepwtvij" path="res://Models/Asgard/AsgardDocks/AsgardDocks.glb" id="1_kx42m"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kx42m"]
-size = Vector3(8.614949, 0.23585987, 33.154152)
+size = Vector3(8.614949, 0.24488306, 33.154152)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w22ms"]
 size = Vector3(0.5333252, 1.1586914, 33.129852)
@@ -17,7 +17,7 @@ size = Vector3(0.5992584, 1, 33.13263)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.8660498, -0.42632484)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DockStraight/StaticBody3D" index="0" unique_id=1380011788]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.020243168, 4.1380925, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.020243168, 4.1339483, 0)
 shape = SubResource("BoxShape3D_kx42m")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="DockStraight/StaticBody3D" index="1" unique_id=1077553852]
