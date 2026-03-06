@@ -1,0 +1,6 @@
+[gd_resource type="TextureSetResource" format=3 uid="uid://b1qbe7m5pxqo0"]
+
+[ext_resource type="Texture2D" uid="uid://d00aoi7e3bn13" path="res://Textures/Grasstemp2.png" id="1_4jjxe"]
+
+[resource]
+albedoTexture = ExtResource("1_4jjxe")
