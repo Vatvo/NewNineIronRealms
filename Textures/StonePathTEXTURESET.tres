@@ -1,0 +1,12 @@
+[gd_resource type="TextureSetsResource" format=3 uid="uid://ds1bmgatlm2t2"]
+
+[ext_resource type="Texture2D" uid="uid://ct53waprgo7bm" path="res://Textures/Stone.png" id="1_oophl"]
+[ext_resource type="TextureSetResource" uid="uid://b1qbe7m5pxqo0" path="res://Textures/GrassTemp2_texture_set_resource.tres" id="2_oophl"]
+[ext_resource type="TextureSetResource" uid="uid://bhjy4qdgq7n5w" path="res://Textures/dirt_texture_set_resource.tres" id="3_btwy8"]
+
+[sub_resource type="TextureSetResource" id="TextureSetResource_14mtn"]
+name = "Stone"
+albedoTexture = ExtResource("1_oophl")
+
+[resource]
+textureSets = Array[TextureSetResource]([ExtResource("2_oophl"), SubResource("TextureSetResource_14mtn"), ExtResource("3_btwy8")])

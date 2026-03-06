@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cexsq1f5u5uqx"]
+
+[ext_resource type="PackedScene" uid="uid://omg0ogovf6mc" path="res://3DAssetPacks/FantasyPropsMegakit/Crate_Wooden.gltf" id="1_bu2ad"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q8s7y"]
+size = Vector3(1.0322266, 1.1750488, 1.175293)
+
+[node name="Crate_Wooden2" unique_id=1105129969 instance=ExtResource("1_bu2ad")]
+
+[node name="CollisionShape3D" parent="Crate_Wooden/Crate_Wooden_1" parent_id_path=PackedInt32Array(113481336) index="0" unique_id=1422856935]
+transform = Transform3D(1.0000005, 0, 0, 0, 1.0000005, 0, 0, 0, 1.0000005, 0.01611329, 0.5399887, 0.00024414028)
+shape = SubResource("BoxShape3D_q8s7y")
