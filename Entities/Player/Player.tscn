@@ -38,7 +38,7 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hj1c0"]
 rough = true
-bounce = 0.9
+bounce = 0.6
 
 [sub_resource type="Curve" id="Curve_an6q6"]
 _limits = [0.0, 40.0, -1.57, 0.0]
@@ -79,7 +79,7 @@ shader = ExtResource("10_lmeus")
 shader_parameter/tex = ExtResource("12_061yh")
 shader_parameter/mask = ExtResource("11_lmeus")
 shader_parameter/mask_strength = 1.0
-shader_parameter/uv_offset = Vector2(0.90130985, 0)
+shader_parameter/uv_offset = Vector2(0.268141, 0)
 shader_parameter/color_ramp = SubResource("GradientTexture1D_061yh")
 shader_parameter/curve = SubResource("CurveTexture_5m37j")
 shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
