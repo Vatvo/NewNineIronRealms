@@ -32,10 +32,10 @@ func bounce(body: RigidBody3D) -> void:
 	var point: Vector3 = curve.get_closest_point(to_local(body.position))
 	point.y += 0.5
 	
-	var direction: Vector3 = to_global(point).direction_to(body.global_position)
-	body.linear_velocity = Vector3.ZERO
-	await get_tree().process_frame
-	body.apply_central_impulse(bounceForce * direction)
+	var normalDirection: Vector3 = to_global(point).direction_to(body.global_position)
+	
+	body.linear_velocity.bounce(normalDirection) * bounceForce
+	body.angular_velocity = Vector3.ZERO
 	
 	csg_polygon_3d.polygon[2].x = 1
 	csg_polygon_3d.polygon[3].x = 1

@@ -10,8 +10,9 @@ data = PackedVector3Array(1.8326999, 4.8592997, -0.2101, 1.8326999, 0.1507, -0.1
 
 [node name="NoatunGate" unique_id=767357521 instance=ExtResource("1_1bjw2")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SidePillar" parent_id_path=PackedInt32Array(1375804203) index="0" unique_id=928630259]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SidePillar" parent_id_path=PackedInt32Array(380769093) index="0" unique_id=928630259]
 shape = SubResource("ConcavePolygonShape3D_xyrjh")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Low_001" parent_id_path=PackedInt32Array(1466849076) index="0" unique_id=1668661315]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Low_001" parent_id_path=PackedInt32Array(464316368) index="0" unique_id=1668661315]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, -2.475336, 0)
 shape = SubResource("ConcavePolygonShape3D_1bjw2")
