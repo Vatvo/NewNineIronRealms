@@ -33,7 +33,8 @@ directories/dch_directory={
 "unit_test_character": "res://Tests/Resources/unit_test_character.dch"
 }
 directories/dtl_directory={
-"Intro": "res://UserInterface/Dialogue/Intro.dtl"
+"Intro": "res://UserInterface/Dialogue/Intro.dtl",
+"outro": "res://UserInterface/Dialogue/outro.dtl"
 }
 layout/style_directory={}
 
