@@ -1,6 +1,13 @@
 [gd_resource type="TextureSetResource" format=3 uid="uid://b1qbe7m5pxqo0"]
 
-[ext_resource type="Texture2D" uid="uid://d00aoi7e3bn13" path="res://Textures/Grasstemp2.png" id="1_4jjxe"]
+[ext_resource type="Texture2D" uid="uid://dsonf4o44bn46" path="res://Textures/Grass/ground_05_baseColor_2k.png" id="1_7bevi"]
+[ext_resource type="Texture2D" uid="uid://d3qnsgyudaj1f" path="res://Textures/Grass/ground_05_height_2k.png" id="2_6au7x"]
+[ext_resource type="Texture2D" uid="uid://b4ngoglm4wj03" path="res://Textures/Grass/ground_05_normal_gl_2k.png" id="3_7m6pu"]
+[ext_resource type="Texture2D" uid="uid://o4j8f1glc3il" path="res://Textures/Grass/ground_05_roughness_2k.png" id="4_maumc"]
 
 [resource]
-albedoTexture = ExtResource("1_4jjxe")
+albedoTexture = ExtResource("1_7bevi")
+normalTexture = ExtResource("3_7m6pu")
+roughnessTexture = ExtResource("4_maumc")
+heightTexture = ExtResource("2_6au7x")
+triplanar = true

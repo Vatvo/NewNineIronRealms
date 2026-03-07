@@ -1,12 +1,19 @@
 [gd_resource type="TextureSetsResource" format=3 uid="uid://ds1bmgatlm2t2"]
 
-[ext_resource type="Texture2D" uid="uid://ct53waprgo7bm" path="res://Textures/Stone.png" id="1_oophl"]
 [ext_resource type="TextureSetResource" uid="uid://b1qbe7m5pxqo0" path="res://Textures/GrassTemp2_texture_set_resource.tres" id="2_oophl"]
+[ext_resource type="Texture2D" uid="uid://b30jdqbnkbo78" path="res://Textures/StonePath/ground_stones_01_baseColor_2k.png" id="2_sg78k"]
+[ext_resource type="Texture2D" uid="uid://cykf521gy82qr" path="res://Textures/StonePath/ground_stones_01_height_2k.png" id="3_32386"]
 [ext_resource type="TextureSetResource" uid="uid://bhjy4qdgq7n5w" path="res://Textures/dirt_texture_set_resource.tres" id="3_btwy8"]
+[ext_resource type="Texture2D" uid="uid://v0s16qd42bmu" path="res://Textures/StonePath/ground_stones_01_normal_gl_2k.png" id="4_2ttf3"]
+[ext_resource type="Texture2D" uid="uid://srnrxxmv3rc8" path="res://Textures/StonePath/ground_stones_01_roughness_2k.png" id="5_8iy4w"]
 
 [sub_resource type="TextureSetResource" id="TextureSetResource_14mtn"]
 name = "Stone"
-albedoTexture = ExtResource("1_oophl")
+albedoTexture = ExtResource("2_sg78k")
+normalTexture = ExtResource("4_2ttf3")
+roughnessTexture = ExtResource("5_8iy4w")
+heightTexture = ExtResource("3_32386")
+triplanar = true
 
 [resource]
 textureSets = Array[TextureSetResource]([ExtResource("2_oophl"), SubResource("TextureSetResource_14mtn"), ExtResource("3_btwy8")])
