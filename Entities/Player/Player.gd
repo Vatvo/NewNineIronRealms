@@ -267,7 +267,7 @@ func check_is_grounded() -> bool:
 	var raycast_result := space.intersect_ray(ray_query)
 
 	if !raycast_result.is_empty() && doGroundSnap:
-		position.y = raycast_result["position"].y + 0.499
+		position.y = raycast_result["position"].y + 0.49999
 		#linear_velocity.y = 0
 		return true
 	else:
@@ -405,8 +405,8 @@ func reset() -> void:
 		
 		linear_velocity = Vector3.ZERO
 		angular_velocity = Vector3.ZERO
-		position = lastShotPosition
-		
+		global_position = Vector3(lastShotPosition.x, lastShotPosition.y + 5, lastShotPosition.z)
+
 		lastShotPosition = Vector3.INF
 		
 		await get_tree().create_timer(0.5).timeout

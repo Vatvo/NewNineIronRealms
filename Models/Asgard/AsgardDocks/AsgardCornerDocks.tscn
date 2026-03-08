@@ -13,7 +13,7 @@ size = Vector3(8.60144, 1.159668, 0.6456299)
 
 [node name="AsgardCornerDocks" unique_id=1083920657 instance=ExtResource("1_6bn85")]
 
-[node name="DockCorner" parent="." index="0" unique_id=2015205792]
+[node name="DockCorner" parent="." index="0" unique_id=113489406]
 transform = Transform3D(5.5, 0, 0, 0, 5.5, 0, 0, 0, 5.5, 0, 0, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="DockCorner" index="0" unique_id=542303076]
