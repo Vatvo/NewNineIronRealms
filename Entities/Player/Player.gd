@@ -67,6 +67,8 @@ var unmoddedDamp: float
 
 var lastShotPosition: Vector3 = Vector3.INF
 
+var doGroundSnap = true
+
 func _ready() -> void:
 	circleTransition.material.set_shader_parameter("screen_width", get_viewport().size.x)
 	circleTransition.material.set_shader_parameter("screen_height", get_viewport().size.y)
@@ -156,7 +158,10 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("Hop") && isMoving && isGrounded:
 		JumpSoundPlayer.play()
 		linear_velocity.y = 0
+		doGroundSnap = false
 		apply_central_impulse(Vector3.UP * hopPower)
+		await get_tree().create_timer(0.35).timeout
+		doGroundSnap = true
 	
 	if Input.is_action_just_pressed("Reset"):
 		reset()
@@ -257,11 +262,11 @@ func check_is_grounded() -> bool:
 	var space := get_viewport().get_world_3d().direct_space_state
 	var ray_query := PhysicsRayQueryParameters3D.new()
 	ray_query.from = Vector3(position.x, position.y, position.z)
-	ray_query.to = Vector3(position.x, position.y - 0.8, position.z)
+	ray_query.to = Vector3(position.x, position.y - 1, position.z)
 	ray_query.set_collision_mask(1)
 	var raycast_result := space.intersect_ray(ray_query)
 
-	if !raycast_result.is_empty():
+	if !raycast_result.is_empty() && doGroundSnap:
 		position.y = raycast_result["position"].y + 0.499
 		#linear_velocity.y = 0
 		return true

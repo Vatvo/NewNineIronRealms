@@ -1,6 +1,13 @@
 [gd_resource type="TextureSetResource" format=3 uid="uid://bhjy4qdgq7n5w"]
 
-[ext_resource type="Texture2D" uid="uid://o3kp0s8h2lx6" path="res://Textures/Dirt_01 (1).png" id="1_3eahl"]
+[ext_resource type="Texture2D" uid="uid://bhifu7chx5qwi" path="res://Textures/Dirt/ground_with_rocks_01_color_2k.png" id="1_vhpri"]
+[ext_resource type="Texture2D" uid="uid://j8gcab2wgp50" path="res://Textures/Dirt/ground_with_rocks_01_height_2k.png" id="2_v1hl4"]
+[ext_resource type="Texture2D" uid="uid://c8kwknbtt6yhn" path="res://Textures/Dirt/ground_with_rocks_01_normal_gl_2k.png" id="3_qcuuf"]
+[ext_resource type="Texture2D" uid="uid://e5m211pyhgde" path="res://Textures/Dirt/ground_with_rocks_01_roughness_2k.png" id="4_aqtu0"]
 
 [resource]
-albedoTexture = ExtResource("1_3eahl")
+albedoTexture = ExtResource("1_vhpri")
+normalTexture = ExtResource("3_qcuuf")
+roughnessTexture = ExtResource("4_aqtu0")
+heightTexture = ExtResource("2_v1hl4")
+triplanar = true

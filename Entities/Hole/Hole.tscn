@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://byc5brge1pgb8" path="res://Entities/Hole/HoleTexture.png" id="2_mxffx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cqskw"]
-size = Vector3(4.7851563, 6.4731445, 3.845459)
+size = Vector3(29.228516, 37.955322, 28.789307)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_58flp"]
 albedo_texture = ExtResource("2_mxffx")
@@ -20,14 +20,15 @@ data = PackedVector3Array(-9, 8, 0, -6.1663, 10, 0, -8.8271, 8, 1.7558, -8.8271,
 script = ExtResource("1_mxffx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=444620977]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7365723, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.477661, 0)
 shape = SubResource("BoxShape3D_cqskw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1333535272]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
 mesh = ExtResource("1_cqskw")
 surface_material_override/0 = SubResource("StandardMaterial3D_58flp")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=2101897529]
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=1332263993]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=2026266592]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=1991180422]
 shape = SubResource("ConcavePolygonShape3D_mxffx")
