@@ -6,6 +6,7 @@
 [ext_resource type="TextureSetResource" uid="uid://bhjy4qdgq7n5w" path="res://Textures/dirt_texture_set_resource.tres" id="3_btwy8"]
 [ext_resource type="Texture2D" uid="uid://v0s16qd42bmu" path="res://Textures/StonePath/ground_stones_01_normal_gl_2k.png" id="4_2ttf3"]
 [ext_resource type="Texture2D" uid="uid://srnrxxmv3rc8" path="res://Textures/StonePath/ground_stones_01_roughness_2k.png" id="5_8iy4w"]
+[ext_resource type="TextureSetResource" uid="uid://dajnvj5tt7el0" path="res://Textures/cliff_texture_set_resource.tres" id="7_32386"]
 
 [sub_resource type="TextureSetResource" id="TextureSetResource_14mtn"]
 name = "Stone"
@@ -16,4 +17,4 @@ heightTexture = ExtResource("3_32386")
 triplanar = true
 
 [resource]
-textureSets = Array[TextureSetResource]([ExtResource("2_oophl"), SubResource("TextureSetResource_14mtn"), ExtResource("3_btwy8")])
+textureSets = Array[TextureSetResource]([ExtResource("2_oophl"), SubResource("TextureSetResource_14mtn"), ExtResource("3_btwy8"), ExtResource("7_32386")])
