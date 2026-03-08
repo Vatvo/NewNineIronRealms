@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cs10x3hlpuv48" path="res://Models/Asgard/WoodPlank/WoodPlank.glb" id="1_wobwb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u417m"]
-size = Vector3(7.936142, 0.37984487, 19.948757)
+size = Vector3(7.936142, 0.37984487, 17.650764)
 
 [node name="WoodPlank" unique_id=2061271992 instance=ExtResource("1_wobwb")]
 
@@ -13,5 +13,5 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cube/StaticBody3D" index="0" unique_id=580909049]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.62381935)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.038476944)
 shape = SubResource("BoxShape3D_u417m")
