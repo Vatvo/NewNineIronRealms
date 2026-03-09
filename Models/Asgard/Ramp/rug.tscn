@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bymmwfslgftuy"]
+
+[ext_resource type="PackedScene" uid="uid://8do5dhs6a6oa" path="res://3DAssetPacks/FantasyPropsMegakit/Rug_1.gltf" id="1_5et75"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d0w6d"]
+size = Vector3(1.4742628, 0.001, 0.35867855)
+
+[node name="Rug_12" unique_id=1633810408 instance=ExtResource("1_5et75")]
+
+[node name="Rug_1" parent="." index="0" unique_id=1542219830]
+transform = Transform3D(45.55, 0, 0, 0, 96.805, 0, 0, 0, 27.02, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rug_1" index="0" unique_id=1952333428]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0471554e-05, 5.5960463e-06, 0.0012779087)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rug_1/StaticBody3D" index="0" unique_id=441233886]
+shape = SubResource("BoxShape3D_d0w6d")
