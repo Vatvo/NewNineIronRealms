@@ -99,6 +99,8 @@ Pause={
 
 [physics]
 
+common/physics_ticks_per_second=120
+jolt_physics_3d/limits/world_boundary_shape_size=100.0
 3d/default_gravity=35.0
 common/physics_interpolation=true
 
