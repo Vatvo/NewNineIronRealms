@@ -99,6 +99,8 @@ Pause={
 
 [physics]
 
+common/physics_ticks_per_second=120
+common/max_physics_steps_per_frame=10
 3d/default_gravity=35.0
 common/physics_interpolation=true
 

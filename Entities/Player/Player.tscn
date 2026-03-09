@@ -79,7 +79,7 @@ shader = ExtResource("10_lmeus")
 shader_parameter/tex = ExtResource("12_061yh")
 shader_parameter/mask = ExtResource("11_lmeus")
 shader_parameter/mask_strength = 1.0
-shader_parameter/uv_offset = Vector2(0.65342546, 0)
+shader_parameter/uv_offset = Vector2(0.4117226, 0)
 shader_parameter/color_ramp = SubResource("GradientTexture1D_061yh")
 shader_parameter/curve = SubResource("CurveTexture_5m37j")
 shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
@@ -216,6 +216,7 @@ hue_variation_max = 0.28999996
 [sub_resource type="QuadMesh" id="QuadMesh_c5u7s"]
 
 [node name="Player" type="RigidBody3D" unique_id=1430462939 groups=["Player"]]
+collision_priority = 20.0
 physics_material_override = SubResource("PhysicsMaterial_hj1c0")
 continuous_cd = true
 contact_monitor = true
