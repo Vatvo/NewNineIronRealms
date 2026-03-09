@@ -17,6 +17,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="NewNineIronRealms"
 run/main_scene="uid://bfvi1jcxpao3q"
 config/features=PackedStringArray("4.6", "Forward Plus")
+run/max_fps=60
 config/icon="res://icon.svg"
 
 [autoload]
@@ -100,6 +101,7 @@ Pause={
 [physics]
 
 common/physics_ticks_per_second=120
+jolt_physics_3d/simulation/position_steps=8
 jolt_physics_3d/limits/world_boundary_shape_size=100.0
 3d/default_gravity=35.0
 common/physics_interpolation=true
