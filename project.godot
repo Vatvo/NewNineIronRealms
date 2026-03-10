@@ -37,7 +37,12 @@ directories/dtl_directory={
 "Intro": "res://UserInterface/Dialogue/Intro.dtl",
 "outro": "res://UserInterface/Dialogue/outro.dtl"
 }
-layout/style_directory={}
+layout/style_directory={
+"": "res://UserInterface/Dialogue/DialogueStyle/DialogueStyle.tres",
+"DialogueStyle": "res://UserInterface/Dialogue/DialogueStyle/DialogueStyle.tres"
+}
+layout/style_list=["res://UserInterface/Dialogue/DialogueStyle/DialogueStyle.tres"]
+layout/default_style="res://UserInterface/Dialogue/DialogueStyle/DialogueStyle.tres"
 
 [display]
 
