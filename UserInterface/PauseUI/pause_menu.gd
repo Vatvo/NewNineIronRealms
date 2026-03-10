@@ -36,6 +36,8 @@ func pause() -> void:
 
 func resume() -> void:
 	get_tree().paused = false
+	FadeAnimator.stop()
 	FadeAnimator.play_backwards("FadeIn")
+	await get_tree().create_timer(0.1).timeout
 	VisControl.hide()
 	canUnpause = false
