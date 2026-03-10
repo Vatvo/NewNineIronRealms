@@ -127,6 +127,8 @@ dialogic_default_action={
 common/physics_ticks_per_second=120
 jolt_physics_3d/simulation/position_steps=8
 jolt_physics_3d/limits/world_boundary_shape_size=100.0
+jolt_physics_3d/limits/max_body_pairs=165536
+jolt_physics_3d/limits/max_contact_constraints=120480
 3d/default_gravity=35.0
 common/physics_interpolation=true
 
