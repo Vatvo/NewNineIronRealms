@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://igki6wk7lyt0"
-path.s3tc="res://.godot/imported/AsgardDocks_DockNormals.png-a3fdcb0bb7e7a22ebe3c3473c90adc12.s3tc.ctex"
+path.s3tc="res://.godot/imported/AsgardDocks_DockNormals.png-9e03551893af028c51becef557d2e256.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://textures/AsgardDocks_DockNormals.png"
-dest_files=["res://.godot/imported/AsgardDocks_DockNormals.png-a3fdcb0bb7e7a22ebe3c3473c90adc12.s3tc.ctex"]
+source_file="res://Textures/AsgardDocks_DockNormals.png"
+dest_files=["res://.godot/imported/AsgardDocks_DockNormals.png-9e03551893af028c51becef557d2e256.s3tc.ctex"]
 
 [params]
 
