@@ -18,6 +18,6 @@ func play_cutscene() -> void:
 	
 	await get_tree().create_timer(1).timeout
 	door.open()
-	await get_tree().create_timer(5).timeout
+	await get_tree().create_timer(4).timeout
 	
 	camera.priority = 0

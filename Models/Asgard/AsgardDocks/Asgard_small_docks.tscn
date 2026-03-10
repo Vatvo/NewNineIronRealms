@@ -2,9 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://cvo16kh785tnm" path="res://Models/Asgard/AsgardDocks/AsgardSmallDocks.glb" id="1_bpya4"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_bpya4"]
-size = Vector3(8.655436, 8.757166, 12.63693)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_epcuy"]
 size = Vector3(0.5151367, 1.3100586, 12.592651)
 
@@ -13,20 +10,16 @@ size = Vector3(0.56744385, 1.1680908, 12.598297)
 
 [node name="AsgardSmallDocks" unique_id=475468686 instance=ExtResource("1_bpya4")]
 
-[node name="DockStraight" parent="." index="0" unique_id=783343759]
+[node name="DockStraight" parent="." index="0" unique_id=1975130403]
 transform = Transform3D(5.5, 0, 0, 0, 5.5, 0, 0, 0, 5.5, 0, 0, -54.374557)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="DockStraight" index="0" unique_id=458060761]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.8660498, 9.832288)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DockStraight/StaticBody3D" index="0" unique_id=1808628373]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.13297749, 0)
-shape = SubResource("BoxShape3D_bpya4")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="DockStraight/StaticBody3D" index="1" unique_id=1162518236]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="DockStraight/StaticBody3D" index="0" unique_id=1162518236]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9580343, 4.7480154, 0.00079345703)
 shape = SubResource("BoxShape3D_epcuy")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="DockStraight/StaticBody3D" index="2" unique_id=272376175]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="DockStraight/StaticBody3D" index="1" unique_id=272376175]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9961371, 4.8350296, 0.016983207)
 shape = SubResource("BoxShape3D_5b22f")
