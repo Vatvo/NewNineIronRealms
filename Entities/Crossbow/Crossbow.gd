@@ -68,7 +68,7 @@ func activate_crossbow() -> void:
 	)
 	
 	#await finished animation
-	await mainAnimationPlayer.animation_finished
+	await mountMover.animation_finished
 	
 	#detatch ball from mount point
 	isPlayerAttached = false
