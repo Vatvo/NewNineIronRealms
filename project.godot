@@ -48,6 +48,7 @@ layout/default_style="res://UserInterface/Dialogue/DialogueStyle/DialogueStyle.t
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=3
 
 [editor_plugins]
 

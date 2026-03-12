@@ -141,19 +141,19 @@ func _physics_process(delta: float) -> void:
 		linear_velocity = linear_velocity.rotated(Vector3.UP, ballTypeNode.steerSensitivity)
 		angular_velocity = angular_velocity.rotated(Vector3.UP, ballTypeNode.steerSensitivity)
 		
-		var currentCameraRotation := cameraHost.get_third_person_rotation()
-		var newCameraRotation := currentCameraRotation
-		newCameraRotation.y += ballTypeNode.steerSensitivity
-		cameraHost.set_third_person_rotation(newCameraRotation)
+		#var currentCameraRotation := cameraHost.get_third_person_rotation()
+		#var newCameraRotation := currentCameraRotation
+		#newCameraRotation.y += ballTypeNode.steerSensitivity
+		#cameraHost.set_third_person_rotation(newCameraRotation)
 	
 	if Input.is_action_pressed("SteerRight") && canSteer:
 		linear_velocity = linear_velocity.rotated(Vector3.UP, -ballTypeNode.steerSensitivity)
 		angular_velocity = angular_velocity.rotated(Vector3.UP, -ballTypeNode.steerSensitivity)
 		
-		var currentCameraRotation := cameraHost.get_third_person_rotation()
-		var newCameraRotation := currentCameraRotation
-		newCameraRotation.y -= ballTypeNode.steerSensitivity
-		cameraHost.set_third_person_rotation(newCameraRotation)
+		#var currentCameraRotation := cameraHost.get_third_person_rotation()
+		#var newCameraRotation := currentCameraRotation
+		#newCameraRotation.y -= ballTypeNode.steerSensitivity
+		#cameraHost.set_third_person_rotation(newCameraRotation)
 	
 	if Input.is_action_just_pressed("Hop") && isMoving && isGrounded:
 		JumpSoundPlayer.play()
