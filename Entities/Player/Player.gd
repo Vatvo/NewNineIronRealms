@@ -382,8 +382,8 @@ func deactivate_brake() -> void:
 		await cameraFOVTween.finished
 		cameraFOVTween.kill()
 
-func reset() -> void:
-	if canReset && lastShotPosition != Vector3.INF && (ballTypeNode.resetCount > 0):
+func reset(forced: bool = false) -> void:
+	if (canReset && lastShotPosition != Vector3.INF && (ballTypeNode.resetCount > 0)) || forced:
 		canReset = false
 		ballTypeNode.resetCount -= 1
 		ResetSoundPlayer.play()
@@ -406,8 +406,6 @@ func reset() -> void:
 		linear_velocity = Vector3.ZERO
 		angular_velocity = Vector3.ZERO
 		global_position = Vector3(lastShotPosition.x, lastShotPosition.y + 5, lastShotPosition.z)
-
-		lastShotPosition = Vector3.INF
 		
 		await get_tree().create_timer(0.5).timeout
 		var outTween: Tween = get_tree().create_tween()
