@@ -3,7 +3,9 @@
 [ext_resource type="Script" uid="uid://8mv10f8xwdyc" path="res://UserInterface/MainMenuUI/MainMenuUi.gd" id="1_5libt"]
 [ext_resource type="PackedScene" uid="uid://bu6btqawnnhen" path="res://UserInterface/ButtonUI/LeftArrowMenuButtonUI.tscn" id="1_ri4oh"]
 [ext_resource type="Texture2D" uid="uid://cw50d1s1xyoqv" path="res://UserInterface/UIAssets/NIRLOGO.png" id="2_1vrbg"]
+[ext_resource type="Script" uid="uid://jo44h70l14h2" path="res://UserInterface/MainMenuUI/PlayBS.gd" id="3_1ltkj"]
 [ext_resource type="Script" uid="uid://pkp1epxfcmxg" path="res://UserInterface/ButtonUI/ButtonScripts/QuitBS.gd" id="4_1ltkj"]
+[ext_resource type="PackedScene" uid="uid://uhu4yk1pcl52" path="res://Maps/PlayMaps/Asgard.tscn" id="4_qu5l2"]
 [ext_resource type="Texture2D" uid="uid://b4s3konq2d11p" path="res://UserInterface/UIAssets/NineIronRealms.png" id="5_7pmh3"]
 
 [sub_resource type="Animation" id="Animation_7pmh3"]
@@ -146,7 +148,12 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Button" parent="Control/MC_Buttons/VBoxContainer/PlayBTN/HBox" parent_id_path=PackedInt32Array(719326111, 57015838) index="0" unique_id=598183682]
+[node name="HBox" parent="Control/MC_Buttons/VBoxContainer/PlayBTN" index="0" unique_id=57015838 node_paths=PackedStringArray("MainMenu")]
+script = ExtResource("3_1ltkj")
+Asgard = ExtResource("4_qu5l2")
+MainMenu = NodePath("../../../../..")
+
+[node name="Button" parent="Control/MC_Buttons/VBoxContainer/PlayBTN/HBox" index="0" unique_id=598183682]
 text = "Play"
 
 [node name="ControlsBTN" parent="Control/MC_Buttons/VBoxContainer" unique_id=35392097 instance=ExtResource("1_ri4oh")]

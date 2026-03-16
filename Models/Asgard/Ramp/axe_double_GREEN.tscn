@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://b117ambxvoin3"]
+
+[ext_resource type="PackedScene" uid="uid://dqubh4fe1h6pb" path="res://3DAssetPacks/FantasyPropsMegakit/Axe_Double_Steel.gltf" id="1_go1uu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kvhtl"]
+albedo_color = Color(0.4392157, 1, 0.32941177, 0.35686275)
+
+[node name="Axe_Double_Steel2" unique_id=502965710 instance=ExtResource("1_go1uu")]
+
+[node name="Axe_Double_Steel" parent="." index="0" unique_id=438063560]
+surface_material_override/0 = SubResource("StandardMaterial3D_kvhtl")

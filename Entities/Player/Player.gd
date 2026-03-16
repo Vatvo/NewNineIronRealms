@@ -67,6 +67,8 @@ var unmoddedDamp: float
 
 var lastShotPosition: Vector3 = Vector3.INF
 
+var doGroundSnap = true
+
 func _ready() -> void:
 	circleTransition.material.set_shader_parameter("screen_width", get_viewport().size.x)
 	circleTransition.material.set_shader_parameter("screen_height", get_viewport().size.y)
@@ -139,24 +141,27 @@ func _physics_process(delta: float) -> void:
 		linear_velocity = linear_velocity.rotated(Vector3.UP, ballTypeNode.steerSensitivity)
 		angular_velocity = angular_velocity.rotated(Vector3.UP, ballTypeNode.steerSensitivity)
 		
-		var currentCameraRotation := cameraHost.get_third_person_rotation()
-		var newCameraRotation := currentCameraRotation
-		newCameraRotation.y += ballTypeNode.steerSensitivity
-		cameraHost.set_third_person_rotation(newCameraRotation)
+		#var currentCameraRotation := cameraHost.get_third_person_rotation()
+		#var newCameraRotation := currentCameraRotation
+		#newCameraRotation.y += ballTypeNode.steerSensitivity
+		#cameraHost.set_third_person_rotation(newCameraRotation)
 	
 	if Input.is_action_pressed("SteerRight") && canSteer:
 		linear_velocity = linear_velocity.rotated(Vector3.UP, -ballTypeNode.steerSensitivity)
 		angular_velocity = angular_velocity.rotated(Vector3.UP, -ballTypeNode.steerSensitivity)
 		
-		var currentCameraRotation := cameraHost.get_third_person_rotation()
-		var newCameraRotation := currentCameraRotation
-		newCameraRotation.y -= ballTypeNode.steerSensitivity
-		cameraHost.set_third_person_rotation(newCameraRotation)
+		#var currentCameraRotation := cameraHost.get_third_person_rotation()
+		#var newCameraRotation := currentCameraRotation
+		#newCameraRotation.y -= ballTypeNode.steerSensitivity
+		#cameraHost.set_third_person_rotation(newCameraRotation)
 	
 	if Input.is_action_just_pressed("Hop") && isMoving && isGrounded:
 		JumpSoundPlayer.play()
 		linear_velocity.y = 0
+		doGroundSnap = false
 		apply_central_impulse(Vector3.UP * hopPower)
+		await get_tree().create_timer(0.35).timeout
+		doGroundSnap = true
 	
 	if Input.is_action_just_pressed("Reset"):
 		reset()
@@ -233,7 +238,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		var newCameraRotation := currentCameraRotation
 		newCameraRotation.y -= event.relative.x * cameraSensitivity.x
 		newCameraRotation.x -= event.relative.y * cameraSensitivity.y
-		newCameraRotation.x = clamp(newCameraRotation.x, -PI/2 + 0.1, -0.5)
+		newCameraRotation.x = clamp(newCameraRotation.x, -PI/2 + 0.1, -0.2)
 		cameraHost.set_third_person_rotation(newCameraRotation)
 		
 		cameraHost.spring_length = cameraDistanceCurve.sample(newCameraRotation.x)
@@ -257,12 +262,12 @@ func check_is_grounded() -> bool:
 	var space := get_viewport().get_world_3d().direct_space_state
 	var ray_query := PhysicsRayQueryParameters3D.new()
 	ray_query.from = Vector3(position.x, position.y, position.z)
-	ray_query.to = Vector3(position.x, position.y - 0.8, position.z)
+	ray_query.to = Vector3(position.x, position.y - 1, position.z)
 	ray_query.set_collision_mask(1)
 	var raycast_result := space.intersect_ray(ray_query)
 
-	if !raycast_result.is_empty():
-		position.y = raycast_result["position"].y + 0.499
+	if !raycast_result.is_empty() && doGroundSnap:
+		position.y = raycast_result["position"].y + 0.49999
 		#linear_velocity.y = 0
 		return true
 	else:
@@ -275,7 +280,7 @@ func handle_shot() -> void:
 	aimMarker.visible = true
 		
 	var screenSize: Vector2 = get_viewport().size
-	maxPullLength = screenSize.y / 3
+	maxPullLength = screenSize.y / 4
 		
 	var mousePos: Vector2 = get_viewport().get_mouse_position()
 	var centerScreen: Vector2 = get_viewport().size / 2
@@ -284,12 +289,15 @@ func handle_shot() -> void:
 	var direction: float = atan2(centeredMousePos.y, centeredMousePos.x)
 		
 	pullLength = mousePos.distance_to(centerScreen)
+	
+	
 	pullLength = clamp(pullLength, 0, maxPullLength)
-		
+	var rayLineEnd: Vector2 = update_pull_line(direction, 50)
 	var pullLineEnd: Vector2 = update_pull_line(direction, pullLength)
-	aimDirection = get_aim_direction(pullLineEnd, screenSize)
+	
+	aimDirection = get_aim_direction(rayLineEnd, screenSize)
 	aimMarker.draw_aim(aimDirection, lerp(0, 5, pullLength / maxPullLength))
-		
+	
 func shoot() -> void:
 	ballTypeNode.brakeMeter = ballTypeNode.maxBrake
 	
@@ -374,8 +382,8 @@ func deactivate_brake() -> void:
 		await cameraFOVTween.finished
 		cameraFOVTween.kill()
 
-func reset() -> void:
-	if canReset && lastShotPosition != Vector3.INF && (ballTypeNode.resetCount > 0):
+func reset(forced: bool = false) -> void:
+	if (canReset && lastShotPosition != Vector3.INF && (ballTypeNode.resetCount > 0)) || forced:
 		canReset = false
 		ballTypeNode.resetCount -= 1
 		ResetSoundPlayer.play()
@@ -397,9 +405,7 @@ func reset() -> void:
 		
 		linear_velocity = Vector3.ZERO
 		angular_velocity = Vector3.ZERO
-		position = lastShotPosition
-		
-		lastShotPosition = Vector3.INF
+		global_position = Vector3(lastShotPosition.x, lastShotPosition.y + 5, lastShotPosition.z)
 		
 		await get_tree().create_timer(0.5).timeout
 		var outTween: Tween = get_tree().create_tween()
