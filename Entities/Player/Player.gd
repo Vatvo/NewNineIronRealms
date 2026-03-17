@@ -358,7 +358,7 @@ func get_aim_direction(pullLineEnd: Vector2, screenSize: Vector2):
 func activate_brake() -> void:
 	if !isBraking && canBrake && ballTypeNode.brakeMeter > 0:
 		brakeMeter.visible = true
-		BrakeSoundPlayer.volume_db=2.0
+		BrakeSoundPlayer.volume_db=3.0
 		isBraking = true
 		
 		linear_velocity /= 1.75
