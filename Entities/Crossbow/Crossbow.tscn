@@ -76,7 +76,7 @@ shape = SubResource("SphereShape3D_i20wl")
 
 [node name="CrossbowSound" type="AudioStreamPlayer2D" parent="." unique_id=743853002]
 stream = ExtResource("6_ifw23")
-volume_db = 4.5
+volume_db = 6.5
 pitch_scale = 0.7
 bus = &"SFX"
 
