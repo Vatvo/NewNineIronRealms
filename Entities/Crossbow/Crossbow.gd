@@ -15,6 +15,9 @@ extends Node3D
 @onready var mainAnimationPlayer: AnimationPlayer = $CrossbowBody/AnimationPlayer
 @onready var mountMover: AnimationPlayer = $CrossbowBody/Armature/Skeleton3D/Crossbow/MountMover
 
+@export_category("Audio")
+@onready var CrossbowSound: AudioStreamPlayer2D = $CrossbowSound
+
 var isPlayerAttached: bool = false
 var player: Player
 
@@ -48,6 +51,7 @@ func activate_crossbow() -> void:
 		firstCam.priority = 300
 		
 	#start crossbow animation
+	CrossbowSound.play()
 	mainAnimationPlayer.play("CrossbowShoot")
 	mountMover.play("CrossbowShoot")
 	

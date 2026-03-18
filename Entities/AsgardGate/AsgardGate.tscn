@@ -39,6 +39,6 @@ shape = SubResource("BoxShape3D_ynq3v")
 
 [node name="GateSound" type="AudioStreamPlayer2D" parent="." index="4" unique_id=1261306420]
 stream = ExtResource("3_mfnyf")
-volume_db = -10.0
-pitch_scale = 2.0
+volume_db = 4.5
+pitch_scale = 1.1
 bus = &"SFX"
