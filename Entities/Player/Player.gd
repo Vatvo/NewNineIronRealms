@@ -361,8 +361,8 @@ func activate_brake() -> void:
 		BrakeSoundPlayer.volume_db=3.0
 		isBraking = true
 		
-		linear_velocity /= 1.75
-		angular_velocity /= 1.75
+		linear_velocity /= 2.5
+		angular_velocity /= 1.5
 		
 		var cameraFOVTween: Tween = get_tree().create_tween()
 		cameraFOVTween.tween_property(cameraHost, "fov", 70, 0.3)
