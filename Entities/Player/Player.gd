@@ -14,7 +14,7 @@ static var canReset: bool = true
 @onready var aimMarker: AimMarker = $AimMarker
 @onready var mainCamera: Camera3D = get_tree().get_nodes_in_group("MainCamera")[0]
 @onready var cameraFollowPoint: Node3D = $CameraFollowPoint
-@onready var groundRayCast: RayCast3D = $GroundRayCast
+@onready var groundChecker: Area3D = $GroundChecker
 @onready var trail: GPUTrail3D = $Trail
 @onready var circleTransition: ColorRect = $ResetFadeOut/CircleTransition
 @onready var ballTypeNode: BallType = $BallType
@@ -86,15 +86,17 @@ func _ready() -> void:
 	cameraHost.spring_length = cameraDistanceCurve.sample(cameraHost.get_third_person_rotation().x)
 
 func _physics_process(delta: float) -> void:
-	groundRayCast.position = global_position
+	groundChecker.position = global_position
 	trail.position = global_position
 	last_velocity = linear_velocity
 	hacksilverParticles.global_position = position
 	
 	if check_is_grounded():
 		isGrounded = true
+		$CanvasLayer/Control/Label.text = "Grounded"
 	else:
 		isGrounded = false
+		$CanvasLayer/Control/Label.text = "Not Grounded"
 	
 	if linear_velocity.length() > 0.5:
 		canShoot = false
@@ -259,19 +261,21 @@ func _on_body_entered(body: Node) -> void:
 	HitSoundPlayer.play()
 
 func check_is_grounded() -> bool:
-	var space := get_viewport().get_world_3d().direct_space_state
-	var ray_query := PhysicsRayQueryParameters3D.new()
-	ray_query.from = Vector3(position.x, position.y, position.z)
-	ray_query.to = Vector3(position.x, position.y - 1, position.z)
-	ray_query.set_collision_mask(1)
-	var raycast_result := space.intersect_ray(ray_query)
+	var isGrounded: bool = groundChecker.get_overlapping_bodies().size() > 1
+	
+	if isGrounded:
+		var space := get_viewport().get_world_3d().direct_space_state
+		var ray_query := PhysicsRayQueryParameters3D.new()
+		ray_query.from = Vector3(position.x, position.y, position.z)
+		ray_query.to = Vector3(position.x, position.y - 1, position.z)
+		ray_query.set_collision_mask(1)
+		var raycast_result := space.intersect_ray(ray_query)
 
-	if !raycast_result.is_empty() && doGroundSnap:
-		position.y = raycast_result["position"].y + 0.49999
-		#linear_velocity.y = 0
-		return true
-	else:
-		return false
+		if !raycast_result.is_empty() && doGroundSnap:
+			position.y = raycast_result["position"].y + 0.49999
+			#linear_velocity.y = 0
+	
+	return isGrounded
 
 	
 func handle_shot() -> void:

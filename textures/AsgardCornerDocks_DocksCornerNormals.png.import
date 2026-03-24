@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://du3s2whgiq30l"
-path.s3tc="res://.godot/imported/AsgardCornerDocks_DocksCornerNormals.png-faf438392e8609c9e8110cf2314ae308.s3tc.ctex"
+path.s3tc="res://.godot/imported/AsgardCornerDocks_DocksCornerNormals.png-ee1a90007163e4eaf8c839c0ae7e8a93.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Textures/AsgardCornerDocks_DocksCornerNormals.png"
-dest_files=["res://.godot/imported/AsgardCornerDocks_DocksCornerNormals.png-faf438392e8609c9e8110cf2314ae308.s3tc.ctex"]
+source_file="res://textures/AsgardCornerDocks_DocksCornerNormals.png"
+dest_files=["res://.godot/imported/AsgardCornerDocks_DocksCornerNormals.png-ee1a90007163e4eaf8c839c0ae7e8a93.s3tc.ctex"]
 
 [params]
 

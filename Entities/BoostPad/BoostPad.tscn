@@ -27,7 +27,7 @@ normal_texture = ExtResource("3_yf020")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yf020"]
 resource_local_to_scene = true
-size = Vector3(0.6, 0.094, 1)
+size = Vector3(0.6, 0.21972656, 1)
 
 [sub_resource type="Animation" id="Animation_yf020"]
 resource_name = "Boost"
