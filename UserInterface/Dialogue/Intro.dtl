@@ -1,6 +1,6 @@
 join GOMG (Reg) center
 GOMG: Oh my gods! Odin’s gonna love my new mini golf course! Should only take a good six hours.
-GOMG: ooooo He’s having a party? Odin must have known I was coming so didn’t bother to invite me. Gosh he’s so smart and cool and has a beard.
+GOMG: Ooooo He’s having a party? Odin must have known I was coming so didn’t bother to invite me. Gosh he’s so smart and cool and has a beard.
 leave GOMG
 join Odin (reg) right
 Odin: Ah finally… A nice relaxing party where nothing can go wrong… OH NO! We’re out of the mead that makes you good at writing poetry!
@@ -13,8 +13,8 @@ Odin: Loki!? But how?!
 update Odin (gray)
 update Loki (reg)
 Loki: Silence! Tying me to a tree and dripping venom on my face had the opposite effect! I mean look at how good my skin looks! Man killing Baldr was the best thing I ever did!
-Loki: What?! Are you turds still mourning Baldr? PFFT! That was like…. A long time ago. Besides, you have more important things to worry about! Like ragnorock!
-Loki: By the way, I started ragnarok.
+Loki: What?! Are you turds still mourning Baldr? PFFT! That was like…. A long time ago. Besides, you have more important things to worry about! Like Ragnorok!
+Loki: By the way, I started Ragnarok.
 update Odin (reg)
 update Loki (gray)
 Odin: Why!? Why forsake the world like this!? Even for you this is too far!
@@ -40,10 +40,10 @@ update GOMG (gray)
 leave Loki [animation="Slide Out Up" length="1.0"]
 update Odin (gray) center [move_time="0.5"]
 update GOMG (Reg)
-GOMG: I guess he didn’t want to join us… Anywhohow!-
+GOMG: I guess he didn’t want to join us… Anyhow!-
 update Odin (reg)
 update GOMG (gray)
-Odin: God of mini golf! Please fulfill that prophecy I told you about and go to each nine iron realm to stop ragnorock. And try to hit Loki with your golf balls, I’m like 80% sure he’s allergic.
+Odin: Gölf! Please fulfill that prophecy I told you about and go to all the realms to stop Ragnorok. And try to hit Loki with your golf balls, I’m like 80% sure he’s allergic.
 update Odin (reg)
 update GOMG (gray)
 GOMG: ok.

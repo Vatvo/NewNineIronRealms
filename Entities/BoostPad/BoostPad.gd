@@ -40,10 +40,17 @@ func boost(body: Node3D) -> void:
 	if canBoost:
 		BoostSound.play()
 		animationPlayer.play("Boost")
-		body.linear_velocity = Vector3.ZERO
+		
+		#var rigidbody: RigidBody3D = body as RigidBody3D
+		var speed: float = body.linear_velocity.length()
+		
+		#body.linear_velocity = Vector3.ZERO
 		body.angular_velocity = Vector3.ZERO
 		
 		var direction = -global_transform.basis.z
+		
+		body.linear_velocity = speed * direction
+		await get_tree().process_frame
 		body.apply_central_impulse(direction * force)
 		canBoost = false
 		await get_tree().create_timer(cooldown).timeout

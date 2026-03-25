@@ -14,7 +14,7 @@ static var canReset: bool = true
 @onready var aimMarker: AimMarker = $AimMarker
 @onready var mainCamera: Camera3D = get_tree().get_nodes_in_group("MainCamera")[0]
 @onready var cameraFollowPoint: Node3D = $CameraFollowPoint
-@onready var groundRayCast: RayCast3D = $GroundRayCast
+@onready var groundChecker: Area3D = $GroundChecker
 @onready var trail: GPUTrail3D = $Trail
 @onready var circleTransition: ColorRect = $ResetFadeOut/CircleTransition
 @onready var ballTypeNode: BallType = $BallType
@@ -86,15 +86,17 @@ func _ready() -> void:
 	cameraHost.spring_length = cameraDistanceCurve.sample(cameraHost.get_third_person_rotation().x)
 
 func _physics_process(delta: float) -> void:
-	groundRayCast.position = global_position
+	groundChecker.position = global_position
 	trail.position = global_position
 	last_velocity = linear_velocity
 	hacksilverParticles.global_position = position
 	
 	if check_is_grounded():
 		isGrounded = true
+		$CanvasLayer/Control/Label.text = "Grounded"
 	else:
 		isGrounded = false
+		$CanvasLayer/Control/Label.text = "Not Grounded"
 	
 	if linear_velocity.length() > 0.5:
 		canShoot = false
@@ -141,19 +143,19 @@ func _physics_process(delta: float) -> void:
 		linear_velocity = linear_velocity.rotated(Vector3.UP, ballTypeNode.steerSensitivity)
 		angular_velocity = angular_velocity.rotated(Vector3.UP, ballTypeNode.steerSensitivity)
 		
-		var currentCameraRotation := cameraHost.get_third_person_rotation()
-		var newCameraRotation := currentCameraRotation
-		newCameraRotation.y += ballTypeNode.steerSensitivity
-		cameraHost.set_third_person_rotation(newCameraRotation)
+		#var currentCameraRotation := cameraHost.get_third_person_rotation()
+		#var newCameraRotation := currentCameraRotation
+		#newCameraRotation.y += ballTypeNode.steerSensitivity
+		#cameraHost.set_third_person_rotation(newCameraRotation)
 	
 	if Input.is_action_pressed("SteerRight") && canSteer:
 		linear_velocity = linear_velocity.rotated(Vector3.UP, -ballTypeNode.steerSensitivity)
 		angular_velocity = angular_velocity.rotated(Vector3.UP, -ballTypeNode.steerSensitivity)
 		
-		var currentCameraRotation := cameraHost.get_third_person_rotation()
-		var newCameraRotation := currentCameraRotation
-		newCameraRotation.y -= ballTypeNode.steerSensitivity
-		cameraHost.set_third_person_rotation(newCameraRotation)
+		#var currentCameraRotation := cameraHost.get_third_person_rotation()
+		#var newCameraRotation := currentCameraRotation
+		#newCameraRotation.y -= ballTypeNode.steerSensitivity
+		#cameraHost.set_third_person_rotation(newCameraRotation)
 	
 	if Input.is_action_just_pressed("Hop") && isMoving && isGrounded:
 		JumpSoundPlayer.play()
@@ -259,19 +261,21 @@ func _on_body_entered(body: Node) -> void:
 	HitSoundPlayer.play()
 
 func check_is_grounded() -> bool:
-	var space := get_viewport().get_world_3d().direct_space_state
-	var ray_query := PhysicsRayQueryParameters3D.new()
-	ray_query.from = Vector3(position.x, position.y, position.z)
-	ray_query.to = Vector3(position.x, position.y - 1, position.z)
-	ray_query.set_collision_mask(1)
-	var raycast_result := space.intersect_ray(ray_query)
+	var isGrounded: bool = groundChecker.get_overlapping_bodies().size() > 1
+	
+	if isGrounded:
+		var space := get_viewport().get_world_3d().direct_space_state
+		var ray_query := PhysicsRayQueryParameters3D.new()
+		ray_query.from = Vector3(position.x, position.y, position.z)
+		ray_query.to = Vector3(position.x, position.y - 1, position.z)
+		ray_query.set_collision_mask(1)
+		var raycast_result := space.intersect_ray(ray_query)
 
-	if !raycast_result.is_empty() && doGroundSnap:
-		position.y = raycast_result["position"].y + 0.49999
-		#linear_velocity.y = 0
-		return true
-	else:
-		return false
+		if !raycast_result.is_empty() && doGroundSnap:
+			position.y = raycast_result["position"].y + 0.49999
+			#linear_velocity.y = 0
+	
+	return isGrounded
 
 	
 func handle_shot() -> void:
@@ -358,7 +362,7 @@ func get_aim_direction(pullLineEnd: Vector2, screenSize: Vector2):
 func activate_brake() -> void:
 	if !isBraking && canBrake && ballTypeNode.brakeMeter > 0:
 		brakeMeter.visible = true
-		BrakeSoundPlayer.volume_db=2.0
+		BrakeSoundPlayer.volume_db=3.0
 		isBraking = true
 		
 		linear_velocity /= 1.75
@@ -382,8 +386,8 @@ func deactivate_brake() -> void:
 		await cameraFOVTween.finished
 		cameraFOVTween.kill()
 
-func reset() -> void:
-	if canReset && lastShotPosition != Vector3.INF && (ballTypeNode.resetCount > 0):
+func reset(forced: bool = false) -> void:
+	if (canReset && lastShotPosition != Vector3.INF && (ballTypeNode.resetCount > 0)) || forced:
 		canReset = false
 		ballTypeNode.resetCount -= 1
 		ResetSoundPlayer.play()
@@ -406,8 +410,6 @@ func reset() -> void:
 		linear_velocity = Vector3.ZERO
 		angular_velocity = Vector3.ZERO
 		global_position = Vector3(lastShotPosition.x, lastShotPosition.y + 5, lastShotPosition.z)
-
-		lastShotPosition = Vector3.INF
 		
 		await get_tree().create_timer(0.5).timeout
 		var outTween: Tween = get_tree().create_tween()

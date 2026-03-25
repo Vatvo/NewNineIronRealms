@@ -48,6 +48,7 @@ layout/default_style="res://UserInterface/Dialogue/DialogueStyle/DialogueStyle.t
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=3
 
 [editor_plugins]
 
@@ -131,6 +132,7 @@ dialogic_default_action={
 
 common/physics_ticks_per_second=120
 jolt_physics_3d/simulation/position_steps=8
+jolt_physics_3d/limits/temporary_memory_buffer_size=480
 jolt_physics_3d/limits/world_boundary_shape_size=100.0
 jolt_physics_3d/limits/max_body_pairs=165536
 jolt_physics_3d/limits/max_contact_constraints=120480

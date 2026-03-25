@@ -1,6 +1,6 @@
 {
 	"asset":{
-		"generator":"Khronos glTF Blender I/O v4.0.44",
+		"generator":"Khronos glTF Blender I/O v5.0.21",
 		"version":"2.0"
 	},
 	"scene":0,
@@ -8,7 +8,8 @@
 		{
 			"name":"Scene",
 			"nodes":[
-				0
+				0,
+				1
 			]
 		}
 	],
@@ -16,15 +17,29 @@
 		{
 			"mesh":0,
 			"name":"Rock_Medium_1"
+		},
+		{
+			"mesh":1,
+			"name":"Rock_Medium_1.colonly"
 		}
 	],
 	"materials":[
 		{
 			"doubleSided":true,
-			"name":"Rocks",
+			"name":"Rocks.002",
 			"pbrMetallicRoughness":{
 				"baseColorTexture":{
 					"index":0
+				},
+				"metallicFactor":0
+			}
+		},
+		{
+			"doubleSided":true,
+			"name":"Rocks.003",
+			"pbrMetallicRoughness":{
+				"baseColorTexture":{
+					"index":1
 				},
 				"metallicFactor":0
 			}
@@ -44,9 +59,27 @@
 					"material":0
 				}
 			]
+		},
+		{
+			"name":"Cube.005_Retopology.002",
+			"primitives":[
+				{
+					"attributes":{
+						"POSITION":4,
+						"NORMAL":5,
+						"TEXCOORD_0":6
+					},
+					"indices":3,
+					"material":1
+				}
+			]
 		}
 	],
 	"textures":[
+		{
+			"sampler":0,
+			"source":0
+		},
 		{
 			"sampler":0,
 			"source":0
@@ -93,6 +126,34 @@
 			"componentType":5123,
 			"count":1026,
 			"type":"SCALAR"
+		},
+		{
+			"bufferView":4,
+			"componentType":5126,
+			"count":351,
+			"max":[
+				1.4978611469268799,
+				1.988665223121643,
+				1.8392531871795654
+			],
+			"min":[
+				-1.7272872924804688,
+				-0.27113133668899536,
+				-1.1498832702636719
+			],
+			"type":"VEC3"
+		},
+		{
+			"bufferView":5,
+			"componentType":5126,
+			"count":351,
+			"type":"VEC3"
+		},
+		{
+			"bufferView":6,
+			"componentType":5126,
+			"count":351,
+			"type":"VEC2"
 		}
 	],
 	"bufferViews":[
@@ -119,6 +180,24 @@
 			"byteLength":2052,
 			"byteOffset":11232,
 			"target":34963
+		},
+		{
+			"buffer":0,
+			"byteLength":4212,
+			"byteOffset":13284,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":4212,
+			"byteOffset":17496,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":2808,
+			"byteOffset":21708,
+			"target":34962
 		}
 	],
 	"samplers":[
@@ -129,7 +208,7 @@
 	],
 	"buffers":[
 		{
-			"byteLength":13284,
+			"byteLength":24516,
 			"uri":"Rock_Medium_1.bin"
 		}
 	]

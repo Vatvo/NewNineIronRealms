@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cj7sg5ojmbrl6"
-path="res://.godot/imported/FirePit.gltf-16fe57fd66409bca77ec6bf2b0b54dc2.scn"
+valid=false
 
 [deps]
 
 source_file="res://3DAssetPacks/FantasyPropsMegakit/FirePit.gltf"
-dest_files=["res://.godot/imported/FirePit.gltf-16fe57fd66409bca77ec6bf2b0b54dc2.scn"]
 
 [params]
 
