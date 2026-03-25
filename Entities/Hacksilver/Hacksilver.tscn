@@ -27,6 +27,7 @@ billboard_mode = 1
 radius = 1.5
 
 [node name="Hacksilver" type="Node3D" unique_id=1062257410]
+transform = Transform3D(2.81, 0, 0, 0, 2.81, 0, 0, 0, 2.81, 0, 0, 0)
 script = ExtResource("1_771iu")
 meshes = Array[Mesh]([ExtResource("2_rdqms"), ExtResource("3_7ilse"), ExtResource("4_e15t6"), ExtResource("5_eqrvy"), ExtResource("6_cexgs"), ExtResource("7_3cv5b"), ExtResource("8_6wtvc")])
 spinSpeed = 1.0
