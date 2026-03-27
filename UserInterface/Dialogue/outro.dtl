@@ -1,0 +1,53 @@
+*DINK*
+join Loki center
+Loki: OW! Why did I disguise myself as a hole on a golf course!?
+join GOMG leftmost
+update Loki (gray)
+GOMG: Hey! Hole in… I wasn’t counting! So lets say hole in one. Oh hi Loki!!!
+update GOMG (gray)
+update Loki (reg)
+Loki: YOU!!
+update GOMG (Reg)
+update Loki (gray)
+GOMG: ME!
+update GOMG (gray)
+update Loki (reg)
+Loki: So Odin sent you to stop me! Well I’m not going down without a -*Cough* 
+Loki: *COUGH* *COUGH* *COUGHHHHH*
+update GOMG (Reg)
+update Loki (gray)
+GOMG: Are you ok?
+join Odin rightmost
+update GOMG (gray)
+update Loki (gray)
+Odin: THERE YOU ARE LOKI!
+update Odin (gray)
+update GOMG (gray)
+update Loki (reg)
+Loki: *COUGH* *COUGH* ODIN! You haven’t won yet!  *COUGH*
+update Odin (reg)
+update GOMG (gray)
+update Loki (gray)
+Odin: Appears I was 80% correct! You are allergic to golf balls.
+update Odin (gray)
+update GOMG (gray)
+update Loki (reg)
+Loki: *COUGH* *COUGH* *WHEEZE*
+update Odin (reg)
+update GOMG (gray)
+update Loki (gray)
+Odin: Enough complaining! To the apologies dungeon with you!
+update Odin (gray)
+update GOMG (gray)
+update Loki (reg)
+leave Loki [animation="Slide Out Down" length="1.5"]
+Loki: NOOOOOOOOO *COUGH*
+update Odin (gray)
+update GOMG (Reg)
+GOMG: I SAVED THE REALMS! ALL NINE IRON OF THEM!!!
+update Odin (reg)
+update GOMG (gray)
+Odin: No… We just handled Loki. You still have an epic golf themed quest ahead of you. In the full game of course. This is just an early build.
+update Odin (gray)
+update GOMG (Reg)
+GOMG: What?

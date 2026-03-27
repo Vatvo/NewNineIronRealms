@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://bu6btqawnnhen"]
 
-[ext_resource type="Script" uid="uid://dy2f2t4l6qbc6" path="res://UserInterface/ButtonUI/menu_button_ui.gd" id="1_7usc3"]
+[ext_resource type="Script" uid="uid://dy2f2t4l6qbc6" path="res://UserInterface/ButtonUI/ButtonScripts/OptionsBS.gd" id="1_7usc3"]
 [ext_resource type="Texture2D" uid="uid://dj0f6triha51f" path="res://UserInterface/UIAssets/UIArrowSmall.png" id="2_jbp3v"]
 [ext_resource type="Theme" uid="uid://qxvpm2dwr80a" path="res://UserInterface/MenuTheme.tres" id="3_xeh1b"]
 [ext_resource type="AudioStream" uid="uid://dddgxpxhvjs4n" path="res://Audio/SFX/UI_Hover.ogg" id="4_7sygk"]

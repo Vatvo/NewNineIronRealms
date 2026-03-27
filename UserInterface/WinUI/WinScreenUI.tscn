@@ -207,6 +207,7 @@ _data = {
 }
 
 [node name="WinScreenUi" type="CanvasLayer" unique_id=99277615]
+process_mode = 3
 
 [node name="Control" type="Control" parent="." unique_id=1390138994]
 layout_mode = 3

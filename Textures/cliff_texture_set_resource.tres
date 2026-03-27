@@ -1,0 +1,14 @@
+[gd_resource type="TextureSetResource" format=3 uid="uid://dajnvj5tt7el0"]
+
+[ext_resource type="Texture2D" uid="uid://bh7xaeo0oyn5q" path="res://Textures/Terrain1K/Cliff/cliff_rocks_05_basecolor_1k.png" id="1_vg1dy"]
+[ext_resource type="Texture2D" uid="uid://bgu53te7uiidd" path="res://Textures/Terrain1K/Cliff/cliff_rocks_05_height_1k.png" id="2_ygnmm"]
+[ext_resource type="Texture2D" uid="uid://c0ornyyim21u7" path="res://Textures/Terrain1K/Cliff/cliff_rocks_05_normal_gl_1k.png" id="3_bmmdn"]
+[ext_resource type="Texture2D" uid="uid://bppyffrl8oohw" path="res://Textures/Terrain1K/Cliff/cliff_rocks_05_roughness_1k.png" id="4_ca3j4"]
+
+[resource]
+albedoTexture = ExtResource("1_vg1dy")
+normalTexture = ExtResource("3_bmmdn")
+roughnessTexture = ExtResource("4_ca3j4")
+heightTexture = ExtResource("2_ygnmm")
+textureDetail = 2
+triplanar = true
